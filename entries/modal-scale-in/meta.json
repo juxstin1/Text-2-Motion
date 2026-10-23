@@ -10,5 +10,6 @@
   "source": "claude",
   "status": "reject",
   "holdout": false,
-  "created": "2026-10-22"
+  "created": "2026-10-22",
+  "reason": "dull"
 }
