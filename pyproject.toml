@@ -1,0 +1,14 @@
+[project]
+name = "text-2-motion"
+version = "0.1.0"
+description = "Hand-reviewed GSAP motion graphics bank + deterministic renderer and motion checker, for teaching small models to animate"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "playwright>=1.48",
+    "numpy>=1.26",
+    "pillow>=10.0",
+]
+
+[tool.uv]
+package = false  # a toolbox of scripts in tools/, not an installable package

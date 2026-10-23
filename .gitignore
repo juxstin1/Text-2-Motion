@@ -16,3 +16,5 @@ onions/
 
 __pycache__/
 *.log
+
+.venv/
