@@ -164,6 +164,8 @@ JS_BOXES = r"""
       // svg text boxes span the font's full em box; trim to roughly cap height so tight stacks don't read as overlap
       y0 += r.height * 0.22; y1 -= r.height * 0.2;
     }
+    // crop share uses the element's own box, not the glyph/cap trims above
+    let k0 = r.left, k1 = r.right, k2 = r.top, k3 = r.bottom;
     for (let n = el; n && n.nodeType === 1; n = n.parentElement) {
       const cs = getComputedStyle(n);
       o *= parseFloat(cs.opacity);
@@ -173,11 +175,15 @@ JS_BOXES = r"""
       if (n !== el && (cs.overflowX !== 'visible' || cs.overflowY !== 'visible')) {
         const a = n.getBoundingClientRect();
         x0 = Math.max(x0, a.left); y0 = Math.max(y0, a.top); x1 = Math.min(x1, a.right); y1 = Math.min(y1, a.bottom);
+        k0 = Math.max(k0, a.left); k2 = Math.max(k2, a.top); k1 = Math.min(k1, a.right); k3 = Math.min(k3, a.bottom);
       }
     }
     const cw = Math.max(0, x1 - x0), ch = Math.max(0, y1 - y0);
+    const area = r.width * r.height;
+    const kept = area > 0 ? Math.max(0, k1 - k0) * Math.max(0, k3 - k2) / area : 1;
     return [r1(r.left - sr.left), r1(r.top - sr.top), r1(r.width), r1(r.height),
-            r1(x0 - sr.left), r1(y0 - sr.top), r1(cw), r1(ch), vis ? Math.round(o * 1000) / 1000 : 0];
+            r1(x0 - sr.left), r1(y0 - sr.top), r1(cw), r1(ch), vis ? Math.round(o * 1000) / 1000 : 0,
+            Math.round(kept * 1000) / 1000];
   });
 }
 """
@@ -216,7 +222,7 @@ def _group(label: str) -> str:
 
 
 def analyse(setup: dict, boxes: np.ndarray, times: list[float], pixel_motion: list[bool], size: tuple[int, int]) -> dict:
-    """boxes: [frames, elements, 9] = raw x,y,w,h, clipped x,y,w,h, opacity."""
+    """boxes: [frames, elements, 10] = raw x,y,w,h, clipped x,y,w,h, opacity, share of own box not cropped."""
     sw, sh = size
     labels = setup["labels"]
     backdrop = set(setup.get("backdrop", []))
@@ -307,6 +313,20 @@ def analyse(setup: dict, boxes: np.ndarray, times: list[float], pixel_motion: li
             if len(hit) > 1:
                 unsafe[i] = hit.tolist()
 
+    # (g) never visible: an element the timeline animates that never shows on stage (e.g. set(autoAlpha:0) + from(autoAlpha:1))
+    on_stage = visible & (cx1 > 0) & (cx0 < sw) & (cy1 > 0) & (cy0 < sh)
+    raw_area = boxes[:, :, 2] * boxes[:, :, 3]
+    never = [i for i in range(ne) if animated[i] and not on_stage[:, i].any() and raw_area[:, i].max() > 4]
+
+    # (h) cut off at the end: visible, but its own box is cropped >15% by a container / <svg> (masks must finish open)
+    cut = [(i, 1 - float(boxes[-1, i, 9])) for i in range(ne)
+           if nf and visible[-1, i] and raw_area[-1, i] > 100 and boxes[-1, i, 9] < 0.85]
+
+    # (i) frozen ending: no human keeper holds still >1.0s or >40% of its runtime (measured on 61 keepers, 2026-10-23)
+    dur = times[-1] if nf else 0.0
+    motion_end = times[last_motion] if nf else 0.0
+    frozen = final_hold > 1.0 or (final_hold > 0.5 and dur > 0 and final_hold / dur > 0.4)
+
     # (e) end state
     end_vis = [i for i in range(ne) if visible[-1, i]] if nf else []
     end_overlaps = [(i, j) for (i, j), fr in overlap_frames.items() if fr[-1] == nf - 1]
@@ -337,6 +357,9 @@ def analyse(setup: dict, boxes: np.ndarray, times: list[float], pixel_motion: li
         "backdrop": len(backdrop),
         "format": SIZES.get(size, "other"),
         "final_hold": round(final_hold, 2),
+        "never_visible": [labels[i] for i in never],
+        "cut_off": [{"el": labels[i], "share": round(c, 2), "i": i, "frame": nf - 1} for i, c in cut],
+        "frozen": {"defect": bool(frozen), "motion_end": round(motion_end, 2), "duration": round(dur, 2)},
         "end_visible": [labels[i] for i in end_vis],
         "end_overlaps": [(labels[i], labels[j]) for i, j in end_overlaps],
     }
@@ -428,11 +451,25 @@ def write_report(entry: Path, setup: dict, a: dict, warnings: list[str], nframes
         lines.append(head("safe zones", ud, un, " (text must stay out of top 8%, bottom 20%, right 14% below 40%)" if us else ""))
         lines += _collapse([f"  DEFECT {u['el']}  {_fmt_ranges(u['ranges'])}" for u in ud], 3)
         lines += _collapse([f"  note {u['el']}  {_fmt_ranges(u['ranges'])} (passes through)" for u in un], 2)
+    nv = _group_counts(a["never_visible"])
+    lines.append("visibility: " + ("clean" if not nv else f"{len(a['never_visible'])} DEFECT"))
+    lines += _collapse([f"  DEFECT {x} is animated but never visible on stage; check from() vs to() and its starting autoAlpha/position"
+                        for x in nv], 3)
+    lines.append("cut off: " + ("clean" if not a["cut_off"] else f"{len(a['cut_off'])} DEFECT"))
+    lines += _collapse([f"  DEFECT {c['el']} ends {int(c['share'] * 100)}% cut off by its container or <svg>; move it fully inside"
+                        for c in a["cut_off"]], 3)
+    fz = a["frozen"]
+    # pacing, not length: the freeze is a symptom of the action ending early, so never suggest cutting duration
+    hold = fz["duration"] - fz["motion_end"]
+    lines.append("ending: " + ("clean" if not fz["defect"] else
+                 f"DEFECT final hold is {hold:.2f}s ({int(100 * hold / fz['duration'])}% of runtime): the motion finishes too early. "
+                 "Slow the main action (longer durations, more follow-through or settle) so it fills more of the runtime, "
+                 "then hold for under 1.0s"))
     end = _group_counts(a["end_visible"])
     lines.append(f"end state: {len(a['end_visible'])} visible ({', '.join(end[:4])}{' ...' if len(end) > 4 else ''}); "
                  f"final hold {a['final_hold']:.2f}s; "
                  + ("overlapping at end: " + ", ".join(f"{x}/{y}" for x, y in a["end_overlaps"][:2]) if a["end_overlaps"] else "no overlaps"))
-    flagged |= bool(od or fd or jm or a["dead_air"] or ud)
+    flagged |= bool(od or fd or jm or a["dead_air"] or ud or a["never_visible"] or a["cut_off"] or fz["defect"])
     a["n_notes"] = len(on) + len(fn) + len(un)
     (entry / "report.txt").write_text("\n".join(lines[:30]) + "\n", encoding="utf-8")
     return flagged
@@ -500,6 +537,8 @@ def make_onion(frames: list[Path], boxes: np.ndarray, a: dict, out: Path) -> Non
     for o in a["offstage"]:
         if o["defect"]:
             marks.append((o["i"], o["frame"], "off-stage"))
+    for o in a.get("cut_off", []):
+        marks.append((o["i"], o["frame"], "cut off"))
     for o in a.get("unsafe", []):
         if o["defect"]:
             marks.append((o["i"], o["frame"], "unsafe"))
@@ -576,7 +615,7 @@ def render_entry(browser, port: int, entry: Path) -> str:
             prev_small = small
         if errors:
             raise RuntimeError("\n".join(errors))
-        boxes = np.array(all_boxes, dtype=np.float64).reshape(len(times), len(setup["labels"]), 9)
+        boxes = np.array(all_boxes, dtype=np.float64).reshape(len(times), len(setup["labels"]), 10)
         a = analyse(setup, boxes, times, pixel_motion, size)
         flagged = write_report(entry, setup, a, sorted(set(warnings)), len(times))
         make_gif(frames_dir, entry / "preview.gif", vertical)

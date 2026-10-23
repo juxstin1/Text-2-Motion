@@ -3,5 +3,5 @@
   "must": [
     "never visible"
   ],
-  "known_gap": true
+  "known_gap": false
 }

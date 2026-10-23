@@ -11,6 +11,8 @@
   <img src="https://img.shields.io/badge/runs-offline-555" alt="runs offline">
 </p>
 
+> Picking this up? Start with [HANDOFF.md](HANDOFF.md).
+
 **Text-2-Motion** is a bank of hand-reviewed motion graphics, plus the tooling to teach a *small, local* model to make them: you type a sentence, and the model writes a polished, deterministic GSAP animation.
 
 ## The goal
@@ -143,6 +145,7 @@ Render outputs (GIFs, filmstrips, onions, alpha videos) are git-ignored. They're
 | `uv run tools/run_local.py "<request>" --fix 2 --vision` | Then up to 2 repair rounds fed by the report's defects (plus filmstrip and onion images for vision models); each attempt is its own entry |
 | `uv run tools/export_sheets.py --status keep` | Copy keeper filmstrips to `sprites/` for sharing |
 | `uv run tools/make_readme_media.py` | Rebuild the images in `docs/media/` (this README) |
+| `uv run tools/run_experiment.py --url http://127.0.0.1:8090/v1` | Run holdout prompts through the local model (default: 3 prompts, 3-shot, up to 3 attempts), logging to `docs/experiments/` |
 | `uv run tools/test_checker.py` | Checker regression tests: renders `fixtures/` and checks each report against `expect.json` (must catch / must stay clean / known gaps) |
 
 `run_local.py` options: `--model NAME` (default: first loaded model), `--vertical`, `--url`, `--temperature 0.4`, `--max-tokens 12000`.
@@ -162,6 +165,9 @@ A timing chart (one line per tween), then the checks. Each finding is either a *
 - **jumps** (DEFECT): one-frame moves over 3x the surrounding motion.
 - **dead air** (DEFECT): over 0.4s with nothing moving, final hold excluded.
 - **safe zones** (vertical only): text under platform UI; DEFECT at the end or for 0.5s+.
+- **visibility** (DEFECT): an animated element that is never visible on stage.
+- **cut off** (DEFECT): visible at the end but >15% cropped by its container or `<svg>`.
+- **ending** (DEFECT): final hold over 1.0s or over 40% of the runtime (no human keeper exceeds 0.86s / 37%).
 - **end state**: what's visible, the final hold length, and any end overlaps.
 
 Text boxes are trimmed horizontally to their glyphs, SVG text vertically to cap height.

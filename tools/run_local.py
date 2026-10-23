@@ -49,11 +49,13 @@ def pick_model(base: str, wanted: str | None) -> str:
     return models[0]
 
 
-def chat(base: str, model: str, messages: list[dict], temperature: float, max_tokens: int) -> str:
+def chat(base: str, model: str, messages: list[dict], temperature: float, max_tokens: int,
+         think: bool = True) -> tuple[str, dict]:
     t0 = time.time()
-    resp = http_json(f"{base}/chat/completions", {
-        "model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens, "stream": False,
-    })
+    payload = {"model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens, "stream": False}
+    if not think:
+        payload["chat_template_kwargs"] = {"enable_thinking": False}  # llama-server / Jinja templates; ignored elsewhere
+    resp = http_json(f"{base}/chat/completions", payload)
     msg = resp["choices"][0]["message"]
     text = msg.get("content") or ""
     usage = resp.get("usage", {})
@@ -63,9 +65,29 @@ def chat(base: str, model: str, messages: list[dict], temperature: float, max_to
         # keep it in raw_reply.txt so a reply that thinks until max_tokens and never answers is diagnosable
         text = f"<think>\n{reasoning}\n</think>\n{text}"
         print(f"  (reasoning {len(reasoning)} chars{', NO ANSWER: hit max_tokens while thinking' if not msg.get('content') else ''})")
-    print(f"  model replied in {time.time() - t0:.0f}s  (prompt {usage.get('prompt_tokens', '?')} tok, "
+    secs = time.time() - t0
+    print(f"  model replied in {secs:.0f}s  (prompt {usage.get('prompt_tokens', '?')} tok, "
           f"completion {usage.get('completion_tokens', '?')} tok)")
-    return text
+    stats = {"seconds": round(secs, 1), "prompt_tokens": usage.get("prompt_tokens"),
+             "completion_tokens": usage.get("completion_tokens"), "reasoning_chars": len(reasoning),
+             "thinking": think, "answered": bool(msg.get("content"))}
+    return text, stats
+
+
+def generate(base: str, model: str, messages: list[dict], args) -> tuple[str, str | None, dict]:
+    """One model call; if a thinking reply never produced an html block (ran out of tokens thinking),
+    retry once with thinking off. Returns raw reply, extracted html, generation stats for meta.json."""
+    think = args.think == "on"
+    raw, stats = chat(base, model, messages, args.temperature, args.max_tokens, think)
+    html = extract_html(raw)
+    if not html and think and stats["reasoning_chars"]:
+        print("  no answer after thinking; retrying once with thinking off")
+        raw2, stats2 = chat(base, model, messages, args.temperature, args.max_tokens, think=False)
+        raw += "\n\n--- retry with thinking off ---\n" + raw2
+        html = extract_html(raw2)
+        stats = {**stats2, "fallback_from": stats}
+    stats.update(temperature=args.temperature, max_tokens=args.max_tokens)
+    return raw, html, stats
 
 
 def extract_html(text: str) -> str | None:
@@ -88,10 +110,10 @@ def save_entry(request: str, html: str | None, raw: str, model: str, extra: dict
     eid = f"{slug(request)}--{slug(model, 20)}-{extra['shots']}s-{stamp}" + (f"-fix{extra['attempt']}" if extra.get("attempt") else "")
     d = ENTRIES / eid
     d.mkdir(parents=True)
-    (d / "prompt.txt").write_text(request + "\n", encoding="utf-8")
-    (d / "raw_reply.txt").write_text(raw, encoding="utf-8")
+    (d / "prompt.txt").write_text(request + "\n", encoding="utf-8", newline="\n")
+    (d / "raw_reply.txt").write_text(raw, encoding="utf-8", newline="\n")
     if html:
-        (d / "anim.html").write_text(html, encoding="utf-8")
+        (d / "anim.html").write_text(html, encoding="utf-8", newline="\n")
     tags = ["local", f"{extra['shots']}-shot"] + (["vertical"] if "vertical 9:16" in request else [])
     meta = {"id": eid, "prompt": request, "tags": tags, "source": model,
             "status": "pending", "holdout": False, "created": date.today().isoformat(), **extra}
@@ -124,6 +146,8 @@ def main() -> None:
     ap.add_argument("--vertical", action="store_true", help="9:16 Shorts format (720x1280 stage, vertical examples)")
     ap.add_argument("--temperature", type=float, default=0.4)
     ap.add_argument("--max-tokens", type=int, default=12000)
+    ap.add_argument("--think", choices=["on", "off"], default="on",
+                    help="model reasoning; 'on' falls back to off once if a reply thinks until max_tokens")
     args = ap.parse_args()
 
     base = args.url.rstrip("/")
@@ -144,10 +168,9 @@ def main() -> None:
     messages.append({"role": "user", "content": args.request})
 
     print(f"asking {model} ({args.shots}-shot) ...")
-    raw = chat(base, model, messages, args.temperature, args.max_tokens)
-    html = extract_html(raw)
+    raw, html, gen = generate(base, model, messages, args)
     extra = {"shots": args.shots, "examples": [e["id"] for e in examples], "attempt": 0}
-    d = save_entry(args.request, html, raw, model, extra)
+    d = save_entry(args.request, html, raw, model, {**extra, "gen": gen})
     if html:
         render.render_entries([d])
     else:
@@ -160,7 +183,8 @@ def main() -> None:
             break
         prev_html = (d / "anim.html").read_text(encoding="utf-8")
         text = (f"Here is your anim.html for the request above:\n```html\n{prev_html.strip()}\n```\n\n{feedback}\n"
-                "Fix every flagged issue (lines that do not say 'clean') while keeping the design and intent. "
+                "Fix every line marked DEFECT while keeping the design and intent. Lines marked 'note' are "
+                "mid-animation facts; change them only if they look unintended. "
                 + INSTRUCTION)
         content: list[dict] | str = text
         if args.vision:
@@ -173,9 +197,8 @@ def main() -> None:
                     {"role": "assistant", "content": "```html\n" + prev_html.strip() + "\n```"},
                     {"role": "user", "content": content}]
         print(f"fix round {n} ...")
-        raw = chat(base, model, fix_msgs, args.temperature, args.max_tokens)
-        html = extract_html(raw)
-        d = save_entry(args.request, html, raw, model, {**extra, "attempt": n, "parent": d.name})
+        raw, html, gen = generate(base, model, fix_msgs, args)
+        d = save_entry(args.request, html, raw, model, {**extra, "attempt": n, "parent": d.name, "gen": gen})
         if not html:
             (d / "render_error.txt").write_text("no ```html block in the model reply (see raw_reply.txt)\n", encoding="utf-8")
             print(f"ERROR {d.name}  no html block in reply")

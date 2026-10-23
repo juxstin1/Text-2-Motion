@@ -3,5 +3,5 @@
   "must": [
     "cut off"
   ],
-  "known_gap": true
+  "known_gap": false
 }

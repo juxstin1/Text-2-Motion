@@ -1,0 +1,10 @@
+{
+  "why": "Gemma 4 12B 0-shot, 2026-10-23: stamp lands by 0.27s, then holds still ~80% of the runtime (human: right mechanics, timing too quick)",
+  "must": [
+    "ending: DEFECT",
+    "Slow the main action"
+  ],
+  "must_not": [
+    "shorten"
+  ]
+}
