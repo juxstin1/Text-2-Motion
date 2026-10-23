@@ -5,6 +5,24 @@
 
 Planned: 5 holdout prompts × {0, 3}-shot. Stopped after 3 prompts (10 model calls) to read results.
 
+## Side by side
+
+<table>
+  <tr><th></th><th>Claude (bank original, held out)</th><th>Gemma 4 12B (local)</th></tr>
+  <tr>
+    <td><b>record-stamp</b><br><sub>Gemma: 0-shot, first try</sub></td>
+    <td><img src="../media/experiments/claude-record-stamp.gif" width="320"></td>
+    <td><img src="../media/experiments/gemma-record-stamp-0shot.gif" width="320"></td>
+  </tr>
+  <tr>
+    <td><b>shape-drop-bounce</b><br><sub>Gemma: 3-shot, first try</sub></td>
+    <td><img src="../media/experiments/claude-shape-drop-bounce.gif" width="320"></td>
+    <td><img src="../media/experiments/gemma-shape-drop-3shot.gif" width="320"></td>
+  </tr>
+</table>
+
+**Human verdict on Gemma's best (record-stamp 0-shot):** "perfect, just timing a bit too quick, and it's bland, but it's the first of many." The stamp mechanics are right on the first try. What's missing is the time spent in motion (it's done by 0.27s) and visual richness, the same two gaps the bank's own reject reasons point at (timing, dull/look). The shape-drop 3-shot is the opposite case: real style lifted from the examples, but the shapes land off-screen at the top.
+
 ## Results
 
 | Prompt (holdout) | 0-shot | 3-shot |
