@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: editorial -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F4EFE6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F4EFE6;
+           font-family: 'Inter', sans-serif; color: #1B1A17; }
+  .label { font-family: 'Inter'; font-size: 14px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+  #masthead { position: absolute; left: 160px; top: 52px; width: 960px; }
+  #mast-l { position: absolute; left: 0; top: 0; }
+  #mast-r { position: absolute; right: 0; top: 0; color: rgba(27,26,23,0.55); }
+  #mast-rule { position: absolute; left: 0; top: 34px; width: 960px; height: 1px; background: #1B1A17; transform-origin: 0 50%; }
+  #mask { position: absolute; left: 160px; top: 128px; width: 960px; height: 464px; overflow: hidden; }
+  #slider { position: absolute; inset: 0; overflow: hidden; }
+  #card { position: absolute; inset: 0; background: rgba(27,26,23,0.035); box-shadow: inset 0 0 0 1px rgba(27,26,23,0.16); }
+  #art-wrap { position: absolute; left: 0; top: 0; width: 440px; height: 464px; overflow: hidden; }
+  #art { position: absolute; inset: 0; transform-origin: 40% 60%; }
+  #art svg { display: block; width: 440px; height: 464px; }
+  #copy { position: absolute; left: 496px; top: 64px; width: 412px; }
+  #kicker { color: #B4442C; }
+  #headline { margin-top: 22px; font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 800;
+              letter-spacing: -0.02em; line-height: 1.12; }
+  #dek { margin-top: 22px; font-size: 18px; font-weight: 400; line-height: 1.5; color: rgba(27,26,23,0.72); }
+  #byline { position: absolute; left: 496px; top: 384px; width: 412px; padding-top: 18px;
+            border-top: 1px solid rgba(27,26,23,0.16); font-size: 14px; color: rgba(27,26,23,0.6); }
+  #byline b { color: #1B1A17; font-weight: 600; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="masthead">
+    <div id="mast-l" class="label">The Weekend Edition</div>
+    <div id="mast-r" class="label">No. 42 &middot; October</div>
+    <div id="mast-rule"></div>
+  </div>
+  <div id="mask">
+    <div id="slider">
+      <div id="card">
+        <div id="art-wrap"><div id="art">
+          <svg viewBox="0 0 440 464" aria-hidden="true">
+            <rect width="440" height="464" fill="#B4442C"/>
+            <circle cx="300" cy="170" r="92" fill="#F4EFE6" opacity="0.92"/>
+            <rect x="0" y="300" width="440" height="164" fill="#1B1A17" opacity="0.88"/>
+            <g stroke="#F4EFE6" stroke-width="2" opacity="0.5">
+              <line x1="40" y1="336" x2="400" y2="336"/><line x1="40" y1="360" x2="360" y2="360"/>
+              <line x1="40" y1="384" x2="380" y2="384"/><line x1="40" y1="408" x2="300" y2="408"/>
+            </g>
+            <rect x="56" y="232" width="128" height="68" fill="#F4EFE6" opacity="0.18"/>
+          </svg>
+        </div></div>
+        <div id="copy">
+          <div id="kicker" class="label">Essay</div>
+          <div id="headline">The quiet return of the printed page</div>
+          <div id="dek">Why readers raised on screens are paying for paper again.</div>
+        </div>
+        <div id="byline">By <b>Mara Ellison</b> &nbsp;&middot;&nbsp; 8 min read</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+gsap.registerPlugin(SplitText);
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const split = SplitText.create("#headline", { type: "lines" });
+
+  tl.from("#mast-rule", { scaleX: 0, duration: 0.9, ease: "power3.inOut" }, 0)
+    .from(["#mast-l", "#mast-r"], { y: 10, autoAlpha: 0, duration: 0.5, ease: "power2.out", stagger: 0.1 }, 0.1)
+    // the wipe: window slides open while its content counter-slides, so the card itself stays put
+    .fromTo("#slider", { xPercent: -100 }, { xPercent: 0, duration: 1.1, ease: "expo.inOut" }, 0.2)
+    .fromTo("#card", { xPercent: 100 }, { xPercent: 0, duration: 1.1, ease: "expo.inOut" }, "<")
+    .from("#art", { scale: 1.18, duration: 1.6, ease: "power3.out" }, "<0.15")
+    .from("#kicker", { y: 14, autoAlpha: 0, duration: 0.6, ease: "power3.out" }, "-=1.0")
+    .from(split.lines, { y: 26, autoAlpha: 0, duration: 0.8, ease: "power3.out", stagger: 0.1 }, "<0.08")
+    .from("#dek", { y: 18, autoAlpha: 0, duration: 0.7, ease: "power3.out" }, "-=0.55")
+    .from("#byline", { y: 14, autoAlpha: 0, duration: 0.6, ease: "power3.out" }, "-=0.45")
+    .to({}, { duration: 0.4 });
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

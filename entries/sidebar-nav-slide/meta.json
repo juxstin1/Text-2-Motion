@@ -1,0 +1,14 @@
+{
+  "id": "sidebar-nav-slide",
+  "prompt": "sidebar navigation slides in from the left, menu items following in a tight stagger",
+  "tags": [
+    "entrance",
+    "ui",
+    "nav",
+    "stagger"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

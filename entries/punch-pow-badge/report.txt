@@ -1,0 +1,20 @@
+duration 2.55s, 78 frames @30fps, 19 tweens
+TIMING
+  #label  x,autoAlpha  0.00-0.40s  power3.out
+  #badge  scale,rotation  0.05-0.50s  back.out(2.2)
+  #glove  x,autoAlpha  0.10-0.50s  power3.out
+  #glove  x,rotation,scaleX,scaleY  0.48-0.82s  power2.out
+  #glove  x,rotation,scaleX,scaleY  0.82-1.00s  power2.in
+  #speed line.sl x3  scaleX,autoAlpha  0.86-1.02s  power2.out  stagger 0.03
+  #glove  scaleX,scaleY,x  1.00-1.08s  power2.out
+  #badge  scaleX,scaleY,skewX,rotation,x  1.00-1.09s  power3.out
+  #rays line.ray x6  x,y,autoAlpha  1.00-1.32s  power2.out
+  #world  x,y  1.00-1.22s  power1.out
+  (+9 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 7 visible (#label, #badge, #glove, #world ...); final hold 0.25s; no overlaps

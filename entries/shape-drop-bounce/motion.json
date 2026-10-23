@@ -1,0 +1,393 @@
+{
+ "duration": 2.35,
+ "fps": 30,
+ "frames": 72,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#circle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.7,
+   "ease": "expo.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#floor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.22,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#square"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.42,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#tri"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#circle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.57,
+   "duration": 0.26,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#circle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.72,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#square"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.75,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#eyebrow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.79,
+   "duration": 0.26,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#square"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.83,
+   "duration": 0.24,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#circle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.85,
+   "duration": 0.7,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.92,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tri"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.99,
+   "duration": 0.26,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tri"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.05,
+   "duration": 0.24,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#square"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.07,
+   "duration": 0.06,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#circle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.1,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#body"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.13,
+   "duration": 0.3,
+   "ease": "back.out(2.5)",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#circle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.25,
+   "duration": 0.24,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tri"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.29,
+   "duration": 0.06,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#square"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.35,
+   "duration": 0.3,
+   "ease": "back.out(2.5)",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#square"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.49,
+   "duration": 0.06,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tri"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.55,
+   "duration": 0.3,
+   "ease": "back.out(2.5)",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tri"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.85,
+   "duration": 0.5,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#circle",
+  "#floor",
+  "#square",
+  "#tri",
+  "#eyebrow",
+  "#title",
+  "#body"
+ ],
+ "fonts": [
+  "Sora",
+  "Syne"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.52,
+  "end_visible": [
+   "#circle",
+   "#floor",
+   "#square",
+   "#tri",
+   "#eyebrow",
+   "#title",
+   "#body"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

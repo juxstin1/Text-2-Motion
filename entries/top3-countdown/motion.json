@@ -1,0 +1,1393 @@
+{
+ "duration": 3.85,
+ "fps": 30,
+ "frames": 117,
+ "format": "vertical",
+ "size": [
+  720,
+  1280
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.2,
+   "ease": "power3.in",
+   "props": [
+    "scale",
+    "rotation",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#plate"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.16,
+   "duration": 0.4,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#label"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.18,
+   "duration": 0.52,
+   "ease": "back.out(1.7)",
+   "props": [
+    "scale",
+    "autoAlpha",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": 0.04,
+   "targets": [
+    "#title div[0]",
+    "#title div[1]",
+    "#title div[2]",
+    "#title div[3]",
+    "#title div[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.2,
+   "duration": 0.48,
+   "ease": "power1.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#plate"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.26,
+   "duration": 0.19,
+   "ease": "power3.in",
+   "props": [
+    "scale",
+    "y",
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#card2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.26,
+   "duration": 0.08,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#card2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.45,
+   "duration": 0.52,
+   "ease": "power1.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.45,
+   "duration": 0.46,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#plate"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.47,
+   "duration": 0.42,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#rank2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.51,
+   "duration": 0.5,
+   "ease": "back.out(2.2)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#slot2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.53,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.05,
+   "targets": [
+    "#name2",
+    "#note2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.78,
+   "duration": 0.19,
+   "ease": "power3.in",
+   "props": [
+    "scale",
+    "y",
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#card1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.78,
+   "duration": 0.08,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#card1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.97,
+   "duration": 0.52,
+   "ease": "power1.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.97,
+   "duration": 0.46,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.99,
+   "duration": 0.42,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#rank1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1,
+   "duration": 0.46,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#plate"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.03,
+   "duration": 0.5,
+   "ease": "back.out(2.2)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#slot1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.05,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.05,
+   "targets": [
+    "#name1",
+    "#note1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.24,
+   "duration": 0.2,
+   "ease": "power2.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.34,
+   "duration": 0.05,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.39,
+   "duration": 0.05,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.44,
+   "duration": 0.05,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.49,
+   "duration": 0.05,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.54,
+   "duration": 0.16,
+   "ease": "power3.in",
+   "props": [
+    "scale",
+    "y",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.7,
+   "duration": 0.52,
+   "ease": "power1.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.7,
+   "duration": 0.46,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.72,
+   "duration": 0.42,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#rank0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.73,
+   "duration": 0.46,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.76,
+   "duration": 0.5,
+   "ease": "back.out(2.2)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#slot0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.76,
+   "duration": 0.46,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#plate"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.78,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.05,
+   "targets": [
+    "#name0",
+    "#note0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.8,
+   "duration": 0.2,
+   "ease": "power2.inOut",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.88,
+   "ease": "power1.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.72,
+   "ease": "power1.out",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#rank0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.2,
+   "ease": "power3.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#burst path.ray[0]",
+    "#burst path.ray[1]",
+    "#burst path.ray[2]",
+    "#burst path.ray[3]",
+    "#burst path.ray[4]",
+    "#burst path.ray[5]",
+    "#burst path.ray[6]",
+    "#burst path.ray[7]",
+    "#burst path.ray[8]",
+    "#burst path.ray[9]",
+    "#burst path.ray[10]",
+    "#burst path.ray[11]",
+    "#burst path.ray[12]",
+    "#burst path.ray[13]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "power2.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#halo"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[5]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[5]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[6]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[6]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[8]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[8]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[9]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[9]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[10]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[10]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[11]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[11]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[12]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[12]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.02,
+   "duration": 0.62,
+   "ease": "power1.out",
+   "props": [
+    "y",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": 0.04,
+   "targets": [
+    "#card2",
+    "#card1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.05,
+   "duration": 0.8,
+   "ease": "power3.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.2,
+   "duration": 0.34,
+   "ease": "power2.in",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst path.ray[0]",
+    "#burst path.ray[1]",
+    "#burst path.ray[2]",
+    "#burst path.ray[3]",
+    "#burst path.ray[4]",
+    "#burst path.ray[5]",
+    "#burst path.ray[6]",
+    "#burst path.ray[7]",
+    "#burst path.ray[8]",
+    "#burst path.ray[9]",
+    "#burst path.ray[10]",
+    "#burst path.ray[11]",
+    "#burst path.ray[12]",
+    "#burst path.ray[13]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.2,
+   "duration": 0.8,
+   "ease": "power2.inOut",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0 div.sheen"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.45,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.45,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.45,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[8]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.45,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[12]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.46,
+   "duration": 0.08,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst path.ray[0]",
+    "#burst path.ray[1]",
+    "#burst path.ray[2]",
+    "#burst path.ray[3]",
+    "#burst path.ray[4]",
+    "#burst path.ray[5]",
+    "#burst path.ray[6]",
+    "#burst path.ray[7]",
+    "#burst path.ray[8]",
+    "#burst path.ray[9]",
+    "#burst path.ray[10]",
+    "#burst path.ray[11]",
+    "#burst path.ray[12]",
+    "#burst path.ray[13]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.48,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.48,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[5]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.48,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[9]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.51,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.51,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[6]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.51,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[10]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.54,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.54,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.54,
+   "duration": 0.5,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#burst circle.dot[11]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.75,
+   "duration": 0.4,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.15,
+   "duration": 0.4,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#card0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.55,
+   "duration": 0.3,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#plate",
+  "#label",
+  "#title div[0]",
+  "#title div[1]",
+  "#title div[2]",
+  "#title div[3]",
+  "#title div[4]",
+  "#card2",
+  "#rank2",
+  "#slot2",
+  "#name2",
+  "#note2",
+  "#card1",
+  "#rank1",
+  "#slot1",
+  "#name1",
+  "#note1",
+  "#card0",
+  "#rank0",
+  "#slot0",
+  "#name0",
+  "#note0",
+  "#burst path.ray[0]",
+  "#burst path.ray[1]",
+  "#burst path.ray[2]",
+  "#burst path.ray[3]",
+  "#burst path.ray[4]",
+  "#burst path.ray[5]",
+  "#burst path.ray[6]",
+  "#burst path.ray[7]",
+  "#burst path.ray[8]",
+  "#burst path.ray[9]",
+  "#burst path.ray[10]",
+  "#burst path.ray[11]",
+  "#burst path.ray[12]",
+  "#burst path.ray[13]",
+  "#halo",
+  "#burst circle.dot[0]",
+  "#burst circle.dot[1]",
+  "#burst circle.dot[2]",
+  "#burst circle.dot[3]",
+  "#burst circle.dot[4]",
+  "#burst circle.dot[5]",
+  "#burst circle.dot[6]",
+  "#burst circle.dot[7]",
+  "#burst circle.dot[8]",
+  "#burst circle.dot[9]",
+  "#burst circle.dot[10]",
+  "#burst circle.dot[11]",
+  "#burst circle.dot[12]",
+  "#card0 div.sheen"
+ ],
+ "fonts": [
+  "Inter, sans-serif",
+  "\"Playfair Display\", serif"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 29,
+  "format": "vertical",
+  "final_hold": 0.35,
+  "end_visible": [
+   "#plate",
+   "#label",
+   "#title div[0]",
+   "#title div[1]",
+   "#title div[2]",
+   "#title div[3]",
+   "#title div[4]",
+   "#card2",
+   "#rank2",
+   "#slot2",
+   "#name2",
+   "#note2",
+   "#card1",
+   "#rank1",
+   "#slot1",
+   "#name1",
+   "#note1",
+   "#card0",
+   "#rank0",
+   "#slot0",
+   "#name0",
+   "#note0"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: editorial -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F4EFE6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F4EFE6;
+           font-family: 'Inter', sans-serif; color: #1B1A17; }
+  #bg { position: absolute; inset: 0; background:
+        radial-gradient(900px 500px at 50% 50%, rgba(180,68,44,0.07), rgba(180,68,44,0) 70%), #F4EFE6; }
+  #wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+
+  /* the whole graphic sits on a paper panel so it reads over footage */
+  #panel { width: 1100px; box-sizing: border-box; padding: 34px 40px 38px; border-radius: 18px; background: #F4EFE6;
+           border: 1px solid rgba(27,26,23,0.14); box-shadow: 0 28px 70px rgba(27,26,23,0.32); }
+  #kicker { font-weight: 600; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: #B4442C; }
+  #title { margin: 6px 0 64px; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 54px;
+           letter-spacing: -0.02em; line-height: 1.05; }
+
+  /* --slot sets the logo size; the axis sits on the dots no matter what it is */
+  #line { --slot: 72px; position: relative; display: flex; }
+  #axis { position: absolute; left: 0; right: 0; top: calc(var(--slot) + 28px); height: 4px; border-radius: 2px;
+          background: rgba(27,26,23,0.12); }
+  #axisFill { position: absolute; inset: 0; border-radius: 2px; background: #1B1A17; transform-origin: 0 50%; }
+  .stop { position: relative; flex: 1 1 0; min-width: 150px; display: flex; flex-direction: column; align-items: center; }
+  .slot { width: var(--slot); height: var(--slot); }
+  .slot svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .dot { position: relative; margin-top: 18px; width: 24px; height: 24px; border-radius: 50%; background: #F4EFE6;
+         border: 4px solid #1B1A17; box-sizing: border-box; }
+  .dot b { position: absolute; inset: 3px; border-radius: 50%; background: var(--brand); }
+  .ring { position: absolute; left: -14px; top: -14px; width: 44px; height: 44px; border-radius: 50%;
+          border: 2px solid var(--brand); box-sizing: border-box; visibility: hidden; }
+  .date { margin-top: 16px; padding: 6px 12px; border-radius: 6px; background: #1B1A17; color: #F4EFE6;
+          font-weight: 600; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; }
+  .name { margin-top: 10px; max-width: 100%; padding: 0 6px; box-sizing: border-box; text-align: center;
+          font-family: 'Playfair Display'; font-weight: 800; font-size: 24px; letter-spacing: -0.02em; line-height: 1.1; }
+  .badge { position: absolute; top: -12px; left: 50%; margin-left: 18px; padding: 4px 10px; border-radius: 99px;
+           background: #B4442C; color: #F4EFE6; font-weight: 600; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="wrap">
+    <div id="panel">
+      <div id="kicker"></div>
+      <div id="title"></div>
+      <div id="line">
+        <div id="axis" data-layer="back"><div id="axisFill" data-layer="back"></div></div>
+        <!-- one .stop (logo slot, dot, date, name) per DATA.items entry -->
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+const DATA = {
+  kicker: "2025 — 2026",
+  title: "Release timeline",
+  badge: "Latest",
+  items: [  // left to right, oldest first
+    { name: "Nova 2",    date: "Mar 2025", color: "#4D6BFE",
+      logo: '<circle cx="50" cy="50" r="46" fill="currentColor"/><circle cx="50" cy="50" r="22" fill="none" stroke="#fff" stroke-width="9"/><circle cx="72" cy="28" r="7" fill="#fff"/>' },
+    { name: "Apex 4",    date: "Jun 2025", color: "#10A37F",
+      logo: '<path d="M50 6 L95 90 H5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="M50 44 L68 78 H32 Z" fill="#fff"/>' },
+    { name: "Orbit XL",  date: "Sep 2025", color: "#D98A1C",
+      logo: '<circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="10"/><circle cx="50" cy="50" r="13" fill="currentColor"/><circle cx="82" cy="22" r="11" fill="currentColor"/>' },
+    { name: "Quill 1.5", date: "Jan 2026", color: "#E5484D",
+      logo: '<path d="M86 8 C46 12 14 44 14 92 C58 88 88 56 86 8 Z" fill="currentColor"/><path d="M22 84 L68 32" stroke="#fff" stroke-width="6" stroke-linecap="round"/>' },
+    { name: "Kite Pro",  date: "Apr 2026", color: "#8B5CF6",
+      logo: '<path d="M50 4 L88 44 L50 96 L12 44 Z" fill="currentColor"/><path d="M50 4 V96 M12 44 H88" stroke="#fff" stroke-width="5" stroke-opacity="0.85"/>' },
+  ],
+};
+
+gsap.registerPlugin(SplitText);
+document.fonts.ready.then(() => {
+  // ---------- fill the DOM from DATA
+  const $ = id => document.getElementById(id);
+  $("kicker").textContent = DATA.kicker;
+  $("title").textContent = DATA.title;
+  const stops = DATA.items.map((d, i) => {
+    const s = document.createElement("div");
+    s.className = "stop"; s.id = "stop" + i;
+    s.style.setProperty("--brand", d.color);
+    s.innerHTML = `<div class="slot" id="slot${i}"><svg id="logo${i}" viewBox="0 0 100 100" style="color:${d.color}">${d.logo}</svg></div>
+      <div class="dot"><b></b><div class="ring" data-layer="back"></div></div><div class="date"></div><div class="name"></div>`;
+    s.querySelector(".date").textContent = d.date;
+    s.querySelector(".name").textContent = d.name;
+    $("line").appendChild(s);
+    return s;
+  });
+  const last = stops[stops.length - 1];
+  const badge = document.createElement("div");
+  badge.className = "badge"; badge.id = "badge"; badge.textContent = DATA.badge;
+  last.appendChild(badge);
+
+  gsap.set(".slot", { transformOrigin: "50% 100%" });
+  const split = new SplitText("#title", { type: "chars" });
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. panel and headline
+  tl.from("#panel", { y: 40, autoAlpha: 0, duration: 0.6, ease: "power3.out" }, 0)
+    .from("#kicker", { x: -16, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, 0.1)
+    .from(split.chars, { yPercent: 60, autoAlpha: 0, duration: 0.5, ease: "back.out(2)", stagger: 0.02 }, 0.12);
+
+  // 2. the axis draws left to right; as it passes each stop the dot pops and the date drops onto it
+  const A0 = 0.3, AD = 1.0;
+  tl.from("#axisFill", { scaleX: 0, duration: AD, ease: "power2.inOut" }, A0);
+  stops.forEach((s, i) => {
+    const t = A0 + AD * (i + 0.5) / stops.length;
+    tl.from(s.querySelector(".dot"), { scale: 0, duration: 0.4, ease: "back.out(3)" }, t)
+      .from(s.querySelector(".date"), { y: -46, autoAlpha: 0, duration: 0.6, ease: "bounce.out" }, t + 0.04)
+      .from(s.querySelector(".name"), { y: 12, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, t + 0.2);
+  });
+
+  // 3. logos hop in from the left one after another: crouch, arc up, land with a squash, the dot rings out
+  const H0 = 1.05, HG = 0.27;
+  stops.forEach((s, i) => {
+    const t = H0 + i * HG, slot = "#slot" + i;
+    tl.fromTo(slot, { x: -70, autoAlpha: 0, scaleX: 1.15, scaleY: 0.75 },
+                    { x: 0, autoAlpha: 1, scaleX: 1, scaleY: 1, duration: 0.42, ease: "power1.out", immediateRender: true }, t)
+      .fromTo(slot, { y: 10 }, { keyframes: [{ y: -54, duration: 0.22, ease: "power2.out" },
+                                             { y: 0, duration: 0.2, ease: "power2.in" }] }, t)
+      .to(slot, { keyframes: [{ scaleX: 1.22, scaleY: 0.74, duration: 0.07, ease: "power2.out" },
+                              { scaleX: 1, scaleY: 1, duration: 0.5, ease: "elastic.out(1.1, 0.4)" }] }, t + 0.42)
+      .fromTo(s.querySelector(".ring"), { scale: 0.4, autoAlpha: 1 }, { scale: 1.7, autoAlpha: 0, duration: 0.5, ease: "expo.out", immediateRender: false }, t + 0.42)
+      .to(s.querySelector(".dot"), { keyframes: [{ y: 4, duration: 0.06, ease: "power2.out" }, { y: 0, duration: 0.35, ease: "elastic.out(1, 0.4)" }] }, t + 0.42);
+  });
+
+  // 4. the newest release gets a badge and a little victory bounce
+  const tB = H0 + (stops.length - 1) * HG + 0.62;
+  tl.from("#badge", { scale: 0, rotation: -14, duration: 0.5, ease: "back.out(3)" }, tB)
+    .to("#slot" + (stops.length - 1), { keyframes: [{ y: -18, duration: 0.16, ease: "power2.out" },
+                                                     { y: 0, duration: 0.14, ease: "power2.in" },
+                                                     { scaleX: 1.12, scaleY: 0.88, duration: 0.06, ease: "power2.out" },
+                                                     { scaleX: 1, scaleY: 1, duration: 0.4, ease: "elastic.out(1, 0.4)" }] }, tB + 0.05)
+    .to({}, { duration: 0.15 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

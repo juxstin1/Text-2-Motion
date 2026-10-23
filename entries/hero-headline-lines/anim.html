@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: soft-saas -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #EEF1FB; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #EEF1FB;
+           background-image: radial-gradient(ellipse 560px 320px at 50% 38%, rgba(108,92,231,0.12), rgba(108,92,231,0) 70%); }
+  #nav { position: absolute; left: 80px; top: 36px; width: 1120px; height: 40px; }
+  #logo { position: absolute; left: 0; top: 6px; font-family: "Sora"; font-weight: 700; font-size: 20px; letter-spacing: -0.025em; color: #1A1F36; }
+  #logo i { display: inline-block; width: 12px; height: 12px; margin-right: 10px; border-radius: 4px; background: #6C5CE7; font-style: normal; }
+  #links { position: absolute; right: 0; top: 10px; font-family: "Manrope"; font-weight: 600; font-size: 16px; color: rgba(26,31,54,0.6); display: flex; gap: 32px; }
+  #pill { position: absolute; left: 520px; top: 132px; width: 240px; height: 34px; box-sizing: border-box; border-radius: 17px;
+          background: rgba(108,92,231,0.1); border: 1px solid rgba(108,92,231,0.25); text-align: center; line-height: 32px;
+          font-family: "Manrope"; font-weight: 600; font-size: 13px; letter-spacing: 0.04em; color: #6C5CE7; }
+  #headline { position: absolute; left: 0; width: 1280px; top: 190px; margin: 0; text-align: center; font-family: "Sora";
+              font-weight: 700; font-size: 92px; line-height: 1.08; letter-spacing: -0.025em; color: #1A1F36; }
+  #headline em { font-style: normal; color: #6C5CE7; }
+  #sub { position: absolute; left: 340px; width: 600px; top: 418px; margin: 0; text-align: center; font-family: "Manrope";
+         font-weight: 500; font-size: 20px; line-height: 1.55; color: rgba(26,31,54,0.66); }
+  .btn { position: absolute; top: 530px; height: 56px; box-sizing: border-box; border-radius: 28px; text-align: center;
+         font-family: "Manrope"; font-weight: 600; font-size: 16px; line-height: 56px; }
+  #primary { left: 444px; width: 208px; background: #6C5CE7; color: #EEF1FB; box-shadow: 0 12px 28px rgba(108,92,231,0.32); }
+  #secondary { left: 668px; width: 168px; border: 1.5px solid rgba(26,31,54,0.18); line-height: 53px; color: #1A1F36; }
+  #note { position: absolute; left: 0; width: 1280px; top: 610px; text-align: center; font-family: "Manrope"; font-weight: 500;
+          font-size: 13px; color: rgba(26,31,54,0.45); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="nav">
+    <div id="logo"><i></i>Tidewell</div>
+    <div id="links"><span>Product</span><span>Pricing</span><span>Docs</span><span>Sign in</span></div>
+  </div>
+  <div id="pill">New &middot; Release trains 2.0</div>
+  <h1 id="headline">Releases that<br><em>run themselves.</em></h1>
+  <p id="sub">Tidewell schedules, checks and ships every build on a calm weekly rhythm, so your team can stay on the work.</p>
+  <div id="primary" class="btn">Start free trial</div>
+  <div id="secondary" class="btn">Book a demo</div>
+  <div id="note">Free for 14 days &middot; No card required</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+gsap.registerPlugin(SplitText);
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const head = SplitText.create("#headline", { type: "lines", mask: "lines" });
+  tl.from("#nav", { autoAlpha: 0, y: -10, duration: 0.6, ease: "power2.out" })
+    .from("#pill", { autoAlpha: 0, y: 12, duration: 0.6, ease: "power3.out" }, 0.1)
+    .from(head.lines, { yPercent: 100, duration: 1.1, ease: "power4.out", stagger: 0.14 }, 0.25)
+    .from("#sub", { autoAlpha: 0, y: 18, duration: 0.8, ease: "power3.out" }, "-=0.6")
+    .from(".btn", { autoAlpha: 0, y: 22, scale: 0.94, duration: 0.7, ease: "back.out(1.6)", stagger: 0.1 }, "-=0.55")
+    .from("#note", { autoAlpha: 0, duration: 0.6, ease: "power2.out" }, "-=0.4")
+    .to({}, { duration: 0.5 });
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+{
+ "duration": 2.99,
+ "fps": 30,
+ "frames": 91,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 1,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#eyebrow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.15,
+   "duration": 1.3,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#heading"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.55,
+   "duration": 1,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha",
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#ornament"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.75,
+   "duration": 1.64,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": 0.22,
+   "targets": [
+    "div.dish[0]",
+    "div.dish[1]",
+    "div.dish[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.95,
+   "duration": 1.34,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": 0.22,
+   "targets": [
+    "span.leader[0]",
+    "span.leader[1]",
+    "span.leader[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.79,
+   "duration": 0.8,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#foot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.59,
+   "duration": 0.4,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#eyebrow",
+  "#heading",
+  "#ornament",
+  "div.dish[0]",
+  "div.dish[1]",
+  "div.dish[2]",
+  "span.leader[0]",
+  "span.leader[1]",
+  "span.leader[2]",
+  "#foot",
+  "span.name[0]",
+  "span.price[0]",
+  "div.desc[0]",
+  "span.name[1]",
+  "span.price[1]",
+  "div.desc[1]",
+  "span.name[2]",
+  "span.price[2]",
+  "div.desc[2]"
+ ],
+ "fonts": [
+  "Inter",
+  "Fraunces"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.79,
+  "end_visible": [
+   "#eyebrow",
+   "#heading",
+   "#ornament",
+   "div.dish[0]",
+   "div.dish[1]",
+   "div.dish[2]",
+   "span.leader[0]",
+   "span.leader[1]",
+   "span.leader[2]",
+   "#foot",
+   "span.name[0]",
+   "span.price[0]",
+   "div.desc[0]",
+   "span.name[1]",
+   "span.price[1]",
+   "div.desc[1]",
+   "span.name[2]",
+   "span.price[2]",
+   "div.desc[2]"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

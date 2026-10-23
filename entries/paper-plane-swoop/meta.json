@@ -1,0 +1,14 @@
+{
+  "id": "paper-plane-swoop",
+  "prompt": "paper plane swoops along a curved path, loops once and glides to a stop leaving a dashed trail",
+  "tags": [
+    "path",
+    "motion-path",
+    "trail",
+    "swoop"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "shape-drop-bounce",
+  "prompt": "circle, square and triangle drop in and bounce into a little composition",
+  "tags": [
+    "entrance",
+    "shapes",
+    "bounce",
+    "playful"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": true,
+  "created": "2026-10-22"
+}

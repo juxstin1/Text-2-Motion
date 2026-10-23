@@ -1,0 +1,15 @@
+duration 3.40s, 103 frames @30fps, 6 tweens
+TIMING
+  #kicker  y,autoAlpha  0.00-1.40s  power2.out
+  #first, #last  y,autoAlpha  0.25-2.75s  power2.out  stagger 0.3
+  #work  y,autoAlpha  0.60-2.60s  power2.out
+  #rule  scaleX  1.10-2.30s  power2.inOut
+  #dates, #cap ...  y,autoAlpha  1.30-3.10s  power2.out  stagger 0.15
+  (hold)  3.10-3.40s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 8 visible (#kicker, #first, #last, #work ...); final hold 0.73s; no overlaps

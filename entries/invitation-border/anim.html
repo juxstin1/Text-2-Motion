@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: luxury -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0E0C0A; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0E0C0A;
+           background-image: radial-gradient(ellipse 640px 420px at 50% 52%, rgba(201,164,92,0.08), rgba(201,164,92,0) 70%); }
+  .label { font-family: "Manrope"; font-weight: 500; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; }
+  #card { position: absolute; left: 400px; top: 70px; width: 480px; height: 580px; background: rgba(237,227,209,0.035);
+          box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
+  #border { position: absolute; left: 0; top: 0; width: 480px; height: 580px; overflow: visible; }
+  #content { position: absolute; left: 0; top: 0; width: 480px; height: 580px; text-align: center; }
+  #crest { position: absolute; left: 228px; top: 70px; width: 24px; height: 24px; }
+  #kicker { position: absolute; left: 0; width: 480px; top: 124px; color: #C9A45C; }
+  #names { position: absolute; left: 0; width: 480px; top: 166px; margin: 0; font-family: "DM Serif Display"; font-weight: 400;
+           font-size: 64px; line-height: 1.08; color: #EDE3D1; }
+  #names .amp { color: #C9A45C; }
+  #divider { position: absolute; left: 210px; top: 352px; width: 60px; height: 1px; background: #C9A45C; }
+  #date { position: absolute; left: 0; width: 480px; top: 384px; color: #EDE3D1; }
+  #venue { position: absolute; left: 0; width: 480px; top: 414px; margin: 0; font-family: "Manrope"; font-weight: 300;
+           font-size: 15px; letter-spacing: 0.02em; line-height: 1.7; color: rgba(237,227,209,0.62); }
+  #rsvp { position: absolute; left: 0; width: 480px; top: 500px; color: rgba(201,164,92,0.75); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="card">
+    <svg id="border" viewBox="0 0 480 580">
+      <!-- both frames start at bottom centre so a symmetric draw opens from the top centre -->
+      <path id="frameOuter" d="M240 562 H18 V18 H462 V562 Z" fill="none" stroke="#C9A45C" stroke-width="1"/>
+      <path id="frameInner" d="M240 554 H26 V26 H454 V554 Z" fill="none" stroke="#C9A45C" stroke-opacity="0.45" stroke-width="1"/>
+    </svg>
+    <div id="content">
+      <svg id="crest" viewBox="0 0 24 24"><path d="M12 1 L23 12 L12 23 L1 12 Z" fill="none" stroke="#C9A45C" stroke-width="1"/><path d="M12 7 L17 12 L12 17 L7 12 Z" fill="#C9A45C"/></svg>
+      <div id="kicker" class="label">Together with their families</div>
+      <h1 id="names">Eleanor<br><span class="amp">&amp;</span> Julian</h1>
+      <div id="divider"></div>
+      <div id="date" class="label">Saturday &middot; 14 June 2027</div>
+      <p id="venue">Villa Aurelia, Rome<br>Half past five in the evening</p>
+      <div id="rsvp" class="label">Kindly reply by May</div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  tl.from("#card", { y: 56, autoAlpha: 0, duration: 1.4, ease: "power3.out" })
+    // border opens from the top centre and closes at the bottom centre
+    .fromTo("#frameOuter", { drawSVG: "50% 50%" }, { drawSVG: "0% 100%", duration: 1.6, ease: "power2.inOut" }, 0.35)
+    .fromTo("#frameInner", { drawSVG: "50% 50%" }, { drawSVG: "0% 100%", duration: 1.5, ease: "power2.inOut" }, 0.55)
+    .from("#crest", { autoAlpha: 0, scale: 0.6, rotation: -45, duration: 0.9, ease: "power3.out" }, 0.6)
+    .from(["#kicker", "#names", "#date", "#venue", "#rsvp"], { autoAlpha: 0, y: 14, duration: 0.9, ease: "power2.out", stagger: 0.12 }, 0.75)
+    .from("#divider", { scaleX: 0, duration: 0.8, ease: "power3.inOut" }, 1.0)
+    .to({}, { duration: 0.6 });
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

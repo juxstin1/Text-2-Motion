@@ -1,0 +1,20 @@
+duration 2.40s, 73 frames @30fps, 73 tweens
+TIMING
+  #scene circle.dot  scaleY,scaleX  0.00-0.12s  power2.inOut
+  #scene ellipse.shadow  scaleX  0.00-0.12s  power2.inOut
+  #scene circle.dot  y  0.12-0.36s  power2.out
+  #scene circle.dot  scaleY,scaleX  0.12-0.18s  power2.out
+  #scene ellipse.shadow  scaleX,autoAlpha  0.12-0.36s  power2.out
+  #scene circle.dot  scaleY,scaleX  0.13-0.25s  power2.inOut
+  #scene ellipse.shadow  scaleX  0.13-0.25s  power2.inOut
+  #scene circle.dot  scaleY,scaleX  0.18-0.36s  sine.inOut
+  #scene circle.dot  y  0.25-0.49s  power2.out
+  #scene circle.dot  scaleY,scaleX  0.25-0.31s  power2.out
+  (+63 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 9 visible (#scene circle.dot x3, #scene ellipse.shadow x3, #eyebrow, #label ...); final hold 0.17s; no overlaps

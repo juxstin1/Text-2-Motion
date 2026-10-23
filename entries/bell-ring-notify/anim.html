@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: luxury -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0E0C0A; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; color: #EDE3D1;
+           background: #0E0C0A radial-gradient(circle at 640px 230px, rgba(201,164,92,0.10) 0, rgba(201,164,92,0) 320px); }
+  #icon { position: absolute; left: 460px; top: 50px; width: 360px; height: 360px; overflow: visible; }
+  .txt { position: absolute; left: 0; width: 1280px; text-align: center; }
+  #label { top: 448px; font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.32em; color: #C9A45C; }
+  #headline { top: 478px; font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 36px; line-height: 1.2; }
+  #sub { top: 540px; font-family: 'Manrope', sans-serif; font-weight: 300; font-size: 15px; letter-spacing: 0.02em; color: rgba(237,227,209,0.55); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <!-- the whole icon lives in one SVG: halo, bell, clapper, sound arcs, badge -->
+  <svg id="icon" viewBox="-180 -180 360 360">
+    <circle id="halo" r="150" fill="none" stroke="#C9A45C" stroke-opacity="0.35" stroke-width="1" transform="rotate(-90)"/>
+
+    <g id="bellIn">
+      <g id="bell">
+        <!-- clapper hangs from inside the dome, drawn first so the body covers its stem -->
+        <g id="clapper">
+          <line x1="0" y1="-60" x2="0" y2="62" stroke="#C9A45C" stroke-width="4"/>
+          <circle cx="0" cy="72" r="13" fill="#C9A45C"/>
+        </g>
+        <path fill="#C9A45C"
+              d="M -76 48 C -68 36, -64 18, -63 -12 C -60 -62, -32 -86, 0 -86 C 32 -86, 60 -62, 63 -12 C 64 18, 68 36, 76 48 Z"/>
+        <rect x="-90" y="44" width="180" height="14" rx="7" fill="#C9A45C"/>
+        <path d="M -40 -50 C -30 -66, -14 -72, 0 -72" fill="none" stroke="#0E0C0A" stroke-opacity="0.35" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="0" cy="-98" r="11" fill="none" stroke="#C9A45C" stroke-width="5"/>
+      </g>
+    </g>
+
+    <g fill="none" stroke="#C9A45C" stroke-width="4" stroke-linecap="round">
+      <path class="waveL" d="M -112 -58 Q -130 -26 -112 6"/>
+      <path class="waveL" d="M -134 -76 Q -160 -26 -134 24"/>
+      <path class="waveR" d="M 112 -58 Q 130 -26 112 6"/>
+      <path class="waveR" d="M 134 -76 Q 160 -26 134 24"/>
+    </g>
+
+    <g id="badge">
+      <circle cx="66" cy="-70" r="30" fill="#EDE3D1" stroke="#0E0C0A" stroke-width="6"/>
+      <text x="66" y="-58" text-anchor="middle" fill="#0E0C0A" font-family="DM Serif Display" font-size="36">3</text>
+    </g>
+  </svg>
+
+  <div class="txt" id="label">CONCIERGE &middot; 21:40</div>
+  <div class="txt" id="headline">Three new invitations await</div>
+  <div class="txt" id="sub">Private viewing, Thursday at eight</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  gsap.set(".waveL, .waveR", { autoAlpha: 0 });
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. halo draws, the bell drops in
+  tl.from("#halo", { drawSVG: 0, duration: 0.8, ease: "power2.inOut" }, 0)
+    .from("#bellIn", { y: -40, scale: 0.7, autoAlpha: 0, svgOrigin: "0 58", duration: 0.45, ease: "back.out(2)" }, 0)
+  // 2. anticipation: the bell squats on its lip...
+    .to("#bellIn", { scaleY: 0.9, scaleX: 1.06, svgOrigin: "0 58", duration: 0.14, ease: "power2.out" }, 0.48)
+    .to("#bellIn", { scaleY: 1, scaleX: 1, svgOrigin: "0 58", duration: 0.3, ease: "back.out(3)" }, 0.62);
+
+  // 3. ...and rings: a damped swing from the top knob, each half-swing smaller and a touch quicker
+  const swings = [-26, 22, -16, 11, -7, 4, -2, 0];
+  const times  = [0.14, 0.28, 0.26, 0.24, 0.22, 0.2, 0.18, 0.16];
+  let t = 0.62;
+  swings.forEach((r, i) => {
+    tl.to("#bell", { rotation: r, svgOrigin: "0 -98", duration: times[i], ease: i ? "sine.inOut" : "power2.out" }, t);
+    // overlapping action: the clapper lags behind the shell and swings the other way
+    tl.to("#clapper", { rotation: -r * 0.55, svgOrigin: "0 -60", duration: times[i], ease: "sine.inOut" }, t + 0.06);
+    t += times[i];
+  });
+
+  // 4. sound waves flick out at the two biggest strikes
+  tl.fromTo(".waveL", { drawSVG: "50% 50%", autoAlpha: 1, x: 0 }, { drawSVG: "0% 100%", autoAlpha: 0, x: -14, duration: 0.45, ease: "power2.out", stagger: 0.05, immediateRender: false }, 0.74)
+    .fromTo(".waveR", { drawSVG: "50% 50%", autoAlpha: 1, x: 0 }, { drawSVG: "0% 100%", autoAlpha: 0, x: 14, duration: 0.45, ease: "power2.out", stagger: 0.05, immediateRender: false }, 1.02)
+  // 5. the count badge pops on with the first strike, squashing as it lands
+    .from("#badge", { scale: 0, svgOrigin: "66 -70", duration: 0.45, ease: "back.out(3.2)" }, 0.76)
+    .fromTo("#badge", { scaleX: 1.22, scaleY: 0.8 }, { scaleX: 1, scaleY: 1, svgOrigin: "66 -70", duration: 0.4, ease: "back.out(3)", immediateRender: false }, 1.0)
+  // 6. copy rises while the bell is still settling
+    .from("#label", { y: 14, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 1.05)
+    .from("#headline", { y: 26, autoAlpha: 0, duration: 0.7, ease: "power3.out" }, 1.15)
+    .from("#sub", { y: 14, autoAlpha: 0, duration: 0.6, ease: "power2.out" }, 1.35)
+    .to({}, { duration: 0.15 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

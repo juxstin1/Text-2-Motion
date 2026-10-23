@@ -1,0 +1,16 @@
+duration 2.94s, 90 frames @30fps, 7 tweens
+TIMING
+  #numeral  autoAlpha,y  0.00-0.80s  power3.out
+  #kicker  autoAlpha,x  0.25-0.95s  power3.out
+  #rulePath  drawSVG  0.30-1.50s  power3.inOut
+  #title div x3  yPercent  0.95-2.49s  expo.out  stagger 0.12
+  #sub  autoAlpha,y  1.64-2.44s  power2.out
+  #page  autoAlpha  1.74-2.54s  power2.out
+  (hold)  2.54-2.94s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 7 visible (#numeral, #kicker, #title div x3, #sub ...); final hold 0.74s; no overlaps

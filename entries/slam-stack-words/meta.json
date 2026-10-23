@@ -1,0 +1,14 @@
+{
+  "id": "slam-stack-words",
+  "prompt": "\"WIN BIG NOW\": each word slams in and shoves the previous ones up, squashing on impact",
+  "tags": [
+    "kinetic",
+    "slam",
+    "words",
+    "impact"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,1 @@
+dropdown menu unfolds from its button with items staggering down

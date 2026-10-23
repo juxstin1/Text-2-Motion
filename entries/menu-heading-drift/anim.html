@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: warm-modern -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FBF3E4; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FBF3E4; }
+  .label { font-family: "Inter"; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; }
+  #eyebrow { position: absolute; left: 0; width: 1280px; top: 76px; text-align: center; color: #E0662E; }
+  #heading { position: absolute; left: 0; width: 1280px; top: 102px; margin: 0; text-align: center; font-family: "Fraunces";
+             font-weight: 600; font-size: 72px; line-height: 1.1; letter-spacing: -0.03em; color: #3A2416; }
+  #ornament { position: absolute; left: 604px; top: 210px; width: 72px; height: 16px; overflow: visible; }
+  .dish { position: absolute; left: 280px; width: 720px; height: 104px; }
+  .dish .row { display: flex; align-items: baseline; gap: 16px; }
+  .dish .name { font-family: "Fraunces"; font-weight: 600; font-size: 40px; letter-spacing: -0.03em; color: #3A2416; white-space: nowrap; }
+  .dish .leader { flex: 1; border-bottom: 2px dotted rgba(58,36,22,0.28); transform: translateY(-8px); }
+  .dish .price { font-family: "Fraunces"; font-weight: 600; font-size: 24px; color: #E0662E; }
+  .dish .desc { margin-top: 6px; font-family: "Inter"; font-size: 17px; color: rgba(58,36,22,0.66); }
+  #foot { position: absolute; left: 0; width: 1280px; top: 640px; text-align: center; color: rgba(58,36,22,0.5); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="eyebrow" class="label">Tonight &middot; Served from six</div>
+  <h1 id="heading">The Autumn Supper</h1>
+  <svg id="ornament" viewBox="0 0 72 16"><path d="M0 8 H26 M46 8 H72" stroke="#E0662E" stroke-width="1.5"/><path d="M36 2 L42 8 L36 14 L30 8 Z" fill="#E0662E"/></svg>
+
+  <div class="dish" style="top:268px;">
+    <div class="row"><span class="name">Roasted squash velouté</span><span class="leader"></span><span class="price">14</span></div>
+    <div class="desc">Brown butter, sage, toasted hazelnut crumb</div>
+  </div>
+  <div class="dish" style="top:388px;">
+    <div class="row"><span class="name">Slow-braised short rib</span><span class="leader"></span><span class="price">32</span></div>
+    <div class="desc">Smoked celeriac purée, charred shallot, red wine jus</div>
+  </div>
+  <div class="dish" style="top:508px;">
+    <div class="row"><span class="name">Pear &amp; almond tart</span><span class="leader"></span><span class="price">11</span></div>
+    <div class="desc">Poached in spiced cider, crème fraîche</div>
+  </div>
+  <div id="foot" class="label">Please let us know of any allergies</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  // everything drifts up a short way on long, soft decelerations; nothing snaps
+  tl.from("#eyebrow", { autoAlpha: 0, y: 14, duration: 1.0, ease: "power2.out" })
+    .from("#heading", { autoAlpha: 0, y: 28, duration: 1.3, ease: "power2.out" }, 0.15)
+    .from("#ornament", { autoAlpha: 0, scale: 0.7, duration: 1.0, ease: "power2.out" }, 0.55)
+    .from(".dish", { autoAlpha: 0, y: 26, duration: 1.2, ease: "power2.out", stagger: 0.22 }, 0.75)
+    .from(".dish .leader", { scaleX: 0, transformOrigin: "0% 50%", duration: 0.9, ease: "power3.inOut", stagger: 0.22 }, 0.95)
+    .from("#foot", { autoAlpha: 0, duration: 0.8, ease: "power2.out" }, "-=0.6")
+    .to({}, { duration: 0.4 });
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

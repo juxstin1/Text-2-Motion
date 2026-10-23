@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: tech-launch -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0B0D12; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0B0D12;
+           font-family: 'Inter', sans-serif; color: #E8ECF4; }
+  #eyebrow { position: absolute; left: 96px; top: 196px; font-size: 13px; font-weight: 500; letter-spacing: 0.12em;
+             text-transform: uppercase; color: rgba(232,236,244,0.55); }
+  #big { position: absolute; left: 90px; top: 224px; font-family: 'Space Grotesk', sans-serif; font-size: 104px;
+         font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  #delta { position: absolute; left: 96px; top: 352px; font-size: 16px; font-weight: 500; color: #5B8CFF; }
+  #delta span { color: rgba(232,236,244,0.55); font-weight: 400; }
+  #note { position: absolute; left: 96px; top: 496px; width: 300px; font-size: 16px; line-height: 1.55;
+          color: rgba(232,236,244,0.55); }
+  #chart { position: absolute; left: 520px; top: 136px; width: 664px; height: 420px; }
+  .grid { position: absolute; left: 0; width: 664px; height: 1px; background: rgba(232,236,244,0.07); }
+  .gl { position: absolute; left: -44px; width: 32px; text-align: right; font-size: 13px; margin-top: -8px;
+        color: rgba(232,236,244,0.35); font-variant-numeric: tabular-nums; }
+  #base { position: absolute; left: 0; top: 420px; width: 664px; height: 1px; background: rgba(232,236,244,0.4);
+          transform-origin: 0 50%; }
+  .bar { position: absolute; bottom: 0; width: 52px; border-radius: 6px 6px 0 0; background: rgba(91,140,255,0.26);
+         transform-origin: 50% 100%; }
+  .bar.hi { background: #5B8CFF; box-shadow: 0 0 40px rgba(91,140,255,0.35); }
+  .xl { position: absolute; top: 436px; width: 52px; text-align: center; font-size: 13px; font-weight: 500;
+        letter-spacing: 0.12em; color: rgba(232,236,244,0.45); }
+  #tag { position: absolute; top: 0; width: 84px; height: 32px; line-height: 32px; text-align: center; border-radius: 8px;
+         background: #E8ECF4; color: #0B0D12; font-family: 'Space Grotesk'; font-size: 16px; font-weight: 700; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="eyebrow">Weekly active builders</div>
+  <div id="big">48.2k</div>
+  <div id="delta">+18.4% <span>vs. previous quarter</span></div>
+  <div id="note">Eight straight weeks of growth since the v3 launch.</div>
+  <div id="chart"></div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+// static chart markup (deterministic: fixed data)
+(() => {
+  const chart = document.getElementById("chart");
+  const H = 420, W = 52, GAP = 34;
+  [0, 0.25, 0.5, 0.75].forEach((f, i) => {
+    const y = Math.round(f * H);
+    chart.insertAdjacentHTML("beforeend",
+      `<div class="grid" style="top:${y}px"></div><div class="gl" style="top:${y}px">${[60, 45, 30, 15][i]}k</div>`);
+  });
+  chart.insertAdjacentHTML("beforeend", '<div id="base"></div>');
+  const data = [17.1, 21.4, 19.6, 26.8, 25.0, 32.3, 37.9, 48.2];
+  data.forEach((v, i) => {
+    const x = i * (W + GAP);
+    const h = Math.round(v / 60 * H);
+    chart.insertAdjacentHTML("beforeend",
+      `<div class="bar${i === data.length - 1 ? " hi" : ""}" style="left:${x}px;height:${h}px"></div>` +
+      `<div class="xl" style="left:${x}px">W${i + 1}</div>`);
+    if (i === data.length - 1)
+      chart.insertAdjacentHTML("beforeend", `<div id="tag" style="left:${x - 16}px;top:${H - h - 46}px">48.2k</div>`);
+  });
+})();
+
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  tl.from(["#eyebrow", "#big", "#delta"], { y: 24, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 }, 0)
+    .from([".grid", ".gl"], { autoAlpha: 0, duration: 0.6, ease: "power2.out", stagger: 0.04 }, 0)
+    .from("#base", { scaleX: 0, duration: 0.7, ease: "power3.inOut" }, 0.1)
+    .from(".bar", { scaleY: 0, duration: 1.1, ease: "expo.out", stagger: 0.07 }, 0.4)
+    .from(".xl", { y: -6, autoAlpha: 0, duration: 0.4, ease: "power2.out", stagger: 0.07 }, 0.45)
+    .from("#note", { y: 12, autoAlpha: 0, duration: 0.6, ease: "power3.out" }, 0.7)
+    .from("#tag", { y: 12, scale: 0.9, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 1.35)
+    .to({}, { duration: 0.25 });
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

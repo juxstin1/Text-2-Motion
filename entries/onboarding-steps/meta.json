@@ -1,0 +1,14 @@
+{
+  "id": "onboarding-steps",
+  "prompt": "three onboarding step cards slide in from the right, their numbered circles popping after",
+  "tags": [
+    "entrance",
+    "cards",
+    "stagger",
+    "ui"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

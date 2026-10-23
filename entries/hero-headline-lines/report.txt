@@ -1,0 +1,16 @@
+duration 2.64s, 81 frames @30fps, 7 tweens
+TIMING
+  #nav  autoAlpha,y  0.00-0.60s  power2.out
+  #pill  autoAlpha,y  0.10-0.70s  power3.out
+  #headline div x2  yPercent  0.25-1.49s  power4.out  stagger 0.14
+  #sub  autoAlpha,y  0.89-1.69s  power3.out
+  #primary, #secondary  autoAlpha,y,scale  1.14-1.94s  back.out(1.6)  stagger 0.1
+  #note  autoAlpha  1.54-2.14s  power2.out
+  (hold)  2.14-2.64s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 14 visible (#nav, #pill, #headline div x2, #sub ...); final hold 0.74s; no overlaps

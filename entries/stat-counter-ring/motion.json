@@ -1,0 +1,427 @@
+{
+ "duration": 3.48,
+ "fps": 30,
+ "frames": 106,
+ "format": "vertical",
+ "size": [
+  720,
+  1280
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.5,
+   "ease": "back.out(1.8)",
+   "props": [
+    "scale",
+    "autoAlpha",
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ringBox"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.06,
+   "duration": 0.4,
+   "ease": "back.out(2.4)",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#numWrap"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.18,
+   "duration": 1.5,
+   "ease": "power3.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#arc"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.18,
+   "duration": 1.5,
+   "ease": "power3.inOut",
+   "props": [
+    "v"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 0.18,
+   "duration": 1.5,
+   "ease": "power3.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cap"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.18,
+   "duration": 0.3,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#capDot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 0.45,
+   "ease": "back.out(2.4)",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#kicker"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.52,
+   "duration": 0.16,
+   "ease": "power2.inOut",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#numWrap"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.68,
+   "duration": 0.08,
+   "ease": "power3.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#numWrap"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.68,
+   "duration": 0.08,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ringBox"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.68,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "scale",
+    "opacity"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#flash"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.68,
+   "duration": 0.2,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": 0.015,
+   "targets": [
+    "#sparks line.sp[0]",
+    "#sparks line.sp[1]",
+    "#sparks line.sp[2]",
+    "#sparks line.sp[3]",
+    "#sparks line.sp[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.72,
+   "duration": 0.08,
+   "ease": "power2.out",
+   "props": [
+    "rotation",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pct"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.76,
+   "duration": 0.45,
+   "ease": "elastic.out(1.1, 0.45)",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#numWrap"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.76,
+   "duration": 0.5,
+   "ease": "elastic.out(1, 0.4)",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ringBox"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.8,
+   "duration": 0.4,
+   "ease": "back.out(3)",
+   "props": [
+    "rotation",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pct"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.82,
+   "duration": 0.5,
+   "ease": "power4.out",
+   "props": [
+    "yPercent"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#l1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.84,
+   "duration": 0.32,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": 0.015,
+   "targets": [
+    "#sparks line.sp[0]",
+    "#sparks line.sp[1]",
+    "#sparks line.sp[2]",
+    "#sparks line.sp[3]",
+    "#sparks line.sp[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.92,
+   "duration": 0.5,
+   "ease": "power4.out",
+   "props": [
+    "yPercent"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#l2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.02,
+   "duration": 0.42,
+   "ease": "expo.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#bar"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.63,
+   "duration": 0.12,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#capDot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.66,
+   "duration": 0.14,
+   "ease": "power2.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#bar"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.75,
+   "duration": 0.4,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#capDot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.8,
+   "duration": 0.4,
+   "ease": "back.out(2.5)",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#bar"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.18,
+   "duration": 0.3,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#ringBox",
+  "#numWrap",
+  "#arc",
+  "#cap",
+  "#capDot",
+  "#kicker",
+  "#flash",
+  "#sparks line.sp[0]",
+  "#sparks line.sp[1]",
+  "#sparks line.sp[2]",
+  "#sparks line.sp[3]",
+  "#sparks line.sp[4]",
+  "#pct",
+  "#l1",
+  "#l2",
+  "#bar",
+  "#num"
+ ],
+ "fonts": [
+  "Manrope",
+  "Sora"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 9,
+  "format": "vertical",
+  "final_hold": 0.28,
+  "end_visible": [
+   "#ringBox",
+   "#numWrap",
+   "#arc",
+   "#cap",
+   "#capDot",
+   "#kicker",
+   "#pct",
+   "#l1",
+   "#l2",
+   "#bar",
+   "#num"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

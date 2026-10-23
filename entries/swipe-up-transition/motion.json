@@ -1,0 +1,564 @@
+{
+ "duration": 2.88,
+ "fps": 30,
+ "frames": 88,
+ "format": "vertical",
+ "size": [
+  720,
+  1280
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.12,
+   "ease": "power2.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#chev"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.12,
+   "duration": 0.12,
+   "ease": "power2.in",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#chev"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.24,
+   "duration": 0.1,
+   "ease": "power2.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#chev"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.26,
+   "duration": 0.1,
+   "ease": "power2.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#hintT"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.26,
+   "duration": 0.16,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#sceneA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.42,
+   "duration": 0.36,
+   "ease": "power3.in",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#sceneA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.42,
+   "duration": 0.3,
+   "ease": "power2.in",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#sceneA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.44,
+   "duration": 0.3,
+   "ease": "power2.in",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#doc"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.44,
+   "duration": 0.3,
+   "ease": "power2.in",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#hint"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.56,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#streaks"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.56,
+   "duration": 0.25,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": 0.03,
+   "targets": [
+    "#streaks path[0]",
+    "#streaks path[1]",
+    "#streaks path[2]",
+    "#streaks path[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.56,
+   "duration": 0.4,
+   "ease": "power2.in",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#streaks"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.62,
+   "duration": 0.42,
+   "ease": "power3.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#panelB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.72,
+   "duration": 0.29,
+   "ease": "power2.in",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": 0.03,
+   "targets": [
+    "#streaks path[0]",
+    "#streaks path[1]",
+    "#streaks path[2]",
+    "#streaks path[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.84,
+   "duration": 0.24,
+   "ease": "power3.in",
+   "props": [
+    "y",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#cardB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.99,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#streaks"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.08,
+   "duration": 0.52,
+   "ease": "power1.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cardB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.08,
+   "duration": 0.46,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#panelB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.08,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ticks"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.08,
+   "duration": 0.12,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ticks path[0]",
+    "#ticks path[1]",
+    "#ticks path[2]",
+    "#ticks path[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.1,
+   "duration": 0.62,
+   "ease": "elastic.out(1.1, 0.35)",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": 0.03,
+   "targets": [
+    "#headB div[0]",
+    "#headB div[1]",
+    "#headB div[2]",
+    "#headB div[3]",
+    "#headB div[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.18,
+   "duration": 0.3,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#labB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.2,
+   "duration": 0.2,
+   "ease": "power2.in",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ticks path[0]",
+    "#ticks path[1]",
+    "#ticks path[2]",
+    "#ticks path[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.24,
+   "duration": 0.4,
+   "ease": "expo.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#barB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.3,
+   "duration": 0.4,
+   "ease": "back.out(2)",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#subB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.41,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ticks"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.78,
+   "duration": 0.52,
+   "ease": "power1.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#barB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.82,
+   "duration": 0.76,
+   "ease": "power1.out",
+   "props": [
+    "y",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cardB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.58,
+   "duration": 0.3,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#chev",
+  "#hintT",
+  "#sceneA",
+  "#doc",
+  "#hint",
+  "#streaks",
+  "#streaks path[0]",
+  "#streaks path[1]",
+  "#streaks path[2]",
+  "#streaks path[3]",
+  "#panelB",
+  "#cardB",
+  "#ticks",
+  "#ticks path[0]",
+  "#ticks path[1]",
+  "#ticks path[2]",
+  "#ticks path[3]",
+  "#headB div[0]",
+  "#headB div[1]",
+  "#headB div[2]",
+  "#headB div[3]",
+  "#headB div[4]",
+  "#labB",
+  "#barB",
+  "#subB",
+  "#labA",
+  "#headA",
+  "#subA"
+ ],
+ "fonts": [
+  "\"JetBrains Mono\", monospace"
+ ],
+ "flagged": false,
+ "notes": 4,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#sceneA",
+    "b": "#streaks",
+    "ranges": [
+     [
+      0.5666666666666667,
+      0.7
+     ]
+    ],
+    "peak": 1.0,
+    "peak_frame": 17,
+    "ia": 2,
+    "ib": 5,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#doc",
+    "b": "#streaks",
+    "ranges": [
+     [
+      0.5666666666666667,
+      0.6333333333333333
+     ]
+    ],
+    "peak": 0.93,
+    "peak_frame": 17,
+    "ia": 3,
+    "ib": 5,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#hint",
+    "b": "#streaks",
+    "ranges": [
+     [
+      0.5666666666666667,
+      0.6666666666666666
+     ]
+    ],
+    "peak": 0.85,
+    "peak_frame": 19,
+    "ia": 4,
+    "ib": 5,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#cardB",
+    "b": "#ticks",
+    "ranges": [
+     [
+      1.1,
+      1.4
+     ]
+    ],
+    "peak": 0.79,
+    "peak_frame": 34,
+    "ia": 11,
+    "ib": 12,
+    "defect": false,
+    "static": false
+   }
+  ],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 1,
+  "format": "vertical",
+  "final_hold": 0.31,
+  "end_visible": [
+   "#panelB",
+   "#cardB",
+   "#headB div[0]",
+   "#headB div[1]",
+   "#headB div[2]",
+   "#headB div[3]",
+   "#headB div[4]",
+   "#labB",
+   "#barB",
+   "#subB"
+  ],
+  "end_overlaps": [],
+  "n_notes": 4
+ }
+}

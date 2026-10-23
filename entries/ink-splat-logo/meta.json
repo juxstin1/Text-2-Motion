@@ -1,0 +1,14 @@
+{
+  "id": "ink-splat-logo",
+  "prompt": "an ink drop falls, splats into a round logo mark and the wordmark springs out from behind it",
+  "tags": [
+    "logo",
+    "splat",
+    "squash-stretch",
+    "sting"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

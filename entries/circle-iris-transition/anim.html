@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: tech-launch -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0B0D12; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0B0D12; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  .label { font-family: "Inter"; font-weight: 500; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; }
+  /* scene A (static: the iris wipes over it) */
+  #aLabel { position: absolute; left: 0; width: 1280px; top: 228px; text-align: center; color: rgba(232,236,244,0.55); }
+  #aTitle { position: absolute; left: 0; width: 1280px; top: 250px; margin: 0; text-align: center; font-family: "Space Grotesk";
+            font-weight: 700; font-size: 64px; letter-spacing: -0.03em; color: #E8ECF4; }
+  #aHint { position: absolute; left: 0; width: 1280px; top: 504px; text-align: center; font-family: "Inter"; font-size: 16px;
+           color: rgba(232,236,244,0.4); }
+  /* scene B */
+  #bLabel { position: absolute; left: 0; width: 1280px; top: 196px; text-align: center; color: rgba(11,13,18,0.65); }
+  #bTitle { position: absolute; left: 0; width: 1280px; top: 222px; margin: 0; text-align: center; font-family: "Space Grotesk";
+            font-weight: 700; font-size: 104px; line-height: 1.1; letter-spacing: -0.03em; color: #0B0D12; }
+  #bTitle span { display: inline-block; transform-origin: 50% 100%; }
+  #pills { position: absolute; left: 0; width: 1280px; top: 412px; display: flex; justify-content: center; gap: 16px; }
+  .pill { display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 999px; background: #0B0D12;
+          font-family: "Inter"; font-weight: 500; font-size: 16px; color: #E8ECF4; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #5B8CFF; }
+  #bNote { position: absolute; left: 0; width: 1280px; top: 504px; text-align: center; font-family: "Inter"; font-size: 16px;
+           color: rgba(11,13,18,0.6); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="aLabel" class="label">Build 0142 &middot; checks passed</div>
+  <h1 id="aTitle">Ready to ship?</h1>
+  <div id="aHint">Production &middot; 3 regions &middot; zero-downtime rollout</div>
+  <svg id="scene" viewBox="0 0 1280 720">
+    <g id="button">
+      <rect x="520" y="394" width="240" height="72" rx="36" fill="#5B8CFF"/>
+      <text x="640" y="438" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="22" fill="#0B0D12">Deploy now</text>
+    </g>
+    <circle id="iris" cx="640" cy="430" r="800" fill="#5B8CFF"/>
+    <circle id="ring" cx="640" cy="430" r="800" fill="none" stroke="#E8ECF4" stroke-opacity="0.5" stroke-width="6"/>
+    <g transform="translate(0 0)">
+      <g id="cursor">
+        <path d="M0 0 L0 30 L8 23 L13 34 L18 32 L13 21 L24 21 Z" fill="#E8ECF4" stroke="#0B0D12" stroke-width="2" stroke-linejoin="round"/>
+      </g>
+    </g>
+  </svg>
+  <div id="bLabel" class="label">Deploy 0142 &middot; rolled out in 41s</div>
+  <h1 id="bTitle"><span>You&rsquo;re</span> <span>live.</span></h1>
+  <div id="pills">
+    <div class="pill"><span class="dot"></span>iad-1</div>
+    <div class="pill"><span class="dot"></span>fra-1</div>
+    <div class="pill"><span class="dot"></span>sin-1</div>
+  </div>
+  <div id="bNote">All health checks green. Traffic shifted 100%.</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  gsap.set(["#iris", "#ring", "#button"], { transformOrigin: "50% 50%" });
+  gsap.set(["#iris", "#ring"], { scale: 0.045, autoAlpha: 0 });
+  gsap.set(["#bLabel", "#bTitle span", ".pill", "#bNote"], { autoAlpha: 0 });
+
+  // cursor travels on an arc (x and y on different eases), lands on the button tip-first
+  tl.fromTo("#cursor", { x: 1010, y: 650 }, { x: 648, duration: 0.6, ease: "power2.inOut" }, 0)
+    .fromTo("#cursor", { y: 650 }, { y: 432, duration: 0.6, ease: "power3.out", immediateRender: false }, 0)
+    .to("#button", { scale: 1.04, duration: 0.2, ease: "power2.out" }, 0.42)
+    // press: button and cursor squash down (anticipation for the wipe)
+    .to("#button", { scaleX: 0.94, scaleY: 0.84, duration: 0.1, ease: "power2.out" }, 0.66)
+    .to("#cursor", { scale: 0.82, duration: 0.1, ease: "power2.out" }, 0.66)
+    .addLabel("go", 0.8)
+    // a pill-height circle grows out of the button and floods the frame; the button is dropped once covered
+    .set("#button", { autoAlpha: 0 }, "go+=0.24")
+    .set("#iris", { autoAlpha: 1 }, "go")
+    .to("#iris", { scale: 1, duration: 0.6, ease: "power2.in" }, "go")
+    .to("#cursor", { autoAlpha: 0, scale: 0.6, duration: 0.15, ease: "power2.in" }, "go")
+    // a light ring trails the edge, overshoots and fades (follow-through)
+    .set("#ring", { autoAlpha: 1 }, "go+=0.1")
+    .to("#ring", { scale: 1.12, duration: 0.62, ease: "power2.in" }, "go+=0.1")
+    .to("#ring", { autoAlpha: 0, duration: 0.2, ease: "power1.out" }, "go+=0.58")
+    .addLabel("land", "go+=0.52")
+    // scene B settles: words drop in on arcs, squash on landing, then the pills pop
+    .fromTo("#bLabel", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, "land+=0.62")
+    .fromTo("#bTitle span", { autoAlpha: 0, y: -90, x: -30, rotation: -8, scaleY: 1.2, scaleX: 0.88 },
+            { autoAlpha: 1, y: 0, x: 0, rotation: 0, scaleY: 1, scaleX: 1, duration: 0.34, ease: "power3.in", stagger: 0.12 }, "land+=0.05")
+    .to("#bTitle span", { keyframes: [ { scaleY: 0.82, scaleX: 1.12, duration: 0.07, ease: "power2.out" },
+                                       { scaleY: 1, scaleX: 1, duration: 0.36, ease: "back.out(3)" } ], stagger: 0.12 }, "land+=0.39")
+    .fromTo(".pill", { autoAlpha: 0, scale: 0.4, y: 24 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.42, ease: "back.out(2.2)", stagger: 0.08 }, "land+=0.75")
+    .fromTo("#bNote", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, "land+=0.95")
+    // late accent: status dots tick on one after another
+    .fromTo(".dot", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(4)", stagger: 0.1 }, "land+=1.05")
+    .to({}, { duration: 0.28 });
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

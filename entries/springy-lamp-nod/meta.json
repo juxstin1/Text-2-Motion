@@ -1,0 +1,14 @@
+{
+  "id": "springy-lamp-nod",
+  "prompt": "desk lamp drawn from lines springs upright, nods twice and its light snaps on",
+  "tags": [
+    "character",
+    "anticipation",
+    "spring",
+    "line-art"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

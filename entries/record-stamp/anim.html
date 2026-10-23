@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: bold-sports -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #111111; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #111111; }
+  /* shake wrapper is inset so a few px of shake never leaves the stage */
+  #shake { position: absolute; left: 16px; top: 16px; width: 1248px; height: 688px; }
+  .label { font-family: "Bebas Neue"; font-size: 22px; letter-spacing: 0.2em; color: rgba(255,255,255,0.6); }
+  #event { position: absolute; left: 80px; top: 132px; }
+  #event b { color: #E8FF3A; font-weight: 400; }
+  #time { position: absolute; left: 72px; top: 160px; font-family: "Bebas Neue"; font-size: 200px; line-height: 1;
+          letter-spacing: 0.01em; color: #FFFFFF; }
+  #unit { position: absolute; left: 80px; top: 372px; font-family: "Archivo Black"; font-size: 32px; letter-spacing: 0.02em; color: #FFFFFF; }
+  #athlete { position: absolute; left: 80px; top: 508px; width: 420px; padding-top: 18px; border-top: 2px solid rgba(255,255,255,0.18); }
+  #athlete .name { font-family: "Archivo Black"; font-size: 22px; letter-spacing: 0.02em; color: #FFFFFF; }
+  #athlete .meta { margin-top: 8px; }
+  #stamp { position: absolute; left: 604px; top: 196px; width: 520px; height: 280px; transform: rotate(-7deg); }
+  #ring { position: absolute; inset: -24px; border: 3px solid #E8FF3A; border-radius: 12px; visibility: hidden; opacity: 0; }
+  .stamp-box { position: absolute; inset: 0; box-sizing: border-box; border: 8px solid #E8FF3A; border-radius: 6px;
+               display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .stamp-box::before { content: ""; position: absolute; inset: 10px; border: 2px solid #E8FF3A; border-radius: 2px; }
+  .stamp-top { font-family: "Archivo Black"; font-size: 22px; letter-spacing: 0.2em; color: #E8FF3A; }
+  .stamp-word { font-family: "Bebas Neue"; font-size: 120px; line-height: 0.95; letter-spacing: 0.01em; color: #E8FF3A; }
+  #prev { position: absolute; left: 640px; top: 548px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="shake">
+    <div id="event" class="label">Men's 100m &middot; Final &middot; <b>Lane 4</b></div>
+    <div id="time">9.71</div>
+    <div id="unit">SECONDS</div>
+    <div id="athlete">
+      <div class="name">KOFI ADJEI-MENSAH</div>
+      <div class="meta label">Wind +0.4 m/s &middot; Reaction 0.128</div>
+    </div>
+    <div id="stamp">
+      <div id="ring"></div>
+      <div class="stamp-box">
+        <div class="stamp-top">STADIUM</div>
+        <div class="stamp-word">NEW RECORD</div>
+      </div>
+    </div>
+    <div id="prev" class="label">Previous best 9.84 &middot; set 2019</div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  tl.from("#event", { autoAlpha: 0, x: -24, duration: 0.4, ease: "power3.out" })
+    .from("#time", { autoAlpha: 0, y: 40, duration: 0.5, ease: "power4.out" }, "-=0.25")
+    .from(["#unit", "#athlete"], { autoAlpha: 0, y: 20, duration: 0.4, ease: "power3.out", stagger: 0.08 }, "-=0.3")
+    // the stamp: comes down fast and big, accelerating into the "paper"
+    .from("#stamp", { scale: 1.42, rotation: -13, autoAlpha: 0, duration: 0.26, ease: "power4.in" }, 0.62)
+    .addLabel("hit")
+    // tiny screen shake on the wrapper
+    .to("#shake", { keyframes: [
+        { x: -7, y: 4, duration: 0.04 },
+        { x: 6, y: -3, duration: 0.05 },
+        { x: -4, y: 2, duration: 0.05 },
+        { x: 2, y: -1, duration: 0.06 },
+        { x: 0, y: 0, duration: 0.08 } ], ease: "power2.out" }, "hit")
+    // the press rebounds a hair, then rests
+    .to("#stamp", { scale: 0.97, duration: 0.07, ease: "power2.out" }, "hit")
+    .to("#stamp", { scale: 1, duration: 0.3, ease: "back.out(3)" }, ">")
+    // ink ring flashes outward from the impact
+    .fromTo("#ring", { scale: 0.92, autoAlpha: 0.9 }, { scale: 1.12, autoAlpha: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, "hit")
+    .from("#prev", { autoAlpha: 0, y: 12, duration: 0.45, ease: "power3.out" }, "hit+=0.3")
+    .to({}, { duration: 0.6 });
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

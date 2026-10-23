@@ -1,0 +1,14 @@
+{
+  "id": "revenue-counter",
+  "prompt": "revenue counter ticks up from $0 to $2.4M while its label slides in",
+  "tags": [
+    "text",
+    "counter",
+    "numbers",
+    "ui"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

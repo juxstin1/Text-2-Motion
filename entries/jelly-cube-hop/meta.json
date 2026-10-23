@@ -1,0 +1,14 @@
+{
+  "id": "jelly-cube-hop",
+  "prompt": "jelly cube crouches in anticipation, hops across the stage and wobbles to a stop",
+  "tags": [
+    "character",
+    "anticipation",
+    "follow-through",
+    "hop"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "menu-heading-drift",
+  "prompt": "restaurant menu heading and three dish names stagger in with a gentle drift",
+  "tags": [
+    "text",
+    "menu",
+    "stagger",
+    "serif"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "uptime-stat",
+  "prompt": "\"99.98% uptime\" stat counts up while an underline swipes beneath it",
+  "tags": [
+    "text",
+    "counter",
+    "numbers",
+    "underline"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

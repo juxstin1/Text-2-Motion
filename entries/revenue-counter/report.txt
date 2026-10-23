@@ -1,0 +1,19 @@
+duration 3.00s, 91 frames @30fps, 10 tweens
+TIMING
+  #card  y,autoAlpha  0.00-0.60s  power3.out
+  #top  autoAlpha  0.00-0.50s  power2.out
+  #label  x,autoAlpha  0.25-0.95s  power3.out
+  #counter  y,autoAlpha  0.30-0.80s  power3.out
+  {object} x1  v  0.30-2.20s  power2.inOut
+  #line  drawSVG  0.40-1.90s  power2.inOut
+  #chip, #note  y,autoAlpha  1.60-2.20s  power2.out  stagger 0.1
+  #area  autoAlpha  1.70-2.40s  power2.out
+  #dot  scale  1.85-2.35s  back.out(2.5)
+  (hold)  2.40-3.00s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 11 visible (#card, #top, #label, #counter ...); final hold 0.70s; no overlaps

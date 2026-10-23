@@ -1,0 +1,21 @@
+duration 3.16s, 96 frames @30fps, 47 tweens
+TIMING
+  #title div  scale,autoAlpha,rotation  0.00-0.18s  power3.out
+  #kicker  y,autoAlpha  0.08-0.48s  power3.out
+  #title div x5  y,autoAlpha  0.10-0.66s  back.out(2)  stagger 0.035
+  #title div  scaleX,scaleY  0.18-0.61s  power1.out
+  #sub  y,autoAlpha  0.28-0.73s  power3.out
+  #rule  autoAlpha  set at 0.30s
+  #rulep  drawSVG  0.30-0.80s  expo.out
+  #plate0  scaleX,autoAlpha  0.42-0.87s  power3.out
+  #chk0  scale,rotation  0.46-0.88s  back.out(2.2)
+  #lab0  x,autoAlpha  0.50-0.86s  power3.out
+  (+37 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean (6 data-layer=back excluded)
+off-stage: clean
+jumps: clean
+dead air: clean
+safe zones: clean
+end state: 31 visible (#title div x6, #kicker, #sub, #rule ...); final hold 0.29s; no overlaps

@@ -1,0 +1,14 @@
+{
+  "id": "coin-flip-land",
+  "prompt": "gold coin tosses up, flips with stretch on the fast frames and lands with a wobble",
+  "tags": [
+    "character",
+    "flip",
+    "stretch",
+    "wobble"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

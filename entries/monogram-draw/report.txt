@@ -1,0 +1,20 @@
+duration 3.81s, 116 frames @30fps, 11 tweens
+TIMING
+  #ringOuter  drawSVG  0.00-1.40s  power2.inOut
+  #ringInner  drawSVG  0.15-1.45s  power2.inOut
+  #letterLine  drawSVG  0.35-1.85s  power3.inOut
+  #mark line.serif x3  drawSVG  1.40-2.16s  power2.out  stagger 0.08
+  #mark rect.pip x2  scale  1.50-2.10s  back.out(2)  stagger 0.1
+  #letterFill  autoAlpha  1.91-2.81s  power2.inOut
+  #wordmark  y,autoAlpha  2.01-3.01s  power3.out
+  #ruleL, #ruleR  scaleX  2.31-3.11s  power3.inOut
+  #tagline  y,autoAlpha  2.41-3.11s  power2.out
+  #footer  autoAlpha  2.61-3.21s  power2.out
+  (+1 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 11 visible (#ringOuter, #ringInner, #letterLine, #mark rect.pip x2 ...); final hold 0.81s; no overlaps

@@ -1,0 +1,14 @@
+{
+  "id": "price-duel",
+  "prompt": "two price counters race to their values and a \"difference\" badge pops between them",
+  "tags": [
+    "template",
+    "counter",
+    "comparison",
+    "numbers"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

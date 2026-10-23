@@ -1,0 +1,19 @@
+duration 2.65s, 81 frames @30fps, 10 tweens
+TIMING
+  #mast-rule  scaleX  0.00-0.90s  power3.inOut
+  #mast-l, #mast-r  y,autoAlpha  0.10-0.70s  power2.out  stagger 0.1
+  #slider  xPercent  0.20-1.30s  expo.inOut
+  #card  xPercent  0.20-1.30s  expo.inOut
+  #art  scale  0.35-1.95s  power3.out
+  #kicker  y,autoAlpha  0.95-1.55s  power3.out
+  #headline div x2  y,autoAlpha  1.03-1.93s  power3.out  stagger 0.1
+  #dek  y,autoAlpha  1.40-2.10s  power3.out
+  #byline  y,autoAlpha  1.65-2.25s  power3.out
+  (hold)  2.25-2.65s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 12 visible (#mast-rule, #mast-l, #mast-r, #slider ...); final hold 0.65s; no overlaps

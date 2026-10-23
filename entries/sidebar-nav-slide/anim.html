@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: minimal-mono -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F2F2F0; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F2F2F0;
+           font-family: 'JetBrains Mono', monospace; color: #111111; }
+
+  /* sidebar: clipped rail so the panel is hidden while it is off-stage */
+  #rail { position: absolute; left: 0; top: 0; width: 304px; height: 720px; overflow: hidden; }
+  #sidebar { position: absolute; left: 0; top: 0; width: 304px; height: 720px; box-sizing: border-box;
+             padding: 48px 32px; background: #111111; color: #F2F2F0; }
+  #brand { font-size: 28px; font-weight: 700; letter-spacing: -0.04em; margin: 0 0 56px 8px; }
+  #brand span { color: #FF3B00; }
+  #navLabel { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.45; margin: 0 0 16px 8px; }
+  .item { position: relative; display: flex; justify-content: space-between; align-items: center;
+          height: 44px; padding: 0 12px 0 8px; font-size: 18px; color: rgba(242,242,240,0.6); }
+  .item b { font-weight: 500; font-size: 12px; letter-spacing: 0.1em; color: rgba(242,242,240,0.4); }
+  .item.active { color: #F2F2F0; background: rgba(242,242,240,0.07); }
+  .item.active b { color: #FF3B00; }
+  #marker { position: absolute; left: -32px; top: 0; width: 4px; height: 44px; background: #FF3B00; }
+  #account { position: absolute; left: 40px; right: 32px; bottom: 44px; padding-top: 20px;
+             border-top: 1px solid rgba(242,242,240,0.14); font-size: 14px; display: flex; justify-content: space-between; }
+  #account span { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: #FF3B00; }
+
+  /* main content */
+  #main { position: absolute; left: 376px; top: 0; width: 808px; height: 720px; }
+  #crumb { position: absolute; top: 64px; left: 0; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.45; }
+  #title { position: absolute; top: 88px; left: 0; font-size: 48px; font-weight: 700; letter-spacing: -0.04em; }
+  #sub { position: absolute; top: 156px; left: 0; font-size: 14px; opacity: 0.55; }
+  #sub em { font-style: normal; color: #FF3B00; }
+  .stat { position: absolute; top: 224px; width: 256px; height: 128px; box-sizing: border-box; padding: 20px 24px;
+          border: 1px solid rgba(17,17,17,0.15); }
+  .stat .k { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.45; }
+  .stat .v { font-size: 48px; font-weight: 700; letter-spacing: -0.04em; margin-top: 18px; }
+  .stat .v small { font-size: 18px; font-weight: 400; letter-spacing: 0; opacity: 0.5; margin-left: 6px; }
+  #chart { position: absolute; top: 384px; left: 0; width: 808px; height: 272px; box-sizing: border-box;
+           border: 1px solid rgba(17,17,17,0.15); padding: 20px 24px; }
+  #chart .k { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; opacity: 0.45; }
+  #bars { position: absolute; left: 24px; right: 24px; bottom: 24px; height: 168px; display: flex; align-items: flex-end; gap: 10px; }
+  #bars i { flex: 1; background: rgba(17,17,17,0.85); }
+  #bars i.hot { background: #FF3B00; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="rail">
+    <div id="sidebar">
+      <div id="brand">atlas<span>/</span></div>
+      <div id="navLabel">WORKSPACE</div>
+      <div class="item active"><div id="marker"></div>Overview<b>01</b></div>
+      <div class="item">Projects<b>12</b></div>
+      <div class="item">Deployments<b>48</b></div>
+      <div class="item">Analytics<b></b></div>
+      <div class="item">Domains<b>03</b></div>
+      <div class="item">Settings<b></b></div>
+      <div id="account">m.okafor<span>PRO</span></div>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="crumb" class="block">ATLAS / PRODUCTION</div>
+    <div id="title" class="block">Overview</div>
+    <div id="sub" class="block">last deploy 4 min ago <em>&middot;</em> main@3f9a2c</div>
+    <div class="stat block" style="left:0"><div class="k">DEPLOYS / 30D</div><div class="v">128</div></div>
+    <div class="stat block" style="left:276px"><div class="k">UPTIME</div><div class="v">99.9<small>%</small></div></div>
+    <div class="stat block" style="left:552px"><div class="k">P95 LATENCY</div><div class="v">41<small>ms</small></div></div>
+    <div id="chart" class="block"><div class="k">REQUESTS / HOUR</div>
+      <div id="bars">
+        <i style="height:38%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:61%"></i>
+        <i style="height:57%"></i><i style="height:72%"></i><i style="height:66%"></i><i style="height:81%"></i>
+        <i style="height:74%"></i><i style="height:88%"></i><i class="hot" style="height:100%"></i><i style="height:79%"></i>
+        <i style="height:70%"></i><i style="height:76%"></i><i style="height:63%"></i><i style="height:58%"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  // panel slides out of the left edge; the rail clips it while off-stage
+  tl.from("#sidebar", { xPercent: -100, duration: 0.75, ease: "expo.out" })
+    .from("#brand", { x: -24, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, "-=0.5")
+    .from("#navLabel", { x: -24, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, "<0.06")
+    // menu items: tight stagger, each trailing the panel
+    .from(".item", { x: -32, autoAlpha: 0, duration: 0.55, ease: "power3.out", stagger: 0.045 }, "<0.04")
+    .from("#marker", { scaleY: 0, transformOrigin: "50% 0%", duration: 0.4, ease: "power3.out" }, "-=0.35")
+    .from("#account", { y: 12, autoAlpha: 0, duration: 0.5, ease: "power2.out" }, "<")
+    // content settles in once the nav has landed
+    .from("#main .block", { y: 16, autoAlpha: 0, duration: 0.6, ease: "power2.out", stagger: 0.06 }, 0.5)
+    .to({}, { duration: 0.6 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

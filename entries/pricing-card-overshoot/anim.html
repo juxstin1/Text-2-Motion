@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: soft-saas -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #EEF1FB; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #EEF1FB; font-family: 'Manrope'; color: #1A1F36; }
+  #glow { position: absolute; left: 640px; top: 40px; width: 600px; height: 600px; border-radius: 50%; background: rgba(108,92,231,0.08); }
+  #copy { position: absolute; left: 120px; top: 228px; width: 480px; }
+  .label { font: 600 13px/1 'Manrope'; letter-spacing: 0.04em; text-transform: uppercase; color: #6C5CE7; }
+  #headline { margin: 20px 0 0; font: 700 56px/1.06 'Sora'; letter-spacing: -0.025em; }
+  #body { margin: 24px 0 0; font: 500 20px/1.5 'Manrope'; color: rgba(26,31,54,0.62); width: 430px; }
+  #card { position: absolute; left: 740px; top: 96px; width: 400px; box-sizing: border-box; padding: 40px; border-radius: 28px;
+          background: #1A1F36; color: #EEF1FB; box-shadow: 0 40px 80px rgba(26,31,54,0.22); }
+  #row { display: flex; justify-content: space-between; align-items: center; }
+  #plan { font: 700 32px/1 'Sora'; letter-spacing: -0.025em; }
+  #badge { font: 600 13px/1 'Manrope'; letter-spacing: 0.04em; text-transform: uppercase; padding: 8px 12px; border-radius: 999px; background: #6C5CE7; color: #EEF1FB; }
+  #price { margin-top: 28px; display: flex; align-items: baseline; gap: 8px; }
+  #amount { font: 700 92px/0.9 'Sora'; letter-spacing: -0.025em; }
+  #per { font: 500 16px/1 'Manrope'; color: rgba(238,241,251,0.6); }
+  #rule { height: 1px; background: rgba(238,241,251,0.12); margin: 28px 0 24px; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { display: flex; align-items: center; gap: 12px; font: 500 16px/1 'Manrope'; color: rgba(238,241,251,0.86); height: 34px; }
+  li svg { flex: none; }
+  #cta { margin-top: 24px; height: 52px; border-radius: 14px; background: #6C5CE7; display: flex; align-items: center; justify-content: center;
+         font: 600 16px/1 'Manrope'; color: #EEF1FB; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="glow"></div>
+  <div id="copy">
+    <div class="label" id="kicker">Pricing</div>
+    <h1 id="headline">One plan.<br>Everything in it.</h1>
+    <p id="body">Start free for 14 days. No card, no contracts, cancel whenever you like.</p>
+  </div>
+  <div id="card">
+    <div id="row"><div id="plan">Pro</div><div id="badge">Most popular</div></div>
+    <div id="price"><span id="amount">$24</span><span id="per">per seat / month</span></div>
+    <div id="rule"></div>
+    <ul id="features">
+      <li><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="rgba(108,92,231,0.28)"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="#EEF1FB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited projects</li>
+      <li><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="rgba(108,92,231,0.28)"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="#EEF1FB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Shared workspaces</li>
+      <li><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="rgba(108,92,231,0.28)"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="#EEF1FB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Version history, 90 days</li>
+      <li><svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="rgba(108,92,231,0.28)"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="#EEF1FB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
+    </ul>
+    <div id="cta">Start free trial</div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  // supporting copy settles first, so the card has a context to land next to
+  tl.from(["#kicker", "#headline", "#body"], { y: 24, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 })
+    // the hero move: card rises and overshoots softly before settling
+    .from("#card", { y: 90, scale: 0.96, duration: 1.0, ease: "back.out(1.4)" }, 0.15)
+    .from("#card", { autoAlpha: 0, duration: 0.3, ease: "power1.out" }, 0.15) // quick fade so the card never reads as a ghost
+    // contents follow the card in reading order, overlapping its settle
+    .from(["#row", "#price", "#rule", "#features li", "#cta"], { y: 14, autoAlpha: 0, duration: 0.5, ease: "power2.out", stagger: 0.06 }, "-=0.65")
+    .to({}, { duration: 0.6 }); // final hold
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

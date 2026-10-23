@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: playful -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FFE8D6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FFE8D6; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  #eyebrow { position: absolute; left: 96px; top: 150px; font-family: "Sora"; font-weight: 700; font-size: 18px;
+             letter-spacing: 0.06em; text-transform: uppercase; color: #FF4F7B; }
+  #title { position: absolute; left: 88px; top: 180px; margin: 0; font-family: "Syne"; font-weight: 800; font-size: 128px;
+           line-height: 1; letter-spacing: -0.03em; color: #2B1B4A; transform-origin: 50% 100%; }
+  #caption { position: absolute; left: 96px; top: 600px; width: 420px; margin: 0; font-family: "Sora"; font-weight: 500;
+             font-size: 18px; line-height: 1.5; color: rgba(43,27,74,0.65); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="scene" viewBox="0 0 1280 720">
+    <line x1="560" y1="560" x2="1180" y2="560" stroke="#2B1B4A" stroke-width="4" stroke-linecap="round"/>
+    <g transform="translate(820 562)"><ellipse id="shadow" rx="72" ry="9" fill="#2B1B4A" fill-opacity="0.22"/></g>
+    <g transform="translate(820 560)">
+      <g id="dustL" stroke="#2B1B4A" stroke-width="4" stroke-linecap="round">
+        <line x1="-84" y1="-6" x2="-104" y2="-14"/><line x1="-80" y1="-24" x2="-96" y2="-42"/>
+      </g>
+      <g id="dustR" stroke="#2B1B4A" stroke-width="4" stroke-linecap="round">
+        <line x1="84" y1="-6" x2="104" y2="-14"/><line x1="80" y1="-24" x2="96" y2="-42"/>
+      </g>
+    </g>
+    <g transform="translate(820 496)">
+      <g id="ballPos">
+        <g id="ball">
+          <circle r="64" fill="#FF4F7B"/>
+          <g id="spin">
+            <path d="M0 -64 C 34 -30 34 30 0 64" fill="none" stroke="#2B1B4A" stroke-opacity="0.28" stroke-width="7"/>
+            <path d="M-64 0 C -30 -14 30 -14 64 0" fill="none" stroke="#2B1B4A" stroke-opacity="0.16" stroke-width="5"/>
+          </g>
+          <path d="M-40 -26 A 46 46 0 0 1 -12 -48" fill="none" stroke="#FFE8D6" stroke-opacity="0.7" stroke-width="9" stroke-linecap="round"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <div id="eyebrow">Gravity study 01</div>
+  <h1 id="title">Boing.</h1>
+  <p id="caption">Fall, squash, stretch, repeat. Each bounce loses a little height and the floor wins.</p>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  gsap.set("#ball", { transformOrigin: "50% 100%" });
+  gsap.set("#spin", { transformOrigin: "50% 50%" });
+  gsap.set("#shadow", { transformOrigin: "50% 50%" });
+  gsap.set(["#dustL", "#dustR"], { autoAlpha: 0 });
+
+  // horizontal drift + roll across the whole sequence; combined with the vertical bounces this draws arcs
+  tl.fromTo("#ballPos", { x: 330 }, { x: 0, duration: 2.0, ease: "sine.out" }, 0)
+    .fromTo("#spin", { rotation: 260 }, { rotation: 0, duration: 2.0, ease: "sine.out" }, 0)
+    .fromTo("#shadow", { x: 330 }, { x: 0, duration: 2.0, ease: "sine.out" }, 0)
+    .fromTo("#ballPos", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12, ease: "power1.out" }, 0);
+
+  // hand-built bounce: power2.in falls, power2.out rises, squash on contact (bottom origin, volume kept)
+  let t = 0;
+  const bounce = (fallFrom, fall, stretch, squash, squashDur) => {
+    tl.fromTo("#ballPos", { y: fallFrom }, { y: 0, duration: fall, ease: "power2.in", immediateRender: t === 0 }, t)
+      .to("#ball", { scaleY: 1 + stretch, scaleX: 1 / (1 + stretch), duration: fall, ease: "power2.in" }, t)
+      .fromTo("#shadow", { scaleX: 0.3 + 0.7 * (1 - Math.abs(fallFrom) / 440), autoAlpha: 0.35 + 0.65 * (1 - Math.abs(fallFrom) / 440) },
+              { scaleX: 1, autoAlpha: 1, duration: fall, ease: "power2.in", immediateRender: t === 0 }, t);
+    t += fall;
+    tl.to("#ball", { scaleY: squash, scaleX: 1 / squash, duration: squashDur, ease: "power2.out" }, t)
+      .to("#shadow", { scaleX: 1.25, duration: squashDur, ease: "power2.out" }, t);
+    t += squashDur;
+  };
+  const rise = (height, dur) => {
+    tl.to("#ballPos", { y: -height, duration: dur, ease: "power2.out" }, t)
+      .to("#ball", { scaleY: 1.14, scaleX: 0.88, duration: 0.08, ease: "power2.out" }, t)
+      .to("#ball", { scaleY: 1, scaleX: 1, duration: dur - 0.08, ease: "sine.inOut" }, t + 0.08)
+      .to("#shadow", { scaleX: 0.3 + 0.7 * (1 - height / 440), autoAlpha: 0.35 + 0.65 * (1 - height / 440), duration: dur, ease: "power2.out" }, t);
+    t += dur;
+  };
+
+  bounce(-440, 0.55, 0.2, 0.64, 0.07);
+  tl.addLabel("hit", t - 0.07);
+  t += 0.03; // a beat held in the squash
+  rise(210, 0.36);
+  bounce(-210, 0.36, 0.1, 0.8, 0.06);
+  rise(78, 0.22);
+  bounce(-78, 0.22, 0.05, 0.9, 0.05);
+  // final settle: spring back through 1 with a small overshoot
+  tl.to("#ball", { scaleY: 1, scaleX: 1, duration: 0.42, ease: "back.out(3)" }, t)
+    .to("#shadow", { scaleX: 1, duration: 0.3, ease: "power2.out" }, t);
+
+  // impact dust on the first hit
+  tl.fromTo("#dustL", { autoAlpha: 1, x: 0, scale: 0.6 }, { autoAlpha: 0, x: -34, scale: 1, duration: 0.42, ease: "power3.out", immediateRender: false }, "hit")
+    .fromTo("#dustR", { autoAlpha: 1, x: 0, scale: 0.6 }, { autoAlpha: 0, x: 34, scale: 1, duration: 0.42, ease: "power3.out", immediateRender: false }, "hit");
+
+  // type reacts to the impact: the title springs up with its own little squash
+  tl.from("#eyebrow", { autoAlpha: 0, x: -20, duration: 0.4, ease: "power3.out" }, "hit+=0.05")
+    .from("#title", { autoAlpha: 0, y: 40, scaleY: 1.25, scaleX: 0.86, duration: 0.3, ease: "power3.out" }, "hit+=0.1")
+    .to("#title", { scaleY: 0.9, scaleX: 1.06, duration: 0.08, ease: "power2.out" }, "hit+=0.4")
+    .to("#title", { scaleY: 1, scaleX: 1, duration: 0.4, ease: "back.out(3)" }, "hit+=0.48")
+    .from("#caption", { autoAlpha: 0, y: 16, duration: 0.5, ease: "power3.out" }, t - 0.3)
+    .to({}, { duration: 0.3 }, t + 0.42);
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

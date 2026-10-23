@@ -1,0 +1,14 @@
+duration 2.31s, 71 frames @30fps, 5 tweens
+TIMING
+  #kicker, #headline ...  y,autoAlpha  0.00-0.74s  power3.out  stagger 0.07
+  #row div.tile x5  scale,rotation,y  0.35-1.81s  elastic.out(1, 0.55)  stagger 0.09
+  #row div.tile x5  autoAlpha  0.35-0.86s  power1.out  stagger 0.09
+  #row div.name x5  y,autoAlpha  0.65-1.41s  power2.out  stagger 0.09
+  (hold)  1.81-2.31s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 13 visible (#kicker, #headline, #sub, #row div.tile x5 ...); final hold 0.58s; no overlaps

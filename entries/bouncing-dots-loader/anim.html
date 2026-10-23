@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: soft-saas -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #EEF1FB; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #EEF1FB; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  /* copy is static: a loop's first and last frames must match */
+  #label { position: absolute; left: 0; width: 1280px; top: 446px; text-align: center; font-family: "Sora"; font-weight: 700;
+           font-size: 32px; letter-spacing: -0.025em; color: #1A1F36; }
+  #sub { position: absolute; left: 0; width: 1280px; top: 498px; text-align: center; font-family: "Manrope"; font-weight: 500;
+         font-size: 16px; color: rgba(26,31,54,0.55); }
+  #eyebrow { position: absolute; left: 0; width: 1280px; top: 196px; text-align: center; font-family: "Manrope"; font-weight: 600;
+             font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: #6C5CE7; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="eyebrow">Workspace &middot; Atlas</div>
+  <svg id="scene" viewBox="0 0 1280 720">
+    <g transform="translate(0 404)" fill="#1A1F36" fill-opacity="0.12">
+      <ellipse class="shadow" cx="544" rx="30" ry="7"/>
+      <ellipse class="shadow" cx="640" rx="30" ry="7"/>
+      <ellipse class="shadow" cx="736" rx="30" ry="7"/>
+    </g>
+    <circle class="dot" cx="544" cy="372" r="30" fill="#6C5CE7"/>
+    <circle class="dot" cx="640" cy="372" r="30" fill="#6C5CE7" fill-opacity="0.75"/>
+    <circle class="dot" cx="736" cy="372" r="30" fill="#6C5CE7" fill-opacity="0.5"/>
+  </svg>
+  <div id="label">Syncing your workspace</div>
+  <div id="sub">Pulling 1,284 files from the cloud</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const dots = gsap.utils.toArray(".dot"), shadows = gsap.utils.toArray(".shadow");
+  gsap.set(dots, { transformOrigin: "50% 100%" });
+  gsap.set(shadows, { transformOrigin: "50% 50%" });
+
+  const CYCLE = 1.2, OFFSET = 0.13, H = 104;
+  // one hop, starting and ending at rest (y 0, scale 1) so cycles butt together seamlessly
+  const hop = (dot, sh, t) => {
+    tl.to(dot, { scaleY: 0.72, scaleX: 1.28, duration: 0.12, ease: "power2.inOut" }, t)          // crouch
+      .to(dot, { y: -H, duration: 0.24, ease: "power2.out" }, t + 0.12)                          // rise
+      .to(dot, { scaleY: 1.2, scaleX: 0.84, duration: 0.06, ease: "power2.out" }, t + 0.12)      // stretch on take-off
+      .to(dot, { scaleY: 1, scaleX: 1, duration: 0.18, ease: "sine.inOut" }, t + 0.18)           // round at the apex
+      .to(dot, { y: 0, duration: 0.22, ease: "power2.in" }, t + 0.36)                            // fall
+      .to(dot, { scaleY: 1.12, scaleX: 0.9, duration: 0.22, ease: "power2.in" }, t + 0.36)       // stretch into the floor
+      .to(dot, { scaleY: 0.68, scaleX: 1.4, duration: 0.06, ease: "power2.out" }, t + 0.58)      // squash on contact
+      .to(dot, { scaleY: 1, scaleX: 1, duration: 0.16, ease: "power2.out" }, t + 0.64)           // recover to rest
+      .to(sh, { scaleX: 1.2, duration: 0.12, ease: "power2.inOut" }, t)
+      .to(sh, { scaleX: 0.5, autoAlpha: 0.45, duration: 0.24, ease: "power2.out" }, t + 0.12)
+      .to(sh, { scaleX: 1.3, autoAlpha: 1, duration: 0.22, ease: "power2.in" }, t + 0.36)
+      .to(sh, { scaleX: 1, duration: 0.22, ease: "power2.out" }, t + 0.58);
+  };
+  for (let c = 0; c < 2; c++)
+    dots.forEach((d, i) => hop(d, shadows[i], c * CYCLE + i * OFFSET));
+  // pad to exactly two cycles: last frame equals the first
+  tl.to({}, { duration: 2 * CYCLE - tl.duration() });
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

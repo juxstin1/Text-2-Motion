@@ -1,0 +1,14 @@
+{
+  "id": "spec-table",
+  "prompt": "comparison table: 4 feature rows flip in and a check or cross pops for each brand",
+  "tags": [
+    "template",
+    "table",
+    "comparison",
+    "checks"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

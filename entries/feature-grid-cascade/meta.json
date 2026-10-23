@@ -1,0 +1,14 @@
+{
+  "id": "feature-grid-cascade",
+  "prompt": "grid of six feature tiles cascades in diagonally from the top-left",
+  "tags": [
+    "entrance",
+    "grid",
+    "stagger",
+    "ui"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

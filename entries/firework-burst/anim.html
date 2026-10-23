@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: luxury -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0E0C0A; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0E0C0A;
+           font-family: 'Manrope', sans-serif; color: #EDE3D1; }
+  #sky { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  #label { position: absolute; left: 120px; top: 120px; font-size: 12px; font-weight: 500; letter-spacing: 0.32em;
+           text-transform: uppercase; color: #C9A45C; }
+  #title { position: absolute; left: 112px; top: 520px; font-family: 'DM Serif Display', serif; font-size: 64px;
+           line-height: 1; color: #EDE3D1; }
+  #sub { position: absolute; left: 120px; top: 600px; font-size: 15px; font-weight: 300; letter-spacing: 0.02em;
+         color: rgba(237,227,209,0.6); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="sky" viewBox="0 0 1280 720" aria-hidden="true">
+    <line x1="0" y1="660" x2="1280" y2="660" stroke="#EDE3D1" stroke-opacity="0.12" stroke-width="1"/>
+    <path id="trail" d="M820 656 C812 540 788 400 790 262" fill="none" stroke="#C9A45C" stroke-width="2.5" stroke-linecap="round"/>
+    <circle id="spark" cx="820" cy="652" r="8" fill="#C9A45C"/>
+    <ellipse id="rocket" cx="0" cy="0" rx="11" ry="3.5" fill="#EDE3D1"/>
+    <circle id="flash" cx="790" cy="262" r="70" fill="#C9A45C" fill-opacity="0.22"/>
+    <g id="burst"></g>
+    <g id="crackle" fill="#C9A45C"></g>
+  </svg>
+  <div id="label">New Year's Eve &middot; MMXXVII</div>
+  <div id="title">A golden evening.</div>
+  <div id="sub">Doors at nine. The sky at midnight.</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/MotionPathPlugin.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+gsap.registerPlugin(MotionPathPlugin, DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  const NS = "http://www.w3.org/2000/svg", C = [790, 262];
+  const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, v)); parent.appendChild(n); return n; };
+  // fixed layout: an outer ring of 16 and an inner ring of 10, angles and distances by rule (no randomness)
+  const P = [];
+  for (let i = 0; i < 16; i++) P.push({ a: i * 22.5, d: 178, r: 4, gold: i % 2 === 0 });
+  for (let i = 0; i < 10; i++) P.push({ a: i * 36 + 18, d: 104, r: 3, gold: i % 2 === 1 });
+  const burst = document.getElementById("burst");
+  P.forEach(p => {
+    const rad = p.a * Math.PI / 180;
+    p.dx = Math.cos(rad) * p.d; p.dy = Math.sin(rad) * p.d;
+    const g = el("g", { class: "fall" }, burst);   // gravity lives on the group
+    p.ray = el("line", { class: "ray", x1: C[0], y1: C[1], x2: (C[0] + p.dx * 0.94).toFixed(1), y2: (C[1] + p.dy * 0.94).toFixed(1),
+      stroke: p.gold ? "#C9A45C" : "#EDE3D1", "stroke-width": p.r === 4 ? 2 : 1.5, "stroke-linecap": "round", "stroke-opacity": 0.7 }, g);
+    p.dot = el("circle", { class: "dot", cx: C[0], cy: C[1], r: p.r, fill: p.gold ? "#C9A45C" : "#EDE3D1" }, g);
+  });
+  // late crackle: small sparks just past the outer ring, lower down (they have already started falling)
+  const CR = [[-150, 120], [-60, 168], [40, 176], [132, 130], [176, 40], [-180, 30], [-100, -120], [96, -136]];
+  const crackle = document.getElementById("crackle");
+  CR.forEach(([x, y]) => el("circle", { class: "ck", cx: C[0] + x, cy: C[1] + y + 40, r: 3.5 }, crackle));
+
+  gsap.set(["#rocket", "#flash", ".dot", ".ck"], { transformOrigin: "50% 50%" });
+  gsap.set(["#rocket", "#flash", ".dot", ".ray", ".ck"], { autoAlpha: 0 });
+  gsap.set(".ck", { scale: 0 });
+  gsap.set("#trail", { drawSVG: "0% 0%" });
+  // park the rocket at the foot of its path so it never pops in from the origin
+  gsap.set("#rocket", { motionPath: { path: "#trail", align: "#trail", alignOrigin: [0.5, 0.5], autoRotate: true, start: 0, end: 0 } });
+
+  const tl = gsap.timeline({ paused: true });
+  const L = 0.45, RISE = 0.8, POP = L + RISE + 0.05;
+  tl.from("#label", { y: 14, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 0)
+    // anticipation: the fuse sparks, gathers, then kicks
+    .from("#spark", { scale: 0, transformOrigin: "50% 50%", duration: 0.2, ease: "back.out(3)" }, 0.05)
+    .to("#spark", { scale: 0.55, duration: 0.18, ease: "power2.inOut" }, 0.25)
+    .to("#spark", { scale: 1.6, autoAlpha: 0, duration: 0.25, ease: "power2.out" }, L)
+    // the rise: decelerates as it climbs, stretched along its path; the trail follows the head
+    .set("#rocket", { autoAlpha: 1 }, L)
+    .to("#rocket", { motionPath: { path: "#trail", align: "#trail", alignOrigin: [0.5, 0.5], autoRotate: true },
+        duration: RISE, ease: "power2.out" }, L)
+    .fromTo("#rocket", { scaleX: 1.8 }, { scaleX: 0.6, duration: RISE, ease: "power2.out", immediateRender: false }, L)
+    .to("#trail", { drawSVG: "0% 100%", duration: RISE, ease: "power2.out" }, L)
+    .to("#trail", { drawSVG: "100% 100%", duration: RISE, ease: "power2.inOut" }, L + 0.22)
+    // a beat of hang time at the apex, then the burst
+    .to("#rocket", { autoAlpha: 0, scale: 0.3, duration: 0.08, ease: "power2.in" }, POP - 0.04)
+    .fromTo("#flash", { scale: 0.2, autoAlpha: 1 }, { scale: 1.4, autoAlpha: 0, duration: 0.5, ease: "power2.out", immediateRender: false }, POP);
+
+  P.forEach((p, i) => {
+    const s = POP + (p.d < 150 ? 0.03 : 0);
+    tl.set([p.dot, p.ray], { autoAlpha: 1 }, s)
+      .fromTo(p.dot, { x: 0, y: 0 }, { x: p.dx, y: p.dy, duration: 0.85, ease: "expo.out", immediateRender: false }, s)
+      .fromTo(p.ray, { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.85, ease: "expo.out", immediateRender: false }, s)
+      .to(p.ray, { drawSVG: "100% 100%", duration: 0.6, ease: "power2.in" }, s + 0.18)
+      .set(p.ray, { autoAlpha: 0 }, s + 0.78)
+      // gravity takes over: the whole spark sags, accelerating, while it dims and shrinks
+      .to(p.dot.parentNode, { y: 80 + (i % 3) * 14, duration: 1.6, ease: "power2.in" }, s + 0.15)
+      .to(p.dot, { scale: 0.3, autoAlpha: 0, duration: 0.85, ease: "sine.in" }, s + 0.85 + (i % 4) * 0.06);
+  });
+
+  // twinkle as the burst fades: tiny sparks wink on and off while drifting down
+  tl.to(".ck", { keyframes: [
+        { scale: 1.5, autoAlpha: 1, duration: 0.12, ease: "power2.out" },
+        { scale: 0, autoAlpha: 0, duration: 0.34, ease: "power2.in" } ], stagger: 0.07 }, POP + 1.0)
+    .to(".ck", { y: 30, duration: 0.46, ease: "power1.in", stagger: 0.07 }, POP + 1.0)
+    .from("#title", { y: 30, autoAlpha: 0, duration: 0.7, ease: "power4.out" }, POP + 0.2)
+    .from("#sub", { y: 14, autoAlpha: 0, duration: 0.55, ease: "power3.out" }, POP + 0.4)
+    .to({}, { duration: 0.28 });
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: playful -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FFE8D6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FFE8D6;
+           font-family: 'Sora', sans-serif; color: #2B1B4A; }
+  #title { position: absolute; left: 0; top: 70px; width: 1280px; text-align: center; font-family: 'Syne', sans-serif;
+           font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+  #art { position: absolute; left: 320px; top: 120px; width: 640px; height: 400px; }
+  #likes { position: absolute; left: 0; top: 520px; width: 1280px; display: flex; justify-content: center;
+           font-size: 26px; font-weight: 500; line-height: 34px; }
+  #likes b { font-weight: 700; }
+  #digit { display: inline-block; height: 34px; overflow: hidden; vertical-align: top; }
+  #roll { display: block; }
+  #roll span { display: block; height: 34px; }
+  #who { position: absolute; left: 0; top: 566px; width: 1280px; text-align: center; font-size: 14px; font-weight: 700;
+         letter-spacing: 0.06em; text-transform: uppercase; color: rgba(43,27,74,0.55); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="title">Show it some love.</div>
+  <svg id="art" viewBox="0 0 640 400" aria-hidden="true">
+    <ellipse id="shadow" cx="320" cy="318" rx="92" ry="10" fill="#2B1B4A" fill-opacity="0.12"/>
+    <circle id="ring" cx="320" cy="200" r="118" fill="none" stroke="#FF4F7B" stroke-width="6"/>
+    <g id="dots"></g>
+    <g transform="translate(320 214)">
+      <g id="heartRig">
+        <path id="heart" d="M0 82 C-34 58 -112 8 -112 -46 C-112 -84 -84 -108 -52 -108 C-26 -108 -8 -94 0 -74 C8 -94 26 -108 52 -108 C84 -108 112 -84 112 -46 C112 8 34 58 0 82 Z"
+              fill="#FFE8D6" stroke="#2B1B4A" stroke-width="8" stroke-linejoin="round"/>
+        <path id="shine" d="M-78 -52 C-78 -70 -66 -82 -50 -82" fill="none" stroke="#FFE8D6" stroke-width="9" stroke-linecap="round"/>
+      </g>
+    </g>
+    <circle id="tap" cx="320" cy="190" r="30" fill="#2B1B4A" fill-opacity="0.16"/>
+    <text id="plus" x="452" y="96" font-family="Syne" font-weight="800" font-size="26" fill="#FF4F7B">+1</text>
+  </svg>
+  <div id="likes"><span>1,20</span><span id="digit"><span id="roll"><span>4</span><span>5</span></span></span><span>&nbsp;likes</span></div>
+  <div id="who">Liked by you and 1,204 others</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  // ring of dots from fixed angles: 8 big on the diagonals and axes, 8 small between them
+  const NS = "http://www.w3.org/2000/svg", C = [320, 200], dots = document.getElementById("dots"), D = [];
+  for (let i = 0; i < 16; i++) {
+    const big = i % 2 === 0, a = (i * 22.5 - 90) * Math.PI / 180, dist = big ? 168 : 138;
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", C[0]); c.setAttribute("cy", C[1]); c.setAttribute("r", big ? 9 : 5);
+    c.setAttribute("fill", big ? "#FF4F7B" : "#2B1B4A"); c.setAttribute("class", "dot");
+    dots.appendChild(c);
+    D.push({ el: c, x0: Math.cos(a) * 96, y0: Math.sin(a) * 96, x1: Math.cos(a) * dist, y1: Math.sin(a) * dist });
+  }
+  gsap.set("#heartRig", { transformOrigin: "50% 100%" });
+  gsap.set(["#shadow", "#ring", "#tap", ".dot"], { transformOrigin: "50% 50%" });
+  gsap.set([".dot", "#ring", "#plus", "#tap", "#shine"], { autoAlpha: 0 });
+
+  const tl = gsap.timeline({ paused: true });
+  tl.from("#title", { y: 18, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 0)
+    .from("#heartRig", { scale: 0, duration: 0.5, ease: "back.out(2.2)" }, 0.05)
+    .from("#shadow", { scaleX: 0, duration: 0.5, ease: "back.out(2.2)" }, 0.05)
+    .from("#likes", { y: 12, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, 0.2)
+    // the fingertip comes down onto the heart
+    .fromTo("#tap", { scale: 1.9, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.26, ease: "power2.out", immediateRender: false }, 0.55);
+
+  // press: the heart squashes wide (this is also the anticipation for the pop)
+  const PRESS = 0.8, POP = 0.96;
+  tl.to("#heartRig", { scaleX: 1.2, scaleY: 0.74, duration: 0.14, ease: "power2.out" }, PRESS)
+    .to("#shadow", { scaleX: 1.22, duration: 0.14, ease: "power2.out" }, PRESS)
+    .to("#tap", { scale: 0.82, duration: 0.14, ease: "power2.out" }, PRESS)
+    .to("#heart", { fill: "#FF4F7B", duration: 0.14, ease: "power2.out" }, PRESS + 0.06)
+    // release: stretch up tall, overshoot back to round, then a follow-through wiggle
+    .to("#heartRig", { scaleX: 0.84, scaleY: 1.24, duration: 0.12, ease: "power3.out" }, POP)
+    .to("#heartRig", { scaleX: 1, scaleY: 1, duration: 0.55, ease: "back.out(3)" }, POP + 0.12)
+    .to("#shadow", { scaleX: 0.8, duration: 0.12, ease: "power3.out" }, POP)
+    .to("#shadow", { scaleX: 1, duration: 0.5, ease: "back.out(3)" }, POP + 0.12)
+    .to("#heartRig", { keyframes: [
+        { rotation: -9, duration: 0.1, ease: "power2.out" },
+        { rotation: 7, duration: 0.16, ease: "sine.inOut" },
+        { rotation: -3, duration: 0.16, ease: "sine.inOut" },
+        { rotation: 0, duration: 0.18, ease: "sine.out" } ] }, POP + 0.06)
+    .to("#tap", { scale: 1.4, autoAlpha: 0, duration: 0.3, ease: "power2.out" }, POP)
+    .fromTo("#shine", { autoAlpha: 0 }, { autoAlpha: 0.9, duration: 0.2, ease: "power2.out", immediateRender: false }, POP + 0.1)
+    // ring and dots pop off the edge of the heart
+    .fromTo("#ring", { scale: 0.55, autoAlpha: 1 }, { scale: 1.3, autoAlpha: 0, duration: 0.5, ease: "power2.out", immediateRender: false }, POP);
+  D.forEach(d => gsap.set(d.el, { x: d.x0, y: d.y0, scale: 0 }));  // parked on the heart edge, hidden
+  D.forEach((d, i) => {
+    tl.fromTo(d.el, { x: d.x0, y: d.y0, scale: 0, autoAlpha: 1 },
+        { x: d.x1, y: d.y1, scale: 1, duration: 0.5, ease: "expo.out", immediateRender: false }, POP + 0.02 + (i % 2) * 0.04)
+      .to(d.el, { scale: 0, y: d.y1 + 14, duration: 0.42, ease: "power2.in" }, POP + 0.3 + (i % 2) * 0.06);
+  });
+  // counter ticks over, +1 floats up, and the heart gives a last contented beat
+  tl.to("#roll", { yPercent: -50, duration: 0.45, ease: "back.out(2)" }, POP + 0.12)
+    .from("#who", { y: 12, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, POP + 0.3)
+    .fromTo("#plus", { y: 10, autoAlpha: 0 }, { y: -24, autoAlpha: 1, duration: 0.3, ease: "power2.out", immediateRender: false }, POP + 0.1)
+    .to("#plus", { y: -44, autoAlpha: 0, duration: 0.35, ease: "power2.in" }, POP + 0.48)
+    .to("#heartRig", { scale: 1.08, duration: 0.12, ease: "power2.out" }, POP + 0.86)
+    .to("#heartRig", { scale: 1, duration: 0.32, ease: "back.out(3)" }, POP + 0.98)
+    .to({}, { duration: 0.22 });
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: gallery-serif -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #1C2B24; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #1C2B24; color: #EAF0E6; }
+  .label { position: absolute; font: 500 13px/1 'Space Grotesk'; letter-spacing: 0.14em; text-transform: uppercase; }
+  #venue { left: 96px; top: 72px; color: #E7B76A; }
+  #num { right: 96px; top: 72px; color: rgba(234,240,230,0.45); }
+  #title { position: absolute; left: 90px; top: 124px; margin: 0; font: 400 160px/1.0 'Instrument Serif'; letter-spacing: -0.02em; }
+  #rule { position: absolute; left: 96px; top: 618px; width: 1088px; height: 1px; background: rgba(234,240,230,0.28); transform-origin: 0 50%; }
+  #sub { position: absolute; left: 96px; top: 640px; margin: 0; font: 400 22px/1.3 'Space Grotesk'; color: rgba(234,240,230,0.82); }
+  #dates { position: absolute; right: 96px; top: 646px; font: 500 13px/1 'Space Grotesk'; letter-spacing: 0.14em; color: #E7B76A; }
+  #art { position: absolute; left: 828px; top: 160px; width: 356px; height: 420px; overflow: hidden; border: 1px solid rgba(234,240,230,0.28); box-sizing: border-box; }
+  #ground { position: absolute; left: 0; top: 280px; width: 356px; height: 140px; background: rgba(234,240,230,0.07); border-top: 1px solid rgba(234,240,230,0.28); }
+  #sun { position: absolute; left: 118px; top: 150px; width: 120px; height: 120px; border-radius: 50%; background: #E7B76A; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="label" id="venue">Kunsthal Nord — Hall 3</div>
+  <div class="label" id="num">Exhibition 07</div>
+  <h1 id="title">The Quiet<br>Architecture<br>of Light</h1>
+  <div id="art"><div id="sun"></div><div id="ground"></div></div>
+  <div id="rule"></div>
+  <p id="sub">Photographs by Ines Varga, 1968–1994</p>
+  <div id="dates">14 MAR — 02 AUG 2027</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+gsap.registerPlugin(SplitText);
+document.fonts.ready.then(() => {
+  const split = SplitText.create("#title", { type: "lines", mask: "lines" });
+  const tl = gsap.timeline({ paused: true });
+  tl.from(["#venue", "#num"], { y: 8, autoAlpha: 0, duration: 0.8, ease: "power2.out" }, 0)
+    .from("#art", { autoAlpha: 0, scale: 1.04, duration: 1.4, ease: "power2.out" }, 0.1)
+    // the sun climbs inside the frame like the light the title describes
+    .from("#sun", { y: 200, duration: 2.0, ease: "power3.out" }, 0.35)
+    // each line rises out of its own mask; long expo tail reads as calm, not quick
+    .from(split.lines, { yPercent: 105, duration: 1.3, ease: "expo.out", stagger: 0.16 }, 0.2)
+    .from("#rule", { scaleX: 0, duration: 0.9, ease: "power3.inOut" }, 1.05)
+    // subtitle follows once the title has landed
+    .from("#sub", { y: 16, autoAlpha: 0, duration: 0.9, ease: "power3.out" }, 1.45)
+    .from("#dates", { y: 16, autoAlpha: 0, duration: 0.9, ease: "power3.out" }, 1.6)
+    .to({}, { duration: 0.3 }); // final hold
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

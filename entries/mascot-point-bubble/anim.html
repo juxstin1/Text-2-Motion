@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: warm-modern -->
+<!-- format: vertical -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FBF3E4; }
+  #stage { position: relative; width: 720px; height: 1280px; overflow: hidden; background: #FBF3E4; color: #3A2416; }
+  #bg { position: absolute; inset: 0; background:
+        radial-gradient(520px 560px at 50% 62%, rgba(224,102,46,0.12), rgba(224,102,46,0) 70%), #FBF3E4; }
+  #scene { position: absolute; left: 0; top: 0; width: 720px; height: 1280px; }
+
+  /* speech bubble: dark plate, cream type, tail aimed down at the mascot's hand */
+  #bubble { position: absolute; left: 100px; top: 196px; width: 520px; box-sizing: border-box; padding: 34px 40px 38px;
+            border-radius: 40px; background: #3A2416; color: #FBF3E4; box-shadow: 0 24px 50px rgba(58,36,22,0.22); }
+  #tail { position: absolute; right: 96px; bottom: -58px; width: 76px; height: 64px; overflow: visible; }
+  #eyebrow { font-family: "Inter"; font-weight: 600; font-size: 20px; letter-spacing: 0.1em; text-transform: uppercase;
+             color: #E0662E; }
+  #line { margin-top: 10px; font-family: "Fraunces"; font-weight: 600; font-size: 68px; line-height: 1.02; letter-spacing: -0.03em; }
+  #line .hi { color: #E0662E; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <!-- the whole character lives in one SVG so its parts layer as one graphic -->
+  <svg id="scene" viewBox="0 0 720 1280">
+    <line id="ground" x1="150" y1="952" x2="570" y2="952" stroke="#3A2416" stroke-width="5" stroke-linecap="round"/>
+    <ellipse id="shadow" cx="360" cy="954" rx="140" ry="13" fill="#3A2416" fill-opacity="0.14"/>
+    <g id="pip">
+      <!-- left arm, shoulder 232,748 -->
+      <g id="armL">
+        <path d="M232 748 L172 800 L154 862" fill="none" stroke="#E0662E" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="154" cy="862" r="22" fill="#3A2416"/>
+      </g>
+      <!-- right arm: upper arm pivots at the shoulder 488,748; forearm at the elbow 548,800 -->
+      <g id="armR">
+        <path d="M488 748 L548 800" fill="none" stroke="#E0662E" stroke-width="34" stroke-linecap="round"/>
+        <g id="foreR">
+          <path d="M548 800 L566 862" fill="none" stroke="#E0662E" stroke-width="34" stroke-linecap="round"/>
+          <line id="finger" x1="566" y1="862" x2="574" y2="890" stroke="#3A2416" stroke-width="13" stroke-linecap="round"/>
+          <circle cx="566" cy="862" r="22" fill="#3A2416"/>
+        </g>
+      </g>
+      <ellipse cx="318" cy="944" rx="32" ry="12" fill="#3A2416"/>
+      <ellipse cx="402" cy="944" rx="32" ry="12" fill="#3A2416"/>
+      <circle cx="360" cy="795" r="145" fill="#E0662E"/>
+      <ellipse cx="360" cy="845" rx="88" ry="64" fill="#FBF3E4" fill-opacity="0.3"/>
+      <g id="tuft">
+        <path d="M360 652 C350 624 372 604 390 592" fill="none" stroke="#3A2416" stroke-width="11" stroke-linecap="round"/>
+        <circle cx="392" cy="590" r="11" fill="#3A2416"/>
+      </g>
+      <g id="eyes">
+        <circle cx="316" cy="772" r="17" fill="#3A2416"/>
+        <circle cx="404" cy="772" r="17" fill="#3A2416"/>
+        <g id="glints">
+          <circle cx="322" cy="766" r="5.5" fill="#FBF3E4"/>
+          <circle cx="410" cy="766" r="5.5" fill="#FBF3E4"/>
+        </g>
+      </g>
+      <ellipse cx="286" cy="810" rx="18" ry="11" fill="#3A2416" fill-opacity="0.16"/>
+      <ellipse cx="434" cy="810" rx="18" ry="11" fill="#3A2416" fill-opacity="0.16"/>
+      <path id="smile" d="M338 808 Q360 832 382 808" fill="none" stroke="#3A2416" stroke-width="7" stroke-linecap="round"/>
+      <ellipse id="mouthO" cx="360" cy="818" rx="17" ry="15" fill="#3A2416"/>
+    </g>
+  </svg>
+
+  <div id="bubble">
+    <svg id="tail" viewBox="0 0 76 64"><path d="M0 0 H62 L70 58 C72 64 66 66 62 62 Z" fill="#3A2416"/></svg>
+    <div id="eyebrow">Psst, over here</div>
+    <div id="line">This one is <span class="hi">for you.</span></div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin, SplitText);
+document.fonts.ready.then(() => {
+  const FEET = "360 952", SHOULDER = "488 748", ELBOW = "548 800", SHOULDER_L = "232 748", TUFT = "360 652", HAND = "566 862";
+  const words = new SplitText("#line", { type: "words" }).words;
+  gsap.set("#mouthO", { scaleY: 0, svgOrigin: "360 812" });
+  gsap.set("#bubble", { scale: 0, autoAlpha: 0, transformOrigin: "84% 124%" });
+  gsap.set("#finger", { scale: 0, svgOrigin: HAND });
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. HOOK: Pip launches up from below the frame, stretched along the jump, rounds out at the apex
+  tl.fromTo("#pip", { y: 560, scaleX: 0.8, scaleY: 1.28, svgOrigin: FEET },
+                    { y: -130, duration: 0.36, ease: "power2.out" }, 0)
+    .to("#pip", { scaleX: 1, scaleY: 1, duration: 0.24, ease: "sine.out" }, 0.14)
+    .fromTo("#ground", { drawSVG: "50% 50%" }, { drawSVG: "0% 100%", duration: 0.5, ease: "expo.out" }, 0.05)
+    .fromTo("#shadow", { scaleX: 0.2, autoAlpha: 0, svgOrigin: "360 954" }, { scaleX: 0.55, autoAlpha: 0.45, duration: 0.3, ease: "power2.out" }, 0.06)
+  // 2. fall, stretch into the floor, squash on contact (volume kept), rebound, settle
+    .to("#pip", { y: 0, duration: 0.24, ease: "power2.in" }, 0.36)
+    .to("#pip", { scaleX: 0.9, scaleY: 1.12, duration: 0.16, ease: "power2.in" }, 0.44)
+    .to("#pip", { scaleX: 1.26, scaleY: 0.76, duration: 0.07, ease: "power2.out" }, 0.6)
+    .to("#pip", { scaleX: 0.94, scaleY: 1.07, duration: 0.14, ease: "power2.out" }, 0.67)
+    .to("#pip", { scaleX: 1, scaleY: 1, duration: 0.3, ease: "sine.inOut" }, 0.81)
+    .to("#shadow", { scaleX: 1.15, autoAlpha: 1, duration: 0.24, ease: "power2.in" }, 0.36)
+    .to("#shadow", { scaleX: 1, duration: 0.35, ease: "sine.out" }, 0.67);
+
+  // follow-through: tuft trails the launch and whips on landing; arms lag and flop
+  tl.fromTo("#tuft", { rotation: -30, svgOrigin: TUFT }, { rotation: 22, duration: 0.3, ease: "sine.inOut" }, 0.06)
+    .to("#tuft", { rotation: -30, duration: 0.09, ease: "power2.out" }, 0.6)
+    .to("#tuft", { rotation: 14, duration: 0.2, ease: "sine.inOut" }, 0.69)
+    .to("#tuft", { rotation: -5, duration: 0.2, ease: "sine.inOut" }, 0.89)
+    .to("#tuft", { rotation: 0, duration: 0.22, ease: "sine.out" }, 1.09)
+    .fromTo("#armL", { rotation: 40, svgOrigin: SHOULDER_L }, { rotation: 20, duration: 0.3, ease: "power2.out" }, 0)
+    .fromTo("#armR", { rotation: -40, svgOrigin: SHOULDER }, { rotation: -20, duration: 0.3, ease: "power2.out" }, 0)
+    .to("#armL", { rotation: -14, duration: 0.12, ease: "power2.in" }, 0.5)
+    .to("#armR", { rotation: 14, duration: 0.12, ease: "power2.in" }, 0.5)
+    .to(["#armL", "#armR"], { rotation: 0, duration: 0.35, ease: "back.out(3)" }, 0.62);
+
+  // 3. blink, then WAVE: dip (anticipation), swing up while leaning away; forearm lags the upper arm
+  tl.to("#eyes", { scaleY: 0.08, transformOrigin: "50% 50%", duration: 0.06, ease: "power2.in" }, 0.9)
+    .to("#eyes", { scaleY: 1, duration: 0.1, ease: "power2.out" }, 0.96)
+    .to("#armR", { rotation: 14, duration: 0.12, ease: "power2.in" }, 1.0)
+    .to("#pip", { rotation: -3, svgOrigin: FEET, duration: 0.12, ease: "power2.in" }, 1.0)
+    .to("#armR", { rotation: -122, duration: 0.3, ease: "power2.inOut" }, 1.1)
+    .to("#pip", { rotation: 4, duration: 0.32, ease: "power2.out" }, 1.12)
+    .to("#foreR", { rotation: 36, svgOrigin: ELBOW, duration: 0.2, ease: "power2.out" }, 1.14)
+    .to("#smile", { scaleX: 1.2, svgOrigin: "360 812", duration: 0.2, ease: "back.out(3)" }, 1.14);
+  [-32, 30, -28, 22].forEach((r, i) => {
+    tl.to("#foreR", { rotation: r, duration: 0.13, ease: "sine.inOut" }, 1.34 + i * 0.13)
+      .to("#armR", { rotation: -122 + r * 0.2, duration: 0.13, ease: "sine.inOut" }, 1.38 + i * 0.13);
+  });
+
+  // 4. POINT: eyes find the empty space, arm cocks back (anticipation), then thrusts at it, finger out
+  tl.to("#glints", { x: 3, y: -5, duration: 0.18, ease: "power2.out" }, 1.82)
+    .to("#armR", { rotation: -96, duration: 0.16, ease: "power2.in" }, 1.9)
+    .to("#foreR", { rotation: 10, duration: 0.16, ease: "power2.in" }, 1.9)
+    .to("#pip", { rotation: -4, duration: 0.16, ease: "power2.in" }, 1.9)
+    .to("#armR", { rotation: -124, duration: 0.26, ease: "back.out(2.4)" }, 2.06)
+    .to("#foreR", { rotation: -33, duration: 0.22, ease: "back.out(2)" }, 2.08)
+    .to("#finger", { scale: 1, duration: 0.2, ease: "back.out(3)" }, 2.1)
+    .to("#pip", { rotation: 3, duration: 0.26, ease: "back.out(2)" }, 2.06);
+
+  // 5. the bubble pops open from its tail tip: overshoot with squash, wobble out, words pop in as Pip "talks"
+  tl.to("#bubble", { keyframes: [{ autoAlpha: 1, scaleX: 0.82, scaleY: 1.12, duration: 0.12, ease: "power3.out" },
+                                 { scaleX: 1.1, scaleY: 0.92, duration: 0.12, ease: "power2.out" },
+                                 { scaleX: 0.97, scaleY: 1.03, duration: 0.14, ease: "sine.inOut" },
+                                 { scaleX: 1, scaleY: 1, duration: 0.22, ease: "sine.out" }] }, 2.14)
+    .from("#eyebrow", { y: 14, autoAlpha: 0, duration: 0.3, ease: "power3.out" }, 2.3)
+    .from(words, { y: 12, scale: 0.5, autoAlpha: 0, transformOrigin: "50% 70%", duration: 0.36, ease: "back.out(1.7)", stagger: 0.07 }, 2.34)
+    .to("#smile", { autoAlpha: 0, duration: 0.05, ease: "power1.out" }, 2.32)
+    .to("#mouthO", { keyframes: [{ scaleY: 1, duration: 0.08, ease: "power2.out" }, { scaleY: 0.35, duration: 0.1, ease: "sine.inOut" },
+                                 { scaleY: 1, duration: 0.1, ease: "sine.inOut" }, { scaleY: 0.3, duration: 0.1, ease: "sine.inOut" },
+                                 { scaleY: 0.9, duration: 0.1, ease: "sine.inOut" }, { scaleY: 0, duration: 0.08, ease: "power2.in" }] }, 2.34)
+    .to("#smile", { autoAlpha: 1, scaleX: 1, duration: 0.12, ease: "power2.out" }, 2.88);
+
+  // 6. a proud little hop, arm drops back with the forearm trailing; blink keeps him alive to the end
+  tl.to("#pip", { keyframes: [{ scaleX: 1.14, scaleY: 0.86, rotation: 0, duration: 0.1, ease: "power2.in" },
+                              { y: -46, scaleX: 0.92, scaleY: 1.1, duration: 0.18, ease: "power2.out" },
+                              { y: 0, scaleX: 1, scaleY: 1, duration: 0.16, ease: "power2.in" },
+                              { scaleX: 1.12, scaleY: 0.9, duration: 0.06, ease: "power2.out" },
+                              { scaleX: 1, scaleY: 1, duration: 0.24, ease: "sine.out" }] }, 2.9)
+    .to("#shadow", { keyframes: [{ scaleX: 0.75, autoAlpha: 0.6, duration: 0.24, ease: "power2.out" },
+                                 { scaleX: 1, autoAlpha: 1, duration: 0.2, ease: "power2.in" }] }, 2.98)
+    .to("#finger", { scale: 0, duration: 0.12, ease: "power2.in" }, 2.94)
+    .to("#armR", { rotation: 0, duration: 0.4, ease: "power3.inOut" }, 2.98)
+    .to("#foreR", { rotation: -24, duration: 0.24, ease: "power2.inOut" }, 3.0)
+    .to("#foreR", { rotation: 0, duration: 0.34, ease: "back.out(3)" }, 3.24)
+    .to("#tuft", { rotation: 18, duration: 0.14, ease: "power2.out" }, 3.0)
+    .to("#tuft", { rotation: -10, duration: 0.18, ease: "sine.inOut" }, 3.16)
+    .to("#tuft", { rotation: 0, duration: 0.22, ease: "sine.out" }, 3.34)
+    .to("#glints", { x: 0, y: 0, duration: 0.3, ease: "power2.inOut" }, 3.1)
+    .to("#bubble", { y: -6, duration: 0.5, ease: "sine.inOut" }, 2.9)
+    .to("#eyes", { scaleY: 0.08, duration: 0.06, ease: "power2.in" }, 3.4)
+    .to("#eyes", { scaleY: 1, duration: 0.1, ease: "power2.out" }, 3.46)
+    .to({}, { duration: 0.3 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+{
+ "duration": 3.26,
+ "fps": 30,
+ "frames": 99,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0.1,
+   "duration": 0.6,
+   "ease": "back.out(1.5)",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#t1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.95,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#t1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.11,
+   "duration": 0.6,
+   "ease": "back.out(1.5)",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#t2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.8,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#t1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.8,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#t2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.96,
+   "duration": 0.6,
+   "ease": "back.out(1.5)",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#t3"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.56,
+   "duration": 0.7,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#t1",
+  "#t2",
+  "#t3",
+  "#eyebrow",
+  "#heading",
+  "#lede",
+  "#t1 div.tt",
+  "#t1 div.ts",
+  "#t1 div.tm",
+  "#t2 div.tt",
+  "#t2 div.ts",
+  "#t2 div.tm",
+  "#t3 div.tt",
+  "#t3 div.ts",
+  "#t3 div.tm"
+ ],
+ "fonts": [
+  "Manrope, sans-serif",
+  "Sora, sans-serif"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.69,
+  "end_visible": [
+   "#t1",
+   "#t2",
+   "#t3",
+   "#eyebrow",
+   "#heading",
+   "#lede",
+   "#t1 div.tt",
+   "#t1 div.ts",
+   "#t1 div.tm",
+   "#t2 div.tt",
+   "#t2 div.ts",
+   "#t2 div.tm",
+   "#t3 div.tt",
+   "#t3 div.ts",
+   "#t3 div.tm"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

@@ -1,0 +1,20 @@
+duration 2.51s, 77 frames @30fps, 28 tweens
+TIMING
+  #halo  drawSVG  0.00-0.80s  power2.inOut
+  #bellIn  y,scale,autoAlpha  0.00-0.45s  back.out(2)
+  #bellIn  scaleY,scaleX  0.48-0.62s  power2.out
+  #bellIn  scaleY,scaleX  0.62-0.92s  back.out(3)
+  #bell  rotation  0.62-0.76s  power2.out
+  #clapper  rotation  0.68-0.82s  sine.inOut
+  #icon path.waveL x2  drawSVG,autoAlpha,x  0.74-1.24s  power2.out  stagger 0.05
+  #bell  rotation  0.76-1.04s  sine.inOut
+  #badge  scale  0.76-1.21s  back.out(3.2)
+  #clapper  rotation  0.82-1.10s  sine.inOut
+  (+18 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 8 visible (#halo, #bellIn, #bell, #clapper ...); final hold 0.18s; no overlaps

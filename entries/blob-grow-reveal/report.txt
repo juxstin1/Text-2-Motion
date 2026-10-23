@@ -1,0 +1,27 @@
+duration 3.37s, 103 frames @30fps, 21 tweens
+TIMING
+  #blob  scale  0.05-0.47s  back.out(2.4)
+  #blob  scaleX,scaleY,rotation  0.50-0.80s  power2.inOut
+  #blob  scaleX,scaleY,rotation  0.80-1.75s  power2.in
+  #lobeA  scale  0.80-1.80s  sine.inOut
+  #lobeC  scale,y  0.88-1.68s  sine.inOut
+  #lobeB  scale,x  0.95-1.85s  sine.inOut
+  #frame  y,scale,rotation,autoAlpha  1.68-2.28s  back.out(1.8)
+  #cover  autoAlpha  set at 1.75s
+  #blob  autoAlpha  set at 1.75s
+  #s2label  y,autoAlpha  1.76-2.21s  power3.out
+  (+11 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 4 DEFECT, 8 note
+  DEFECT #frame / #s1hint  1.90-1.93s, 2.13-3.37s  peak 94%  (onto static text)
+  DEFECT #s2label / #s1title  1.90-3.37s  peak 95%  (onto static text)
+  DEFECT #s2title span.ln[0] / #s1title  1.83-3.37s  peak 100%  (onto static text)
+  DEFECT #s2title span.ln[1] / #s1title  1.93-3.37s  peak 75%  (onto static text)
+  note #blob / #s1label  1.40-1.43s  peak 94%  (onto static text)
+  note #blob / #s1title  1.37-1.43s  peak 96%  (onto static text)
+  (+6 more)
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 14 visible (#frame, #cover, #s2label, #s2title span.ln x2 ...); final hold 0.27s; overlapping at end: #frame/#s1hint, #s2label/#s1title

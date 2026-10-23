@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: warm-modern -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FBF3E4; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FBF3E4;
+           font-family: 'Inter', sans-serif; color: #3A2416; }
+  #copy { position: absolute; left: 120px; top: 196px; }
+  #eyebrow { font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #E0662E; }
+  #headline { margin-top: 20px; font-family: 'Fraunces', serif; font-size: 72px; font-weight: 600;
+              letter-spacing: -0.03em; line-height: 1.02; }
+  #headline .ln { display: block; width: fit-content; }
+  #body { margin-top: 26px; width: 420px; font-size: 17px; line-height: 1.6; color: rgba(58,36,22,0.72); }
+  #cta { margin-top: 30px; width: fit-content; font-size: 17px; font-weight: 600; padding-bottom: 6px;
+         border-bottom: 2px solid #3A2416; }
+  #nail { position: absolute; left: 893px; top: 58px; width: 14px; height: 14px; border-radius: 50%; background: #3A2416;
+          box-shadow: 0 2px 0 rgba(58,36,22,0.18); }
+  /* the hanging group pivots on the nail */
+  #hang { position: absolute; left: 770px; top: 65px; width: 260px; height: 522px; transform-origin: 130px 0px; }
+  #string { position: absolute; left: -20px; top: 0; width: 300px; height: 150px; overflow: visible; }
+  #tag { position: absolute; left: 0; top: 132px; width: 260px; height: 390px; }
+  #tag svg { position: absolute; inset: 0; width: 260px; height: 390px; overflow: visible; }
+  #tag .inner { position: absolute; left: 0; top: 96px; width: 260px; text-align: center; color: #FBF3E4; }
+  #tag .lab { line-height: 1; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+  #tag .pct { margin-top: 10px; font-family: 'Fraunces', serif; font-size: 116px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+  #tag .off { margin-top: 2px; font-family: 'Fraunces', serif; font-size: 40px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+  #tag .foot { position: absolute; left: 0; top: 330px; width: 260px; text-align: center; font-size: 14px; font-weight: 600;
+               letter-spacing: 0.1em; text-transform: uppercase; color: rgba(251,243,228,0.75); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="copy">
+    <div id="eyebrow">The harvest sale</div>
+    <div id="headline"><span class="ln">Thirty off the</span><span class="ln">autumn shelf.</span></div>
+    <div id="body">Hand-thrown mugs, washed linen and small-batch pantry goods. This weekend only.</div>
+    <div id="cta">Shop the sale &rarr;</div>
+  </div>
+  <div id="hang">
+    <svg id="string" viewBox="0 0 300 150" aria-hidden="true">
+      <path d="M150 0 L122 150 M150 0 L178 150" fill="none" stroke="#3A2416" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <div id="tag">
+      <svg viewBox="0 0 260 390" aria-hidden="true">
+        <path d="M70 0 H190 L260 64 V374 Q260 390 244 390 H16 Q0 390 0 374 V64 Z" fill="#E0662E"/>
+        <path d="M70 0 H190 L260 64 V374 Q260 390 244 390 H16 Q0 390 0 374 V64 Z" fill="none"
+              stroke="#3A2416" stroke-opacity="0.18" stroke-width="2" transform="translate(0 6)"/>
+        <circle cx="130" cy="34" r="12" fill="#FBF3E4"/>
+        <line x1="28" y1="312" x2="232" y2="312" stroke="#FBF3E4" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="4 6"/>
+      </svg>
+      <div class="inner">
+        <div class="lab">Everything</div>
+        <div class="pct">30%</div>
+        <div class="off">off</div>
+      </div>
+      <div class="foot">Ends Sunday</div>
+    </div>
+  </div>
+  <div id="nail"></div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  tl.from(["#eyebrow", "#headline .ln", "#body", "#cta"], { y: 24, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 }, 0)
+    // tag drops onto the nail from the right and swings itself out
+    .from("#hang", { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, 0.15)
+    // released at -26deg (to the right): a pendulum keeps its period while the amplitude decays
+    .fromTo("#hang", { rotation: -26 }, { keyframes: [
+        { rotation: 14, duration: 0.62, ease: "sine.inOut" },
+        { rotation: -8, duration: 0.56, ease: "sine.inOut" },
+        { rotation: 4, duration: 0.5, ease: "sine.inOut" },
+        { rotation: -1.5, duration: 0.44, ease: "sine.inOut" },
+        { rotation: 0, duration: 0.4, ease: "power2.out" } ] }, 0.15)
+    .from("#tag .inner", { y: 14, autoAlpha: 0, duration: 0.55, ease: "power3.out" }, 0.45)
+    .from("#tag .foot", { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, "<0.45")
+    .to({}, { duration: 0.4 });
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

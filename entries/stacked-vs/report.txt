@@ -1,0 +1,21 @@
+duration 3.26s, 99 frames @30fps, 45 tweens
+TIMING
+  #cardA  y,scale,autoAlpha  0.00-0.40s  expo.out
+  #cardB  y,scale,autoAlpha  0.05-0.45s  expo.out
+  #slotA  y,autoAlpha,scaleY,scaleX  0.08-0.34s  power3.in
+  #slotA  scaleY,scaleX  0.34-0.40s  power2.out
+  #cardA  y  0.34-0.40s  power2.out
+  #cardA div.stripe  scaleY  0.34-0.40s  power2.out
+  #shake  x,y  0.34-0.62s  power2.out
+  #slotA  scaleY,scaleX  0.40-0.82s  back.out(3)
+  #cardA  y  0.40-0.82s  back.out(3)
+  #cardA div.stripe  scaleY  0.40-0.80s  power3.out
+  (+35 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean (1 data-layer=back excluded)
+off-stage: clean
+jumps: clean
+dead air: clean
+safe zones: clean
+end state: 18 visible (#cardA, #cardB, #slotA, #cardA div.stripe ...); final hold 0.29s; no overlaps

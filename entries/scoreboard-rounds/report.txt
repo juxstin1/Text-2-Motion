@@ -1,0 +1,23 @@
+duration 3.69s, 112 frames @30fps, 45 tweens
+TIMING
+  #board  scaleX,scaleY,autoAlpha  0.00-0.50s  back.out(1.6)
+  #mid  scaleY  0.15-0.55s  power3.out
+  #slotA, #slotB  scale,autoAlpha,rotation  0.20-0.62s  power4.in
+  #tag  y,scale,autoAlpha  0.25-0.65s  back.out(3)
+  #sideA div.stripe, #sideB div.stripe  scaleY  0.30-0.70s  power3.out
+  #scoreA span, #scoreB span  y,autoAlpha  0.40-0.80s  back.out(2)
+  #nameA, #nameB  x,autoAlpha  0.45-0.90s  power3.out
+  #board  scaleY  0.62-1.08s  power1.out
+  #rname0  yPercent  0.80-1.20s  back.out(2)
+  {object} x1  v  1.06-1.36s  power2.out
+  (+35 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 5 note (6 data-layer=back excluded)
+  note #slotA / #nameA  0.50-0.57s  peak 81%
+  note #slotA / #winTag  2.97-3.20s  peak 53%
+  (+3 more)
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 20 visible (#board, #mid, #slotA, #slotB ...); final hold 0.36s; no overlaps

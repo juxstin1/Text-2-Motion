@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: soft-saas -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #EEF1FB; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #EEF1FB; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  #eyebrow { position: absolute; left: 96px; top: 80px; font-family: "Manrope"; font-weight: 600; font-size: 13px;
+             letter-spacing: 0.04em; text-transform: uppercase; color: #6C5CE7; }
+  #title { position: absolute; left: 94px; top: 104px; margin: 0; font-family: "Sora"; font-weight: 700; font-size: 56px;
+           line-height: 1.1; letter-spacing: -0.025em; color: #1A1F36; }
+  #body { position: absolute; left: 96px; top: 176px; width: 380px; margin: 0; font-family: "Manrope"; font-weight: 500;
+          font-size: 16px; line-height: 1.55; color: rgba(26,31,54,0.62); }
+  .step { position: absolute; top: 572px; width: 160px; margin-left: -80px; text-align: center; font-family: "Manrope";
+          font-weight: 600; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(26,31,54,0.5); }
+  .step b { color: #6C5CE7; font-weight: 600; }
+  #s1 { left: 280px; } #s2 { left: 620px; } #s3 { left: 980px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="scene" viewBox="0 0 1280 720">
+    <line x1="120" y1="540" x2="1160" y2="540" stroke="#1A1F36" stroke-opacity="0.18" stroke-width="3" stroke-linecap="round"/>
+    <g fill="#1A1F36" fill-opacity="0.25">
+      <rect x="278" y="546" width="4" height="10" rx="2"/><rect x="618" y="546" width="4" height="10" rx="2"/><rect x="978" y="546" width="4" height="10" rx="2"/>
+    </g>
+    <g transform="translate(280 542)"><ellipse id="shadow" rx="80" ry="10" fill="#1A1F36" fill-opacity="0.14"/></g>
+    <g transform="translate(280 540)">
+      <g id="cubePos">
+        <g id="cube">
+          <rect x="-70" y="-140" width="140" height="140" rx="36" fill="#6C5CE7"/>
+          <path d="M-46 -112 Q -46 -122 -36 -122 L -6 -122" fill="none" stroke="#EEF1FB" stroke-opacity="0.45" stroke-width="8" stroke-linecap="round"/>
+          <g id="face">
+            <g id="eyes">
+              <ellipse cx="-24" cy="-80" rx="11" ry="14" fill="#EEF1FB"/>
+              <ellipse cx="26" cy="-80" rx="11" ry="14" fill="#EEF1FB"/>
+              <circle id="pupilL" cx="-20" cy="-78" r="6" fill="#1A1F36"/>
+              <circle id="pupilR" cx="30" cy="-78" r="6" fill="#1A1F36"/>
+            </g>
+            <path d="M-8 -50 Q 2 -42 12 -50" fill="none" stroke="#1A1F36" stroke-width="4" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <div id="eyebrow">Motion study 02</div>
+  <h1 id="title">Jelly hop</h1>
+  <p id="body">Crouch to load, stretch to leap, squash to land. The wobble is the jelly catching up.</p>
+  <div class="step" id="s1"><b>01</b> crouch</div>
+  <div class="step" id="s2"><b>02</b> hop</div>
+  <div class="step" id="s3"><b>03</b> wobble</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  gsap.set("#cube", { transformOrigin: "50% 100%" });
+  gsap.set("#eyes", { transformOrigin: "50% 50%" });
+  gsap.set("#shadow", { transformOrigin: "50% 50%" });
+
+  tl.from(["#eyebrow", "#title", "#body"], { autoAlpha: 0, y: 18, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 0)
+    .from("#s1", { autoAlpha: 0, y: 10, duration: 0.4, ease: "power3.out" }, 0.1);
+
+  // one hop: crouch (anticipation) -> stretch launch on an arc -> squash landing. face lags behind the body.
+  const hop = (t, x0, dx, h, air, crouch) => {
+    const half = air / 2;
+    tl.to("#cube", { scaleY: crouch, scaleX: 1 / crouch, skewX: 4, duration: 0.26, ease: "power2.inOut" }, t)
+      .to("#face", { y: 10, duration: 0.3, ease: "power2.out" }, t)
+      .to("#shadow", { scaleX: 1.15, duration: 0.26, ease: "power2.inOut" }, t);
+    const L = t + 0.26; // launch
+    tl.to("#cubePos", { x: x0 + dx, duration: air, ease: "power1.inOut" }, L)
+      .to("#shadow", { x: x0 + dx, duration: air, ease: "power1.inOut" }, L)
+      .to("#cubePos", { y: -h, duration: half, ease: "power2.out" }, L)
+      .to("#cubePos", { y: 0, duration: half, ease: "power2.in" }, L + half)
+      .to("#shadow", { scaleX: 0.45, autoAlpha: 0.5, duration: half, ease: "power2.out" }, L)
+      .to("#shadow", { scaleX: 1, autoAlpha: 1, duration: half, ease: "power2.in" }, L + half)
+      // stretch along the take-off, leaning forward
+      .to("#cube", { scaleY: 1.24, scaleX: 0.82, skewX: -10, duration: 0.1, ease: "power2.out" }, L)
+      .to("#cube", { scaleY: 1, scaleX: 1, skewX: 0, duration: half - 0.1, ease: "sine.inOut" }, L + 0.1)
+      .to("#cube", { scaleY: 1.12, scaleX: 0.9, skewX: 6, duration: half, ease: "power2.in" }, L + half)
+      // face: dragged down on take-off, floats up at the apex, then slams down on contact
+      .to("#face", { y: 14, duration: 0.1, ease: "power2.out" }, L)
+      .to("#face", { y: -8, duration: half, ease: "sine.inOut" }, L + 0.1)
+      .to("#face", { y: -4, duration: half - 0.1, ease: "power2.in" }, L + 0.1 + half);
+    const C = L + air; // contact
+    tl.to("#cube", { scaleY: 0.68, scaleX: 1.36, skewX: 0, duration: 0.07, ease: "power2.out" }, C)
+      .to("#face", { y: 16, duration: 0.1, ease: "power2.out" }, C)
+      .to("#shadow", { scaleX: 1.3, duration: 0.07, ease: "power2.out" }, C);
+    return C + 0.07;
+  };
+
+  // hop 1: medium. landing squash rebounds a little, then becomes the crouch for hop 2
+  let t = hop(0.4, 0, 340, 150, 0.5, 0.74);
+  tl.to("#cube", { scaleY: 1.06, scaleX: 0.94, duration: 0.14, ease: "power2.out" }, t)
+    .to("#face", { y: 0, duration: 0.18, ease: "power2.out" }, t)
+    .to("#shadow", { scaleX: 1, duration: 0.14, ease: "power2.out" }, t)
+    .from("#s2", { autoAlpha: 0, y: 10, duration: 0.4, ease: "power3.out" }, t - 0.05);
+  // hop 2: bigger, deeper crouch
+  t = hop(t + 0.14, 340, 360, 230, 0.62, 0.66);
+
+  // settle: volume-preserving wobble, sideways jiggle by hand, face follows through late
+  tl.to("#cube", { scaleY: 1, scaleX: 1, duration: 1.0, ease: "elastic.out(1.1, 0.32)" }, t)
+    .to("#cube", { keyframes: [ { skewX: -7, duration: 0.12 }, { skewX: 5, duration: 0.14 }, { skewX: -2.5, duration: 0.16 }, { skewX: 0, duration: 0.2 } ],
+                   ease: "sine.inOut" }, t)
+    .to("#face", { y: -6, duration: 0.2, ease: "power2.out" }, t + 0.08)
+    .to("#face", { y: 0, duration: 0.45, ease: "back.out(2.5)" }, t + 0.28)
+    .to("#shadow", { scaleX: 1, duration: 0.5, ease: "power2.out" }, t)
+    .from("#s3", { autoAlpha: 0, y: 10, duration: 0.4, ease: "power3.out" }, t)
+    // late accent: a blink once it has calmed down, pupils glance toward the camera
+    .to("#eyes", { scaleY: 0.12, duration: 0.07, ease: "power2.in" }, t + 0.72)
+    .to("#eyes", { scaleY: 1, duration: 0.14, ease: "power2.out" }, t + 0.79)
+    .to(["#pupilL", "#pupilR"], { x: -4, y: -2, duration: 0.25, ease: "power2.inOut" }, t + 0.82)
+    .to({}, { duration: 0.28 }, t + 1.07);
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

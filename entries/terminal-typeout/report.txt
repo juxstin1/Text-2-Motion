@@ -1,0 +1,20 @@
+duration 3.90s, 119 frames @30fps, 52 tweens
+TIMING
+  #typed div x20  autoAlpha  set at 0.00s
+  #cursor  x  set at 0.00s
+  #term, div.meta x2  y,autoAlpha  0.00-0.82s  power3.out  stagger 0.06
+  #cursor  autoAlpha  set at 0.50s
+  #cursor  autoAlpha  set at 0.70s
+  #cursor  autoAlpha  set at 0.90s
+  #cursor  autoAlpha  set at 1.10s
+  #typed div  autoAlpha  set at 1.38s
+  #cursor  x  set at 1.38s
+  #typed div  autoAlpha  set at 1.43s
+  (+42 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 30 visible (#typed div x20, #cursor, #term, div.meta x2 ...); final hold 0.67s; no overlaps

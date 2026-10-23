@@ -1,0 +1,14 @@
+{
+  "id": "player-lower-third",
+  "prompt": "lower-third with player name and number wipes in from the left",
+  "tags": [
+    "text",
+    "lower-third",
+    "wipe",
+    "bold"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

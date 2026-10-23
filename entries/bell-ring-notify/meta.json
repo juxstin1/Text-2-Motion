@@ -1,0 +1,14 @@
+{
+  "id": "bell-ring-notify",
+  "prompt": "notification bell rings with a damped swing and a count badge pops on",
+  "tags": [
+    "icon",
+    "micro-interaction",
+    "swing",
+    "badge"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

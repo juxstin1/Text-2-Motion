@@ -1,0 +1,14 @@
+{
+  "id": "chapter-card",
+  "prompt": "chapter title card: small numeral, a thin rule draws, chapter name rises",
+  "tags": [
+    "text",
+    "title-card",
+    "lines",
+    "serif"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

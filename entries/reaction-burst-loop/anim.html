@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: playful -->
+<!-- format: vertical -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FFE8D6; }
+  #stage { position: relative; width: 720px; height: 1280px; overflow: hidden; background: #FFE8D6; color: #2B1B4A; }
+  #bg { position: absolute; inset: 0; background:
+        radial-gradient(480px 520px at 50% 46%, rgba(255,79,123,0.16), rgba(255,79,123,0) 70%), #FFE8D6; }
+  #art { position: absolute; left: 0; top: 0; width: 720px; height: 1280px; }
+  #tagwrap { position: absolute; left: 0; right: 0; top: 864px; display: flex; justify-content: center; }
+  #tag { padding: 12px 34px 16px; border-radius: 99px; background: #2B1B4A; color: #FFE8D6; font-family: "Syne"; font-weight: 800;
+         font-size: 58px; line-height: 1; letter-spacing: -0.03em; transform: rotate(-3deg);
+         box-shadow: 0 10px 0 #FF4F7B; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <!-- one SVG: hearts are drawn first so they burst out from behind the face -->
+  <svg id="art" viewBox="0 0 720 1280">
+    <defs>
+      <path id="heart" d="M0 30 C-10 22 -44 0 -44 -18 C-44 -34 -30 -42 -20 -42 C-10 -42 -3 -36 0 -28 C3 -36 10 -42 20 -42 C30 -42 44 -34 44 -18 C44 0 10 22 0 30 Z"/>
+    </defs>
+    <g id="hearts" stroke="#2B1B4A" stroke-width="6" stroke-linejoin="round"></g>
+    <g id="face">
+      <circle cx="360" cy="600" r="210" fill="#FFE8D6" stroke="#2B1B4A" stroke-width="12"/>
+      <path d="M220 470 C250 420 300 400 340 398" fill="none" stroke="#FF4F7B" stroke-opacity="0.5" stroke-width="14" stroke-linecap="round"/>
+      <ellipse cx="256" cy="648" rx="38" ry="22" fill="#FF4F7B" fill-opacity="0.5"/>
+      <ellipse cx="464" cy="648" rx="38" ry="22" fill="#FF4F7B" fill-opacity="0.5"/>
+      <g id="dots">
+        <g id="dotL"><circle cx="290" cy="566" r="26" fill="#2B1B4A"/><circle cx="298" cy="556" r="8" fill="#FFE8D6"/></g>
+        <g id="dotR"><circle cx="430" cy="566" r="26" fill="#2B1B4A"/><circle cx="438" cy="556" r="8" fill="#FFE8D6"/></g>
+      </g>
+      <g id="heyes" stroke="#2B1B4A" stroke-width="6" stroke-linejoin="round">
+        <g id="heyeL"><use href="#heart" x="290" y="572" fill="#FF4F7B"/><circle cx="276" cy="548" r="7" fill="#FFE8D6" stroke="none"/></g>
+        <g id="heyeR"><use href="#heart" x="430" y="572" fill="#FF4F7B"/><circle cx="416" cy="548" r="7" fill="#FFE8D6" stroke="none"/></g>
+      </g>
+      <path id="smile" d="M316 668 Q360 708 404 668" fill="none" stroke="#2B1B4A" stroke-width="12" stroke-linecap="round"/>
+      <g id="grin">
+        <path d="M286 650 Q360 650 434 650 Q430 752 360 752 Q290 752 286 650 Z" fill="#2B1B4A" stroke="#2B1B4A" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M318 724 Q360 694 402 724 Q392 748 360 748 Q328 748 318 724 Z" fill="#FF4F7B"/>
+      </g>
+    </g>
+  </svg>
+  <div id="tagwrap"><div id="tag">obsessed.</div></div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  // hearts: [startX, startY, driftX, endY, scale, rotation, fill] (fixed arrays, no randomness)
+  const BIG = [[300, 470, -190, 200, 1.15, -24, 0], [420, 470, 180, 180, 1.0, 22, 0], [360, 430, -20, 120, 1.3, -6, 0],
+               [260, 520, -170, 330, 0.75, -30, 1], [460, 520, 170, 320, 0.8, 30, 0], [330, 450, -90, 160, 0.6, 16, 1],
+               [400, 450, 110, 250, 0.7, -14, 0], [240, 500, -60, 250, 0.55, 10, 0], [480, 500, 60, 140, 0.55, -20, 1]];
+  const SMALL = [[340, 450, -130, 230, 0.7, -18, 0], [380, 450, 140, 210, 0.75, 18, 0], [360, 440, 10, 170, 0.55, 0, 1],
+                 [300, 480, -200, 300, 0.5, -26, 0], [420, 480, 200, 290, 0.5, 26, 1]];
+  const g = document.getElementById("hearts");
+  const mk = d => {
+    const h = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    h.innerHTML = `<use href="#heart" fill="${d[6] ? "#2B1B4A" : "#FF4F7B"}"/>`;
+    g.appendChild(h);
+    gsap.set(h, { x: d[0], y: d[1], scale: 0, rotation: 0, autoAlpha: 0 });
+    return h;
+  };
+  const big = BIG.map(mk), small = SMALL.map(mk);
+  const BASE = "360 810";                       // face rests on its chin for squash and stretch
+  gsap.set(["#heyeL", "#heyeR"], { scale: 0 });
+  gsap.set("#heyeL", { svgOrigin: "290 560" }); gsap.set("#heyeR", { svgOrigin: "430 560" });
+  gsap.set("#dotL", { svgOrigin: "290 566" }); gsap.set("#dotR", { svgOrigin: "430 566" });
+  gsap.set("#grin", { scaleY: 0, svgOrigin: "360 652" });
+  gsap.set("#smile", { svgOrigin: "360 680" });
+  gsap.set("#face", { svgOrigin: BASE });
+
+  const L = 2.4;                                // loop length; every channel returns to rest by L
+  const tl = gsap.timeline({ paused: true });
+
+  const burst = (list, t, dur) => list.forEach((h, i) => {
+    const d = (list === big ? BIG : SMALL)[i], t0 = t + (i % 4) * 0.035;
+    tl.to(h, { autoAlpha: 1, scale: d[4], duration: 0.18, ease: "back.out(3)" }, t0)
+      .to(h, { y: d[3], duration: dur, ease: "power1.out" }, t0)                  // rise fast, ease off
+      .to(h, { x: d[0] + d[2], duration: dur, ease: "sine.out" }, t0)             // drift sideways: curved path
+      .to(h, { keyframes: [{ rotation: d[5], duration: dur * 0.5, ease: "sine.out" },
+                           { rotation: -d[5] * 0.5, duration: dur * 0.5, ease: "sine.inOut" }] }, t0)
+      .to(h, { scale: d[4] * 0.5, autoAlpha: 0, duration: dur * 0.45, ease: "power2.in" }, t0 + dur * 0.55);
+  });
+
+  // 1. HOOK: inhale (squash down, eyes squeeze shut), then POP: stretch up, heart eyes, mouth flies open
+  tl.to("#face", { scaleX: 1.1, scaleY: 0.88, duration: 0.16, ease: "power2.in" }, 0)
+    .to(["#dotL", "#dotR"], { scaleY: 0.25, duration: 0.14, ease: "power2.in" }, 0)
+    .to("#smile", { scaleX: 0.7, duration: 0.14, ease: "power2.in" }, 0)
+    .to("#face", { y: -46, scaleX: 0.9, scaleY: 1.14, duration: 0.15, ease: "power3.out" }, 0.16)
+    .to(["#dotL", "#dotR"], { scale: 0, duration: 0.06, ease: "power2.in" }, 0.16)
+    .to(["#heyeL", "#heyeR"], { scale: 1.2, duration: 0.24, ease: "back.out(3.5)" }, 0.18)
+    .to("#smile", { autoAlpha: 0, duration: 0.04, ease: "power1.out" }, 0.17)
+    .to("#grin", { scaleY: 1, duration: 0.22, ease: "back.out(3)" }, 0.17)
+  // 2. fall back, squash on the landing, wobble out (volume kept)
+    .to("#face", { y: 0, scaleX: 1, scaleY: 1, duration: 0.18, ease: "power2.in" }, 0.31)
+    .to("#face", { keyframes: [{ scaleX: 1.1, scaleY: 0.9, duration: 0.07, ease: "power2.out" },
+                               { scaleX: 0.97, scaleY: 1.04, duration: 0.14, ease: "sine.inOut" },
+                               { scaleX: 1, scaleY: 1, duration: 0.24, ease: "sine.out" }] }, 0.49)
+    .to(["#heyeL", "#heyeR"], { scale: 1, duration: 0.4, ease: "elastic.out(1, 0.4)" }, 0.5)
+  // tag gets knocked by the pop and springs back
+    .to("#tag", { keyframes: [{ scale: 1.04, y: -8, rotation: -6, duration: 0.12, ease: "power2.out" },
+                              { scale: 1, y: 0, rotation: -3, duration: 0.6, ease: "elastic.out(1.1, 0.35)" }] }, 0.2);
+  burst(big, 0.2, 1.0);
+
+  // 3. heartbeat: two pumps of the heart eyes and face, a smaller second burst
+  tl.to("#face", { keyframes: [{ scale: 1.05, duration: 0.08, ease: "power2.out" }, { scale: 1, duration: 0.14, ease: "power2.in" },
+                               { scale: 1.04, duration: 0.08, ease: "power2.out" }, { scale: 1, duration: 0.22, ease: "sine.out" }] }, 1.08)
+    .to(["#heyeL", "#heyeR"], { keyframes: [{ scale: 1.3, duration: 0.08, ease: "power2.out" }, { scale: 1, duration: 0.14, ease: "power2.in" },
+                                            { scale: 1.25, duration: 0.08, ease: "power2.out" }, { scale: 1, duration: 0.22, ease: "sine.out" }] }, 1.08)
+    .to("#tag", { keyframes: [{ y: -10, duration: 0.1, ease: "power2.out" }, { y: 0, duration: 0.4, ease: "elastic.out(1, 0.4)" }] }, 1.3);
+  burst(small, 1.12, 0.85);
+
+  // 4. wind down to the exact rest pose: heart eyes melt back to dots, grin closes to a smile, a little sway
+  tl.to(["#heyeL", "#heyeR"], { scale: 0, duration: 0.18, ease: "back.in(2)" }, 1.8)
+    .to(["#dotL", "#dotR"], { scaleX: 1, scaleY: 1, duration: 0.36, ease: "back.out(2.5)" }, 1.94)
+    .to("#grin", { scaleY: 0, duration: 0.16, ease: "power2.in" }, 1.86)
+    .to("#smile", { autoAlpha: 1, duration: 0.04, ease: "power1.out" }, 1.98)
+    .to("#smile", { scaleX: 1, duration: 0.3, ease: "back.out(2)" }, 1.98)
+    .to("#face", { rotation: -4, duration: 0.22, ease: "sine.inOut" }, 1.8)
+    .to("#face", { rotation: 2, duration: 0.2, ease: "sine.inOut" }, 2.02)
+    .to("#face", { rotation: 0, duration: 0.18, ease: "sine.inOut" }, L - 0.18);
+
+  window.TL = tl;   // seamless loop: no final hold, the last frame equals the first
+  if (location.search.includes("play")) tl.repeat(-1).play();
+});
+</script>
+</body>
+</html>

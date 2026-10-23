@@ -1,0 +1,144 @@
+{
+ "duration": 2.31,
+ "fps": 30,
+ "frames": 71,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.74,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.07,
+   "targets": [
+    "#kicker",
+    "#headline",
+    "#sub"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.35,
+   "duration": 1.46,
+   "ease": "elastic.out(1, 0.55)",
+   "props": [
+    "scale",
+    "rotation",
+    "y"
+   ],
+   "type": "from",
+   "stagger": 0.09,
+   "targets": [
+    "#row div.tile[0]",
+    "#row div.tile[1]",
+    "#row div.tile[2]",
+    "#row div.tile[3]",
+    "#row div.tile[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.35,
+   "duration": 0.51,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.09,
+   "targets": [
+    "#row div.tile[0]",
+    "#row div.tile[1]",
+    "#row div.tile[2]",
+    "#row div.tile[3]",
+    "#row div.tile[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.65,
+   "duration": 0.76,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.09,
+   "targets": [
+    "#row div.name[0]",
+    "#row div.name[1]",
+    "#row div.name[2]",
+    "#row div.name[3]",
+    "#row div.name[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.81,
+   "duration": 0.5,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#kicker",
+  "#headline",
+  "#sub",
+  "#row div.tile[0]",
+  "#row div.tile[1]",
+  "#row div.tile[2]",
+  "#row div.tile[3]",
+  "#row div.tile[4]",
+  "#row div.name[0]",
+  "#row div.name[1]",
+  "#row div.name[2]",
+  "#row div.name[3]",
+  "#row div.name[4]"
+ ],
+ "fonts": [
+  "Sora",
+  "Syne"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.58,
+  "end_visible": [
+   "#kicker",
+   "#headline",
+   "#sub",
+   "#row div.tile[0]",
+   "#row div.tile[1]",
+   "#row div.tile[2]",
+   "#row div.tile[3]",
+   "#row div.tile[4]",
+   "#row div.name[0]",
+   "#row div.name[1]",
+   "#row div.name[2]",
+   "#row div.name[3]",
+   "#row div.name[4]"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

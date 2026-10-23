@@ -1,0 +1,14 @@
+{
+  "id": "blob-grow-reveal",
+  "prompt": "an organic blob grows to fill the frame, revealing a new colour scene where an artwork pops in",
+  "tags": [
+    "transition",
+    "blob",
+    "reveal",
+    "scene-change"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

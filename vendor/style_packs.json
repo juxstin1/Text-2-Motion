@@ -1,0 +1,74 @@
+{
+  "editorial": {
+    "display_font": "Playfair Display",
+    "body_font": "Inter",
+    "type_scale": [14, 18, 24, 40, 72, 120],
+    "weights": { "display": 800, "body": 400, "label": 600 },
+    "letter_spacing": { "display": "-0.02em", "body": "0em", "label": "0.18em" },
+    "palette": { "background": "#F4EFE6", "text": "#1B1A17", "accent": "#B4442C" }
+  },
+  "tech-launch": {
+    "display_font": "Space Grotesk",
+    "body_font": "Inter",
+    "type_scale": [13, 16, 22, 36, 64, 104],
+    "weights": { "display": 700, "body": 400, "label": 500 },
+    "letter_spacing": { "display": "-0.03em", "body": "0em", "label": "0.12em" },
+    "palette": { "background": "#0B0D12", "text": "#E8ECF4", "accent": "#5B8CFF" }
+  },
+  "bold-sports": {
+    "display_font": "Bebas Neue",
+    "body_font": "Archivo Black",
+    "type_scale": [16, 22, 32, 56, 120, 200],
+    "weights": { "display": 400, "body": 400, "label": 400 },
+    "letter_spacing": { "display": "0.01em", "body": "0.02em", "label": "0.2em" },
+    "palette": { "background": "#111111", "text": "#FFFFFF", "accent": "#E8FF3A" }
+  },
+  "luxury": {
+    "display_font": "DM Serif Display",
+    "body_font": "Manrope",
+    "type_scale": [12, 15, 20, 36, 64, 112],
+    "weights": { "display": 400, "body": 300, "label": 500 },
+    "letter_spacing": { "display": "0em", "body": "0.02em", "label": "0.32em" },
+    "palette": { "background": "#0E0C0A", "text": "#EDE3D1", "accent": "#C9A45C" }
+  },
+  "playful": {
+    "display_font": "Syne",
+    "body_font": "Sora",
+    "type_scale": [14, 18, 26, 44, 80, 128],
+    "weights": { "display": 800, "body": 500, "label": 700 },
+    "letter_spacing": { "display": "-0.03em", "body": "0em", "label": "0.06em" },
+    "palette": { "background": "#FFE8D6", "text": "#2B1B4A", "accent": "#FF4F7B" }
+  },
+  "minimal-mono": {
+    "display_font": "JetBrains Mono",
+    "body_font": "JetBrains Mono",
+    "type_scale": [12, 14, 18, 28, 48, 88],
+    "weights": { "display": 700, "body": 400, "label": 500 },
+    "letter_spacing": { "display": "-0.04em", "body": "0em", "label": "0.1em" },
+    "palette": { "background": "#F2F2F0", "text": "#111111", "accent": "#FF3B00" }
+  },
+  "soft-saas": {
+    "display_font": "Sora",
+    "body_font": "Manrope",
+    "type_scale": [13, 16, 20, 32, 56, 92],
+    "weights": { "display": 700, "body": 500, "label": 600 },
+    "letter_spacing": { "display": "-0.025em", "body": "0em", "label": "0.04em" },
+    "palette": { "background": "#EEF1FB", "text": "#1A1F36", "accent": "#6C5CE7" }
+  },
+  "gallery-serif": {
+    "display_font": "Instrument Serif",
+    "body_font": "Space Grotesk",
+    "type_scale": [13, 16, 22, 40, 88, 160],
+    "weights": { "display": 400, "body": 400, "label": 500 },
+    "letter_spacing": { "display": "-0.02em", "body": "0em", "label": "0.14em" },
+    "palette": { "background": "#1C2B24", "text": "#EAF0E6", "accent": "#E7B76A" }
+  },
+  "warm-modern": {
+    "display_font": "Fraunces",
+    "body_font": "Inter",
+    "type_scale": [14, 17, 24, 40, 72, 116],
+    "weights": { "display": 600, "body": 400, "label": 600 },
+    "letter_spacing": { "display": "-0.03em", "body": "0em", "label": "0.1em" },
+    "palette": { "background": "#FBF3E4", "text": "#3A2416", "accent": "#E0662E" }
+  }
+}

@@ -1,0 +1,1 @@
+heart icon squashes on tap, fills red and pops a small ring of dots

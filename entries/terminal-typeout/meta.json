@@ -1,0 +1,14 @@
+{
+  "id": "terminal-typeout",
+  "prompt": "terminal line types out character by character with a blinking cursor",
+  "tags": [
+    "text",
+    "typewriter",
+    "mono",
+    "letters"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

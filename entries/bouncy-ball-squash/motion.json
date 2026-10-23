@@ -1,0 +1,591 @@
+{
+ "duration": 2.64,
+ "fps": 30,
+ "frames": 81,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 2,
+   "ease": "sine.out",
+   "props": [
+    "x"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ballPos"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 2,
+   "ease": "sine.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#spin"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 2,
+   "ease": "sine.out",
+   "props": [
+    "x"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.12,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ballPos"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.55,
+   "ease": "power2.in",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ballPos"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.55,
+   "ease": "power2.in",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.55,
+   "ease": "power2.in",
+   "props": [
+    "scaleX",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.55,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.55,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.55,
+   "duration": 0.42,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "x",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dustL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.55,
+   "duration": 0.42,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "x",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dustR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.6,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "x"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#eyebrow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.65,
+   "duration": 0.36,
+   "ease": "power2.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ballPos"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.65,
+   "duration": 0.08,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.65,
+   "duration": 0.36,
+   "ease": "power2.out",
+   "props": [
+    "scaleX",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.65,
+   "duration": 0.3,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.73,
+   "duration": 0.28,
+   "ease": "sine.inOut",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.95,
+   "duration": 0.08,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.01,
+   "duration": 0.36,
+   "ease": "power2.in",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ballPos"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.01,
+   "duration": 0.36,
+   "ease": "power2.in",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.01,
+   "duration": 0.36,
+   "ease": "power2.in",
+   "props": [
+    "scaleX",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.03,
+   "duration": 0.4,
+   "ease": "back.out(3)",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.37,
+   "duration": 0.06,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.37,
+   "duration": 0.06,
+   "ease": "power2.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.43,
+   "duration": 0.22,
+   "ease": "power2.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ballPos"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.43,
+   "duration": 0.08,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.43,
+   "duration": 0.22,
+   "ease": "power2.out",
+   "props": [
+    "scaleX",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.51,
+   "duration": 0.14,
+   "ease": "sine.inOut",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.62,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#caption"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.65,
+   "duration": 0.22,
+   "ease": "power2.in",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ballPos"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.65,
+   "duration": 0.22,
+   "ease": "power2.in",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.65,
+   "duration": 0.22,
+   "ease": "power2.in",
+   "props": [
+    "scaleX",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.87,
+   "duration": 0.05,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.87,
+   "duration": 0.05,
+   "ease": "power2.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.92,
+   "duration": 0.42,
+   "ease": "back.out(3)",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ball"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.92,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.34,
+   "duration": 0.3,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#ballPos",
+  "#spin",
+  "#shadow",
+  "#ball",
+  "#dustL",
+  "#dustR",
+  "#eyebrow",
+  "#title",
+  "#caption"
+ ],
+ "fonts": [
+  "Sora",
+  "Syne"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.31,
+  "end_visible": [
+   "#ballPos",
+   "#spin",
+   "#shadow",
+   "#ball",
+   "#eyebrow",
+   "#title",
+   "#caption"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

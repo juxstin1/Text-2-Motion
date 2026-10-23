@@ -1,0 +1,14 @@
+{
+  "id": "price-tag-swing",
+  "prompt": "price tag swings in on its string and settles",
+  "tags": [
+    "entrance",
+    "swing",
+    "overshoot",
+    "playful"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

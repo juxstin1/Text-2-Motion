@@ -1,0 +1,14 @@
+{
+  "id": "beat-pulse-words",
+  "prompt": "words punch in on a beat with scale and rotation, the last one locks into the headline",
+  "tags": [
+    "kinetic",
+    "rhythm",
+    "words",
+    "scale"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

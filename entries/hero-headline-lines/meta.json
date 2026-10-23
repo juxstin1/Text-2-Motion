@@ -1,0 +1,14 @@
+{
+  "id": "hero-headline-lines",
+  "prompt": "landing hero headline rises line by line, then the subhead and two buttons follow",
+  "tags": [
+    "text",
+    "hero",
+    "lines",
+    "ui"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

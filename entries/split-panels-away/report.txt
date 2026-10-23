@@ -1,0 +1,20 @@
+duration 2.40s, 73 frames @30fps, 10 tweens
+TIMING
+  #p0, #p1 ...  y  0.05-0.51s  power2.out  stagger 0.04
+  #p0, #p1 ...  y  0.38-1.25s  power4.in  stagger 0.08
+  #p0 div.pageA, #p1 div.pageA ...  y  0.38-1.25s  power2.in  stagger 0.08
+  #labelB  y,autoAlpha  0.90-1.50s  power3.out
+  #numB  y,autoAlpha  0.95-2.10s  power3.out
+  #titleB  y,skewX,autoAlpha  1.02-1.92s  power3.out
+  #ruleB  scaleX  1.25-2.00s  power3.inOut
+  #bodyB  y,autoAlpha  1.32-2.12s  power3.out
+  #folioB  y,autoAlpha  1.60-2.20s  power2.out
+  (hold)  2.20-2.40s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 1 note
+  note #numB / #p3 div.title  0.97-1.00s  peak 24%  (onto static text)
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 6 visible (#labelB, #numB, #titleB, #ruleB ...); final hold 0.37s; no overlaps

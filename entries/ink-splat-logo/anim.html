@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: editorial -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F4EFE6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F4EFE6; color: #1B1A17; }
+  #ink { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  /* the mask's left edge sits just right of the mark, so letters appear to spring out from behind it */
+  #mask { position: absolute; left: 474px; top: 300px; width: 760px; height: 104px; overflow: hidden; }
+  #word { position: absolute; left: 8px; top: 0; margin: 0; font-family: "Playfair Display"; font-weight: 800; font-size: 72px;
+          line-height: 1.35; letter-spacing: -0.02em; white-space: nowrap; }
+  #word .amp { color: #B4442C; }
+  #label { position: absolute; left: 484px; top: 414px; font-family: "Inter"; font-weight: 600; font-size: 14px;
+           letter-spacing: 0.18em; text-transform: uppercase; color: rgba(27,26,23,0.6); }
+  #folio { position: absolute; left: 96px; top: 616px; font-family: "Inter"; font-weight: 600; font-size: 14px;
+           letter-spacing: 0.18em; text-transform: uppercase; color: #B4442C; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="folio">No. 13 &mdash; The ink issue</div>
+  <svg id="ink" viewBox="0 0 1280 720">
+    <circle id="seal" cx="330" cy="360" r="118" fill="none" stroke="#1B1A17" stroke-width="1.5"/>
+    <g id="drops" fill="#1B1A17"></g>
+    <g id="mark">
+      <circle cx="330" cy="360" r="100" fill="#1B1A17"/>
+      <text id="mono" x="330" y="399" text-anchor="middle" font-family="Playfair Display" font-weight="800" font-size="112"
+            fill="#F4EFE6">M</text>
+    </g>
+    <g transform="translate(330 360)">
+      <path id="drop" d="M0 -74 C10 -44 34 -22 34 4 A34 34 0 0 1 -34 4 C-34 -22 -10 -44 0 -74 Z" fill="#1B1A17"/>
+    </g>
+  </svg>
+  <div id="mask"><h1 id="word">Marlow <span class="amp">&amp;</span> Finch</h1></div>
+  <div id="label">Independent publishers &middot; est. 1926</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin, SplitText);
+document.fonts.ready.then(() => {
+  const NS = "http://www.w3.org/2000/svg", CX = 330, CY = 360;
+  // fixed splatter: [dx, dy, radius, stays as a speck?]; nothing travels right far enough to reach the wordmark
+  const SPLAT = [
+    [-150, -62, 9, 1], [-122, 44, 6, 0], [-176, 8, 5, 1], [-88, -132, 7, 0], [-26, -150, 5, 1], [44, -140, 8, 0],
+    [96, -112, 5, 0], [-132, 112, 7, 1], [-40, 142, 6, 0], [62, 136, 5, 1], [104, 92, 4, 0], [-204, -24, 4, 0],
+  ];
+  const drops = SPLAT.map(([, , r]) => {
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("r", r);
+    c.setAttribute("class", "speck");
+    document.getElementById("drops").appendChild(c);
+    return c;
+  });
+  const chars = new SplitText("#word", { type: "chars" }).chars;
+
+  const tl = gsap.timeline({ paused: true });
+  gsap.set(drops, { x: CX, y: CY, scale: 0, transformOrigin: "50% 50%" });
+  gsap.set("#mark", { autoAlpha: 0 });
+
+  tl.from("#folio", { autoAlpha: 0, x: -20, duration: 0.45, ease: "power3.out" }, 0);
+
+  // ANTICIPATION: a drip swells at the top of frame and stretches before it lets go
+  tl.fromTo("#drop", { y: -250, scale: 0, transformOrigin: "50% 0%" },
+                     { scale: 1, duration: 0.28, ease: "back.out(2)" }, 0.05)
+    .to("#drop", { scaleY: 1.22, scaleX: 0.86, duration: 0.2, ease: "power2.in" }, 0.36)
+    // FALL: accelerate, stretched along the fall
+    .to("#drop", { y: -14, duration: 0.36, ease: "power2.in" }, 0.56)
+    .to("#drop", { scaleY: 1.45, scaleX: 0.7, transformOrigin: "50% 100%", duration: 0.3, ease: "power2.in" }, 0.6)
+    // IMPACT: pancakes flat for a frame, then the mark takes over from the flattened shape
+    .to("#drop", { scaleY: 0.3, scaleX: 2.0, duration: 0.05, ease: "power2.out" }, 0.92)
+    .set("#drop", { autoAlpha: 0 }, 0.97)
+    .fromTo("#mark", { autoAlpha: 1, scaleX: 1.7, scaleY: 0.4, transformOrigin: "50% 50%" },
+                     { scaleX: 0.86, scaleY: 1.14, duration: 0.14, ease: "power2.out", immediateRender: false }, 0.97)
+    .to("#mark", { scaleX: 1.06, scaleY: 0.94, duration: 0.14, ease: "sine.inOut" }, 1.11)
+    .to("#mark", { scaleX: 0.98, scaleY: 1.02, duration: 0.14, ease: "sine.inOut" }, 1.25)
+    .to("#mark", { scaleX: 1, scaleY: 1, duration: 0.22, ease: "sine.out" }, 1.39);
+
+  // SPLATTER: x flies out fast, y rises then drops under gravity, so each speck travels an arc
+  SPLAT.forEach(([dx, dy, , stays], i) => {
+    const el = drops[i], t0 = 0.93 + (i % 3) * 0.015;
+    tl.to(el, { scale: 1, duration: 0.1, ease: "power2.out" }, t0)
+      .to(el, { x: CX + dx, duration: 0.55, ease: "expo.out" }, t0)
+      .to(el, { y: CY + dy - 22, duration: 0.24, ease: "power2.out" }, t0)
+      .to(el, { y: CY + dy, duration: 0.34, ease: "power2.in" }, t0 + 0.24)
+      .to(el, stays ? { scale: 0.6, duration: 0.3, ease: "power2.out" }
+                    : { scale: 0, duration: 0.3, ease: "power2.in" }, t0 + 0.5 + (i % 4) * 0.05);
+  });
+
+  // monogram knocks in once the blot has spread
+  tl.from("#mono", { scale: 0, rotation: -25, transformOrigin: "50% 50%", duration: 0.42, ease: "back.out(2.6)" }, 1.12);
+
+  // WORDMARK springs out from behind the mark
+  // the word slides out and overshoots; letters lag behind it with a little vertical hop (overlapping action)
+  tl.fromTo("#word", { x: -640 }, { x: 0, duration: 0.6, ease: "back.out(1.5)" }, 1.16)
+    .from(chars, { y: 26, duration: 0.42, ease: "back.out(3)", stagger: 0.025 }, 1.26)
+    .from("#label", { autoAlpha: 0, y: 14, duration: 0.45, ease: "power3.out" }, 1.7);
+
+  // late detail: a hairline seal draws round the mark, and the mark gives a last small bob
+  tl.fromTo("#seal", { drawSVG: "50% 50%" }, { drawSVG: "0% 100%", duration: 0.7, ease: "power3.inOut" }, 1.62)
+    .to("#mark", { scale: 1.04, duration: 0.14, ease: "power2.out" }, 2.2)
+    .to("#mark", { scale: 1, duration: 0.3, ease: "back.out(3)" }, 2.34)
+    .to({}, { duration: 0.24 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+duration 3.47s, 106 frames @30fps, 40 tweens
+TIMING
+  #panel  y,scale,autoAlpha  0.00-0.70s  back.out(1.5)
+  #title  x,autoAlpha  0.15-0.65s  power3.out
+  #slotA, #slotB  scale,rotation  0.25-0.95s  back.out(2.6)  stagger 0.1
+  #nameA, #nameB ...  y,autoAlpha  0.38-1.03s  power3.out  stagger 0.05
+  #row0  rotationX,autoAlpha,y  0.62-1.17s  back.out(1.6)
+  #row1  rotationX,autoAlpha,y  0.82-1.37s  back.out(1.6)
+  #row0 div.mark  scale,rotation  0.86-1.36s  back.out(3)
+  #row0 path.tick  drawSVG  0.94-1.24s  power2.out
+  #row0 div.mark  scale,rotation  0.94-1.44s  back.out(3)
+  {object} x1  v  0.96-1.11s  power2.out
+  (+30 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 6 note (5 data-layer=back excluded)
+  note #title / #winPill  2.10-2.13s  peak 67%
+  note #slotA / #nameA  2.17-2.20s  peak 11%
+  (+4 more)
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 41 visible (#panel, #title, #slotA, #slotB ...); final hold 0.34s; no overlaps

@@ -1,0 +1,14 @@
+{
+  "id": "exhibition-title-lines",
+  "prompt": "exhibition title reveals line by line from masks, subtitle follows",
+  "tags": [
+    "text",
+    "lines",
+    "mask",
+    "serif"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

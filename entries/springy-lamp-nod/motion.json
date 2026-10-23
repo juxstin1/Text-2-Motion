@@ -1,0 +1,549 @@
+{
+ "duration": 3.57,
+ "fps": 30,
+ "frames": 109,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#desk"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.08,
+   "duration": 0.77,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": 0.04,
+   "targets": [
+    "#base",
+    "#lower line.ln[0]",
+    "#lower line.ln[1]",
+    "#upper line.ln[0]",
+    "#upper line.ln[1]",
+    "#head path.ln",
+    "#head circle.ln",
+    "#upper circle.ln",
+    "#lower circle.ln"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "x"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#label"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.2,
+   "duration": 0.53,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "#w1",
+    "#off"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.7,
+   "duration": 0.24,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#lower"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.7,
+   "duration": 0.24,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#upper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.72,
+   "duration": 0.24,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#head"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.94,
+   "duration": 0.6,
+   "ease": "back.out(2)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#upper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1,
+   "duration": 1,
+   "ease": "elastic.out(1, 0.42)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#lower"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.24,
+   "duration": 0.5,
+   "ease": "back.out(2.6)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#head"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.72,
+   "duration": 0.15,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#head"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.77,
+   "duration": 0.15,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#upper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.87,
+   "duration": 0.17,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#head"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.92,
+   "duration": 0.17,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#upper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.06,
+   "duration": 0.15,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#head"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.11,
+   "duration": 0.15,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#upper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.21,
+   "duration": 0.17,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#head"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.26,
+   "duration": 0.17,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#upper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.38,
+   "duration": 0.2,
+   "ease": "power2.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#head"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.42,
+   "duration": 0.24,
+   "ease": "power2.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#upper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.64,
+   "duration": 0.12,
+   "ease": "power3.in",
+   "props": [
+    "y",
+    "rotation",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#off"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.66,
+   "duration": 0.24,
+   "ease": "back.out(3)",
+   "props": [
+    "autoAlpha",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#bulb"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.66,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#head"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.68,
+   "duration": 0.04,
+   "ease": "power4.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#beam"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.68,
+   "duration": 0.4,
+   "ease": "expo.out",
+   "props": [
+    "autoAlpha",
+    "scaleX"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#pool"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.68,
+   "duration": 0.1,
+   "ease": "power2.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#lower"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.72,
+   "duration": 0.05,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#beam"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.73,
+   "duration": 0.42,
+   "ease": "back.out(2.5)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#head"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.77,
+   "duration": 0.08,
+   "ease": "power4.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#beam"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.77,
+   "duration": 0.36,
+   "ease": "back.out(2.5)",
+   "props": [
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#on"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.78,
+   "duration": 0.4,
+   "ease": "back.out(2)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#lower"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.92,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "x"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#caption"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.32,
+   "duration": 0.25,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#desk",
+  "#base",
+  "#lower line.ln[0]",
+  "#lower line.ln[1]",
+  "#upper line.ln[0]",
+  "#upper line.ln[1]",
+  "#head path.ln",
+  "#head circle.ln",
+  "#upper circle.ln",
+  "#lower circle.ln",
+  "#label",
+  "#w1",
+  "#off",
+  "#lower",
+  "#upper",
+  "#head",
+  "#bulb",
+  "#beam",
+  "#pool",
+  "#on",
+  "#caption"
+ ],
+ "fonts": [
+  "\"JetBrains Mono\""
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.24,
+  "end_visible": [
+   "#base",
+   "#lower line.ln[0]",
+   "#lower line.ln[1]",
+   "#upper line.ln[0]",
+   "#upper line.ln[1]",
+   "#head path.ln",
+   "#head circle.ln",
+   "#upper circle.ln",
+   "#lower circle.ln",
+   "#label",
+   "#w1",
+   "#lower",
+   "#upper",
+   "#head",
+   "#bulb",
+   "#beam",
+   "#pool",
+   "#on",
+   "#caption"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

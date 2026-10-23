@@ -1,0 +1,18 @@
+duration 2.39s, 73 frames @30fps, 9 tweens
+TIMING
+  #label  y,autoAlpha  0.00-0.50s  power2.out
+  #headline div x4  yPercent,autoAlpha  0.08-0.93s  power3.out  stagger 0.05
+  #btn  scale  0.60-1.70s  elastic.out(1, 0.45)
+  #btn  autoAlpha  0.60-0.75s  power1.out
+  #btnText  autoAlpha  0.72-1.02s  power2.out
+  #arrow  x,scale,autoAlpha  1.17-1.67s  power3.out
+  #arrow svg  x,autoAlpha  1.29-1.74s  power3.out
+  #note  y,autoAlpha  1.39-1.89s  power2.out
+  (hold)  1.89-2.39s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 10 visible (#label, #headline div x4, #btn, #btnText ...); final hold 0.69s; no overlaps

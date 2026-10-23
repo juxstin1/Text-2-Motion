@@ -1,0 +1,14 @@
+{
+  "id": "zoom-through-word",
+  "prompt": "camera zooms through a giant word into the next word, which settles",
+  "tags": [
+    "kinetic",
+    "zoom",
+    "words",
+    "camera"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

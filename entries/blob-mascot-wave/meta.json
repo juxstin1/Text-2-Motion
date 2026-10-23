@@ -1,0 +1,14 @@
+{
+  "id": "blob-mascot-wave",
+  "prompt": "round mascot built from circles pops up, blinks and waves with an overlapping arm swing",
+  "tags": [
+    "character",
+    "mascot",
+    "follow-through",
+    "blink"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

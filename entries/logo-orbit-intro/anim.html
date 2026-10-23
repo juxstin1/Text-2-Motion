@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: tech-launch -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0B0D12; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0B0D12;
+           font-family: 'Inter', sans-serif; color: #E8ECF4; }
+  #bg { position: absolute; inset: 0; background:
+        radial-gradient(640px 400px at 50% 56%, rgba(91,140,255,0.16), rgba(91,140,255,0) 70%), #0B0D12; }
+  /* orbit ring and core, centred on the orbit */
+  #ring { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; overflow: visible; }
+  #core { position: absolute; left: 600px; top: 360px; width: 80px; height: 80px; border-radius: 50%;
+          background: #5B8CFF; box-shadow: 0 0 60px rgba(91,140,255,0.8); }
+  #shock { position: absolute; left: 560px; top: 320px; width: 160px; height: 160px; border-radius: 50%;
+           border: 3px solid #5B8CFF; visibility: hidden; }
+
+  /* final layout: title plate with the lineup underneath; flex keeps it centred for any name length */
+  #layout { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 44px; padding-top: 30px; }
+  #head { padding: 16px 30px 18px; border-radius: 18px; background: rgba(11,13,18,0.86);
+          border: 1px solid rgba(232,236,244,0.12); text-align: center; }
+  #kicker { font-weight: 500; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #5B8CFF; }
+  #title { margin-top: 6px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 60px;
+           letter-spacing: -0.03em; line-height: 1.05; }
+  #lineup { display: flex; gap: 34px; align-items: flex-start; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 128px; }
+  .chip { position: relative; width: 128px; height: 128px; border-radius: 50%; background: rgba(11,13,18,0.9);
+          border: 2px solid var(--brand); box-shadow: 0 0 28px color-mix(in srgb, var(--brand) 45%, transparent), 0 10px 30px rgba(0,0,0,0.5);
+          display: flex; align-items: center; justify-content: center; }
+  .slot { width: 68px; height: 68px; }
+  .slot svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .name { position: relative; padding: 6px 14px 8px; border-radius: 10px; background: rgba(11,13,18,0.88);
+          font-family: 'Space Grotesk'; font-weight: 700; font-size: 22px; letter-spacing: -0.01em; white-space: nowrap; }
+  .name i { position: absolute; left: 14px; right: 14px; bottom: 3px; height: 3px; border-radius: 2px; background: var(--brand); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <svg id="ring" viewBox="0 0 1280 720"><ellipse id="orbitPath" data-layer="back" cx="640" cy="400" rx="360" ry="100"
+       fill="none" stroke="#5B8CFF" stroke-opacity="0.55" stroke-width="2"/></svg>
+  <div id="shock" data-layer="back"></div>
+  <div id="core" data-layer="back"></div>
+  <div id="layout">
+    <div id="head"><div id="kicker"></div><div id="title"></div></div>
+    <div id="lineup"><!-- one .item (chip + logo slot + name) per DATA.brands entry --></div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+const DATA = {
+  kicker: "The contenders",
+  title: "Five models. One benchmark.",
+  brands: [
+    { name: "Nova",  color: "#4D6BFE",
+      logo: '<circle cx="50" cy="50" r="46" fill="currentColor"/><circle cx="50" cy="50" r="22" fill="none" stroke="#fff" stroke-width="9"/><circle cx="72" cy="28" r="7" fill="#fff"/>' },
+    { name: "Apex",  color: "#10A37F",
+      logo: '<path d="M50 6 L95 90 H5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="M50 44 L68 78 H32 Z" fill="#0B0D12"/>' },
+    { name: "Orbit", color: "#F2A93B",
+      logo: '<circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="10"/><circle cx="50" cy="50" r="13" fill="currentColor"/><circle cx="82" cy="22" r="11" fill="currentColor"/>' },
+    { name: "Quill", color: "#E5484D",
+      logo: '<path d="M86 8 C46 12 14 44 14 92 C58 88 88 56 86 8 Z" fill="currentColor"/><path d="M22 84 L68 32" stroke="#fff" stroke-width="6" stroke-linecap="round"/>' },
+    { name: "Kite",  color: "#9B7BFF",
+      logo: '<path d="M50 4 L88 44 L50 96 L12 44 Z" fill="currentColor"/><path d="M50 4 V96 M12 44 H88" stroke="#fff" stroke-width="5" stroke-opacity="0.85"/>' },
+  ],
+};
+
+gsap.registerPlugin(SplitText, DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  // ---------- fill the DOM from DATA
+  const $ = id => document.getElementById(id);
+  $("kicker").textContent = DATA.kicker;
+  $("title").textContent = DATA.title;
+  const items = DATA.brands.map((b, i) => {
+    const it = document.createElement("div");
+    it.className = "item"; it.id = "item" + i;
+    it.style.setProperty("--brand", b.color);
+    it.innerHTML = `<div class="chip"><div class="slot" id="slot${i}"><svg id="logo${i}" viewBox="0 0 100 100" style="color:${b.color}">${b.logo}</svg></div></div>
+                    <div class="name"><span></span><i></i></div>`;
+    it.querySelector(".name span").textContent = b.name;
+    $("lineup").appendChild(it);
+    return it;
+  });
+
+  // ---------- orbit geometry (fixed angles, 360/n apart) relative to each chip's home in the lineup
+  const CX = 640, CY = 400, RX = 360, RY = 100;
+  const st = $("stage").getBoundingClientRect();
+  const home = items.map(it => {
+    const r = it.querySelector(".chip").getBoundingClientRect();
+    return { x: r.left - st.left + r.width / 2, y: r.top - st.top + r.height / 2 };
+  });
+  gsap.set(items, { transformOrigin: "50% 64px" });  // scale around the chip centre
+  // fixed orbit angles, assigned so that at release the left-to-right order already matches the lineup (no crossing)
+  const n = items.length, A_END = 150;
+  const rel = items.map((_, k) => 90 + (n % 2 ? 0 : 90 / n) + k * 360 / n)
+                   .sort((p, q) => Math.cos(p * Math.PI / 180) - Math.cos(q * Math.PI / 180));
+  const BASE = rel.map(r => r - A_END);
+  const orbitAt = (i, a, k) => {
+    const rad = (BASE[i] + a) * Math.PI / 180, s = Math.sin(rad), depth = (s + 1) / 2;
+    return { x: CX + Math.cos(rad) * RX * k - home[i].x, y: CY + s * RY * k - home[i].y,
+             scale: 0.62 + 0.34 * depth, zIndex: 10 + Math.round(depth * 10) };
+  };
+  const orb = { a: -60, k: 0.55 };  // a: orbit turn (deg), k: radius factor
+  const place = () => items.forEach((it, i) => gsap.set(it, orbitAt(i, orb.a, orb.k)));
+  place();
+  gsap.set(".name", { autoAlpha: 0, y: 12 });
+  gsap.set(".name i", { scaleX: 0 });
+
+  const split = new SplitText("#title", { type: "words,chars" });
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. core pops, the orbit ring draws, logos pop onto the orbit while it spins up
+  const T_REL = 1.45, K_END = 1.12;
+  tl.from("#core", { scale: 0, duration: 0.5, ease: "back.out(3)" }, 0)
+    .from("#orbitPath", { drawSVG: "50% 50%", duration: 0.8, ease: "expo.out" }, 0.05)
+    .from(".chip", { scale: 0, rotation: -120, duration: 0.55, ease: "back.out(2.2)", stagger: 0.07 }, 0.08)
+    .to(orb, { a: A_END, duration: T_REL, ease: "power2.in", onUpdate: place }, 0)
+    .to(orb, { k: 1, duration: 0.7, ease: "back.out(1.8)", onUpdate: place }, 0.05)
+  // 2. anticipation: the orbit swells and the core winds down to a hard point
+    .to(orb, { k: K_END, duration: 0.4, ease: "power2.out", onUpdate: place }, T_REL - 0.4)
+    .to("#core", { scale: 0.55, duration: 0.4, ease: "power2.in" }, T_REL - 0.4)
+  // 3. release: shockwave from the core, the core snaps out, logos fling into the lineup
+    .fromTo("#shock", { scale: 0.3, autoAlpha: 1 }, { scale: 3.2, autoAlpha: 0, duration: 0.7, ease: "expo.out", immediateRender: false }, T_REL)
+    .to("#core", { scale: 0, duration: 0.25, ease: "power3.in" }, T_REL)
+    .to("#orbitPath", { scale: 1.6, autoAlpha: 0, svgOrigin: "640 400", duration: 0.5, ease: "power3.out" }, T_REL);
+  items.forEach((it, i) => {
+    const from = orbitAt(i, A_END, K_END);
+    tl.fromTo(it, { x: from.x, y: from.y, scale: from.scale },
+                  { x: 0, y: 0, scale: 1, duration: 0.75, ease: "back.out(1.5)", immediateRender: false }, T_REL + i * 0.05)
+      .to("#slot" + i, { rotation: 360, duration: 0.8, ease: "power3.out" }, T_REL + i * 0.05);
+  });
+
+  // 4. title lands above as the logos settle; names and brand underlines pop in under each logo
+  tl.from("#head", { y: -24, scale: 0.9, autoAlpha: 0, duration: 0.55, ease: "back.out(2)" }, T_REL + 0.15)
+    .from("#kicker", { y: 10, autoAlpha: 0, duration: 0.4, ease: "power3.out" }, T_REL + 0.25)
+    .from(split.chars, { y: 30, autoAlpha: 0, duration: 0.45, ease: "back.out(2.2)", stagger: 0.012 }, T_REL + 0.25)
+    .to(".name", { y: 0, autoAlpha: 1, duration: 0.45, ease: "back.out(2.4)", stagger: 0.06 }, T_REL + 0.5)
+    .to(".name i", { scaleX: 1, duration: 0.45, ease: "power3.out", stagger: 0.06 }, T_REL + 0.65)
+  // 5. a light ripple runs across the chips so the row stays alive into the hold
+    .to(".chip", { keyframes: [{ scale: 1.1, duration: 0.16, ease: "power2.out" }, { scale: 1, duration: 0.4, ease: "elastic.out(1, 0.45)" }],
+                   stagger: 0.07 }, T_REL + 1.0)
+    .to({}, { duration: 0.3 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

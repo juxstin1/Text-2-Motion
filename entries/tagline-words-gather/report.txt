@@ -1,0 +1,16 @@
+duration 3.45s, 105 frames @30fps, 7 tweens
+TIMING
+  #brand  y,autoAlpha  0.00-0.90s  power2.out
+  #mark  scale,autoAlpha  0.15-0.95s  power3.out
+  #tagline div x6  x,autoAlpha  0.30-2.95s  power2.out  stagger 0.07
+  #rl, #rr  scaleX  1.50-2.50s  power3.inOut
+  #collection  autoAlpha,y  1.70-2.60s  power2.out
+  #foot  autoAlpha  2.10-2.90s  power2.out
+  (hold)  2.95-3.45s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 12 visible (#brand, #mark, #tagline div x6, #rl ...); final hold 0.58s; no overlaps

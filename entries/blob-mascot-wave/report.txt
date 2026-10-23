@@ -1,0 +1,20 @@
+duration 3.82s, 116 frames @30fps, 58 tweens
+TIMING
+  #ground  drawSVG  0.00-0.60s  expo.out
+  #shadow  scaleX,autoAlpha  0.08-0.38s  power2.out
+  #pip  scaleX,scaleY  0.12-0.32s  power2.out
+  #pip  y  0.34-0.68s  power2.out
+  #pip  scaleX,scaleY  0.34-0.43s  power2.out
+  #shadow  scaleX,autoAlpha  0.34-0.68s  power2.out
+  #tuft  rotation  0.36-0.50s  power2.out
+  #armL  rotation  0.39-0.57s  power2.out
+  #armR  rotation  0.39-0.57s  power2.out
+  #pip  scaleX,scaleY  0.43-0.68s  sine.out
+  (+48 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 12 visible (#shadow, #pip, #tuft, #armL ...); final hold 0.29s; no overlaps

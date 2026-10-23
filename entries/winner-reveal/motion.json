@@ -1,0 +1,424 @@
+{
+ "duration": 3.86,
+ "fps": 30,
+ "frames": 117,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.55,
+   "ease": "back.out(2.6)",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.08,
+   "duration": 0.65,
+   "ease": "back.out(2.2)",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.1,
+   "targets": [
+    "#cardA",
+    "#cardB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.25,
+   "duration": 0.6,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": 0.1,
+   "targets": [
+    "#slotA",
+    "#slotB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.62,
+   "duration": 0.61,
+   "ease": "power1.inOut",
+   "props": [
+    "rotation",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.66,
+   "duration": 0.61,
+   "ease": "power1.inOut",
+   "props": [
+    "rotation",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.7,
+   "duration": 0.3,
+   "ease": "power2.inOut",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1,
+   "duration": 0.3,
+   "ease": "power2.inOut",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.3,
+   "duration": 0.14,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.44,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.5,
+   "duration": 0.16,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.54,
+   "duration": 0.26,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.64,
+   "duration": 0.42,
+   "ease": "power3.inOut",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.96,
+   "duration": 0.1,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.02,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "rotation",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#rays"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.04,
+   "duration": 0.9,
+   "ease": "power3.out",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#confetti"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.06,
+   "duration": 0.5,
+   "ease": "elastic.out(1, 0.5)",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.06,
+   "duration": 0.22,
+   "ease": "power2.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shake"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.2,
+   "duration": 0.45,
+   "ease": "back.out(3.5)",
+   "props": [
+    "scale",
+    "rotation",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ribbonB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.56,
+   "duration": 0.4,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#confetti"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.56,
+   "duration": 1,
+   "ease": "power1.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#rays"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.61,
+   "duration": 0.35,
+   "ease": "power2.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.76,
+   "duration": 0.28,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ribbonB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.96,
+   "duration": 0.4,
+   "ease": "power2.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#contB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.04,
+   "duration": 0.35,
+   "ease": "back.out(2)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ribbonB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.56,
+   "duration": 0.3,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#title",
+  "#cardA",
+  "#cardB",
+  "#slotA",
+  "#slotB",
+  "#contA",
+  "#contB",
+  "#rays",
+  "#confetti",
+  "#shake",
+  "#ribbonB",
+  "#nameA",
+  "#chipA",
+  "#ribbonA",
+  "#nameB",
+  "#chipB"
+ ],
+ "fonts": [
+  "Syne",
+  "Sora"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.33,
+  "end_visible": [
+   "#title",
+   "#cardB",
+   "#slotB",
+   "#contB",
+   "#rays",
+   "#shake",
+   "#ribbonB",
+   "#nameB",
+   "#chipB"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

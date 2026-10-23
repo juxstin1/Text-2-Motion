@@ -1,0 +1,20 @@
+duration 3.10s, 94 frames @30fps, 18 tweens
+TIMING
+  #disc  scale  0.05-0.29s  power3.out
+  #slotA  scale,rotation  0.12-0.72s  back.out(2.2)
+  #disc  scaleX,scaleY  0.29-0.37s  power2.inOut
+  #disc  scaleX,scaleY  0.37-0.82s  elastic.out(1.1, 0.4)
+  #casing  drawSVG  0.45-1.00s  power3.inOut
+  #line  drawSVG  0.48-1.03s  power3.inOut
+  #ring1  scale,autoAlpha  0.50-1.20s  power2.out
+  #ring2  scale,autoAlpha  0.62-1.32s  power2.out
+  #dot  scale  0.98-1.38s  back.out(4)
+  #card  scaleX  1.00-1.50s  back.out(1.4)
+  (+8 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean (2 data-layer=back excluded)
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 10 visible (#disc, #slotA, #casing, #line ...); final hold 0.37s; no overlaps

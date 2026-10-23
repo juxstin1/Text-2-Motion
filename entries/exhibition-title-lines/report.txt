@@ -1,0 +1,17 @@
+duration 2.80s, 85 frames @30fps, 8 tweens
+TIMING
+  #venue, #num  y,autoAlpha  0.00-0.80s  power2.out
+  #art  autoAlpha,scale  0.10-1.50s  power2.out
+  #title div x3  yPercent  0.20-1.82s  expo.out  stagger 0.16
+  #sun  y  0.35-2.35s  power3.out
+  #rule  scaleX  1.05-1.95s  power3.inOut
+  #sub  y,autoAlpha  1.45-2.35s  power3.out
+  #dates  y,autoAlpha  1.60-2.50s  power3.out
+  (hold)  2.50-2.80s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 10 visible (#venue, #num, #art, #title div x3 ...); final hold 0.67s; no overlaps

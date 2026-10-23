@@ -1,0 +1,933 @@
+{
+ "duration": 2.48,
+ "fps": 30,
+ "frames": 76,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.05,
+   "duration": 0.5,
+   "ease": "back.out(2.2)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#heartRig"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.05,
+   "duration": 0.5,
+   "ease": "back.out(2.2)",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.2,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#likes"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.55,
+   "duration": 0.26,
+   "ease": "power2.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#tap"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.14,
+   "ease": "power2.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#heartRig"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.14,
+   "ease": "power2.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.14,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tap"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.86,
+   "duration": 0.14,
+   "ease": "power2.out",
+   "props": [
+    "fill"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#heart"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.96,
+   "duration": 0.12,
+   "ease": "power3.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#heartRig"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.96,
+   "duration": 0.12,
+   "ease": "power3.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.96,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tap"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.96,
+   "duration": 0.5,
+   "ease": "power2.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.98,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.98,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.98,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.98,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.98,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.98,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[5]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.98,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[6]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.98,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.6,
+   "ease": "power1.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#heartRig"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[8]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[9]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[10]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[11]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[12]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[13]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[14]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[15]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.06,
+   "duration": 0.2,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#shine"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.06,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#plus"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.08,
+   "duration": 0.55,
+   "ease": "back.out(3)",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#heartRig"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.08,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.08,
+   "duration": 0.45,
+   "ease": "back.out(2)",
+   "props": [
+    "yPercent"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#roll"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.26,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.26,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.26,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.26,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.26,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.26,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[5]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.26,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[6]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.26,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.26,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#who"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[8]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[9]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[10]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[11]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[12]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[13]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[14]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.42,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#dots circle.dot[15]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.44,
+   "duration": 0.35,
+   "ease": "power2.in",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#plus"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.82,
+   "duration": 0.12,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#heartRig"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.94,
+   "duration": 0.32,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#heartRig"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.26,
+   "duration": 0.22,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#title",
+  "#heartRig",
+  "#shadow",
+  "#likes",
+  "#tap",
+  "#heart",
+  "#ring",
+  "#dots circle.dot[0]",
+  "#dots circle.dot[1]",
+  "#dots circle.dot[2]",
+  "#dots circle.dot[3]",
+  "#dots circle.dot[4]",
+  "#dots circle.dot[5]",
+  "#dots circle.dot[6]",
+  "#dots circle.dot[7]",
+  "#dots circle.dot[8]",
+  "#dots circle.dot[9]",
+  "#dots circle.dot[10]",
+  "#dots circle.dot[11]",
+  "#dots circle.dot[12]",
+  "#dots circle.dot[13]",
+  "#dots circle.dot[14]",
+  "#dots circle.dot[15]",
+  "#shine",
+  "#plus",
+  "#roll",
+  "#who",
+  "#likes span[0]",
+  "#roll span[0]",
+  "#roll span[1]",
+  "#likes span[1]"
+ ],
+ "fonts": [
+  "Syne, sans-serif",
+  "Syne",
+  "Sora, sans-serif"
+ ],
+ "flagged": false,
+ "notes": 1,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#ring",
+    "b": "#plus",
+    "ranges": [
+     [
+      1.1666666666666667,
+      1.2666666666666666
+     ]
+    ],
+    "peak": 0.48,
+    "peak_frame": 38,
+    "ia": 6,
+    "ib": 24,
+    "defect": false,
+    "static": false
+   }
+  ],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.21,
+  "end_visible": [
+   "#title",
+   "#heartRig",
+   "#shadow",
+   "#likes",
+   "#heart",
+   "#shine",
+   "#roll",
+   "#who",
+   "#likes span[0]",
+   "#roll span[1]",
+   "#likes span[1]"
+  ],
+  "end_overlaps": [],
+  "n_notes": 1
+ }
+}

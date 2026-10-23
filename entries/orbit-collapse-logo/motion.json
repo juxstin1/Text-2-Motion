@@ -1,0 +1,296 @@
+{
+ "duration": 2.95,
+ "fps": 30,
+ "frames": 90,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.8,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": 0.05,
+   "targets": [
+    "#orbit circle.dot[0]",
+    "#orbit circle.dot[1]",
+    "#orbit circle.dot[2]",
+    "#orbit circle.dot[3]",
+    "#orbit circle.dot[4]",
+    "#orbit circle.dot[5]",
+    "#orbit circle.dot[6]",
+    "#orbit circle.dot[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 1.75,
+   "ease": "power2.in",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#orbit"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.75,
+   "duration": 0.35,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#orbit circle.dot[0]",
+    "#orbit circle.dot[1]",
+    "#orbit circle.dot[2]",
+    "#orbit circle.dot[3]",
+    "#orbit circle.dot[4]",
+    "#orbit circle.dot[5]",
+    "#orbit circle.dot[6]",
+    "#orbit circle.dot[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.1,
+   "duration": 0.4,
+   "ease": "power4.in",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#orbit circle.dot[0]",
+    "#orbit circle.dot[1]",
+    "#orbit circle.dot[2]",
+    "#orbit circle.dot[3]",
+    "#orbit circle.dot[4]",
+    "#orbit circle.dot[5]",
+    "#orbit circle.dot[6]",
+    "#orbit circle.dot[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.5,
+   "duration": 0.8,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#shock"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.5,
+   "duration": 1.14,
+   "ease": "elastic.out(1, 0.45)",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": 0.02,
+   "targets": [
+    "#orbit circle.dot[0]",
+    "#orbit circle.dot[1]",
+    "#orbit circle.dot[2]",
+    "#orbit circle.dot[3]",
+    "#orbit circle.dot[4]",
+    "#orbit circle.dot[5]",
+    "#orbit circle.dot[6]",
+    "#orbit circle.dot[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.52,
+   "duration": 0.7,
+   "ease": "expo.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.56,
+   "duration": 0.6,
+   "ease": "back.out(2.4)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#glyph"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.75,
+   "duration": 1,
+   "ease": "power3.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#orbit"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.85,
+   "duration": 0.8,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#wordmark"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.05,
+   "duration": 0.6,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#tagline"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.75,
+   "duration": 0.2,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#orbit circle.dot[0]",
+  "#orbit circle.dot[1]",
+  "#orbit circle.dot[2]",
+  "#orbit circle.dot[3]",
+  "#orbit circle.dot[4]",
+  "#orbit circle.dot[5]",
+  "#orbit circle.dot[6]",
+  "#orbit circle.dot[7]",
+  "#orbit",
+  "#shock",
+  "#ring",
+  "#glyph",
+  "#wordmark",
+  "#tagline"
+ ],
+ "fonts": [
+  "\"Instrument Serif\"",
+  "\"Instrument Serif\", serif",
+  "\"Space Grotesk\", sans-serif"
+ ],
+ "flagged": false,
+ "notes": 2,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#orbit circle.dot[4]",
+    "b": "#glyph",
+    "ranges": [
+     [
+      1.5666666666666667,
+      1.6
+     ]
+    ],
+    "peak": 1.0,
+    "peak_frame": 47,
+    "ia": 4,
+    "ib": 11,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#ring",
+    "b": "#glyph",
+    "ranges": [
+     [
+      1.7666666666666666,
+      2.1
+     ]
+    ],
+    "peak": 1.0,
+    "peak_frame": 54,
+    "ia": 10,
+    "ib": 11,
+    "defect": false,
+    "static": false
+   }
+  ],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.35,
+  "end_visible": [
+   "#orbit circle.dot[0]",
+   "#orbit circle.dot[1]",
+   "#orbit circle.dot[2]",
+   "#orbit circle.dot[3]",
+   "#orbit circle.dot[4]",
+   "#orbit circle.dot[5]",
+   "#orbit circle.dot[6]",
+   "#orbit circle.dot[7]",
+   "#orbit",
+   "#ring",
+   "#glyph",
+   "#wordmark",
+   "#tagline"
+  ],
+  "end_overlaps": [],
+  "n_notes": 2
+ }
+}

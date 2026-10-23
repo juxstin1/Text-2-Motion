@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: editorial -->
+<!-- format: vertical -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F4EFE6; }
+  #stage { position: relative; width: 720px; height: 1280px; overflow: hidden; background: #F4EFE6;
+           font-family: 'Inter', sans-serif; color: #1B1A17; }
+  #bg { position: absolute; inset: 0; background:
+        radial-gradient(520px 640px at 50% 52%, rgba(180,68,44,0.10), rgba(180,68,44,0) 70%), #F4EFE6; }
+  #wrap { position: absolute; left: 0; right: 0; top: 160px; display: flex; flex-direction: column; align-items: center; }
+
+  /* header: cream plate with ink type, so it reads over any footage */
+  #plate { width: 540px; box-sizing: border-box; padding: 24px 30px 30px; border-radius: 22px; background: #F4EFE6;
+           border: 3px solid #1B1A17; box-shadow: 8px 8px 0 #1B1A17; text-align: center; }
+  #label { display: inline-block; padding: 7px 16px 6px; border-radius: 99px; background: #B4442C; color: #F4EFE6;
+           font-weight: 600; font-size: 18px; letter-spacing: 0.18em; text-transform: uppercase; }
+  #title { margin-top: 14px; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 64px; line-height: 1.0;
+           letter-spacing: -0.02em; }
+
+  #list { margin-top: 40px; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+  .cw { position: relative; }
+  .burst { position: absolute; left: 50%; top: 50%; width: 760px; height: 480px; margin: -240px 0 0 -380px; overflow: visible; }
+  .card { position: relative; width: 540px; height: 146px; box-sizing: border-box; display: flex; align-items: center; gap: 18px;
+          padding: 0 26px 0 22px; border-radius: 20px; background: #1B1A17; color: #F4EFE6;
+          box-shadow: 0 18px 40px rgba(27,26,23,0.28); }
+  .card .bar { position: absolute; left: 0; top: 22px; bottom: 22px; width: 6px; border-radius: 0 6px 6px 0; background: var(--brand); }
+  .card .clip { position: absolute; inset: 0; border-radius: 20px; overflow: hidden; }
+  .card .sheen { position: absolute; top: -40px; left: -140px; width: 80px; height: 260px; transform: rotate(18deg);
+                 background: linear-gradient(90deg, rgba(244,239,230,0), rgba(244,239,230,0.35), rgba(244,239,230,0)); }
+  .rank { position: relative; width: 70px; flex: none; text-align: center; font-family: 'Playfair Display', serif; font-weight: 800;
+          font-size: 88px; line-height: 1; color: #B4442C; }
+  .slot { position: relative; width: 64px; height: 64px; flex: none; }
+  .slot svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .txt { position: relative; flex: 1; min-width: 0; }
+  .name { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 48px; line-height: 1.05; letter-spacing: -0.02em;
+          white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .note { margin-top: 6px; font-weight: 600; font-size: 17px; letter-spacing: 0.16em; text-transform: uppercase;
+          color: rgba(244,239,230,0.7); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* #1 card: bigger, accent plate */
+  .card.top { height: 190px; background: #B4442C; box-shadow: 0 22px 50px rgba(180,68,44,0.4); }
+  .card.top .rank { font-size: 128px; color: #F4EFE6; }
+  .card.top .slot { width: 80px; height: 80px; }
+  .card.top .name { font-size: 64px; }
+  .card.top .note { color: rgba(244,239,230,0.85); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="wrap">
+    <div id="plate"><div id="label"></div><div id="title"></div></div>
+    <div id="list"></div>
+    <!-- cards (rank, logo slot, name, note) are created from DATA.items, shown 3, 2, 1 -->
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+const DATA = {
+  label: "Top 3",
+  title: "Note apps worth paying for",
+  items: [  // rank 1 first
+    { name: "Nova",  note: "Best overall",  color: "#4D6BFE",
+      logo: '<circle cx="50" cy="50" r="46" fill="currentColor"/><circle cx="50" cy="50" r="22" fill="none" stroke="#fff" stroke-width="9"/><circle cx="72" cy="28" r="7" fill="#fff"/>' },
+    { name: "Orbit", note: "Best for teams", color: "#F2A93B",
+      logo: '<circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="10"/><circle cx="50" cy="50" r="13" fill="currentColor"/><circle cx="82" cy="22" r="11" fill="currentColor"/>' },
+    { name: "Quill", note: "Best for writers", color: "#E5484D",
+      logo: '<path d="M86 8 C46 12 14 44 14 92 C58 88 88 56 86 8 Z" fill="currentColor"/><path d="M22 84 L68 32" stroke="#fff" stroke-width="6" stroke-linecap="round"/>' },
+  ],
+};
+
+gsap.registerPlugin(SplitText, DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  // ---------- fill the DOM from DATA
+  const $ = id => document.getElementById(id);
+  $("label").textContent = DATA.label;
+  $("title").textContent = DATA.title;
+  const N = DATA.items.length;
+  // burst geometry (fixed arrays): rays around the #1 card, confetti dots flung outward
+  const RAYS = [0, 26, 52, 78, 102, 128, 154, 180, 206, 232, 258, 282, 308, 334];
+  const DOTS = [[-310, -150, 9], [-240, -200, 7], [-120, -224, 10], [40, -232, 7], [180, -214, 9], [290, -170, 8],
+                [318, -40, 7], [306, 140, 9], [210, 206, 7], [-30, 226, 9], [-200, 210, 8], [-310, 110, 7], [-322, -30, 9]];
+  const cards = [];
+  for (let k = N - 1; k >= 0; k--) {           // countdown order: 3, 2, 1 down the screen
+    const d = DATA.items[k], top = k === 0;
+    const cw = document.createElement("div");
+    cw.className = "cw";
+    let burst = "";
+    if (top) {
+      const rays = RAYS.map(a => {
+        const r = a * Math.PI / 180, c = Math.cos(r), s = Math.sin(r);
+        return `<path class="ray" d="M${(380 + c * 296).toFixed(1)} ${(240 + s * 132).toFixed(1)} L${(380 + c * 352).toFixed(1)} ${(240 + s * 222).toFixed(1)}"/>`;
+      }).join("");
+      const dots = DOTS.map((p, i) => `<circle class="dot" cx="380" cy="240" r="${p[2]}" fill="${i % 3 ? "#B4442C" : "#1B1A17"}"/>`).join("");
+      burst = `<svg class="burst" id="burst" data-layer="back" viewBox="0 0 760 480">
+        <ellipse id="halo" cx="380" cy="240" rx="292" ry="124" fill="none" stroke="#B4442C" stroke-width="4"/>
+        <g fill="none" stroke="#B4442C" stroke-width="7" stroke-linecap="round">${rays}</g>${dots}</svg>`;
+    }
+    cw.innerHTML = burst + `<div class="card${top ? " top" : ""}" id="card${k}">
+      <div class="clip"><div class="sheen" data-layer="back"></div></div><div class="bar"></div>
+      <div class="rank" id="rank${k}"></div>
+      <div class="slot" id="slot${k}"><svg id="logo${k}" viewBox="0 0 100 100" style="color:${d.color}">${d.logo}</svg></div>
+      <div class="txt"><div class="name" id="name${k}"></div><div class="note" id="note${k}"></div></div></div>`;
+    cw.querySelector(".card").style.setProperty("--brand", d.color);
+    cw.querySelector(".rank").textContent = k + 1;
+    cw.querySelector(".name").textContent = d.name;
+    cw.querySelector(".note").textContent = d.note;
+    $("list").appendChild(cw);
+    cards.push(cw.querySelector(".card"));     // cards[0] is #3, last is #1
+  }
+
+  // ---------- timeline
+  gsap.set(["#burst .dot", "#halo"], { autoAlpha: 0 });
+  const tl = gsap.timeline({ paused: true });
+  const words = new SplitText("#title", { type: "words" }).words;
+
+  // 1. HOOK: header plate stamps down (overshoot squash), pill and title words drop in
+  tl.fromTo("#plate", { scale: 1.25, rotation: -4, autoAlpha: 0 },
+                      { scale: 1, rotation: -1.5, autoAlpha: 1, duration: 0.2, ease: "power3.in" }, 0)
+    .to("#plate", { keyframes: [{ scaleY: 0.9, scaleX: 1.05, duration: 0.06, ease: "power2.out" },
+                                { scaleY: 1.03, scaleX: 0.98, duration: 0.12, ease: "power2.out" },
+                                { scaleY: 1, scaleX: 1, duration: 0.3, ease: "sine.out" }], transformOrigin: "50% 100%" }, 0.2)
+    .from("#label", { scale: 0, rotation: -12, duration: 0.4, ease: "back.out(3)" }, 0.16)
+    .from(words, { scale: 0.3, autoAlpha: 0, rotation: -8, duration: 0.36, ease: "back.out(1.7)", stagger: 0.04 }, 0.18);
+
+  // 2. each card slams in: zooms from the viewer with a twist, hits, squashes (volume kept), rebounds;
+  //    cards already down take the hit and dip; rank, logo and copy land right after
+  const slam = (i, t, tw, from) => {
+    const c = cards[i], k = N - 1 - i, rot = i % 2 ? 2 : -2;
+    if (from) tl.to(c, { scale: 1, y: 0, rotation: 0, duration: tw, ease: "power3.in" }, t);
+    else tl.fromTo(c, { scale: 1.2, y: 30, rotation: rot }, { scale: 1, y: 0, rotation: 0, duration: tw, ease: "power3.in" }, t)
+           .fromTo(c, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.08, ease: "power1.out" }, t);
+    tl.to(c, { keyframes: [{ scaleY: 0.82, scaleX: 1.07, duration: 0.06, ease: "power2.out" },
+                           { scaleY: 1.05, scaleX: 0.97, duration: 0.12, ease: "power2.out" },
+                           { scaleY: 1, scaleX: 1, duration: 0.34, ease: "sine.inOut" }], transformOrigin: "50% 100%" }, t + tw)
+      .from("#rank" + k, { scale: 0, rotation: -40, duration: 0.42, ease: "back.out(3)" }, t + tw + 0.02)
+      .from("#slot" + k, { scale: 0, rotation: -120, duration: 0.5, ease: "back.out(2.2)" }, t + tw + 0.06)
+      .from(["#name" + k, "#note" + k], { x: -28, autoAlpha: 0, duration: 0.4, ease: "power3.out", stagger: 0.05 }, t + tw + 0.08);
+    // impact travels up the stack
+    for (let j = 0; j < i; j++)
+      tl.to(cards[j], { keyframes: [{ y: 7 - j * 2, duration: 0.06, ease: "power2.out" },
+                                    { y: 0, duration: 0.4, ease: "elastic.out(1, 0.4)" }] }, t + tw + j * 0.03);
+    tl.to("#plate", { keyframes: [{ y: 4, duration: 0.06, ease: "power2.out" },
+                                  { y: 0, duration: 0.4, ease: "elastic.out(1, 0.4)" }] }, t + tw + i * 0.03);
+  };
+  slam(0, 0.26, 0.19);   // #3 lands at 0.45
+  slam(1, 0.78, 0.19);   // #2 lands at 0.97
+
+  // 3. #1: hangs big and trembles (drum roll), then the hardest slam
+  const top = cards[N - 1];
+  tl.fromTo(top, { scale: 1.26, y: 34, rotation: 2, autoAlpha: 0 }, { scale: 1.18, autoAlpha: 1, duration: 0.2, ease: "power2.out" }, 1.24);
+  [-1.6, 1.8, -2, 2.2].forEach((r, i) => tl.to(top, { rotation: r, duration: 0.05, ease: "sine.inOut" }, 1.34 + i * 0.05));
+  slam(N - 1, 1.54, 0.16, true);   // slams from the hang pose, lands at 1.70
+  // pre-burst anticipation: squeeze in, then pop and burst
+  const tB = 2.0;
+  tl.to(top, { scale: 0.93, duration: 0.2, ease: "power2.inOut" }, tB - 0.2)
+    .to(top, { keyframes: [{ scale: 1.07, duration: 0.18, ease: "power2.out" },
+                           { scale: 1, duration: 0.7, ease: "elastic.out(1.1, 0.35)" }] }, tB)
+    .to("#rank0", { keyframes: [{ scale: 1.35, rotation: -10, duration: 0.12, ease: "power2.out" },
+                                { scale: 1, rotation: 0, duration: 0.6, ease: "elastic.out(1, 0.35)" }] }, tB)
+    .fromTo("#burst .ray", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.2, ease: "power3.out" }, tB)
+    .to("#burst .ray", { drawSVG: "100% 100%", duration: 0.34, ease: "power2.in" }, tB + 0.2)
+    .to("#burst .ray", { autoAlpha: 0, duration: 0.08, ease: "power1.out" }, tB + 0.46)
+    .fromTo("#halo", { scale: 0.9, autoAlpha: 1, transformOrigin: "50% 50%" },
+                     { scale: 1.14, autoAlpha: 0, duration: 0.6, ease: "power2.out", immediateRender: false }, tB);
+  DOTS.forEach((p, i) => {
+    const el = document.querySelectorAll("#burst .dot")[i];
+    tl.set(el, { autoAlpha: 1 }, tB)
+      .to(el, { x: p[0], y: p[1], duration: 0.6, ease: "expo.out" }, tB)
+      .to(el, { y: p[1] + 40, scale: 0, autoAlpha: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "power2.in" }, tB + 0.45 + (i % 4) * 0.03);
+  });
+  // the other cards flinch from the blast
+  tl.to(cards.slice(0, N - 1), { keyframes: [{ y: -6, scale: 0.98, duration: 0.08, ease: "power2.out" },
+                                             { y: 0, scale: 1, duration: 0.5, ease: "elastic.out(1, 0.4)" }], stagger: 0.04 }, tB + 0.02)
+  // sheen sweeps the winner, the logo spins, then a soft settle keeps it alive
+    .to(top.querySelector(".sheen"), { x: () => top.offsetWidth + 300, duration: 0.8, ease: "power2.inOut" }, tB + 0.2)
+    .to("#slot0", { rotation: 360, duration: 0.8, ease: "power3.out" }, tB + 0.05)
+    .to(top, { rotation: -1, duration: 0.4, ease: "sine.inOut" }, tB + 0.75)
+    .to(top, { rotation: 0, duration: 0.4, ease: "sine.inOut" }, tB + 1.15)
+    .to({}, { duration: 0.3 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

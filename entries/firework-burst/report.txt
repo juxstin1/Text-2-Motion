@@ -1,0 +1,20 @@
+duration 3.53s, 107 frames @30fps, 198 tweens
+TIMING
+  #label  y,autoAlpha  0.00-0.50s  power3.out
+  #spark  scale  0.05-0.25s  back.out(3)
+  #spark  scale  0.25-0.43s  power2.inOut
+  #spark  scale,autoAlpha  0.45-0.70s  power2.out
+  #rocket  autoAlpha  set at 0.45s
+  #rocket  motionPath  0.45-1.25s  power2.out
+  #rocket  scaleX  0.45-1.25s  power2.out
+  #trail  drawSVG  0.45-1.25s  power2.out
+  #trail  drawSVG  0.67-1.47s  power2.inOut
+  #rocket  autoAlpha,scale  1.26-1.34s  power2.in
+  (+188 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 30 visible (#label, #trail, #burst g.fall x26, #title ...); final hold 0.26s; no overlaps

@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: minimal-mono -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F2F2F0; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F2F2F0; color: #111111;
+           font-family: 'JetBrains Mono', monospace; }
+
+  /* viewfinder frame */
+  .corner { position: absolute; width: 36px; height: 36px; border: 0 solid #111111; }
+  #cTL { left: 64px;  top: 64px;  border-left-width: 2px;  border-top-width: 2px; }
+  #cTR { left: 1180px; top: 64px;  border-right-width: 2px; border-top-width: 2px; }
+  #cBL { left: 64px;  top: 620px; border-left-width: 2px;  border-bottom-width: 2px; }
+  #cBR { left: 1180px; top: 620px; border-right-width: 2px; border-bottom-width: 2px; }
+  .hud { position: absolute; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; }
+  #cam { left: 112px; top: 76px; }
+  #rec { left: 1080px; top: 76px; }
+  #rec i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #FF3B00; margin-right: 8px; }
+  #zoom { left: 112px; top: 632px; }
+  #frame { left: 1056px; top: 632px; color: rgba(17,17,17,0.5); }
+
+  /* the camera: a full-stage viewport the words fly through */
+  #camera { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; overflow: hidden; }
+  .word { position: absolute; left: 0; top: 316px; width: 1280px; text-align: center; font-size: 88px; font-weight: 700;
+          letter-spacing: -0.04em; line-height: 1; white-space: nowrap; }
+  #w1 { will-change: transform; }
+  #w2 { visibility: hidden; }
+  #w2 span { display: inline-block; }
+  #w2 .dot { color: #FF3B00; }
+  #bar { position: absolute; left: 556px; top: 424px; width: 168px; height: 6px; background: #FF3B00; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="camera">
+    <div class="word" id="w1">L<span id="o1">O</span>OK</div>
+    <div class="word" id="w2"><span>C</span><span>L</span><span>O</span><span>S</span><span>E</span><span>R</span><span class="dot">.</span></div>
+    <div id="bar"></div>
+  </div>
+  <div class="corner" id="cTL"></div><div class="corner" id="cTR"></div>
+  <div class="corner" id="cBL"></div><div class="corner" id="cBR"></div>
+  <div class="hud" id="cam">CAM 01 / TAKE 03</div>
+  <div class="hud" id="rec"><i></i>REC</div>
+  <div class="hud" id="zoom">ZOOM 1.0x</div>
+  <div class="hud" id="frame">FRAME 01</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const w1 = document.getElementById("w1");
+  const o1 = document.getElementById("o1");
+  const zoomEl = document.getElementById("zoom");
+  const frameEl = document.getElementById("frame");
+
+  // aim the camera at the centre of the O's counter (measured, so the zoom flies cleanly through the hole)
+  const ctx = document.createElement("canvas").getContext("2d");
+  ctx.font = "700 88px 'JetBrains Mono'";
+  const m = ctx.measureText("O");
+  const wr = w1.getBoundingClientRect(), orr = o1.getBoundingClientRect();
+  const lineH = wr.height;
+  const baseline = (lineH - (m.fontBoundingBoxAscent + m.fontBoundingBoxDescent)) / 2 + m.fontBoundingBoxAscent;
+  const ox = orr.left + orr.width / 2 - wr.left;
+  const oy = baseline - (m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2;
+  gsap.set(w1, { transformOrigin: ox + "px " + oy + "px" });
+
+  // underline spans CLOSER (not the full stop)
+  const sp = document.querySelectorAll("#w2 span"), sr = document.getElementById("stage").getBoundingClientRect();
+  const a = sp[0].getBoundingClientRect(), b = sp[5].getBoundingClientRect();
+  const bar = document.getElementById("bar");
+  bar.style.left = (a.left - sr.left) + "px";
+  bar.style.width = (b.right - a.left) + "px";
+
+  const cam = { z: 1 };
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. anticipation: the camera eases back a touch before lunging
+  tl.to(w1, { scale: 0.8, duration: 0.4, ease: "power2.inOut" }, 0.05)
+  // 2. zoom-through: expo.in, so almost all the travel happens in the last frames (word goes far off-stage)
+    .to(w1, { scale: 90, duration: 0.75, ease: "expo.in" }, 0.45)
+    .to(cam, { z: 90, duration: 0.75, ease: "expo.in",
+               onUpdate: () => {
+                 zoomEl.textContent = "ZOOM " + cam.z.toFixed(1) + "x";
+                 frameEl.textContent = cam.z >= 90 ? "FRAME 02" : "FRAME 01"; } }, 0.45)
+    .set(w1, { autoAlpha: 0 }, 1.2)
+    .set("#w2", { autoAlpha: 1 }, 1.2)
+  // 3. the next word was waiting inside the counter: it rushes up from the distance and brakes hard
+    .fromTo("#w2", { scale: 0.05 }, { scale: 1, duration: 0.8, ease: "expo.out" }, 1.2)
+  // 4. overlapping settle: letters keep travelling a little, then land one after another
+    .from("#w2 span", { y: i => (i % 2 ? -1 : 1) * 26, rotation: i => (i % 2 ? 6 : -6), duration: 0.7,
+                        ease: "back.out(2.6)", stagger: 0.05 }, 1.32)
+    .from("#bar", { scaleX: 0, transformOrigin: "0% 50%", duration: 0.55, ease: "power4.out" }, 1.75)
+    .to("#rec i", { scale: 1.8, duration: 0.22, ease: "power2.out", yoyo: true, repeat: 1 }, 1.95)
+    .to({}, { duration: 0.2 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

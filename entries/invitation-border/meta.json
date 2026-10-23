@@ -1,0 +1,14 @@
+{
+  "id": "invitation-border",
+  "prompt": "invitation card glides up while a thin gold border draws around it",
+  "tags": [
+    "entrance",
+    "card",
+    "svg",
+    "draw"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

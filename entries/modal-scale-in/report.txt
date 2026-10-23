@@ -1,0 +1,17 @@
+duration 1.50s, 46 frames @30fps, 5 tweens
+TIMING
+  #backdrop  backgroundColor  0.00-0.50s  power2.out
+  #modal  scale,y  0.10-0.80s  expo.out
+  #modal  autoAlpha  0.10-0.30s  power1.out
+  #icon, #title ...  y,autoAlpha  0.25-0.90s  power2.out  stagger 0.05
+  (hold)  0.90-1.50s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 2 DEFECT, 1 note
+  DEFECT #modal / #chart div.lbl  0.13-1.50s  peak 43%  (onto static text)
+  DEFECT #title / #chart div.lbl  0.33-1.50s  peak 21%  (onto static text)
+  note #modal / div.v[1]  0.13-0.43s  peak 98%  (onto static text)
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 26 visible (#backdrop, #modal, #icon, #title ...); final hold 0.70s; overlapping at end: #modal/#chart div.lbl, #title/#chart div.lbl

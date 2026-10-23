@@ -1,0 +1,21 @@
+duration 3.85s, 117 frames @30fps, 84 tweens
+TIMING
+  #plate  scale,rotation,autoAlpha  0.00-0.20s  power3.in
+  #label  scale,rotation  0.16-0.56s  back.out(3)
+  #title div x5  scale,autoAlpha,rotation  0.18-0.70s  back.out(1.7)  stagger 0.04
+  #plate  scaleY,scaleX  0.20-0.68s  power1.out
+  #card2  scale,y,rotation  0.26-0.45s  power3.in
+  #card2  autoAlpha  0.26-0.34s  power1.out
+  #card2  scaleY,scaleX  0.45-0.97s  power1.out
+  #plate  y  0.45-0.91s  power1.out
+  #rank2  scale,rotation  0.47-0.89s  back.out(3)
+  #slot2  scale,rotation  0.51-1.01s  back.out(2.2)
+  (+74 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean (29 data-layer=back excluded)
+off-stage: clean
+jumps: clean
+dead air: clean
+safe zones: clean
+end state: 22 visible (#plate, #label, #title div x5, #card2 ...); final hold 0.35s; no overlaps

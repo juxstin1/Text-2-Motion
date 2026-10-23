@@ -1,0 +1,14 @@
+{
+  "id": "winner-reveal",
+  "prompt": "two logos shake in suspense, the loser drops away and the winner scales up with a burst",
+  "tags": [
+    "template",
+    "winner",
+    "comparison",
+    "burst"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "top3-countdown",
+  "prompt": "TEMPLATE \"Top 3\" list: cards 3, 2, 1 slam in stacked down the screen and #1 bursts",
+  "tags": [
+    "vertical",
+    "template",
+    "ranking",
+    "countdown"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

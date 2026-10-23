@@ -1,0 +1,20 @@
+duration 2.35s, 72 frames @30fps, 23 tweens
+TIMING
+  #circle  y,autoAlpha  0.00-0.50s  power2.in
+  #floor  scaleX  0.10-0.80s  expo.out
+  #square  y,autoAlpha  0.22-0.72s  power2.in
+  #tri  y,autoAlpha  0.42-0.92s  power2.in
+  #circle  scaleY,scaleX  0.50-0.57s  power2.out
+  #circle  y,scaleY,scaleX  0.57-0.83s  power2.out
+  #square  scaleY,scaleX  0.72-0.79s  power2.out
+  #eyebrow  autoAlpha,y  0.75-1.25s  power3.out
+  #square  y,scaleY,scaleX  0.79-1.05s  power2.out
+  #circle  y,scaleY,scaleX  0.83-1.07s  power2.in
+  (+13 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 7 visible (#circle, #floor, #square, #tri ...); final hold 0.52s; no overlaps

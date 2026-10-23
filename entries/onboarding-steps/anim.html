@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: editorial -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F4EFE6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F4EFE6; }
+  .label { font-family: "Inter"; font-weight: 600; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; }
+  #eyebrow { position: absolute; left: 80px; top: 92px; color: #B4442C; }
+  #headline { position: absolute; left: 78px; top: 120px; margin: 0; font-family: "Playfair Display"; font-weight: 800;
+              font-size: 72px; line-height: 1.15; letter-spacing: -0.02em; color: #1B1A17; }
+  #intro { position: absolute; left: 820px; top: 152px; width: 380px; margin: 0; font-family: "Inter"; font-size: 18px;
+           line-height: 1.5; color: rgba(27,26,23,0.66); }
+  .card { position: absolute; top: 300px; width: 352px; height: 320px; box-sizing: border-box; padding: 36px 32px;
+          background: rgba(27,26,23,0.035); border: 1px solid rgba(27,26,23,0.14); }
+  .num { width: 56px; height: 56px; border-radius: 50%; background: #B4442C; color: #F4EFE6; display: flex;
+         align-items: center; justify-content: center; font-family: "Playfair Display"; font-weight: 800; font-size: 24px; }
+  .card h2 { margin: 40px 0 12px; font-family: "Playfair Display"; font-weight: 800; font-size: 24px; letter-spacing: -0.02em; color: #1B1A17; }
+  .card p { margin: 0; font-family: "Inter"; font-size: 18px; line-height: 1.5; color: rgba(27,26,23,0.66); }
+  .card .foot { position: absolute; left: 32px; bottom: 30px; font-size: 14px; color: rgba(27,26,23,0.45); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="eyebrow" class="label">Getting started</div>
+  <h1 id="headline">Begin in three steps.</h1>
+  <p id="intro">Set up your reading desk once, and every Sunday edition arrives shaped around you.</p>
+
+  <div class="card" style="left:80px;">
+    <div class="num">1</div>
+    <h2>Choose your beats</h2>
+    <p>Pick the desks you follow, from politics to the arts.</p>
+    <div class="foot label">Step 01 &middot; 1 min</div>
+  </div>
+  <div class="card" style="left:464px;">
+    <div class="num">2</div>
+    <h2>Set the rhythm</h2>
+    <p>Daily briefing, weekend long-read, or both at once.</p>
+    <div class="foot label">Step 02 &middot; 30 sec</div>
+  </div>
+  <div class="card" style="left:848px;">
+    <div class="num">3</div>
+    <h2>Read your first issue</h2>
+    <p>Your edition is composed overnight and waiting by seven.</p>
+    <div class="foot label">Step 03 &middot; tomorrow</div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+gsap.registerPlugin(SplitText);
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const head = SplitText.create("#headline", { type: "words", mask: "words" });
+  tl.from("#eyebrow", { autoAlpha: 0, y: 10, duration: 0.5, ease: "power2.out" })
+    .from(head.words, { yPercent: 110, duration: 0.8, ease: "power4.out", stagger: 0.06 }, "-=0.35")
+    .from("#intro", { autoAlpha: 0, y: 14, duration: 0.6, ease: "power2.out" }, "-=0.5")
+    // cards slide in from the right, a short travel so the last one never leaves the stage
+    .from(".card", { x: 64, autoAlpha: 0, duration: 1.0, ease: "expo.out", stagger: 0.14 }, 0.55)
+    // numbered circles pop once their card has mostly arrived
+    .from(".num", { scale: 0, duration: 0.55, ease: "back.out(2.2)", stagger: 0.14 }, "<0.5")
+    .to({}, { duration: 0.6 });
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

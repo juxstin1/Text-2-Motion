@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: warm-modern -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FBF3E4; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FBF3E4; color: #3A2416; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  #eyebrow { position: absolute; left: 100px; top: 220px; font-family: "Inter"; font-weight: 600; font-size: 14px;
+             letter-spacing: 0.1em; text-transform: uppercase; color: #E0662E; }
+  #title { position: absolute; left: 96px; top: 262px; margin: 0; font-family: "Fraunces"; font-weight: 600; font-size: 72px;
+           line-height: 1.05; letter-spacing: -0.03em; white-space: nowrap; }
+  #title .pip { color: #E0662E; }
+  #body { position: absolute; left: 100px; top: 372px; width: 400px; margin: 0; font-family: "Inter"; font-weight: 400;
+          font-size: 17px; line-height: 1.6; color: rgba(58,36,22,0.7); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="eyebrow">Meet the crew</div>
+  <h1 id="title">Hi, I'm <span class="pip">Pip.</span></h1>
+  <p id="body">Your sidekick for every new project. Small, round and always on time.</p>
+
+  <!-- the whole character lives in one SVG so its parts are layered, not "overlapping" -->
+  <svg id="scene" viewBox="0 0 1280 720">
+    <line id="ground" x1="620" y1="566" x2="1160" y2="566" stroke="#3A2416" stroke-width="4" stroke-linecap="round"/>
+    <ellipse id="shadow" cx="880" cy="568" rx="118" ry="11" fill="#3A2416" fill-opacity="0.14"/>
+    <g id="pip">
+      <!-- left arm (resting), shoulder 778,470 -->
+      <g id="armL">
+        <path d="M778 470 L748 512 L732 546" fill="none" stroke="#E0662E" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="732" cy="546" r="19" fill="#3A2416"/>
+      </g>
+      <!-- right arm (waving): upper arm pivots at the shoulder, forearm at the elbow -->
+      <g id="armR">
+        <path d="M988 456 L1030 500" fill="none" stroke="#E0662E" stroke-width="30" stroke-linecap="round"/>
+        <g id="foreR">
+          <path d="M1030 500 L1050 540" fill="none" stroke="#E0662E" stroke-width="30" stroke-linecap="round"/>
+          <circle cx="1050" cy="540" r="19" fill="#3A2416"/>
+        </g>
+      </g>
+      <ellipse cx="842" cy="558" rx="28" ry="11" fill="#3A2416"/>
+      <ellipse cx="918" cy="558" rx="28" ry="11" fill="#3A2416"/>
+      <circle cx="880" cy="440" r="120" fill="#E0662E"/>
+      <ellipse cx="880" cy="482" rx="72" ry="54" fill="#FBF3E4" fill-opacity="0.3"/>
+      <g id="tuft">
+        <path d="M880 322 C872 298 890 282 904 272" fill="none" stroke="#3A2416" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="906" cy="270" r="9" fill="#3A2416"/>
+      </g>
+      <g id="eyes">
+        <circle cx="844" cy="420" r="14" fill="#3A2416"/>
+        <circle cx="916" cy="420" r="14" fill="#3A2416"/>
+        <circle cx="849" cy="415" r="4.5" fill="#FBF3E4"/>
+        <circle cx="921" cy="415" r="4.5" fill="#FBF3E4"/>
+      </g>
+      <ellipse cx="818" cy="452" rx="15" ry="9" fill="#3A2416" fill-opacity="0.16"/>
+      <ellipse cx="942" cy="452" rx="15" ry="9" fill="#3A2416" fill-opacity="0.16"/>
+      <path d="M862 450 Q880 470 898 450" fill="none" stroke="#3A2416" stroke-width="6" stroke-linecap="round"/>
+    </g>
+  </svg>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin, SplitText);
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const FEET = "880 566", SHOULDER = "988 456", ELBOW = "1030 500", SHOULDER_L = "778 470", TUFT = "880 322";
+  const words = new SplitText("#title", { type: "words" }).words;
+
+  // stage: ground draws out from the centre, shadow spreads
+  tl.fromTo("#ground", { drawSVG: "50% 50%" }, { drawSVG: "0% 100%", duration: 0.6, ease: "expo.out" }, 0)
+    .from("#shadow", { scaleX: 0, autoAlpha: 0, transformOrigin: "50% 50%", duration: 0.3, ease: "power2.out" }, 0.08);
+
+  // POP UP: emerge as a squat puddle (anticipation crouch), launch stretched, round out at the apex
+  tl.fromTo("#pip", { scaleX: 1.35, scaleY: 0, svgOrigin: FEET },
+                    { scaleX: 1.3, scaleY: 0.55, duration: 0.2, ease: "power2.out" }, 0.12)
+    .to("#pip", { y: -150, duration: 0.34, ease: "power2.out" }, 0.34)
+    .to("#pip", { scaleX: 0.84, scaleY: 1.2, duration: 0.09, ease: "power2.out" }, 0.34)
+    .to("#pip", { scaleX: 1, scaleY: 1, duration: 0.25, ease: "sine.out" }, 0.43)
+    // fall: accelerate, stretch along the fall, squash on contact (volume kept), rebound, settle
+    .to("#pip", { y: 0, duration: 0.24, ease: "power2.in" }, 0.68)
+    .to("#pip", { scaleX: 0.92, scaleY: 1.1, duration: 0.18, ease: "power2.in" }, 0.74)
+    .to("#pip", { scaleX: 1.26, scaleY: 0.74, duration: 0.07, ease: "power2.out" }, 0.92)
+    .to("#pip", { scaleX: 0.94, scaleY: 1.08, duration: 0.14, ease: "power2.out" }, 0.99)
+    .to("#pip", { scaleX: 1, scaleY: 1, duration: 0.3, ease: "sine.inOut" }, 1.13);
+
+  // shadow tracks height
+  tl.to("#shadow", { scaleX: 0.55, autoAlpha: 0.45, duration: 0.34, ease: "power2.out" }, 0.34)
+    .to("#shadow", { scaleX: 1.14, autoAlpha: 1, duration: 0.26, ease: "power2.in" }, 0.68)
+    .to("#shadow", { scaleX: 1, duration: 0.35, ease: "sine.out" }, 0.99);
+
+  // follow-through: tuft drags behind the body and whips past on landing
+  tl.to("#tuft", { rotation: 28, svgOrigin: TUFT, duration: 0.14, ease: "power2.out" }, 0.36)
+    .to("#tuft", { rotation: -18, duration: 0.26, ease: "sine.inOut" }, 0.5)
+    .to("#tuft", { rotation: 24, duration: 0.18, ease: "power2.in" }, 0.76)
+    .to("#tuft", { rotation: -32, duration: 0.09, ease: "power2.out" }, 0.94)
+    .to("#tuft", { rotation: 14, duration: 0.2, ease: "sine.inOut" }, 1.03)
+    .to("#tuft", { rotation: -5, duration: 0.2, ease: "sine.inOut" }, 1.23)
+    .to("#tuft", { rotation: 0, duration: 0.22, ease: "sine.out" }, 1.43);
+
+  // arms lag the launch, flop on landing
+  tl.to("#armL", { rotation: 34, svgOrigin: SHOULDER_L, duration: 0.18, ease: "power2.out" }, 0.39)
+    .to("#armR", { rotation: -34, svgOrigin: SHOULDER, duration: 0.18, ease: "power2.out" }, 0.39)
+    .to("#armL", { rotation: -12, duration: 0.12, ease: "power2.in" }, 0.86)
+    .to("#armR", { rotation: 12, duration: 0.12, ease: "power2.in" }, 0.86)
+    .to("#armL", { rotation: 0, duration: 0.35, ease: "back.out(3)" }, 0.98)
+    .to("#armR", { rotation: 0, duration: 0.35, ease: "back.out(3)" }, 0.98);
+
+  // copy punches up beside him as he lands
+  tl.from("#eyebrow", { autoAlpha: 0, x: -24, duration: 0.4, ease: "power3.out" }, 0.9)
+    .from(words, { autoAlpha: 0, y: 46, scale: 0.5, rotation: -10, transformOrigin: "50% 100%",
+                   duration: 0.42, ease: "back.out(2.2)", stagger: 0.08 }, 0.96)
+    .from("#body", { autoAlpha: 0, y: 18, duration: 0.5, ease: "power3.out" }, 1.25);
+
+  // blink
+  tl.to("#eyes", { scaleY: 0.08, transformOrigin: "50% 50%", duration: 0.06, ease: "power2.in" }, 1.42)
+    .to("#eyes", { scaleY: 1, duration: 0.1, ease: "power2.out" }, 1.48);
+
+  // WAVE: dip the arm (anticipation), body leans away then into the wave; forearm lags the upper arm
+  tl.to("#armR", { rotation: 14, duration: 0.14, ease: "power2.in" }, 1.62)
+    .to("#pip", { rotation: -3, svgOrigin: FEET, duration: 0.14, ease: "power2.in" }, 1.62)
+    .to("#armR", { rotation: -122, duration: 0.32, ease: "power2.out" }, 1.76)
+    .to("#pip", { rotation: 4, duration: 0.34, ease: "power2.out" }, 1.76)
+    .to("#foreR", { rotation: 38, svgOrigin: ELBOW, duration: 0.2, ease: "power2.out" }, 1.78)
+    .to("#tuft", { rotation: -16, duration: 0.2, ease: "power2.out" }, 1.8)
+    .to("#tuft", { rotation: 6, duration: 0.3, ease: "sine.inOut" }, 2.0);
+  const waves = [-8, 40, -10, 36, -4];
+  waves.forEach((r, i) => {
+    tl.to("#foreR", { rotation: r, duration: 0.15, ease: "sine.inOut" }, 1.98 + i * 0.15)
+      .to("#armR", { rotation: -122 + r * 0.22, duration: 0.15, ease: "sine.inOut" }, 2.03 + i * 0.15);
+  });
+  // arm drops back, forearm trails and settles last; second blink keeps him alive to the end
+  tl.to("#armR", { rotation: 0, duration: 0.42, ease: "power3.inOut" }, 2.78)
+    .to("#pip", { rotation: 0, duration: 0.5, ease: "sine.inOut" }, 2.78)
+    .to("#foreR", { rotation: -24, duration: 0.3, ease: "power2.inOut" }, 2.84)
+    .to("#foreR", { rotation: 0, duration: 0.36, ease: "back.out(3)" }, 3.14)
+    .to("#armR", { rotation: 6, duration: 0.12, ease: "power2.out" }, 3.2)
+    .to("#armR", { rotation: 0, duration: 0.2, ease: "sine.inOut" }, 3.32)
+    .to("#eyes", { scaleY: 0.08, duration: 0.06, ease: "power2.in" }, 3.3)
+    .to("#eyes", { scaleY: 1, duration: 0.1, ease: "power2.out" }, 3.36)
+    .to({}, { duration: 0.3 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

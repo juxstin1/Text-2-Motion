@@ -1,0 +1,20 @@
+duration 2.77s, 85 frames @30fps, 159 tweens
+TIMING
+  #badge  scale  0.04-0.20s  power2.out
+  #badge  scale  0.20-0.32s  power2.in
+  #badge  scale,rotation  0.32-0.52s  expo.out
+  #shadow  scaleX,autoAlpha  0.32-0.72s  expo.out
+  #wave  scale,autoAlpha  0.34-0.94s  power2.out
+  #sparks path.spark  x  0.34-1.04s  expo.out
+  #sparks path.spark  y  0.34-1.04s  power3.out
+  #sparks path.spark  rotation  0.34-1.54s  power2.out
+  #sparks path.spark  scale  0.34-0.52s  back.out(3)
+  #sparks circle.spark  x  0.34-1.04s  expo.out
+  (+149 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 8 visible (#badge, #shadow, #halo, #check ...); final hold 0.27s; no overlaps

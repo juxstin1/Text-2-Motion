@@ -1,0 +1,221 @@
+{
+ "duration": 2.23,
+ "fps": 30,
+ "frames": 68,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "x"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#event"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.15,
+   "duration": 0.5,
+   "ease": "power4.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#time"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.35,
+   "duration": 0.48,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "#unit",
+    "#athlete"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.62,
+   "duration": 0.26,
+   "ease": "power4.in",
+   "props": [
+    "scale",
+    "rotation",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stamp"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.88,
+   "duration": 0.28,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shake"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.88,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#stamp"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.88,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.95,
+   "duration": 0.3,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#stamp"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.18,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#prev"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.63,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#event",
+  "#time",
+  "#unit",
+  "#athlete",
+  "#stamp",
+  "#shake",
+  "#ring",
+  "#prev",
+  "#event b",
+  "#athlete div.name",
+  "#athlete div.meta",
+  "#stamp div.stamp-top",
+  "#stamp div.stamp-word"
+ ],
+ "fonts": [
+  "\"Bebas Neue\"",
+  "\"Archivo Black\""
+ ],
+ "flagged": false,
+ "notes": 1,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#ring",
+    "b": "#stamp div.stamp-word",
+    "ranges": [
+     [
+      0.9,
+      1.1
+     ]
+    ],
+    "peak": 1.0,
+    "peak_frame": 33,
+    "ia": 6,
+    "ib": 12,
+    "defect": false,
+    "static": true
+   }
+  ],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.8,
+  "end_visible": [
+   "#event",
+   "#time",
+   "#unit",
+   "#athlete",
+   "#stamp",
+   "#shake",
+   "#prev",
+   "#event b",
+   "#athlete div.name",
+   "#athlete div.meta",
+   "#stamp div.stamp-top",
+   "#stamp div.stamp-word"
+  ],
+  "end_overlaps": [],
+  "n_notes": 1
+ }
+}

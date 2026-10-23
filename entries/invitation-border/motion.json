@@ -1,0 +1,158 @@
+{
+ "duration": 2.73,
+ "fps": 30,
+ "frames": 83,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 1.4,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#card"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.35,
+   "duration": 1.6,
+   "ease": "power2.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#frameOuter"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.55,
+   "duration": 1.5,
+   "ease": "power2.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#frameInner"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.6,
+   "duration": 0.9,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#crest"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.75,
+   "duration": 1.38,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": 0.12,
+   "targets": [
+    "#kicker",
+    "#names",
+    "#date",
+    "#venue",
+    "#rsvp"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1,
+   "duration": 0.8,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#divider"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.13,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#card",
+  "#frameOuter",
+  "#frameInner",
+  "#crest",
+  "#kicker",
+  "#names",
+  "#date",
+  "#venue",
+  "#rsvp",
+  "#divider",
+  "#names span.amp"
+ ],
+ "fonts": [
+  "Manrope",
+  "\"DM Serif Display\""
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.86,
+  "end_visible": [
+   "#card",
+   "#frameOuter",
+   "#frameInner",
+   "#crest",
+   "#kicker",
+   "#names",
+   "#date",
+   "#venue",
+   "#rsvp",
+   "#divider",
+   "#names span.amp"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

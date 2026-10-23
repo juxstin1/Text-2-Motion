@@ -1,0 +1,14 @@
+{
+  "id": "release-timeline",
+  "prompt": "release dates drop onto a timeline and each brand's logo hops onto its point",
+  "tags": [
+    "template",
+    "timeline",
+    "dates",
+    "logos"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

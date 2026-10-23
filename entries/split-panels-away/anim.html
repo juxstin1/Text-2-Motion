@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: editorial -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F4EFE6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F4EFE6; color: #1B1A17; }
+
+  /* ---- page B: the light page underneath ---- */
+  #pageB { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  .label { position: absolute; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.18em; }
+  .title { position: absolute; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 120px; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; }
+  .body  { position: absolute; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 18px; line-height: 1.55; width: 520px; }
+  .folio { position: absolute; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 0.18em; }
+  #labelB { left: 96px; top: 200px; color: #B4442C; }
+  #titleB { left: 96px; top: 236px; }
+  #ruleB  { position: absolute; left: 96px; top: 392px; width: 220px; height: 3px; background: #B4442C; }
+  #bodyB  { left: 96px; top: 428px; color: rgba(27,26,23,0.7); }
+  #folioB { left: 1100px; top: 640px; color: rgba(27,26,23,0.5); }
+  #numB   { position: absolute; left: 860px; top: 120px; font-family: 'Playfair Display', serif; font-weight: 800;
+            font-size: 120px; line-height: 1; color: rgba(180,68,44,0.14); }
+
+  /* ---- page A: the dark page, cut into five vertical panels ---- */
+  #panels { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; overflow: hidden; }
+  .panel  { position: absolute; top: 0; width: 256px; height: 720px; overflow: hidden; background: #1B1A17;
+            box-shadow: inset -1px 0 0 rgba(244,239,230,0.10); }
+  .pageA  { position: absolute; top: 0; width: 1280px; height: 720px; color: #F4EFE6; }
+  .pageA .labelA { left: 96px; top: 200px; color: #B4442C; }
+  .pageA .titleA { left: 96px; top: 236px; }
+  .pageA .ruleA  { position: absolute; left: 96px; top: 392px; width: 220px; height: 3px; background: #F4EFE6; }
+  .pageA .bodyA  { left: 96px; top: 428px; color: rgba(244,239,230,0.6); }
+  .pageA .folioA { left: 1100px; top: 640px; color: rgba(244,239,230,0.45); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="pageB">
+    <div id="numB">II</div>
+    <div class="label" id="labelB">CHAPTER TWO</div>
+    <div class="title" id="titleB">Into the Field</div>
+    <div id="ruleB"></div>
+    <div class="body" id="bodyB">By August the house was empty, and we walked out past the orchard wall to where the barley began.</div>
+    <div class="folio" id="folioB">P. 02</div>
+  </div>
+
+  <div id="panels"></div>
+
+  <template id="pageA">
+    <div class="pageA">
+      <div class="label labelA">CHAPTER ONE</div>
+      <div class="title titleA">The Quiet Year</div>
+      <div class="ruleA"></div>
+      <div class="body bodyA">Nothing moved that spring except the river, and even the river seemed to be thinking it over.</div>
+      <div class="folio folioA">P. 01</div>
+    </div>
+  </template>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+// static layout: five 256px panels, each showing its own slice of page A
+const N = 5, PW = 256;
+const panelsEl = document.getElementById("panels");
+const tpl = document.getElementById("pageA");
+for (let i = 0; i < N; i++) {
+  const p = document.createElement("div");
+  p.className = "panel";
+  p.id = "p" + i;
+  p.style.left = (i * PW) + "px";
+  const page = tpl.content.firstElementChild.cloneNode(true);
+  page.style.left = (-i * PW) + "px";
+  p.appendChild(page);
+  panelsEl.appendChild(p);
+}
+
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const panels = gsap.utils.toArray(".panel");
+  const pages = gsap.utils.toArray(".pageA");
+  const dir = i => (i % 2 === 0 ? -1 : 1);   // even panels exit up, odd panels exit down
+
+  // 1. anticipation: every panel leans a little the opposite way
+  tl.to(panels, { y: i => -dir(i) * 26, duration: 0.3, ease: "power2.out", stagger: 0.04 }, 0.05)
+  // 2. they shoot off, staggered left to right; fast power4.in exit
+    .to(panels, { y: i => dir(i) * 780, duration: 0.55, ease: "power4.in", stagger: 0.08 }, 0.38)
+  // 3. follow-through: the printed page inside each panel drags behind its panel
+    .to(pages, { y: i => -dir(i) * 90, duration: 0.55, ease: "power2.in", stagger: 0.08 }, 0.38)
+
+  // 4. page B settles in behind the last panels, overlapping parts on staggered offsets
+    .from("#numB",   { y: 140, autoAlpha: 0, duration: 1.15, ease: "power3.out" }, 0.95)
+    .from("#labelB", { y: 30, autoAlpha: 0, duration: 0.6, ease: "power3.out" }, 0.9)
+    .from("#titleB", { y: 90, skewX: -6, autoAlpha: 0, duration: 0.9, ease: "power3.out" }, 1.02)
+    .from("#ruleB",  { scaleX: 0, transformOrigin: "0% 50%", duration: 0.75, ease: "power3.inOut" }, 1.25)
+    .from("#bodyB",  { y: 36, autoAlpha: 0, duration: 0.8, ease: "power3.out" }, 1.32)
+    .from("#folioB", { y: 16, autoAlpha: 0, duration: 0.6, ease: "power2.out" }, 1.6)
+    .to({}, { duration: 0.2 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

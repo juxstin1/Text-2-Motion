@@ -1,0 +1,15 @@
+duration 3.40s, 104 frames @30fps, 6 tweens
+TIMING
+  #kicker, #folio  autoAlpha,y  0.00-0.60s  power2.out
+  #mark  scale,autoAlpha  0.10-0.80s  power3.out
+  #quote div x14  y,autoAlpha  0.30-1.98s  power2.out  stagger 0.075
+  #dash  scaleX  1.77-2.27s  power3.inOut
+  #who, #role  x,autoAlpha  2.02-2.80s  power3.out  stagger 0.08
+  (hold)  2.81-3.41s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 20 visible (#kicker, #folio, #mark, #quote div x14 ...); final hold 0.70s; no overlaps

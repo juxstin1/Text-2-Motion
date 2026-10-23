@@ -1,0 +1,164 @@
+{
+ "duration": 2.7,
+ "fps": 30,
+ "frames": 82,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.68,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "#eyebrow",
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.8,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#rule"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.2,
+   "duration": 0.6,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#byline"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 0.8,
+   "ease": "back.out(1.7)",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#cap"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.75,
+   "duration": 1.2,
+   "ease": "power3.out",
+   "props": [
+    "yPercent",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "#body div.li[0]",
+    "#body div.li[1]",
+    "#body div.li[2]",
+    "#body div.li[3]",
+    "#body div.li[4]",
+    "#body div.li[5]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#foot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.2,
+   "duration": 0.5,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#eyebrow",
+  "#title",
+  "#rule",
+  "#byline",
+  "#cap",
+  "#body div.li[0]",
+  "#body div.li[1]",
+  "#body div.li[2]",
+  "#body div.li[3]",
+  "#body div.li[4]",
+  "#body div.li[5]",
+  "#foot",
+  "#foot span"
+ ],
+ "fonts": [
+  "Inter, sans-serif",
+  "Fraunces, serif"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.77,
+  "end_visible": [
+   "#eyebrow",
+   "#title",
+   "#rule",
+   "#byline",
+   "#cap",
+   "#body div.li[0]",
+   "#body div.li[1]",
+   "#body div.li[2]",
+   "#body div.li[3]",
+   "#body div.li[4]",
+   "#body div.li[5]",
+   "#foot",
+   "#foot span"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

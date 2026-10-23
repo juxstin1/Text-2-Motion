@@ -1,0 +1,14 @@
+{
+  "id": "bar-chart-grow",
+  "prompt": "bar chart bars grow from the baseline with staggered expo easing",
+  "tags": [
+    "entrance",
+    "chart",
+    "stagger",
+    "data"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

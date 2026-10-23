@@ -1,0 +1,195 @@
+{
+ "duration": 3.0,
+ "fps": 30,
+ "frames": 91,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#card"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.5,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#top"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.25,
+   "duration": 0.7,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#label"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#counter"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 1.9,
+   "ease": "power2.inOut",
+   "props": [
+    "v"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 0.4,
+   "duration": 1.5,
+   "ease": "power2.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#line"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.6,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.1,
+   "targets": [
+    "#chip",
+    "#note"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.7,
+   "duration": 0.7,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#area"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.85,
+   "duration": 0.5,
+   "ease": "back.out(2.5)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.4,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#card",
+  "#top",
+  "#label",
+  "#counter",
+  "#line",
+  "#chip",
+  "#note",
+  "#area",
+  "#dot",
+  "#top b",
+  "#top span.lbl"
+ ],
+ "fonts": [
+  "\"Space Grotesk\"",
+  "Inter"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.7,
+  "end_visible": [
+   "#card",
+   "#top",
+   "#label",
+   "#counter",
+   "#line",
+   "#chip",
+   "#note",
+   "#area",
+   "#dot",
+   "#top b",
+   "#top span.lbl"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

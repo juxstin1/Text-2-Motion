@@ -1,0 +1,18 @@
+duration 3.07s, 94 frames @30fps, 9 tweens
+TIMING
+  #frame  autoAlpha,scale  0.00-0.60s  power3.out
+  #id, #node ...  autoAlpha,y  0.25-0.77s  power2.out  stagger 0.06
+  #word  autoAlpha  0.57-0.82s  power1.out
+  {object} x1  p  0.57-2.17s  power2.inOut
+  #bar  scaleX  0.57-2.17s  power2.inOut
+  #status  autoAlpha  0.57-0.87s  power1.out
+  #ok  autoAlpha,x  2.07-2.42s  power3.out
+  #foot  autoAlpha,y  2.17-2.57s  power2.out
+  (hold)  2.57-3.07s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 9 visible (#frame, #id, #node, #field ...); final hold 0.64s; no overlaps

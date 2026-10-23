@@ -1,0 +1,169 @@
+{
+ "duration": 1.71,
+ "fps": 30,
+ "frames": 53,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.12,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#btn"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.5,
+   "ease": "back.out(2)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#chev"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.12,
+   "duration": 0.45,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#btn"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.14,
+   "duration": 0.55,
+   "ease": "power4.out",
+   "props": [
+    "scaleY",
+    "scaleX",
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#menu"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.22,
+   "duration": 0.69,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.045,
+   "targets": [
+    "#menu div.mlabel",
+    "#menu div.item[0]",
+    "#menu div.item[1]",
+    "#menu div.item[2]",
+    "#menu div.item[3]",
+    "#menu div.sep",
+    "#menu div.item[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.71,
+   "duration": 0.4,
+   "ease": "back.out(2.5)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#menu svg.tick"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.11,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#btn",
+  "#chev",
+  "#menu",
+  "#menu div.mlabel",
+  "#menu div.item[0]",
+  "#menu div.item[1]",
+  "#menu div.item[2]",
+  "#menu div.item[3]",
+  "#menu div.sep",
+  "#menu div.item[4]",
+  "#menu svg.tick",
+  "#heading",
+  "#sub",
+  "#btn span.muted",
+  "#btn span"
+ ],
+ "fonts": [
+  "Sora, sans-serif",
+  "Manrope, sans-serif"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.61,
+  "end_visible": [
+   "#btn",
+   "#chev",
+   "#menu",
+   "#menu div.mlabel",
+   "#menu div.item[0]",
+   "#menu div.item[1]",
+   "#menu div.item[2]",
+   "#menu div.item[3]",
+   "#menu div.sep",
+   "#menu div.item[4]",
+   "#menu svg.tick",
+   "#heading",
+   "#sub",
+   "#btn span.muted",
+   "#btn span"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

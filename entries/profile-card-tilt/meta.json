@@ -1,0 +1,14 @@
+{
+  "id": "profile-card-tilt",
+  "prompt": "profile card rises with a slight 3D tilt that levels out, avatar and name following",
+  "tags": [
+    "entrance",
+    "ui",
+    "card",
+    "3d"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

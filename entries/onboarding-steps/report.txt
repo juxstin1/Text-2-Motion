@@ -1,0 +1,15 @@
+duration 2.48s, 76 frames @30fps, 6 tweens
+TIMING
+  #eyebrow  autoAlpha,y  0.00-0.50s  power2.out
+  #headline div x4  yPercent  0.15-1.13s  power4.out  stagger 0.06
+  div.card x3  x,autoAlpha  0.55-1.83s  expo.out  stagger 0.14
+  #intro  autoAlpha,y  0.63-1.23s  power2.out
+  div.num x3  scale  1.05-1.88s  back.out(2.2)  stagger 0.14
+  (hold)  1.88-2.48s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 21 visible (#eyebrow, #headline div x4, div.card x3, #intro ...); final hold 0.58s; no overlaps

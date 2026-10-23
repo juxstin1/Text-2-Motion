@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: bold-sports -->
+<!-- format: vertical -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #111111; }
+  #stage { position: relative; width: 720px; height: 1280px; overflow: hidden; background: #111111; }
+  #bg { position: absolute; inset: 0;
+        background: radial-gradient(ellipse at 50% 42%, #222222 0%, #111111 62%),
+                    #111111; }
+  /* shake wrapper is inset so a few px of shake never leaves the stage; children use shake coords (stage - 16) */
+  #shake { position: absolute; left: 16px; top: 16px; width: 688px; height: 1248px; }
+  #burst { position: absolute; left: 0; top: 0; width: 688px; height: 1248px; overflow: visible; }
+  .ray { visibility: hidden; opacity: 0; }
+
+  #kicker { position: absolute; left: 0; top: 186px; width: 688px; display: flex; justify-content: center; }
+  #kickText { font-family: "Archivo Black"; font-size: 30px; letter-spacing: 0.2em; color: #E8FF3A; line-height: 1;
+              padding: 10px 18px 10px 24px; border: 3px solid #E8FF3A; border-radius: 6px; background: #111111; }
+
+  /* the title group: line 1 sits above, line 2 rides a tilted yellow band */
+  #title { position: absolute; left: 84px; top: 248px; width: 520px; height: 500px; }
+  #l1 { position: absolute; left: 0; top: 16px; width: 520px; text-align: center;
+        font-family: "Bebas Neue"; font-size: 250px; line-height: 0.86; letter-spacing: 0.01em; color: #FFFFFF; }
+  #band { position: absolute; left: 0px; top: 251px; width: 520px; height: 220px; transform: rotate(-3deg); }
+  #plate { position: absolute; inset: 0; background: #E8FF3A; border-radius: 6px; }
+  #mask { position: absolute; inset: 0; overflow: hidden; }
+  #l2 { position: absolute; left: 0; top: 18px; width: 520px; text-align: center;
+        font-family: "Bebas Neue"; font-size: 226px; line-height: 0.86; letter-spacing: 0.01em; color: #111111; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="shake">
+    <!-- impact rays, centred on the title, sit behind it -->
+    <svg id="burst" data-layer="back" viewBox="0 0 688 1248">
+      <g stroke="#E8FF3A" stroke-width="10" stroke-linecap="round">
+        <line class="ray" x1="344" y1="200" x2="344" y2="150"/>
+        <line class="ray" x1="150" y1="250" x2="104" y2="214"/>
+        <line class="ray" x1="538" y1="250" x2="584" y2="214"/>
+        <line class="ray" x1="70"  y1="500" x2="16"  y2="500"/>
+        <line class="ray" x1="618" y1="500" x2="672" y2="500"/>
+        <line class="ray" x1="120" y1="770" x2="80"  y2="810"/>
+        <line class="ray" x1="568" y1="770" x2="608" y2="810"/>
+        <line class="ray" x1="344" y1="800" x2="344" y2="850"/>
+      </g>
+    </svg>
+    <div id="kicker"><div id="kickText">WAIT FOR IT</div></div>
+    <div id="title">
+      <div id="l1">DON'T</div>
+      <div id="band">
+        <div id="plate" data-layer="back"></div>
+        <div id="mask"><div id="l2">BLINK</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  // seamless loop: frame 0 and the last frame are both the empty stage
+  const tl = gsap.timeline({ paused: true });
+  gsap.set("#l1", { transformOrigin: "50% 100%" });
+  gsap.set("#plate", { transformOrigin: "0% 50%" });
+  gsap.set("#title", { transformOrigin: "50% 52%" });
+  gsap.set(".ray", { transformOrigin: "50% 50%" });
+
+  const shake = (at, amp) => tl.to("#shake", { keyframes: [
+      { x: -amp, y: amp * 0.6, duration: 0.04 }, { x: amp * 0.8, y: -amp * 0.5, duration: 0.05 },
+      { x: -amp * 0.45, y: amp * 0.3, duration: 0.05 }, { x: amp * 0.2, y: -amp * 0.1, duration: 0.06 },
+      { x: 0, y: 0, duration: 0.08 } ], ease: "power2.out" }, at);
+  const rays = at => tl
+      .fromTo(".ray", { scale: 0.3, autoAlpha: 0 }, { scale: 1.15, autoAlpha: 1, duration: 0.12, ease: "power3.out", stagger: 0.01, immediateRender: false }, at)
+      .to(".ray", { scale: 1.4, autoAlpha: 0, duration: 0.26, ease: "power2.in", stagger: 0.01 }, at + 0.12);
+
+  // 1. DON'T: ghosted and huge (growing up from its baseline), a breath of wind-up, then it drops and squashes
+  const H1 = 0.22;
+  tl.fromTo("#l1", { scale: 1.4, autoAlpha: 0 }, { scale: 1.48, autoAlpha: 0.3, duration: 0.08, ease: "power2.out" }, 0)
+    .to("#l1", { scale: 1, autoAlpha: 1, duration: 0.14, ease: "power4.in" }, 0.08)
+    .to("#l1", { scaleY: 0.7, scaleX: 1.2, duration: 0.05, ease: "power2.out" }, H1)
+    .to("#l1", { scaleY: 1, scaleX: 1, duration: 0.36, ease: "back.out(3)" }, H1 + 0.05);
+  shake(H1, 11);
+  rays(H1);
+
+  // 2. the band snaps out from the left, BLINK punches up through it, the band takes the hit
+  const H2 = 0.44;
+  tl.fromTo("#plate", { scaleX: 0, skewX: -14 }, { scaleX: 1, skewX: 0, duration: 0.24, ease: "expo.out" }, H1 + 0.04)
+    .fromTo("#l2", { yPercent: 140, scaleY: 1.25, scaleX: 0.86 }, { yPercent: 0, scaleY: 1, scaleX: 1, duration: 0.16, ease: "power4.in" }, H2 - 0.16)
+    .to("#l2", { scaleY: 0.86, scaleX: 1.06, duration: 0.05, ease: "power2.out", transformOrigin: "50% 0%" }, H2)
+    .to("#l2", { scaleY: 1, scaleX: 1, duration: 0.34, ease: "back.out(3)" }, H2 + 0.05)
+    .to("#band", { y: -10, rotation: -5, duration: 0.06, ease: "power2.out" }, H2)
+    .to("#band", { y: 0, rotation: -3, duration: 0.5, ease: "elastic.out(1.1, 0.4)" }, H2 + 0.06);
+  shake(H2, 7);
+
+  // 3. kicker pops above
+  tl.fromTo("#kickText", { scale: 0.4, autoAlpha: 0, y: 16 }, { scale: 1, autoAlpha: 1, y: 0, duration: 0.42, ease: "back.out(2.6)" }, 0.56);
+
+  // 4. pulses on the beat: anticipation dip, punch out, settle; the band and rays kick with it
+  [1.02, 1.46, 1.9].forEach((b, k) => {
+    tl.to("#title", { scale: 0.97, duration: 0.07, ease: "power2.in" }, b - 0.07)
+      .to("#title", { scale: 1.06, duration: 0.06, ease: "power3.out" }, b)
+      .to("#title", { scale: 1, duration: 0.32, ease: "back.out(2.4)" }, b + 0.06)
+      .to("#band", { rotation: k % 2 ? -1.5 : -4.5, duration: 0.06, ease: "power2.out" }, b)
+      .to("#band", { rotation: -3, duration: 0.34, ease: "back.out(3)" }, b + 0.06)
+      .to("#kickText", { y: -8, duration: 0.08, ease: "power2.out" }, b + 0.02)
+      .to("#kickText", { y: 0, duration: 0.3, ease: "back.out(3)" }, b + 0.1);
+    shake(b, 4 + k * 2);
+  });
+  rays(1.9);
+
+  // 5. exit for the loop: squash wind-up, then the whole title implodes back to the empty stage
+  tl.to("#title", { scaleY: 0.88, scaleX: 1.06, duration: 0.12, ease: "power2.out" }, 2.26)
+    .to("#title", { scale: 0, rotation: 8, autoAlpha: 0, duration: 0.3, ease: "back.in(1.8)" }, 2.38)
+    .to("#kickText", { scale: 0.3, autoAlpha: 0, y: 30, duration: 0.24, ease: "back.in(2)" }, 2.32)
+    .to({}, { duration: 0.1 }, 2.68);
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.repeat(-1).play();
+});
+</script>
+</body>
+</html>

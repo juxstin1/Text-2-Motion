@@ -1,0 +1,18 @@
+duration 1.80s, 55 frames @30fps, 9 tweens
+TIMING
+  #ghost  x,autoAlpha  0.00-1.30s  power2.out
+  #bug  autoAlpha  0.00-0.40s  power2.out
+  #numFill  xPercent  0.10-0.70s  expo.out
+  #nameFill  xPercent  0.25-0.95s  expo.out
+  #numTxt  yPercent  0.30-0.80s  power4.out
+  #nameTxt  x,autoAlpha  0.37-0.97s  power3.out
+  #subFill  xPercent  0.47-1.17s  expo.out
+  #subTxt  x,autoAlpha  0.59-1.19s  power3.out
+  (hold)  1.30-1.80s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 11 visible (#ghost, #bug, #numFill, #nameFill ...); final hold 0.63s; no overlaps

@@ -1,0 +1,14 @@
+{
+  "id": "orbit-collapse-logo",
+  "prompt": "dots orbit a centre, collapse inward and burst out into the logo mark",
+  "tags": [
+    "logo",
+    "orbit",
+    "collapse",
+    "sting"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

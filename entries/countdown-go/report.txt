@@ -1,0 +1,20 @@
+duration 3.83s, 116 frames @30fps, 20 tweens
+TIMING
+  #tl-label, #tr-label  y,autoAlpha  0.00-0.56s  power3.out  stagger 0.06
+  #kick  y,autoAlpha  0.05-0.55s  power3.out
+  #fl, #fr  scaleX  0.10-0.80s  power4.out
+  #bars div.seg x3  scaleX,autoAlpha  0.10-0.72s  power3.out  stagger 0.06
+  div.num  scale,autoAlpha  0.30-0.64s  expo.out
+  #bars div.fill  scaleX  0.30-0.92s  power2.inOut
+  div.num  scale,autoAlpha  0.78-0.92s  power2.in
+  div.num  scale,autoAlpha  0.92-1.26s  expo.out
+  #bars div.fill  scaleX  0.92-1.54s  power2.inOut
+  div.num  scale,autoAlpha  1.40-1.54s  power2.in
+  (+10 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 10 visible (#tl-label, #tr-label, #bars div.seg x3, #bars div.fill x3 ...); final hold 0.66s; no overlaps

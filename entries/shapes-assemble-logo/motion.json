@@ -1,0 +1,503 @@
+{
+ "duration": 2.8,
+ "fps": 30,
+ "frames": 85,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.12,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.72,
+   "ease": "power3.out",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.72,
+   "ease": "power2.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.72,
+   "ease": "back.out(1.4)",
+   "props": [
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.07,
+   "duration": 0.12,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.07,
+   "duration": 0.72,
+   "ease": "power3.out",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.07,
+   "duration": 0.72,
+   "ease": "power2.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.07,
+   "duration": 0.72,
+   "ease": "back.out(1.4)",
+   "props": [
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.14,
+   "duration": 0.12,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.14,
+   "duration": 0.72,
+   "ease": "power3.out",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.14,
+   "duration": 0.72,
+   "ease": "power2.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.14,
+   "duration": 0.72,
+   "ease": "back.out(1.4)",
+   "props": [
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.21,
+   "duration": 0.12,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.21,
+   "duration": 0.72,
+   "ease": "power3.out",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.21,
+   "duration": 0.72,
+   "ease": "power2.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.21,
+   "duration": 0.72,
+   "ease": "back.out(1.4)",
+   "props": [
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.95,
+   "duration": 0.2,
+   "ease": "sine.inOut",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL",
+    "#pTR",
+    "#pBL",
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.11,
+   "duration": 0.16,
+   "ease": "power3.in",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL",
+    "#pTR",
+    "#pBL",
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.27,
+   "duration": 0.06,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#mark"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.27,
+   "duration": 0.55,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.33,
+   "duration": 0.45,
+   "ease": "back.out(3.5)",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#mark"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.43,
+   "duration": 0.17,
+   "ease": "power4.in",
+   "props": [
+    "autoAlpha",
+    "x",
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#word"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.06,
+   "ease": "power2.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#word"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#mark"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.66,
+   "duration": 0.4,
+   "ease": "back.out(3)",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#word"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.67,
+   "duration": 0.35,
+   "ease": "back.out(3)",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#mark"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.77,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#tag"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.05,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#glint"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.05,
+   "duration": 0.5,
+   "ease": "power2.inOut",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#glint"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.55,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#glint"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.55,
+   "duration": 0.25,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#pTL",
+  "#pTR",
+  "#pBL",
+  "#pBR",
+  "#mark",
+  "#ring",
+  "#word",
+  "#tag",
+  "#glint",
+  "#tag b"
+ ],
+ "fonts": [
+  "\"Space Grotesk\"",
+  "Inter"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.23,
+  "end_visible": [
+   "#pTL",
+   "#pTR",
+   "#pBL",
+   "#pBR",
+   "#mark",
+   "#word",
+   "#tag",
+   "#tag b"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "pricing-card-overshoot",
+  "prompt": "pricing card slides up and settles with a soft overshoot",
+  "tags": [
+    "entrance",
+    "ui",
+    "card",
+    "overshoot"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "shapes-assemble-logo",
+  "prompt": "four shapes fly in from the corners, snap together into a logo mark, then the wordmark punches in",
+  "tags": [
+    "logo",
+    "assemble",
+    "snap",
+    "sting"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

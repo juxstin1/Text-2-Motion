@@ -1,0 +1,20 @@
+duration 3.19s, 97 frames @30fps, 27 tweens
+TIMING
+  #title  x,autoAlpha  0.00-0.45s  power4.out
+  #rowA div.plate, #rowB div.plate  scaleX  0.08-0.68s  expo.out  stagger 0.1
+  #rowA div.tile, #rowB div.tile  scale,autoAlpha  0.20-0.70s  back.out(2.5)  stagger 0.1
+  #slotA, #slotB  scale,rotation  0.28-0.88s  back.out(3)  stagger 0.1
+  #nameA, #nameB  yPercent  0.34-0.89s  power4.out  stagger 0.1
+  #rowA div.track, #rowB div.track  scaleX  0.40-0.90s  power3.out  stagger 0.1
+  #numA, #numB  autoAlpha,y  0.42-0.87s  power3.out  stagger 0.1
+  #barA, #barB  scaleX  0.70-0.82s  power2.out
+  #barB  scaleX  0.82-1.82s  power3.out
+  #barA  scaleX  0.82-2.07s  back.out(1.7)
+  (+17 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 20 visible (#title, #rowA div.plate, #rowB div.plate, #rowA div.tile ...); final hold 0.29s; no overlaps

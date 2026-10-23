@@ -1,0 +1,154 @@
+{
+ "duration": 2.18,
+ "fps": 30,
+ "frames": 67,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 1,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.1,
+   "targets": [
+    "#kicker",
+    "#headline",
+    "#lede"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.2,
+   "duration": 1.3,
+   "ease": "power4.out",
+   "props": [
+    "y",
+    "rotationX",
+    "rotationY"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#card"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.2,
+   "duration": 0.35,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#card"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.62,
+   "duration": 0.6,
+   "ease": "back.out(1.8)",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#avatar"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.74,
+   "duration": 0.84,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "#name",
+    "#role",
+    "#bio",
+    "#stats"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.58,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#kicker",
+  "#headline",
+  "#lede",
+  "#card",
+  "#avatar",
+  "#name",
+  "#role",
+  "#bio",
+  "#stats",
+  "#stats b[0]",
+  "#stats span[0]",
+  "#stats b[1]",
+  "#stats span[1]",
+  "#stats b[2]",
+  "#stats span[2]"
+ ],
+ "fonts": [
+  "Inter",
+  "Fraunces"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.75,
+  "end_visible": [
+   "#kicker",
+   "#headline",
+   "#lede",
+   "#card",
+   "#avatar",
+   "#name",
+   "#role",
+   "#bio",
+   "#stats",
+   "#stats b[0]",
+   "#stats span[0]",
+   "#stats b[1]",
+   "#stats span[1]",
+   "#stats b[2]",
+   "#stats span[2]"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

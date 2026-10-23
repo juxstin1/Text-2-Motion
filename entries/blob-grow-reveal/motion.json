@@ -1,0 +1,587 @@
+{
+ "duration": 3.37,
+ "fps": 30,
+ "frames": 103,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0.05,
+   "duration": 0.42,
+   "ease": "back.out(2.4)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#blob"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 0.3,
+   "ease": "power2.inOut",
+   "props": [
+    "scaleX",
+    "scaleY",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#blob"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.95,
+   "ease": "power2.in",
+   "props": [
+    "scaleX",
+    "scaleY",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#blob"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 1,
+   "ease": "sine.inOut",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#lobeA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.88,
+   "duration": 0.8,
+   "ease": "sine.inOut",
+   "props": [
+    "scale",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#lobeC"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.95,
+   "duration": 0.9,
+   "ease": "sine.inOut",
+   "props": [
+    "scale",
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#lobeB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.68,
+   "duration": 0.6,
+   "ease": "back.out(1.8)",
+   "props": [
+    "y",
+    "scale",
+    "rotation",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#frame"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.75,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cover"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.75,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#blob"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.76,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#s2label"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.82,
+   "duration": 0.69,
+   "ease": "power4.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.09,
+   "targets": [
+    "#s2title span.ln[0]",
+    "#s2title span.ln[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.01,
+   "duration": 0.5,
+   "ease": "back.out(2)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#sun"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.04,
+   "duration": 0.36,
+   "ease": "power2.in",
+   "props": [
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#pear"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.04,
+   "duration": 0.36,
+   "ease": "power2.in",
+   "props": [
+    "scaleX",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#pearShadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.06,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#s2meta"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.24,
+   "duration": 0.6,
+   "ease": "power1.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#frame"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.4,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pear"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.4,
+   "duration": 0.72,
+   "ease": "power1.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#leaf"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.46,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#plaque"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.47,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pear"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.12,
+   "duration": 0.25,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#blob",
+  "#lobeA",
+  "#lobeC",
+  "#lobeB",
+  "#frame",
+  "#cover",
+  "#s2label",
+  "#s2title span.ln[0]",
+  "#s2title span.ln[1]",
+  "#sun",
+  "#pear",
+  "#pearShadow",
+  "#s2meta",
+  "#leaf",
+  "#plaque",
+  "#s1label",
+  "#s1title",
+  "#s1hint"
+ ],
+ "fonts": [
+  "\"Space Grotesk\", sans-serif",
+  "\"Instrument Serif\", serif"
+ ],
+ "flagged": true,
+ "notes": 8,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#blob",
+    "b": "#s1label",
+    "ranges": [
+     [
+      1.4,
+      1.4333333333333333
+     ]
+    ],
+    "peak": 0.94,
+    "peak_frame": 43,
+    "ia": 0,
+    "ib": 15,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#blob",
+    "b": "#s1title",
+    "ranges": [
+     [
+      1.3666666666666667,
+      1.4333333333333333
+     ]
+    ],
+    "peak": 0.96,
+    "peak_frame": 43,
+    "ia": 0,
+    "ib": 16,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#blob",
+    "b": "#s1hint",
+    "ranges": [
+     [
+      1.0,
+      1.1333333333333333
+     ]
+    ],
+    "peak": 0.82,
+    "peak_frame": 34,
+    "ia": 0,
+    "ib": 17,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#lobeA",
+    "b": "#s1hint",
+    "ranges": [
+     [
+      1.2,
+      1.3666666666666667
+     ]
+    ],
+    "peak": 0.91,
+    "peak_frame": 41,
+    "ia": 1,
+    "ib": 17,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#lobeC",
+    "b": "#s1title",
+    "ranges": [
+     [
+      1.6666666666666667,
+      1.7
+     ]
+    ],
+    "peak": 0.87,
+    "peak_frame": 51,
+    "ia": 2,
+    "ib": 16,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#lobeC",
+    "b": "#s1hint",
+    "ranges": [
+     [
+      1.3666666666666667,
+      1.4
+     ]
+    ],
+    "peak": 0.91,
+    "peak_frame": 42,
+    "ia": 2,
+    "ib": 17,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#lobeB",
+    "b": "#s1title",
+    "ranges": [
+     [
+      1.3666666666666667,
+      1.4333333333333333
+     ]
+    ],
+    "peak": 0.89,
+    "peak_frame": 43,
+    "ia": 3,
+    "ib": 16,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#lobeB",
+    "b": "#s1hint",
+    "ranges": [
+     [
+      1.0333333333333334,
+      1.1333333333333333
+     ]
+    ],
+    "peak": 0.69,
+    "peak_frame": 34,
+    "ia": 3,
+    "ib": 17,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#frame",
+    "b": "#s1hint",
+    "ranges": [
+     [
+      1.9,
+      1.9333333333333333
+     ],
+     [
+      2.1333333333333333,
+      3.37
+     ]
+    ],
+    "peak": 0.94,
+    "peak_frame": 64,
+    "ia": 4,
+    "ib": 17,
+    "defect": true,
+    "static": true
+   },
+   {
+    "a": "#s2label",
+    "b": "#s1title",
+    "ranges": [
+     [
+      1.9,
+      3.37
+     ]
+    ],
+    "peak": 0.95,
+    "peak_frame": 57,
+    "ia": 6,
+    "ib": 16,
+    "defect": true,
+    "static": true
+   },
+   {
+    "a": "#s2title span.ln[0]",
+    "b": "#s1title",
+    "ranges": [
+     [
+      1.8333333333333333,
+      3.37
+     ]
+    ],
+    "peak": 1.0,
+    "peak_frame": 67,
+    "ia": 7,
+    "ib": 16,
+    "defect": true,
+    "static": true
+   },
+   {
+    "a": "#s2title span.ln[1]",
+    "b": "#s1title",
+    "ranges": [
+     [
+      1.9333333333333333,
+      3.37
+     ]
+    ],
+    "peak": 0.75,
+    "peak_frame": 71,
+    "ia": 8,
+    "ib": 16,
+    "defect": true,
+    "static": true
+   }
+  ],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.27,
+  "end_visible": [
+   "#frame",
+   "#cover",
+   "#s2label",
+   "#s2title span.ln[0]",
+   "#s2title span.ln[1]",
+   "#sun",
+   "#pear",
+   "#pearShadow",
+   "#s2meta",
+   "#leaf",
+   "#plaque",
+   "#s1label",
+   "#s1title",
+   "#s1hint"
+  ],
+  "end_overlaps": [
+   [
+    "#frame",
+    "#s1hint"
+   ],
+   [
+    "#s2label",
+    "#s1title"
+   ],
+   [
+    "#s2title span.ln[0]",
+    "#s1title"
+   ],
+   [
+    "#s2title span.ln[1]",
+    "#s1title"
+   ]
+  ],
+  "n_notes": 8
+ }
+}

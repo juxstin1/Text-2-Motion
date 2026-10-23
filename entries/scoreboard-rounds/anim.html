@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: bold-sports -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #111111; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #111111;
+           font-family: 'Archivo Black', sans-serif; color: #FFFFFF; }
+  #bg { position: absolute; inset: 0; background:
+        radial-gradient(800px 420px at 50% 50%, rgba(232,255,58,0.08), rgba(232,255,58,0) 70%), #111111; }
+  #wrap { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+  #tag { position: relative; z-index: 2; margin-bottom: -16px; padding: 6px 18px 5px; background: #E8FF3A; color: #111111;
+         font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; border-radius: 4px; }
+  /* the board is one solid plate so it reads over any footage */
+  #board { position: relative; display: flex; align-items: stretch; min-width: 980px; height: 170px; border-radius: 16px;
+           overflow: hidden; background: rgba(17,17,17,0.95); border: 2px solid rgba(255,255,255,0.1);
+           box-shadow: 0 26px 60px rgba(0,0,0,0.6); }
+  .side { position: relative; flex: 1; display: flex; align-items: center; gap: 22px; padding: 0 26px; }
+  #sideB { flex-direction: row-reverse; }
+  .side .stripe { position: absolute; top: 0; bottom: 0; width: 8px; background: var(--brand); }
+  #sideA .stripe { left: 0; } #sideB .stripe { right: 0; }
+  .glow { position: absolute; inset: 0; opacity: 0;
+          background: radial-gradient(420px 220px at var(--gx) 50%, color-mix(in srgb, var(--brand) 55%, transparent), transparent 75%); }
+  #sideA .glow { --gx: 85%; } #sideB .glow { --gx: 15%; }
+  .slot { position: relative; width: 84px; height: 84px; flex: none; }
+  .slot svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .name { position: relative; flex: 1; max-width: 250px; font-size: 26px; line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; }
+  #sideB .name { text-align: right; }
+  .score { position: relative; min-width: 110px; text-align: center; font-family: 'Bebas Neue', sans-serif; font-size: 150px;
+           line-height: 1; padding-top: 12px; letter-spacing: 0.01em; }
+  .flash { position: absolute; left: 50%; top: 50%; width: 150px; height: 150px; margin: -75px 0 0 -75px; border-radius: 50%;
+           border: 4px solid #E8FF3A; visibility: hidden; }
+
+  #mid { position: relative; width: 210px; flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center;
+         gap: 10px; background: #1C1C1C; border-left: 2px solid rgba(255,255,255,0.08); border-right: 2px solid rgba(255,255,255,0.08); }
+  #roundNo { font-size: 16px; letter-spacing: 0.2em; color: #E8FF3A; text-transform: uppercase; }
+  #roundBox { position: relative; width: 190px; height: 48px; overflow: hidden; }
+  .rname { position: absolute; inset: 0; text-align: center; font-family: 'Bebas Neue'; font-size: 48px; line-height: 50px; letter-spacing: 0.01em; }
+  #pips { display: flex; gap: 8px; }
+  .pip { position: relative; width: 40px; height: 8px; border-radius: 2px; background: rgba(255,255,255,0.16); overflow: hidden; }
+  .pip b { position: absolute; inset: 0; background: var(--fill); transform-origin: 0 50%; }
+
+  .win { position: absolute; z-index: 3; top: 12px; padding: 5px 14px 4px; border-radius: 4px; background: #E8FF3A; color: #111111;
+         font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="wrap">
+    <div id="tag"></div>
+    <div id="board" data-layer="back">
+      <div class="side" id="sideA"><div class="glow" data-layer="back"></div><div class="stripe"></div>
+        <div class="slot" id="slotA"><svg id="logoA" viewBox="0 0 100 100"></svg></div>
+        <div class="name" id="nameA"></div>
+        <div class="score" id="scoreA"><div class="flash" data-layer="back"></div><span>0</span></div></div>
+      <div id="mid" data-layer="back"><div id="roundNo"></div><div id="roundBox"></div><div id="pips"></div></div>
+      <div class="side" id="sideB"><div class="glow" data-layer="back"></div><div class="stripe"></div>
+        <div class="slot" id="slotB"><svg id="logoB" viewBox="0 0 100 100"></svg></div>
+        <div class="name" id="nameB"></div>
+        <div class="score" id="scoreB"><div class="flash" data-layer="back"></div><span>0</span></div></div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+const DATA = {
+  tag: "Head to head",
+  roundWord: "Round",
+  winWord: "Winner",
+  a: { name: "Nova", color: "#4D6BFE",
+       logo: '<circle cx="50" cy="50" r="46" fill="currentColor"/><circle cx="50" cy="50" r="22" fill="none" stroke="#fff" stroke-width="9"/><circle cx="72" cy="28" r="7" fill="#fff"/>' },
+  b: { name: "Apex", color: "#10A37F",
+       logo: '<path d="M50 6 L95 90 H5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="M50 44 L68 78 H32 Z" fill="#111"/>' },
+  rounds: [  // points each brand scores per round
+    { label: "Coding", a: 3, b: 1 },
+    { label: "Math",   a: 1, b: 3 },
+    { label: "Speed",  a: 2, b: 0 },
+  ],
+};
+
+document.fonts.ready.then(() => {
+  // ---------- fill the DOM from DATA
+  const $ = id => document.getElementById(id);
+  $("tag").textContent = DATA.tag;
+  ["a", "b"].forEach(k => {
+    const K = k.toUpperCase(), d = DATA[k];
+    $("side" + K).style.setProperty("--brand", d.color);
+    $("logo" + K).innerHTML = d.logo;
+    $("logo" + K).style.color = d.color;
+    $("name" + K).textContent = d.name;
+  });
+  const N = DATA.rounds.length;
+  const names = DATA.rounds.map((r, i) => {
+    const el = document.createElement("div");
+    el.className = "rname"; el.id = "rname" + i; el.textContent = r.label;
+    $("roundBox").appendChild(el);
+    const pip = document.createElement("div");
+    pip.className = "pip"; pip.id = "pip" + i;
+    const lead = r.a === r.b ? null : (r.a > r.b ? "a" : "b");
+    pip.style.setProperty("--fill", lead ? DATA[lead].color : "#FFFFFF");
+    pip.innerHTML = "<b></b>";
+    $("pips").appendChild(pip);
+    return el;
+  });
+  const totals = DATA.rounds.reduce((t, r) => ({ a: t.a + r.a, b: t.b + r.b }), { a: 0, b: 0 });
+  const winKey = totals.a === totals.b ? null : (totals.a > totals.b ? "a" : "b");
+  if (winKey) {
+    const w = document.createElement("div");
+    w.className = "win"; w.id = "winTag"; w.textContent = DATA.winWord;
+    w.style[winKey === "a" ? "left" : "right"] = "26px";
+    $("side" + winKey.toUpperCase()).appendChild(w);
+  }
+  const roundText = i => DATA.roundWord + " " + (i + 1) + " / " + N;
+  $("roundNo").textContent = roundText(0);
+
+  gsap.set(".pip b", { scaleX: 0 });
+  gsap.set(names, { yPercent: 110 });
+  gsap.set(".score", { transformOrigin: "50% 85%" });
+
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. board punches open from the centre, sides slide out, logos slam into their slots
+  tl.from("#board", { scaleX: 0.2, scaleY: 0.6, autoAlpha: 0, duration: 0.5, ease: "back.out(1.6)" }, 0)
+    .from("#tag", { y: 20, scale: 0.6, autoAlpha: 0, duration: 0.4, ease: "back.out(3)" }, 0.25)
+    .from("#mid", { scaleY: 0, duration: 0.4, ease: "power3.out" }, 0.15)
+    .from(["#slotA", "#slotB"], { scale: 2.2, autoAlpha: 0, rotation: (i) => i ? 25 : -25, duration: 0.42, ease: "power4.in" }, 0.2)
+    .from(["#nameA", "#nameB"], { x: (i) => i ? 40 : -40, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, 0.45)
+    .from(".score span", { y: 40, autoAlpha: 0, duration: 0.4, ease: "back.out(2)" }, 0.4)
+    .from(".stripe", { scaleY: 0, duration: 0.4, ease: "power3.out" }, 0.3)
+  // logo impact: a small recoil of the whole board
+    .to("#board", { keyframes: [{ scaleY: 0.97, duration: 0.06, ease: "power2.out" }, { scaleY: 1, duration: 0.4, ease: "elastic.out(1, 0.4)" }] }, 0.62);
+
+  // 2. each round: the round name rolls in, both counters tick up with a squash, the pip fills,
+  //    and the glow moves to whoever leads on the running total
+  const R0 = 0.8, RG = 0.62, run = { a: 0, b: 0 };
+  DATA.rounds.forEach((r, i) => {
+    const t = R0 + i * RG;
+    if (i > 0) tl.to(names[i - 1], { yPercent: -110, duration: 0.3, ease: "power3.in" }, t - 0.12);
+    tl.to(names[i], { yPercent: 0, duration: 0.4, ease: "back.out(2)" }, t);
+    if (i > 0) {
+      // round counter: tween a plain object so the label is right at any seek position
+      const rc = { v: i - 1 };
+      tl.to(rc, { v: i, duration: 0.1, ease: "power2.out", onUpdate: () => { $("roundNo").textContent = roundText(Math.round(rc.v)); } }, t)
+        .fromTo("#roundNo", { scale: 1.3 }, { scale: 1, duration: 0.35, ease: "back.out(3)", immediateRender: false }, t);
+    }
+    ["a", "b"].forEach((k, j) => {
+      if (!r[k]) return;
+      const K = k.toUpperCase(), span = $("score" + K).querySelector("span");
+      const c = { v: run[k] }; run[k] += r[k];
+      const ts = t + 0.26 + j * 0.06;
+      tl.to(c, { v: run[k], duration: 0.3, ease: "power2.out", onUpdate: () => { span.textContent = Math.round(c.v); } }, ts)
+        .to("#score" + K, { keyframes: [{ scaleY: 0.72, scaleX: 1.18, duration: 0.08, ease: "power2.out" },
+                                        { scaleY: 1.08, scaleX: 0.95, duration: 0.12, ease: "power2.out" },
+                                        { scaleY: 1, scaleX: 1, duration: 0.4, ease: "elastic.out(1.1, 0.35)" }] }, ts + 0.04)
+        .fromTo("#score" + K + " .flash", { scale: 0.5, autoAlpha: 1 }, { scale: 1.5, autoAlpha: 0, duration: 0.45, ease: "expo.out", immediateRender: false }, ts + 0.04);
+    });
+    tl.to("#pip" + i + " b", { scaleX: 1, duration: 0.35, ease: "power3.out" }, t + 0.3);
+    const lead = run.a === run.b ? null : (run.a > run.b ? "a" : "b");
+    tl.to("#sideA .glow", { opacity: lead === "a" ? 1 : 0, duration: 0.35, ease: "power2.out" }, t + 0.38)
+      .to("#sideB .glow", { opacity: lead === "b" ? 1 : 0, duration: 0.35, ease: "power2.out" }, t + 0.38);
+  });
+
+  // 3. final: the winner's logo bumps, the winner tag drops in, the loser side dims
+  const tF = R0 + N * RG + 0.1;
+  if (winKey) {
+    const W = winKey.toUpperCase(), L = winKey === "a" ? "B" : "A";
+    tl.to("#slot" + W, { keyframes: [{ scale: 0.85, duration: 0.1, ease: "power2.in" },
+                                     { scale: 1.2, rotation: winKey === "a" ? -8 : 8, duration: 0.18, ease: "power3.out" },
+                                     { scale: 1, rotation: 0, duration: 0.45, ease: "elastic.out(1, 0.4)" }] }, tF)
+      .from("#winTag", { y: -24, scale: 0.5, autoAlpha: 0, duration: 0.45, ease: "back.out(3)" }, tF + 0.12)
+      .to(["#slot" + L, "#name" + L, "#score" + L], { autoAlpha: 0.45, duration: 0.5, ease: "power2.out" }, tF + 0.1);
+  }
+  tl.to({}, { duration: 0.2 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

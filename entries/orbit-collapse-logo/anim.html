@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: gallery-serif -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #1C2B24; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #1C2B24; color: #EAF0E6; }
+  #mark { position: absolute; left: 400px; top: 45px; width: 480px; height: 480px; overflow: visible; }
+  #wordmark { position: absolute; left: 0; top: 490px; width: 1280px; text-align: center;
+              font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 88px; letter-spacing: -0.02em; line-height: 1; }
+  #tagline { position: absolute; left: 0; top: 606px; width: 1280px; text-align: center;
+             font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.14em; color: #E7B76A; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="mark" viewBox="-240 -240 480 480">
+    <!-- shockwave and the finished mark -->
+    <circle id="shock" r="60" visibility="hidden" fill="none" stroke="#E7B76A" stroke-width="2"/>
+    <circle id="ring" r="116" fill="none" stroke="#E7B76A" stroke-width="2" transform="rotate(-90)"/>
+    <text id="glyph" x="0" y="52" text-anchor="middle" fill="#EAF0E6"
+          font-family="Instrument Serif" font-size="160">M</text>
+    <!-- the orbiting dots; positions are set from fixed angles -->
+    <g id="orbit">
+      <circle class="dot" r="9"  fill="#E7B76A"/>
+      <circle class="dot" r="6"  fill="#EAF0E6"/>
+      <circle class="dot" r="9"  fill="#E7B76A"/>
+      <circle class="dot" r="6"  fill="#EAF0E6"/>
+      <circle class="dot" r="9"  fill="#E7B76A"/>
+      <circle class="dot" r="6"  fill="#EAF0E6"/>
+      <circle class="dot" r="9"  fill="#E7B76A"/>
+      <circle class="dot" r="6"  fill="#EAF0E6"/>
+    </g>
+  </svg>
+  <div id="wordmark">Meridian</div>
+  <div id="tagline">CONTEMPORARY ART &middot; EST. 1998</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  const dots = gsap.utils.toArray(".dot");
+  const ANG = dots.map((d, i) => i * Math.PI / 4);          // fixed angles, 45 deg apart
+  const at = r => ({ x: i => Math.cos(ANG[i]) * r, y: i => Math.sin(ANG[i]) * r });
+
+  gsap.set(dots, at(150));
+  gsap.set(["#shock", "#glyph"], { transformOrigin: "50% 50%" });
+
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. dots pop in on their orbit while the whole orbit starts turning (and keeps winding up)
+  tl.from(dots, { scale: 0, transformOrigin: "50% 50%", duration: 0.45, ease: "back.out(3)", stagger: 0.05 }, 0)
+    .to("#orbit", { rotation: 405, svgOrigin: "0 0", duration: 1.75, ease: "power2.in" }, 0)
+  // 2. anticipation: the orbit swells outward...
+    .to(dots, { ...at(182), duration: 0.35, ease: "power2.out" }, 0.75)
+  // 3. ...then collapses hard into the centre, the dots shrinking as they fall in
+    .to(dots, { ...at(0), scale: 0.5, duration: 0.4, ease: "power4.in" }, 1.1)
+  // 4. impact: shockwave rings out and the dots burst back out onto the mark's ring
+    .fromTo("#shock", { scale: 0.2, autoAlpha: 1 }, { scale: 3.4, autoAlpha: 0, duration: 0.8, ease: "expo.out", immediateRender: false }, 1.5)
+    .to(dots, { ...at(116), scale: 1, duration: 1.0, ease: "elastic.out(1, 0.45)", stagger: 0.02 }, 1.5)
+    .from("#ring", { drawSVG: "50% 50%", duration: 0.7, ease: "expo.out" }, 1.52)
+    .from("#glyph", { scale: 0, rotation: -20, duration: 0.6, ease: "back.out(2.4)" }, 1.56)
+  // 5. wordmark follows, the tagline trails it
+    .from("#wordmark", { y: 40, autoAlpha: 0, duration: 0.8, ease: "power3.out" }, 1.85)
+    .from("#tagline", { y: 16, autoAlpha: 0, duration: 0.6, ease: "power2.out" }, 2.05)
+  // 6. late settle: the ring of dots eases an extra eighth of a turn into place
+    .to("#orbit", { rotation: 450, svgOrigin: "0 0", duration: 1.0, ease: "power3.out" }, 1.75)
+    .to({}, { duration: 0.2 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

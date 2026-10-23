@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: bold-sports -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #111111; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #111111; color: #FFFFFF; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  #label { position: absolute; left: 80px; top: 72px; font-family: 'Bebas Neue'; font-size: 22px; letter-spacing: 0.2em;
+           color: rgba(255,255,255,0.6); }
+  #label b { color: #E8FF3A; font-weight: 400; }
+  #caption { position: absolute; left: 640px; top: 568px; width: 460px; text-align: center; font-family: 'Archivo Black';
+             font-size: 32px; letter-spacing: 0.02em; color: #FFFFFF; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="label">Round 3 &middot; <b>Knockout</b></div>
+  <svg id="scene" viewBox="0 0 1280 720" aria-hidden="true">
+    <g id="world">
+      <line x1="80" y1="520" x2="1200" y2="520" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="2"/>
+      <g id="speed" stroke="#E8FF3A" stroke-width="5" stroke-linecap="round">
+        <line class="sl" x1="250" y1="300" x2="470" y2="300"/>
+        <line class="sl" x1="200" y1="342" x2="460" y2="342"/>
+        <line class="sl" x1="270" y1="384" x2="470" y2="384"/>
+      </g>
+      <g id="rays" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"></g>
+      <!-- the badge: a starburst with a white outline layer, pivots on its right edge so a hit crumples it -->
+      <g transform="translate(870 330)">
+        <g id="badge">
+          <polygon id="outline" fill="#FFFFFF"/>
+          <polygon id="star" fill="#E8FF3A"/>
+          <g transform="rotate(-8)">
+            <text id="pow" x="0" y="42" text-anchor="middle" font-family="Bebas Neue" font-size="120" fill="#111111">POW!</text>
+          </g>
+        </g>
+      </g>
+      <!-- boxing glove, facing right; drawn around (0,0) -->
+      <g transform="translate(250 342)">
+        <g id="glove"><g transform="scale(1.3)">
+          <rect x="-122" y="-50" width="60" height="114" rx="14" fill="#E8FF3A"/>
+          <path d="M-108 -22 H-76 M-108 0 H-76 M-108 22 H-76" stroke="#111111" stroke-opacity="0.4" stroke-width="4" stroke-linecap="round"/>
+          <path d="M-70 -58 C-30 -100 70 -96 100 -40 C122 0 112 56 66 74 C30 88 -40 84 -66 66 C-80 40 -82 -30 -70 -58 Z" fill="#FFFFFF"/>
+          <path d="M-66 66 C-40 84 30 88 66 74 C90 64 106 46 112 22 C96 50 40 66 -66 50 Z" fill="#111111" fill-opacity="0.12"/>
+          <path d="M-42 18 C-10 0 34 6 54 30 C40 50 -6 52 -42 40 Z" fill="#FFFFFF" stroke="#111111" stroke-opacity="0.35" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M64 -54 C84 -24 86 14 74 44" fill="none" stroke="#111111" stroke-opacity="0.25" stroke-width="3.5" stroke-linecap="round"/>
+        </g></g>
+      </g>
+    </g>
+  </svg>
+  <div id="caption">K.O. IN THE THIRD</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  // starburst geometry from a fixed rule (deterministic)
+  const pts = (rOut, rIn) => Array.from({ length: 28 }, (_, i) => {
+    const a = (i / 28) * Math.PI * 2 - Math.PI / 2;
+    const r = i % 2 ? rIn : rOut + (i % 4 === 0 ? 14 : 0);
+    return (Math.cos(a) * r).toFixed(1) + "," + (Math.sin(a) * r).toFixed(1);
+  }).join(" ");
+  document.getElementById("star").setAttribute("points", pts(168, 124));
+  document.getElementById("outline").setAttribute("points", pts(186, 138));
+  // impact rays from the contact point, fanned away from the glove
+  const NS = "http://www.w3.org/2000/svg", HIT = [730, 336], rays = document.getElementById("rays");
+  const ANG = [-150, -118, -86, 94, 122, 152];
+  ANG.forEach(deg => {
+    const a = deg * Math.PI / 180, l = document.createElementNS(NS, "line");
+    l.setAttribute("x1", (HIT[0] + Math.cos(a) * 40).toFixed(1)); l.setAttribute("y1", (HIT[1] + Math.sin(a) * 40).toFixed(1));
+    l.setAttribute("x2", (HIT[0] + Math.cos(a) * 82).toFixed(1)); l.setAttribute("y2", (HIT[1] + Math.sin(a) * 82).toFixed(1));
+    l.setAttribute("class", "ray"); rays.appendChild(l);
+  });
+
+  gsap.set("#glove", { transformOrigin: "30% 50%" });
+  gsap.set("#badge", { transformOrigin: "0% 50%" });
+  gsap.set("#pow", { transformOrigin: "50% 50%" });
+  gsap.set(".sl", { transformOrigin: "100% 50%", scaleX: 0, autoAlpha: 0 });
+  gsap.set(".ray", { autoAlpha: 0 });
+
+  const tl = gsap.timeline({ paused: true });
+  const HITT = 1.0;
+  tl.from("#label", { x: -24, autoAlpha: 0, duration: 0.4, ease: "power3.out" }, 0)
+    // badge pops in, glove bobs in its guard
+    .from("#badge", { scale: 0, rotation: -24, duration: 0.45, ease: "back.out(2.2)" }, 0.05)
+    .from("#glove", { x: -60, autoAlpha: 0, duration: 0.4, ease: "power3.out" }, 0.1)
+    // anticipation: cock the glove back, bunched up
+    .to("#glove", { x: -78, rotation: -12, scaleX: 0.86, scaleY: 1.1, duration: 0.34, ease: "power2.out" }, 0.48)
+    // the punch: fast, stretched along the line of travel
+    .to("#glove", { x: 278, rotation: 0, scaleX: 1.24, scaleY: 0.86, duration: 0.18, ease: "power2.in" }, HITT - 0.18)
+    .to(".sl", { scaleX: 1, autoAlpha: 1, duration: 0.1, ease: "power2.out", stagger: 0.03 }, HITT - 0.14)
+    .to(".sl", { x: 60, scaleX: 0, autoAlpha: 0, duration: 0.25, ease: "power2.in", stagger: 0.02 }, HITT + 0.02)
+    // contact: glove squashes and keeps pushing into the badge
+    .to("#glove", { scaleX: 0.84, scaleY: 1.14, x: 322, duration: 0.08, ease: "power2.out" }, HITT)
+    .to("#badge", { scaleX: 0.66, scaleY: 1.12, skewX: -10, rotation: 7, x: 56, duration: 0.09, ease: "power3.out" }, HITT)
+    .to("#pow", { scaleX: 0.78, scaleY: 1.1, rotation: 6, duration: 0.12, ease: "power2.out" }, HITT + 0.03)
+    .fromTo(".ray", { x: 0, y: 0, autoAlpha: 1 },
+      { x: i => Math.cos(ANG[i] * Math.PI / 180) * 34, y: i => Math.sin(ANG[i] * Math.PI / 180) * 34,
+        autoAlpha: 0, duration: 0.32, ease: "power2.out", immediateRender: false }, HITT)
+    .to("#world", { keyframes: [
+        { x: 9, y: -4, duration: 0.04, ease: "power2.out" },
+        { x: -7, y: 3, duration: 0.05, ease: "power2.inOut" },
+        { x: 4, y: -2, duration: 0.05, ease: "power2.inOut" },
+        { x: 0, y: 0, duration: 0.08, ease: "power2.out" } ] }, HITT)
+    // the glove recoils and drops back into its guard
+    .to("#glove", { x: 0, scaleX: 1, scaleY: 1, rotation: 4, duration: 0.42, ease: "power3.out" }, HITT + 0.1)
+    .to("#glove", { rotation: 0, duration: 0.5, ease: "sine.inOut" }, HITT + 0.52)
+    // the badge springs back with a decaying wobble; the lettering lags behind it
+    .to("#badge", { scaleX: 1, scaleY: 1, skewX: 0, rotation: 0, x: 0, duration: 1.1, ease: "elastic.out(1.1, 0.32)" }, HITT + 0.1)
+    .to("#pow", { scaleX: 1, scaleY: 1, rotation: 0, duration: 0.7, ease: "back.out(3)" }, HITT + 0.2)
+    .from("#caption", { y: 26, autoAlpha: 0, duration: 0.45, ease: "back.out(2)" }, HITT + 0.4)
+    .to("#glove", { y: -8, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, HITT + 0.7)
+    .to({}, { duration: 0.25 });
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

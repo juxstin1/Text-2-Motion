@@ -1,0 +1,14 @@
+{
+  "id": "leaderboard-swap",
+  "prompt": "five logos slot into a ranking, then two of them swap places with a bump",
+  "tags": [
+    "template",
+    "ranking",
+    "leaderboard",
+    "swap"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "icon-row-pop",
+  "prompt": "row of five rounded icons pops up one after another with a small elastic settle",
+  "tags": [
+    "entrance",
+    "icons",
+    "stagger",
+    "elastic"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

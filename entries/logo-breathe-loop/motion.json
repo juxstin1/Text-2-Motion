@@ -1,0 +1,722 @@
+{
+ "duration": 3.62,
+ "fps": 30,
+ "frames": 110,
+ "format": "vertical",
+ "size": [
+  720,
+  1280
+ ],
+ "tweens": [
+  {
+   "start": 0.02,
+   "duration": 0.16,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.02,
+   "duration": 0.7,
+   "ease": "power3.in",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.02,
+   "duration": 0.7,
+   "ease": "power2.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.02,
+   "duration": 0.7,
+   "ease": "power3.in",
+   "props": [
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.07,
+   "duration": 0.16,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.07,
+   "duration": 0.65,
+   "ease": "power3.in",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.07,
+   "duration": 0.65,
+   "ease": "power2.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.07,
+   "duration": 0.65,
+   "ease": "power3.in",
+   "props": [
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.12,
+   "duration": 0.16,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.12,
+   "duration": 0.6,
+   "ease": "power3.in",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.12,
+   "duration": 0.6,
+   "ease": "power2.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.12,
+   "duration": 0.6,
+   "ease": "power3.in",
+   "props": [
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.17,
+   "duration": 0.16,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.17,
+   "duration": 0.55,
+   "ease": "power3.in",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.17,
+   "duration": 0.55,
+   "ease": "power2.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.17,
+   "duration": 0.55,
+   "ease": "power3.in",
+   "props": [
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.6,
+   "duration": 0.7,
+   "ease": "power2.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.72,
+   "duration": 0.06,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#crest"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.72,
+   "duration": 0.6,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#halo"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.78,
+   "duration": 0.6,
+   "ease": "elastic.out(1, 0.45)",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#crest"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.82,
+   "duration": 0.78,
+   "ease": "power4.out",
+   "props": [
+    "yPercent"
+   ],
+   "type": "to",
+   "stagger": 0.06,
+   "targets": [
+    "#wmask span.ch[0]",
+    "#wmask span.ch[1]",
+    "#wmask span.ch[2]",
+    "#wmask span.ch[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.08,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#label"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.4,
+   "duration": 0.6,
+   "ease": "sine.inOut",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#crest"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.4,
+   "duration": 0.6,
+   "ease": "sine.inOut",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#halo"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.1,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#glint"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.7,
+   "ease": "power2.inOut",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#glint"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "sine.inOut",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#crest"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.6,
+   "ease": "sine.inOut",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#halo"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.08,
+   "duration": 0.22,
+   "ease": "back.out(2.5)",
+   "props": [
+    "scale",
+    "autoAlpha",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#twinkle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.2,
+   "duration": 0.1,
+   "ease": "power1.in",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#glint"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.3,
+   "duration": 0.3,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "autoAlpha",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#twinkle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.7,
+   "duration": 0.2,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#crest"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.7,
+   "duration": 0.54,
+   "ease": "power3.in",
+   "props": [
+    "yPercent"
+   ],
+   "type": "to",
+   "stagger": 0.04,
+   "targets": [
+    "#wmask span.ch[0]",
+    "#wmask span.ch[1]",
+    "#wmask span.ch[2]",
+    "#wmask span.ch[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.7,
+   "duration": 0.36,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#label"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.75,
+   "duration": 0.55,
+   "ease": "power2.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.8,
+   "duration": 0.6,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#halo"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.88,
+   "duration": 0.6,
+   "ease": "power2.in",
+   "props": [
+    "x",
+    "y",
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.9,
+   "duration": 0.5,
+   "ease": "power2.inOut",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#crest"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.91,
+   "duration": 0.6,
+   "ease": "power2.in",
+   "props": [
+    "x",
+    "y",
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.94,
+   "duration": 0.6,
+   "ease": "power2.in",
+   "props": [
+    "x",
+    "y",
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.97,
+   "duration": 0.6,
+   "ease": "power2.in",
+   "props": [
+    "x",
+    "y",
+    "rotation",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.18,
+   "duration": 0.3,
+   "ease": "power1.in",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.21,
+   "duration": 0.3,
+   "ease": "power1.in",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.24,
+   "duration": 0.3,
+   "ease": "power1.in",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pBL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.27,
+   "duration": 0.3,
+   "ease": "power1.in",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pTL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.6,
+   "duration": 0.02,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#pTR",
+  "#pBR",
+  "#pBL",
+  "#pTL",
+  "#ring",
+  "#crest",
+  "#halo",
+  "#wmask span.ch[0]",
+  "#wmask span.ch[1]",
+  "#wmask span.ch[2]",
+  "#wmask span.ch[3]",
+  "#label",
+  "#glint",
+  "#twinkle"
+ ],
+ "fonts": [
+  "\"DM Serif Display\"",
+  "Manrope"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 1,
+  "format": "vertical",
+  "final_hold": 0.02,
+  "end_visible": [
+   "#ring",
+   "#crest"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

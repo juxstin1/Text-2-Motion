@@ -1,0 +1,14 @@
+duration 2.02s, 62 frames @30fps, 5 tweens
+TIMING
+  #kicker, #headline ...  y,autoAlpha  0.00-0.86s  power3.out  stagger 0.08
+  #card  y,scale  0.15-1.15s  back.out(1.4)
+  #card  autoAlpha  0.15-0.45s  power1.out
+  #row, #price ...  y,autoAlpha  0.50-1.42s  power2.out  stagger 0.06
+  (hold)  1.42-2.02s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 16 visible (#kicker, #headline, #body, #card ...); final hold 0.75s; no overlaps

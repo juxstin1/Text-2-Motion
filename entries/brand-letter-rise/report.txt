@@ -1,0 +1,14 @@
+duration 3.15s, 96 frames @30fps, 5 tweens
+TIMING
+  #kicker  y,autoAlpha  0.00-0.80s  power2.out
+  #brand div x13  yPercent  0.25-2.01s  expo.out  stagger 0.055
+  #rule  scaleX  1.35-2.15s  power3.inOut
+  #tagline  y,autoAlpha  1.75-2.75s  power2.out
+  (hold)  2.75-3.15s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 18 visible (#kicker, #brand div x13, #rule, #tagline ...); final hold 0.78s; no overlaps

@@ -1,0 +1,520 @@
+{
+ "duration": 3.15,
+ "fps": 30,
+ "frames": 96,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.6,
+   "ease": "power2.inOut",
+   "props": [
+    "x"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.42,
+   "duration": 0.2,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#button"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.66,
+   "duration": 0.1,
+   "ease": "power2.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#button"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.66,
+   "duration": 0.1,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#iris"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.6,
+   "ease": "power2.in",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#iris"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.15,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha",
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.9,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.9,
+   "duration": 0.62,
+   "ease": "power2.in",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.04,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#button"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.37,
+   "duration": 0.46,
+   "ease": "power3.in",
+   "props": [
+    "autoAlpha",
+    "y",
+    "x",
+    "rotation",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "fromTo",
+   "stagger": 0.12,
+   "targets": [
+    "#bTitle span[0]",
+    "#bTitle span[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.38,
+   "duration": 0.2,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.71,
+   "duration": 0.55,
+   "ease": "power1.out",
+   "props": [
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": 0.12,
+   "targets": [
+    "#bTitle span[0]",
+    "#bTitle span[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.94,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#bLabel"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.07,
+   "duration": 0.58,
+   "ease": "back.out(2.2)",
+   "props": [
+    "autoAlpha",
+    "scale",
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": 0.08,
+   "targets": [
+    "#pills div.pill[0]",
+    "#pills div.pill[1]",
+    "#pills div.pill[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.27,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#bNote"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.37,
+   "duration": 0.5,
+   "ease": "back.out(4)",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": 0.1,
+   "targets": [
+    "#pills span.dot[0]",
+    "#pills span.dot[1]",
+    "#pills span.dot[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.87,
+   "duration": 0.28,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#cursor",
+  "#button",
+  "#iris",
+  "#ring",
+  "#bTitle span[0]",
+  "#bTitle span[1]",
+  "#bLabel",
+  "#pills div.pill[0]",
+  "#pills div.pill[1]",
+  "#pills div.pill[2]",
+  "#bNote",
+  "#pills span.dot[0]",
+  "#pills span.dot[1]",
+  "#pills span.dot[2]",
+  "#aLabel",
+  "#aTitle",
+  "#aHint",
+  "#button text"
+ ],
+ "fonts": [
+  "Inter",
+  "\"Space Grotesk\""
+ ],
+ "flagged": true,
+ "notes": 4,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#iris",
+    "b": "#aTitle",
+    "ranges": [
+     [
+      1.1,
+      1.1666666666666667
+     ]
+    ],
+    "peak": 0.97,
+    "peak_frame": 35,
+    "ia": 2,
+    "ib": 15,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#iris",
+    "b": "#aHint",
+    "ranges": [
+     [
+      1.0333333333333334,
+      1.1333333333333333
+     ]
+    ],
+    "peak": 0.96,
+    "peak_frame": 34,
+    "ia": 2,
+    "ib": 16,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#ring",
+    "b": "#aTitle",
+    "ranges": [
+     [
+      1.2,
+      1.2333333333333334
+     ]
+    ],
+    "peak": 0.68,
+    "peak_frame": 37,
+    "ia": 3,
+    "ib": 15,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#ring",
+    "b": "#aHint",
+    "ranges": [
+     [
+      1.1333333333333333,
+      1.2333333333333334
+     ]
+    ],
+    "peak": 0.98,
+    "peak_frame": 37,
+    "ia": 3,
+    "ib": 16,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#bTitle span[0]",
+    "b": "#aLabel",
+    "ranges": [
+     [
+      1.5333333333333334,
+      1.7333333333333334
+     ],
+     [
+      1.8,
+      3.15
+     ]
+    ],
+    "peak": 0.7,
+    "peak_frame": 55,
+    "ia": 4,
+    "ib": 14,
+    "defect": true,
+    "static": true
+   },
+   {
+    "a": "#bTitle span[0]",
+    "b": "#aTitle",
+    "ranges": [
+     [
+      1.5333333333333334,
+      3.15
+     ]
+    ],
+    "peak": 0.74,
+    "peak_frame": 53,
+    "ia": 4,
+    "ib": 15,
+    "defect": true,
+    "static": true
+   },
+   {
+    "a": "#bTitle span[1]",
+    "b": "#aLabel",
+    "ranges": [
+     [
+      1.6666666666666667,
+      1.8333333333333333
+     ],
+     [
+      1.9333333333333333,
+      3.15
+     ]
+    ],
+    "peak": 0.36,
+    "peak_frame": 50,
+    "ia": 5,
+    "ib": 14,
+    "defect": true,
+    "static": true
+   },
+   {
+    "a": "#bTitle span[1]",
+    "b": "#aTitle",
+    "ranges": [
+     [
+      1.7,
+      3.15
+     ]
+    ],
+    "peak": 0.68,
+    "peak_frame": 57,
+    "ia": 5,
+    "ib": 15,
+    "defect": true,
+    "static": true
+   },
+   {
+    "a": "#bNote",
+    "b": "#aHint",
+    "ranges": [
+     [
+      2.3,
+      3.15
+     ]
+    ],
+    "peak": 1.0,
+    "peak_frame": 79,
+    "ia": 10,
+    "ib": 16,
+    "defect": true,
+    "static": true
+   }
+  ],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.28,
+  "end_visible": [
+   "#iris",
+   "#bTitle span[0]",
+   "#bTitle span[1]",
+   "#bLabel",
+   "#pills div.pill[0]",
+   "#pills div.pill[1]",
+   "#pills div.pill[2]",
+   "#bNote",
+   "#pills span.dot[0]",
+   "#pills span.dot[1]",
+   "#pills span.dot[2]",
+   "#aLabel",
+   "#aTitle",
+   "#aHint"
+  ],
+  "end_overlaps": [
+   [
+    "#bTitle span[0]",
+    "#aLabel"
+   ],
+   [
+    "#bTitle span[0]",
+    "#aTitle"
+   ],
+   [
+    "#bTitle span[1]",
+    "#aLabel"
+   ],
+   [
+    "#bTitle span[1]",
+    "#aTitle"
+   ],
+   [
+    "#bNote",
+    "#aHint"
+   ]
+  ],
+  "n_notes": 4
+ }
+}

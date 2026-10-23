@@ -1,0 +1,14 @@
+{
+  "id": "circle-iris-transition",
+  "prompt": "a circle expands from a button to wipe in the next scene, whose content then settles in",
+  "tags": [
+    "transition",
+    "iris",
+    "wipe",
+    "scene-change"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "firework-burst",
+  "prompt": "gold firework streaks up and bursts into radiating dots that drift down and fade",
+  "tags": [
+    "burst",
+    "firework",
+    "particles",
+    "radial"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

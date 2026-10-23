@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: playful -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FFE8D6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FFE8D6; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="scene" viewBox="0 0 1280 720">
+    <!-- type lives in the same svg as the confetti so pieces can fly over it -->
+    <text id="eyebrow" x="1180" y="196" text-anchor="end" font-family="Sora" font-weight="700" font-size="18" letter-spacing="1.1" fill="#FF4F7B">MILESTONE UNLOCKED</text>
+    <text id="title" x="1180" y="324" text-anchor="end" font-family="Syne" font-weight="800" font-size="128" letter-spacing="-3.8" fill="#2B1B4A">Hooray!</text>
+    <text id="sub" x="1180" y="384" text-anchor="end" font-family="Sora" font-weight="500" font-size="26" fill="#2B1B4A" fill-opacity="0.7">1,000 orders shipped. Cake is on us.</text>
+
+    <!-- popper: built pointing up from its base, then tilted toward the upper right -->
+    <g transform="translate(300 630) rotate(30)">
+      <g id="popper">
+        <path id="tail" d="M0 4 C -10 22 12 34 0 52 C -8 64 4 72 -2 82" fill="none" stroke="#2B1B4A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M-14 0 L14 0 L46 -150 L-46 -150 Z" fill="#2B1B4A"/>
+        <path d="M-20 -30 L26 -64 L32 -92 L-26 -58 Z M-32 -86 L38 -136 L41 -150 L-12 -150 L-38 -120 Z" fill="#FF4F7B"/>
+        <ellipse cx="0" cy="-150" rx="46" ry="10" fill="#FF4F7B"/>
+        <ellipse cx="0" cy="-150" rx="36" ry="6" fill="#2B1B4A" fill-opacity="0.6"/>
+      </g>
+    </g>
+    <!-- muzzle flash at the popper mouth (world 375, 500) -->
+    <g transform="translate(375 500) rotate(-60)">
+      <g id="flash" stroke="#FF4F7B" stroke-width="6" stroke-linecap="round">
+        <line x1="40" y1="0" x2="70" y2="0"/><line x1="34" y1="-26" x2="58" y2="-44"/><line x1="34" y1="26" x2="58" y2="44"/>
+        <line x1="20" y1="-40" x2="30" y2="-66"/><line x1="20" y1="40" x2="30" y2="66"/>
+      </g>
+    </g>
+    <g id="confetti" transform="translate(375 500)"></g>
+  </svg>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const NS = "http://www.w3.org/2000/svg";
+  // seeded PRNG (mulberry32, fixed seed) so every render is identical
+  let s = 20261022;
+  const rnd = () => { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  const COLORS = ["#FF4F7B", "#2B1B4A", "rgba(255,79,123,0.55)", "#FF4F7B", "rgba(43,27,74,0.5)"];
+  const SHAPES = [
+    c => `<rect x="-11" y="-5.5" width="22" height="11" rx="1.5" fill="${c}"/>`,
+    c => `<circle r="7.5" fill="${c}"/>`,
+    c => `<path d="M-14 0 Q -7 -9 0 0 T 14 0" fill="none" stroke="${c}" stroke-width="4.5" stroke-linecap="round"/>`,
+    c => `<path d="M0 -10 L10 8 L-10 8 Z" fill="${c}"/>`,
+    c => `<rect x="-5.5" y="-12" width="11" height="24" rx="1.5" fill="${c}"/>`
+  ];
+  const N = 34, pieces = [];
+  const root = document.getElementById("confetti");
+  for (let i = 0; i < N; i++) {
+    const g = document.createElementNS(NS, "g");
+    g.setAttribute("class", "c");
+    g.innerHTML = SHAPES[i % SHAPES.length](COLORS[(i * 3) % COLORS.length]);
+    root.appendChild(g);
+    const a = (-60 + (rnd() - 0.5) * 90) * Math.PI / 180;      // fan around the popper axis
+    let d = 160 + rnd() * 380;
+    d = Math.min(d, (500 - 50) / Math.max(0.2, -Math.sin(a)), (1230 - 375) / Math.max(0.2, Math.cos(a)));
+    pieces.push({ g, px: Math.cos(a) * d, py: Math.sin(a) * d, drift: 40 + rnd() * 110, fall: 170 + rnd() * 160,
+                  spin: (rnd() < 0.5 ? -1 : 1) * (360 + rnd() * 720), delay: rnd() * 0.07, life: 1.25 + rnd() * 0.5,
+                  flips: 2 + Math.floor(rnd() * 3) });
+  }
+
+  const tl = gsap.timeline({ paused: true });
+  gsap.set("#popper", { transformOrigin: "50% 100%" });
+  gsap.set("#tail", { transformOrigin: "50% 0%" });
+  gsap.set(".c", { autoAlpha: 0, transformOrigin: "50% 50%" });
+  gsap.set("#flash", { autoAlpha: 0, transformOrigin: "0% 50%" });
+
+  // popper slides in, then pulls back and squashes (anticipation)
+  tl.from("#popper", { y: 200, autoAlpha: 0, duration: 0.4, ease: "back.out(1.6)" }, 0)
+    .to("#popper", { scaleY: 0.8, scaleX: 1.14, rotation: -8, duration: 0.32, ease: "power2.inOut" }, 0.38)
+    .to("#tail", { rotation: 14, duration: 0.32, ease: "power2.inOut" }, 0.42)
+    .addLabel("pop", 0.7)
+    // fire: stretch forward, then recoil and settle; the tail whips late
+    .to("#popper", { scaleY: 1.18, scaleX: 0.88, rotation: 4, duration: 0.09, ease: "power2.out" }, "pop")
+    .to("#popper", { scaleY: 1, scaleX: 1, rotation: 0, y: 10, duration: 0.5, ease: "back.out(3)" }, "pop+=0.09")
+    .to("#popper", { y: 0, duration: 0.5, ease: "power2.out" }, "pop+=0.56")
+    .to("#tail", { rotation: -22, duration: 0.14, ease: "power2.out" }, "pop+=0.04")
+    .to("#tail", { rotation: 9, duration: 0.24, ease: "sine.inOut" }, "pop+=0.18")
+    .to("#tail", { rotation: 0, duration: 0.4, ease: "sine.inOut" }, "pop+=0.42")
+    .fromTo("#flash", { autoAlpha: 1, scale: 0.5 }, { autoAlpha: 0, scale: 1.3, duration: 0.32, ease: "power3.out", immediateRender: false }, "pop");
+
+  // confetti: shot out on power3.out, then gravity takes over (power2.in); x and y on separate eases draw arcs
+  pieces.forEach(p => {
+    const t0 = tl.labels.pop + p.delay, shot = 0.42;
+    tl.set(p.g, { autoAlpha: 1 }, t0)
+      .fromTo(p.g, { x: 0 }, { x: p.px + p.drift, duration: p.life + shot, ease: "power2.out", immediateRender: false }, t0)
+      .fromTo(p.g, { y: 0 }, { y: p.py, duration: shot, ease: "power3.out", immediateRender: false }, t0)
+      .to(p.g, { y: p.py + p.fall, duration: p.life, ease: "power2.in" }, t0 + shot)
+      .fromTo(p.g, { rotation: 0 }, { rotation: p.spin, duration: p.life + shot, ease: "power2.out", immediateRender: false }, t0)
+      // tumbling: paper flips edge-on and back as it falls
+      .to(p.g, { scaleX: 0.15, duration: p.life / (p.flips * 2), ease: "sine.inOut", repeat: p.flips * 2 - 1, yoyo: true }, t0 + shot)
+      .to(p.g, { autoAlpha: 0, duration: 0.35, ease: "power1.in" }, t0 + shot + p.life - 0.35);
+  });
+
+  // headline reacts to the bang: pops up stretched, squashes, settles
+  gsap.set("#title", { transformOrigin: "50% 100%" });
+  tl.from("#title", { autoAlpha: 0, y: 60, scaleY: 1.3, scaleX: 0.84, duration: 0.3, ease: "power3.out" }, "pop+=0.12")
+    .to("#title", { scaleY: 0.86, scaleX: 1.1, duration: 0.08, ease: "power2.out" }, "pop+=0.42")
+    .to("#title", { scaleY: 1, scaleX: 1, duration: 0.45, ease: "back.out(3)" }, "pop+=0.5")
+    .from("#eyebrow", { autoAlpha: 0, y: 14, duration: 0.4, ease: "power3.out" }, "pop+=0.3")
+    .from("#sub", { autoAlpha: 0, y: 14, duration: 0.45, ease: "power3.out" }, "pop+=0.5")
+    .to({}, { duration: 0.22 });
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

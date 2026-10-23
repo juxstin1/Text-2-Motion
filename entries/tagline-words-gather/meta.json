@@ -1,0 +1,14 @@
+{
+  "id": "tagline-words-gather",
+  "prompt": "tagline words drift together from wide spacing as they fade in",
+  "tags": [
+    "text",
+    "words",
+    "minimal",
+    "luxury"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

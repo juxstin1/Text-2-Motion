@@ -1,0 +1,14 @@
+{
+  "id": "split-panels-away",
+  "prompt": "the page splits into vertical panels that slide away at staggered offsets to uncover the next page",
+  "tags": [
+    "transition",
+    "panels",
+    "stagger",
+    "scene-change"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

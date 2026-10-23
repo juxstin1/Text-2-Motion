@@ -1,0 +1,15 @@
+duration 2.18s, 67 frames @30fps, 6 tweens
+TIMING
+  #kicker, #headline ...  y,autoAlpha  0.00-1.00s  power3.out  stagger 0.1
+  #card  y,rotationX,rotationY  0.20-1.50s  power4.out
+  #card  autoAlpha  0.20-0.55s  power1.out
+  #avatar  scale,autoAlpha  0.62-1.22s  back.out(1.8)
+  #name, #role ...  y,autoAlpha  0.74-1.58s  power3.out  stagger 0.08
+  (hold)  1.58-2.18s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 15 visible (#kicker, #headline, #lede, #card ...); final hold 0.75s; no overlaps

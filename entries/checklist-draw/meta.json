@@ -1,0 +1,14 @@
+{
+  "id": "checklist-draw",
+  "prompt": "to-do list items slide in and their checkmarks draw on one by one",
+  "tags": [
+    "entrance",
+    "list",
+    "svg",
+    "stagger"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,134 @@
+{
+ "duration": 2.355,
+ "fps": 30,
+ "frames": 72,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#eyebrow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 1.405,
+   "ease": "power1.out",
+   "props": [
+    "y",
+    "autoAlpha",
+    "scaleY",
+    "scaleX"
+   ],
+   "type": "fromTo",
+   "stagger": 0.065,
+   "targets": [
+    "#word div.char[0]",
+    "#word div.char[1]",
+    "#word div.char[2]",
+    "#word div.char[3]",
+    "#word div.char[4]",
+    "#word div.char[5]",
+    "#word div.char[6]",
+    "#word div.char[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.055,
+   "duration": 0.7,
+   "ease": "power2.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#sq"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.355,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#caption"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.855,
+   "duration": 0.5,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#eyebrow",
+  "#word div.char[0]",
+  "#word div.char[1]",
+  "#word div.char[2]",
+  "#word div.char[3]",
+  "#word div.char[4]",
+  "#word div.char[5]",
+  "#word div.char[6]",
+  "#word div.char[7]",
+  "#sq",
+  "#caption"
+ ],
+ "fonts": [
+  "Sora",
+  "Syne"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.66,
+  "end_visible": [
+   "#eyebrow",
+   "#word div.char[0]",
+   "#word div.char[1]",
+   "#word div.char[2]",
+   "#word div.char[3]",
+   "#word div.char[4]",
+   "#word div.char[5]",
+   "#word div.char[6]",
+   "#word div.char[7]",
+   "#sq",
+   "#caption"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

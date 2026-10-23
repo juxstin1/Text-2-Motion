@@ -1,0 +1,20 @@
+duration 3.77s, 115 frames @30fps, 30 tweens
+TIMING
+  #eyebrow, #title  y,autoAlpha  0.00-0.68s  power3.out  stagger 0.08
+  #count  y,autoAlpha  0.12-0.72s  power3.out
+  #rule  scaleX  0.15-0.95s  power3.inOut
+  #list div.row x4  x,autoAlpha  0.35-1.22s  power3.out  stagger 0.09
+  #list div.fill  scale  1.05-1.31s  power3.out
+  #list path  drawSVG  1.15-1.45s  power2.inOut
+  {object} x1  n  1.17-1.37s  power2.out
+  #count  scale  1.17-1.52s  back.out(2)
+  #list div.strike  scaleX  1.21-1.57s  power3.inOut
+  #list div.txt  autoAlpha  1.21-1.57s  power2.out
+  (+20 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 29 visible (#eyebrow, #title, #count, #rule ...); final hold 0.80s; no overlaps

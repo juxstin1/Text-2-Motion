@@ -1,0 +1,1 @@
+"99.98% uptime" stat counts up while an underline swipes beneath it

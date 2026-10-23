@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: minimal-mono -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F2F2F0; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F2F2F0; color: #111111;
+           font-family: 'JetBrains Mono', monospace; }
+  /* ruled frame */
+  #frame { position: absolute; left: 64px; top: 64px; width: 1150px; height: 590px; border: 1px solid rgba(17,17,17,0.12); }
+  .meta { position: absolute; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: rgba(17,17,17,0.55); }
+  #m1 { left: 96px; top: 92px; }
+  #m2 { left: 1056px; top: 92px; }
+
+  #ring { position: absolute; left: 490px; top: 110px; width: 300px; height: 300px; overflow: visible; }
+  #count { position: absolute; left: 490px; top: 236px; width: 300px; text-align: center; font-size: 48px; font-weight: 700;
+           letter-spacing: -0.04em; line-height: 1; }
+  .cap { position: absolute; left: 0; width: 1280px; text-align: center; }
+  .cap .t { font-size: 28px; font-weight: 700; letter-spacing: -0.04em; }
+  .cap .s { font-size: 14px; font-weight: 400; margin-top: 12px; color: rgba(17,17,17,0.55); }
+  #capA, #capB { top: 470px; }
+  #capB .t { color: #111111; }
+  #capB .s { color: #FF3B00; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="frame"></div>
+  <div class="meta" id="m1">BUILD 2026.10</div>
+  <div class="meta" id="m2">DEPLOY</div>
+
+  <svg id="ring" viewBox="-150 -150 300 300">
+    <circle id="track" r="110" fill="none" stroke="rgba(17,17,17,0.10)" stroke-width="14"/>
+    <circle id="arc" r="110" fill="none" stroke="#FF3B00" stroke-width="14" stroke-linecap="round" transform="rotate(-90)"/>
+    <circle id="disc" r="110" fill="#FF3B00"/>
+    <path id="check" visibility="hidden" d="M -48 4 L -14 38 L 54 -36" fill="none" stroke="#F2F2F0" stroke-width="18"
+          stroke-linecap="square" stroke-linejoin="miter"/>
+  </svg>
+  <div id="count">0%</div>
+
+  <div class="cap" id="capA"><div class="t">Uploading</div><div class="s">site_bundle.zip &middot; 48.2 MB</div></div>
+  <div class="cap" id="capB"><div class="t">Upload complete</div><div class="s">LIVE AT 21:40</div></div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script src="../../vendor/CustomEase.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin, CustomEase);
+document.fonts.ready.then(() => {
+  // a believable upload: quick start, a stall around 60%, then a rush to the finish
+  CustomEase.create("upload", "M0,0 C0.12,0.3 0.22,0.52 0.36,0.58 0.5,0.64 0.58,0.64 0.7,0.72 0.82,0.8 0.88,1 1,1");
+  const countEl = document.getElementById("count");
+  const prog = { v: 0 };
+  gsap.set(["#ring", "#disc", "#count"], { transformOrigin: "50% 50%" });
+  gsap.set("#disc", { scale: 0 });
+
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. the ring pops in
+  tl.from("#ring", { scale: 0.6, autoAlpha: 0, duration: 0.45, ease: "back.out(2.2)" }, 0)
+    .from("#count", { y: 12, autoAlpha: 0, duration: 0.35, ease: "power2.out" }, 0.12)
+    .from("#capA", { y: 16, autoAlpha: 0, duration: 0.4, ease: "power3.out" }, 0.15)
+  // 2. progress: the arc and the counter share one ease so they stay in sync
+    .fromTo("#arc", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 1.8, ease: "upload" }, 0.3)
+    .to(prog, { v: 100, duration: 1.8, ease: "upload",
+                onUpdate: () => { countEl.textContent = Math.round(prog.v) + "%"; } }, 0.3)
+  // 3. anticipation at 100%: the ring squeezes in, the counter shrinks away
+    .to("#ring", { scale: 0.88, duration: 0.16, ease: "power2.in" }, 2.1)
+    .to("#count", { scale: 0.4, autoAlpha: 0, duration: 0.16, ease: "power2.in" }, 2.1)
+  // 4. pop: the disc floods out with squash, the ring overshoots and settles
+    .to("#ring", { scale: 1, duration: 0.6, ease: "back.out(3)" }, 2.26)
+    .to("#disc", { scale: 1, duration: 0.3, ease: "power3.out" }, 2.26)
+    .fromTo("#disc", { scaleX: 1.14, scaleY: 0.86 }, { scaleX: 1, scaleY: 1, duration: 0.5, ease: "back.out(3)", immediateRender: false }, 2.4)
+    .set("#check", { autoAlpha: 1 }, 2.36)
+    .fromTo("#check", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.4, ease: "power3.out" }, 2.36)
+  // 5. caption swaps, the new line trailing the old one
+    .to("#capA", { y: -20, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 2.26)
+    .from("#capB .t", { y: 24, autoAlpha: 0, duration: 0.5, ease: "back.out(2)" }, 2.42)
+    .from("#capB .s", { y: 16, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 2.52)
+    .to({}, { duration: 0.12 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

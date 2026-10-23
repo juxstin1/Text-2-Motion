@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: bold-sports -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #111111; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #111111; color: #FFFFFF; }
+  /* each row is a full-width mask so words are clipped until they cross the stage edge */
+  .row { position: absolute; left: 0; width: 1280px; height: 180px; overflow: hidden; }
+  #r1 { top: 52px; } #r2 { top: 232px; } #r3 { top: 412px; }
+  .word { position: absolute; left: 96px; top: 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+          font-size: 200px; line-height: 0.9; letter-spacing: 0.01em; white-space: nowrap; }
+  #w2 { color: #E8FF3A; }
+  #bar { position: absolute; left: 96px; top: 616px; width: 176px; height: 10px; background: #E8FF3A; }
+  #info { position: absolute; left: 760px; top: 448px; width: 424px; font-family: 'Archivo Black', sans-serif; }
+  #info .label { font-size: 16px; letter-spacing: 0.2em; color: #E8FF3A; }
+  #info .big { font-size: 32px; letter-spacing: 0.02em; margin-top: 14px; line-height: 1.1; }
+  #info .small { font-size: 22px; letter-spacing: 0.02em; margin-top: 10px; color: rgba(255,255,255,0.55); }
+  #num { position: absolute; left: 760px; top: 76px; font-family: 'Bebas Neue', sans-serif; font-size: 120px;
+         line-height: 0.9; letter-spacing: 0.01em; color: rgba(255,255,255,0.08); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="num">WK 07</div>
+  <div class="row" id="r1"><div class="word" id="w1">NO</div></div>
+  <div class="row" id="r2"><div class="word" id="w2">DAYS</div></div>
+  <div class="row" id="r3"><div class="word" id="w3">OFF</div></div>
+  <div id="bar"></div>
+  <div id="info">
+    <div class="label line">SEASON 26 &middot; MATCHDAY 07</div>
+    <div class="big line">KICKOFF SATURDAY</div>
+    <div class="small line">19:00 &middot; NORTH STADIUM</div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const slam = (sel, dir, at) => tl.fromTo(sel,
+    { x: 1300 * dir, skewX: -16 * dir },
+    { x: 0, skewX: 0, duration: 0.55, ease: "expo.out" }, at);
+
+  // three words slam in, alternating sides, each landing just before the next fires
+  slam("#w1", -1, 0.05);
+  slam("#w2",  1, 0.27);
+  slam("#w3", -1, 0.49);
+
+  tl.from("#num", { autoAlpha: 0, x: 40, duration: 0.7, ease: "power3.out" }, 0.3)
+    .from("#bar", { scaleX: 0, transformOrigin: "0% 50%", duration: 0.45, ease: "power4.out" }, 0.82)
+    .from("#info .line", { y: 22, autoAlpha: 0, duration: 0.5, ease: "power3.out", stagger: 0.07 }, 0.9)
+    .to({}, { duration: 0.5 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: luxury -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0E0C0A; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0E0C0A;
+           font-family: 'Manrope', sans-serif; color: #EDE3D1; }
+  #bg { position: absolute; inset: 0; background:
+        radial-gradient(700px 480px at 50% 46%, rgba(201,164,92,0.13), rgba(201,164,92,0) 70%), #0E0C0A; }
+  #wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+
+  /* one dark glass panel holds the whole board so it reads over footage */
+  #panel { padding: 30px 36px 34px; border-radius: 22px; background: rgba(14,12,10,0.9);
+           border: 1px solid rgba(201,164,92,0.45); box-shadow: 0 30px 80px rgba(0,0,0,0.55); }
+  #label { font-weight: 600; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; color: #C9A45C; }
+  #title { margin: 8px 0 22px; font-family: 'DM Serif Display', serif; font-size: 48px; line-height: 1.05; }
+  #board { display: flex; gap: 14px; }
+  #ranks, #rows { display: flex; flex-direction: column; gap: 10px; }
+  #rows { flex: 1; min-width: 560px; }
+  .rank { width: 72px; height: 72px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+          border: 1px solid rgba(201,164,92,0.4); font-family: 'DM Serif Display'; font-size: 36px; color: #C9A45C; }
+  .rank.first { background: #C9A45C; color: #0E0C0A; border-color: #C9A45C; }
+  .row { position: relative; height: 72px; display: flex; align-items: center; gap: 18px; padding: 0 26px 0 22px;
+         border-radius: 14px; background: #1C1813; border: 1px solid rgba(237,227,209,0.08); }
+  .row .bar { position: absolute; left: 0; top: 14px; bottom: 14px; width: 4px; border-radius: 0 4px 4px 0; background: var(--brand); }
+  .row .clip { position: absolute; inset: 0; border-radius: 14px; overflow: hidden; }
+  .row .sheen { position: absolute; top: -20px; left: -120px; width: 70px; height: 120px; transform: rotate(18deg);
+                background: linear-gradient(90deg, rgba(237,227,209,0), rgba(237,227,209,0.16), rgba(237,227,209,0)); }
+  .row .glow { position: absolute; inset: -1px; border-radius: 14px; border: 1px solid #C9A45C;
+               box-shadow: 0 0 34px rgba(201,164,92,0.45), inset 0 0 24px rgba(201,164,92,0.12); opacity: 0; }
+  .slot { width: 44px; height: 44px; flex: none; }
+  .slot svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .name { flex: 1; font-weight: 600; font-size: 22px; letter-spacing: 0.02em; white-space: nowrap; }
+  .delta { padding: 4px 10px; border-radius: 99px; background: #C9A45C; color: #0E0C0A; font-weight: 700;
+           font-size: 13px; letter-spacing: 0.08em; opacity: 0; }
+  .score { min-width: 92px; text-align: right; font-family: 'DM Serif Display'; font-size: 32px; }
+  .score small { font-family: 'Manrope'; font-weight: 600; font-size: 12px; letter-spacing: 0.2em; color: #C9A45C; margin-left: 6px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="wrap">
+    <div id="panel">
+      <div id="label"></div>
+      <div id="title"></div>
+      <div id="board"><div id="ranks"></div><div id="rows"></div></div>
+      <!-- rank plates and rows (each with a logo slot) are created from DATA.rows -->
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+const DATA = {
+  label: "Week 42 · Arena score",
+  title: "The leaderboard",
+  unit: "pts",
+  rows: [  // starting order, rank 1 first
+    { name: "Apex",  color: "#10A37F", score: 94.2,
+      logo: '<path d="M50 6 L95 90 H5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="M50 44 L68 78 H32 Z" fill="#0E0C0A"/>' },
+    { name: "Orbit", color: "#F2A93B", score: 91.8,
+      logo: '<circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="10"/><circle cx="50" cy="50" r="13" fill="currentColor"/><circle cx="82" cy="22" r="11" fill="currentColor"/>' },
+    { name: "Nova",  color: "#4D6BFE", score: 89.5,
+      logo: '<circle cx="50" cy="50" r="46" fill="currentColor"/><circle cx="50" cy="50" r="22" fill="none" stroke="#fff" stroke-width="9"/><circle cx="72" cy="28" r="7" fill="#fff"/>' },
+    { name: "Quill", color: "#E5484D", score: 86.0,
+      logo: '<path d="M86 8 C46 12 14 44 14 92 C58 88 88 56 86 8 Z" fill="currentColor"/><path d="M22 84 L68 32" stroke="#fff" stroke-width="6" stroke-linecap="round"/>' },
+    { name: "Kite",  color: "#9B7BFF", score: 82.3,
+      logo: '<path d="M50 4 L88 44 L50 96 L12 44 Z" fill="currentColor"/><path d="M50 4 V96 M12 44 H88" stroke="#fff" stroke-width="5" stroke-opacity="0.85"/>' },
+  ],
+  swap: { climber: 2, to: 0, newScore: 95.6, fallScore: 90.4 },  // row 2 jumps to rank 1, row 0 drops to rank 3
+};
+
+gsap.registerPlugin(SplitText);
+document.fonts.ready.then(() => {
+  // ---------- fill the DOM from DATA
+  const $ = id => document.getElementById(id);
+  $("label").textContent = DATA.label;
+  $("title").textContent = DATA.title;
+  const fmt = v => v.toFixed(1);
+  const rows = DATA.rows.map((d, i) => {
+    const rank = document.createElement("div");
+    rank.className = "rank" + (i === 0 ? " first" : ""); rank.id = "rank" + i;
+    rank.textContent = i + 1;
+    $("ranks").appendChild(rank);
+    const row = document.createElement("div");
+    row.className = "row"; row.id = "row" + i;
+    row.style.setProperty("--brand", d.color);
+    row.innerHTML = `<div class="clip"><div class="sheen" data-layer="back"></div></div><div class="glow"></div><div class="bar"></div>
+      <div class="slot" id="slot${i}"><svg id="logo${i}" viewBox="0 0 100 100" style="color:${d.color}">${d.logo}</svg></div>
+      <div class="name"></div><div class="delta"></div><div class="score"><span></span><small></small></div>`;
+    row.querySelector(".name").textContent = d.name;
+    row.querySelector(".score span").textContent = fmt(0);
+    row.querySelector(".score small").textContent = DATA.unit;
+    $("rows").appendChild(row);
+    return row;
+  });
+  const S = DATA.swap, up = rows[S.climber], down = rows[S.to];
+  const pitch = rows[1].offsetTop - rows[0].offsetTop;   // measured, so row height can change freely
+  const dy = (S.climber - S.to) * pitch;
+  up.querySelector(".delta").textContent = "▲ " + (S.climber - S.to);
+
+  // ---------- timeline
+  const split = new SplitText("#title", { type: "chars" });
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. panel settles in, label and title chars rise
+  tl.from("#panel", { y: 40, scale: 0.94, autoAlpha: 0, duration: 0.7, ease: "power3.out" }, 0)
+    .from("#label", { x: -20, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 0.12)
+    .from(split.chars, { y: 34, autoAlpha: 0, duration: 0.55, ease: "back.out(2)", stagger: 0.022 }, 0.16)
+  // 2. rank plates pop top to bottom
+    .from(".rank", { scale: 0.3, autoAlpha: 0, duration: 0.45, ease: "back.out(2.6)", stagger: 0.07 }, 0.3);
+
+  // 3. rows slot in from the right, logos spin into their slots, scores count up
+  rows.forEach((row, i) => {
+    const t = 0.42 + i * 0.09, d = DATA.rows[i];
+    const num = row.querySelector(".score span"), c = { v: 0 };
+    tl.from(row, { x: 90, autoAlpha: 0, duration: 0.7, ease: "expo.out" }, t)
+      .from("#slot" + i, { scale: 0, rotation: -90, duration: 0.6, ease: "back.out(2.4)" }, t + 0.12)
+      .to(c, { v: d.score, duration: 0.8, ease: "power2.out", onUpdate: () => { num.textContent = fmt(c.v); } }, t + 0.1);
+  });
+
+  // 4. the swap: anticipation dip, then the climber arcs OVER (out left, scaled up)
+  //    while the displaced row arcs UNDER (out right, scaled down, dimmed)
+  const tS = 1.6, D = 0.75;
+  gsap.set(up, { zIndex: 3 }); gsap.set(down, { zIndex: 1 });
+  tl.to(up, { x: 14, scale: 0.97, duration: 0.18, ease: "power2.in" }, tS - 0.18)
+    .to(up, { y: -dy, duration: D, ease: "power3.inOut" }, tS)
+    .to(up, { keyframes: [{ x: -46, scale: 1.07, duration: D * 0.5, ease: "power2.out" },
+                          { x: 0, scale: 1, duration: D * 0.5, ease: "power2.in" }] }, tS)
+    .to(down, { y: dy, duration: D, ease: "power3.inOut" }, tS)
+    .to(down, { keyframes: [{ x: 40, scale: 0.93, autoAlpha: 0.55, duration: D * 0.5, ease: "power2.out" },
+                            { x: 0, scale: 1, autoAlpha: 1, duration: D * 0.5, ease: "power2.in" }] }, tS);
+  // climber's score overtakes during the climb
+  const cs = { v: DATA.rows[S.climber].score }, csEl = up.querySelector(".score span");
+  const fs = { v: DATA.rows[S.to].score }, fsEl = down.querySelector(".score span");
+  tl.to(cs, { v: S.newScore, duration: D, ease: "power2.inOut", onUpdate: () => { csEl.textContent = fmt(cs.v); } }, tS)
+    .to(fs, { v: S.fallScore, duration: D, ease: "power2.inOut", onUpdate: () => { fsEl.textContent = fmt(fs.v); } }, tS);
+
+  // 5. impact at the top: squash and bump, the knocked row shudders, the #1 plate pulses, gold glow
+  const tI = tS + D;
+  tl.to(up, { keyframes: [{ scaleY: 0.9, scaleX: 1.03, duration: 0.08, ease: "power2.out" },
+                          { scaleY: 1, scaleX: 1, duration: 0.55, ease: "elastic.out(1.1, 0.4)" }] }, tI)
+    .to(down, { keyframes: [{ x: 10, rotation: 0.8, duration: 0.07, ease: "power2.out" },
+                            { x: 0, rotation: 0, duration: 0.5, ease: "elastic.out(1, 0.35)" }] }, tI)
+    .to("#rank" + S.to, { keyframes: [{ scale: 1.18, duration: 0.12, ease: "power2.out" },
+                                      { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.4)" }] }, tI)
+    .to(up.querySelector(".glow"), { opacity: 1, duration: 0.25, ease: "power2.out" }, tI)
+    .to(up.querySelector(".glow"), { opacity: 0.6, duration: 0.6, ease: "power2.inOut" }, tI + 0.3)
+    .to("#slot" + S.climber, { rotation: 360, duration: 0.8, ease: "power3.out" }, tI)
+    .fromTo(up.querySelector(".delta"), { scale: 0.3, autoAlpha: 0, x: -10 }, { scale: 1, autoAlpha: 1, x: 0, duration: 0.5, ease: "back.out(3)", immediateRender: false }, tI + 0.12)
+    .to(up.querySelector(".sheen"), { x: () => up.offsetWidth + 240, duration: 0.85, ease: "power2.inOut" }, tI + 0.35)
+    .to({}, { duration: 0.3 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

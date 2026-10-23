@@ -1,0 +1,173 @@
+{
+ "duration": 3.405,
+ "fps": 30,
+ "frames": 104,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.6,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#kicker",
+    "#folio"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.7,
+   "ease": "power3.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#mark"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 1.675,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.075,
+   "targets": [
+    "#quote div[0]",
+    "#quote div[1]",
+    "#quote div[2]",
+    "#quote div[3]",
+    "#quote div[4]",
+    "#quote div[5]",
+    "#quote div[6]",
+    "#quote div[7]",
+    "#quote div[8]",
+    "#quote div[9]",
+    "#quote div[10]",
+    "#quote div[11]",
+    "#quote div[12]",
+    "#quote div[13]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.775,
+   "duration": 0.5,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#dash"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.025,
+   "duration": 0.78,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "#who",
+    "#role"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.805,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#kicker",
+  "#folio",
+  "#mark",
+  "#quote div[0]",
+  "#quote div[1]",
+  "#quote div[2]",
+  "#quote div[3]",
+  "#quote div[4]",
+  "#quote div[5]",
+  "#quote div[6]",
+  "#quote div[7]",
+  "#quote div[8]",
+  "#quote div[9]",
+  "#quote div[10]",
+  "#quote div[11]",
+  "#quote div[12]",
+  "#quote div[13]",
+  "#dash",
+  "#who",
+  "#role"
+ ],
+ "fonts": [
+  "Inter",
+  "\"Playfair Display\""
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.7,
+  "end_visible": [
+   "#kicker",
+   "#folio",
+   "#mark",
+   "#quote div[0]",
+   "#quote div[1]",
+   "#quote div[2]",
+   "#quote div[3]",
+   "#quote div[4]",
+   "#quote div[5]",
+   "#quote div[6]",
+   "#quote div[7]",
+   "#quote div[8]",
+   "#quote div[9]",
+   "#quote div[10]",
+   "#quote div[11]",
+   "#quote div[12]",
+   "#quote div[13]",
+   "#dash",
+   "#who",
+   "#role"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

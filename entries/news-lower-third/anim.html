@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: editorial -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F4EFE6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F4EFE6; color: #1B1A17; }
+  #frame { position: absolute; left: 40px; top: 40px; width: 1200px; height: 640px; background: rgba(27,26,23,0.045); }
+  #bug { position: absolute; left: 56px; top: 44px; font: 800 24px/1 'Playfair Display'; letter-spacing: -0.02em; }
+  #live { position: absolute; left: 204px; top: 48px; padding: 5px 10px 4px; background: #B4442C; color: #F4EFE6; font: 600 14px/1 'Inter'; letter-spacing: 0.18em; }
+  #clock { position: absolute; right: 56px; top: 52px; font: 600 14px/1 'Inter'; letter-spacing: 0.18em; color: rgba(27,26,23,0.55); }
+  #bar { position: absolute; left: 56px; top: 430px; width: 8px; height: 132px; background: #B4442C; transform-origin: 50% 100%; }
+  .mask { position: absolute; left: 80px; overflow: hidden; }
+  #nameMask { top: 426px; width: 900px; height: 92px; }
+  #name { margin: 0; font: 800 72px/92px 'Playfair Display'; letter-spacing: -0.02em; white-space: nowrap; }
+  #roleMask { top: 528px; width: 900px; height: 30px; }
+  #role { font: 600 14px/30px 'Inter'; letter-spacing: 0.18em; color: rgba(27,26,23,0.72); white-space: nowrap; }
+  #role b { color: #B4442C; font-weight: 600; }
+  #rule { position: absolute; left: 56px; top: 582px; width: 680px; height: 1px; background: rgba(27,26,23,0.3); transform-origin: 0 50%; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="frame">
+    <div id="bug">The Ledger</div>
+    <div id="live">LIVE</div>
+    <div id="clock">08:42 GMT</div>
+    <!-- lower third lives inside the frame so it reads as one composed layer -->
+    <div id="bar"></div>
+    <div class="mask" id="nameMask"><h1 id="name">Margaret Okafor</h1></div>
+    <div class="mask" id="roleMask"><div id="role">CHIEF ECONOMIST <b>/</b> ATLANTIC REINSURANCE</div></div>
+    <div id="rule"></div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  tl.from("#frame", { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 0)
+    // bar grows up from its base, fast and decisive
+    .from("#bar", { scaleY: 0, duration: 0.55, ease: "power4.out" }, 0.2)
+    // name and role emerge from behind the bar's edge (their masks start right next to it)
+    .from("#name", { xPercent: -101, duration: 0.9, ease: "expo.out" }, 0.55)
+    .from("#role", { xPercent: -101, duration: 0.9, ease: "expo.out" }, 0.72)
+    .from("#rule", { scaleX: 0, duration: 0.8, ease: "power3.inOut" }, 0.9)
+    .to({}, { duration: 0.5 }); // final hold
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

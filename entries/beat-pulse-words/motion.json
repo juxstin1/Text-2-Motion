@@ -1,0 +1,612 @@
+{
+ "duration": 2.82,
+ "fps": 30,
+ "frames": 86,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#eyebrow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.02,
+   "duration": 0.3,
+   "ease": "power3.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.05,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#meter",
+    "#bpm"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.2,
+   "duration": 0.2,
+   "ease": "back.out(2.5)",
+   "props": [
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#f0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.2,
+   "duration": 0.26,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.2,
+   "duration": 0.24,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#meter circle.tick[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.4,
+   "duration": 0.14,
+   "ease": "sine.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#f0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.43,
+   "duration": 0.07,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#f0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 0.2,
+   "ease": "back.out(2.5)",
+   "props": [
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#f1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 0.26,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 0.24,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#meter circle.tick[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.7,
+   "duration": 0.14,
+   "ease": "sine.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#f1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.73,
+   "duration": 0.07,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#f1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.2,
+   "ease": "back.out(2.5)",
+   "props": [
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#f2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.26,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.24,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#meter circle.tick[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1,
+   "duration": 0.14,
+   "ease": "sine.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#f2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.03,
+   "duration": 0.07,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#f2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.1,
+   "duration": 0.22,
+   "ease": "back.out(2.5)",
+   "props": [
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ship"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.1,
+   "duration": 0.26,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.1,
+   "duration": 0.24,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#meter circle.tick[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.4,
+   "duration": 0.22,
+   "ease": "power2.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.4,
+   "duration": 0.24,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#meter circle.tick[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.4,
+   "duration": 0.08,
+   "ease": "power2.in",
+   "props": [
+    "x",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ship"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.48,
+   "duration": 0.28,
+   "ease": "expo.inOut",
+   "props": [
+    "x",
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ship"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.48,
+   "duration": 0.14,
+   "ease": "power2.in",
+   "props": [
+    "skewX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ship"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.3,
+   "ease": "back.out(1.8)",
+   "props": [
+    "autoAlpha",
+    "x",
+    "scale",
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#faster"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.62,
+   "duration": 0.24,
+   "ease": "back.out(3)",
+   "props": [
+    "skewX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ship"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.7,
+   "duration": 0.36,
+   "ease": "back.out(2)",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#barIn"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.76,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ship"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.76,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#sub"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.83,
+   "duration": 0.3,
+   "ease": "back.out(3)",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#ship"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.3,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": 0.04,
+   "targets": [
+    "#ship",
+    "#faster"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2,
+   "duration": 0.24,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#meter circle.tick[0]",
+    "#meter circle.tick[1]",
+    "#meter circle.tick[2]",
+    "#meter circle.tick[3]",
+    "#meter circle.tick[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.3,
+   "duration": 0.3,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": 0.04,
+   "targets": [
+    "#ship",
+    "#faster"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.3,
+   "duration": 0.24,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#meter circle.tick[0]",
+    "#meter circle.tick[1]",
+    "#meter circle.tick[2]",
+    "#meter circle.tick[3]",
+    "#meter circle.tick[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.6,
+   "duration": 0.22,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#eyebrow",
+  "#ring",
+  "#meter",
+  "#bpm",
+  "#f0",
+  "#meter circle.tick[0]",
+  "#f1",
+  "#meter circle.tick[1]",
+  "#f2",
+  "#meter circle.tick[2]",
+  "#ship",
+  "#meter circle.tick[3]",
+  "#meter circle.tick[4]",
+  "#faster",
+  "#barIn",
+  "#sub"
+ ],
+ "fonts": [
+  "Inter",
+  "\"Space Grotesk\""
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.25,
+  "end_visible": [
+   "#eyebrow",
+   "#meter",
+   "#bpm",
+   "#meter circle.tick[0]",
+   "#meter circle.tick[1]",
+   "#meter circle.tick[2]",
+   "#ship",
+   "#meter circle.tick[3]",
+   "#meter circle.tick[4]",
+   "#faster",
+   "#barIn",
+   "#sub"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

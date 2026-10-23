@@ -1,0 +1,14 @@
+{
+  "id": "heart-like-burst",
+  "prompt": "heart icon squashes on tap, fills red and pops a small ring of dots",
+  "tags": [
+    "icon",
+    "micro-interaction",
+    "like",
+    "pop"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

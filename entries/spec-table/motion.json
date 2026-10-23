@@ -1,0 +1,806 @@
+{
+ "duration": 3.47,
+ "fps": 30,
+ "frames": 106,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.7,
+   "ease": "back.out(1.5)",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#panel"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.15,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.25,
+   "duration": 0.7,
+   "ease": "back.out(2.6)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": 0.1,
+   "targets": [
+    "#slotA",
+    "#slotB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.38,
+   "duration": 0.65,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.05,
+   "targets": [
+    "#nameA",
+    "#nameB",
+    "#tallyA",
+    "#tallyB",
+    "#headLabel"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.62,
+   "duration": 0.55,
+   "ease": "back.out(1.6)",
+   "props": [
+    "rotationX",
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.82,
+   "duration": 0.55,
+   "ease": "back.out(1.6)",
+   "props": [
+    "rotationX",
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.86,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#row0 div.mark[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.94,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row0 path.tick[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.94,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#row0 div.mark[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.96,
+   "duration": 0.15,
+   "ease": "power2.out",
+   "props": [
+    "v"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 0.96,
+   "duration": 0.4,
+   "ease": "elastic.out(1, 0.45)",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#tallyA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row0 path.tick[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.55,
+   "ease": "back.out(1.6)",
+   "props": [
+    "rotationX",
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.04,
+   "duration": 0.15,
+   "ease": "power2.out",
+   "props": [
+    "v"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 1.04,
+   "duration": 0.4,
+   "ease": "elastic.out(1, 0.45)",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#tallyB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.06,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#row1 div.mark[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.14,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row1 path.tick[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.14,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#row1 div.mark[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.16,
+   "duration": 0.15,
+   "ease": "power2.out",
+   "props": [
+    "v"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 1.16,
+   "duration": 0.4,
+   "ease": "elastic.out(1, 0.45)",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#tallyA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.22,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row1 path.tick[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.22,
+   "duration": 0.55,
+   "ease": "back.out(1.6)",
+   "props": [
+    "rotationX",
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row3"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.26,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#row2 div.mark[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.34,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row2 path.tick[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.34,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#row2 div.mark[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.42,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row2 path.tick[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.44,
+   "duration": 0.15,
+   "ease": "power2.out",
+   "props": [
+    "v"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 1.44,
+   "duration": 0.4,
+   "ease": "elastic.out(1, 0.45)",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#tallyB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.46,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#row3 div.mark[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.54,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row3 path.tick[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.54,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#row3 div.mark[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.56,
+   "duration": 0.15,
+   "ease": "power2.out",
+   "props": [
+    "v"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 1.56,
+   "duration": 0.4,
+   "ease": "elastic.out(1, 0.45)",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#tallyA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.62,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#row3 path.tick[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.87,
+   "duration": 0.69,
+   "ease": "power3.out",
+   "props": [
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": 0.06,
+   "targets": [
+    "#colA div.hl",
+    "#row0 div.hl",
+    "#row1 div.hl",
+    "#row2 div.hl",
+    "#row3 div.hl"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.87,
+   "duration": 0.84,
+   "ease": "power1.out",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slotA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.02,
+   "duration": 0.66,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": 0.05,
+   "targets": [
+    "#row0 div.mark[0]",
+    "#row1 div.mark[0]",
+    "#row2 div.mark[0]",
+    "#row3 div.mark[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.09,
+   "duration": 0.55,
+   "ease": "back.out(2.8)",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#winPill"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.47,
+   "duration": 0.7,
+   "ease": "power2.inOut",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#winPill div.sheen"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.17,
+   "duration": 0.3,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#panel",
+  "#title",
+  "#slotA",
+  "#slotB",
+  "#nameA",
+  "#nameB",
+  "#tallyA",
+  "#tallyB",
+  "#headLabel",
+  "#row0",
+  "#row1",
+  "#row0 div.mark[0]",
+  "#row0 path.tick[0]",
+  "#row0 div.mark[1]",
+  "#row0 path.tick[1]",
+  "#row2",
+  "#row1 div.mark[0]",
+  "#row1 path.tick[0]",
+  "#row1 div.mark[1]",
+  "#row1 path.tick[1]",
+  "#row3",
+  "#row2 div.mark[0]",
+  "#row2 path.tick[0]",
+  "#row2 div.mark[1]",
+  "#row2 path.tick[1]",
+  "#row3 div.mark[0]",
+  "#row3 path.tick[0]",
+  "#row3 div.mark[1]",
+  "#row3 path.tick[1]",
+  "#colA div.hl",
+  "#row0 div.hl",
+  "#row1 div.hl",
+  "#row2 div.hl",
+  "#row3 div.hl",
+  "#winPill",
+  "#winPill div.sheen",
+  "#titleText",
+  "#winPill span",
+  "#row0 div.cell",
+  "#row1 div.cell",
+  "#row2 div.cell",
+  "#row3 div.cell"
+ ],
+ "fonts": [
+  "Sora, sans-serif",
+  "Sora",
+  "Manrope, sans-serif"
+ ],
+ "flagged": false,
+ "notes": 6,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#title",
+    "b": "#winPill",
+    "ranges": [
+     [
+      2.1,
+      2.1333333333333333
+     ]
+    ],
+    "peak": 0.67,
+    "peak_frame": 63,
+    "ia": 1,
+    "ib": 34,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#slotA",
+    "b": "#nameA",
+    "ranges": [
+     [
+      2.1666666666666665,
+      2.2
+     ]
+    ],
+    "peak": 0.11,
+    "peak_frame": 66,
+    "ia": 2,
+    "ib": 4,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#slotA",
+    "b": "#winPill",
+    "ranges": [
+     [
+      2.2,
+      2.2333333333333334
+     ],
+     [
+      2.3333333333333335,
+      2.433333333333333
+     ]
+    ],
+    "peak": 0.2,
+    "peak_frame": 66,
+    "ia": 2,
+    "ib": 34,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#headLabel",
+    "b": "#row0",
+    "ranges": [
+     [
+      0.6333333333333333,
+      0.6666666666666666
+     ]
+    ],
+    "peak": 0.39,
+    "peak_frame": 19,
+    "ia": 8,
+    "ib": 9,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#headLabel",
+    "b": "#row0 div.cell",
+    "ranges": [
+     [
+      0.6333333333333333,
+      0.6666666666666666
+     ]
+    ],
+    "peak": 0.38,
+    "peak_frame": 19,
+    "ia": 8,
+    "ib": 38,
+    "defect": false,
+    "static": true
+   },
+   {
+    "a": "#winPill div.sheen",
+    "b": "#winPill span",
+    "ranges": [
+     [
+      2.7333333333333334,
+      2.9
+     ]
+    ],
+    "peak": 0.63,
+    "peak_frame": 84,
+    "ia": 35,
+    "ib": 37,
+    "defect": false,
+    "static": true
+   }
+  ],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 5,
+  "format": "landscape",
+  "final_hold": 0.34,
+  "end_visible": [
+   "#panel",
+   "#title",
+   "#slotA",
+   "#slotB",
+   "#nameA",
+   "#nameB",
+   "#tallyA",
+   "#tallyB",
+   "#headLabel",
+   "#row0",
+   "#row1",
+   "#row0 div.mark[0]",
+   "#row0 path.tick[0]",
+   "#row0 div.mark[1]",
+   "#row0 path.tick[1]",
+   "#row2",
+   "#row1 div.mark[0]",
+   "#row1 path.tick[0]",
+   "#row1 div.mark[1]",
+   "#row1 path.tick[1]",
+   "#row3",
+   "#row2 div.mark[0]",
+   "#row2 path.tick[0]",
+   "#row2 div.mark[1]",
+   "#row2 path.tick[1]",
+   "#row3 div.mark[0]",
+   "#row3 path.tick[0]",
+   "#row3 div.mark[1]",
+   "#row3 path.tick[1]",
+   "#colA div.hl",
+   "#row0 div.hl",
+   "#row1 div.hl",
+   "#row2 div.hl",
+   "#row3 div.hl",
+   "#winPill",
+   "#titleText",
+   "#winPill span",
+   "#row0 div.cell",
+   "#row1 div.cell",
+   "#row2 div.cell",
+   "#row3 div.cell"
+  ],
+  "end_overlaps": [],
+  "n_notes": 6
+ }
+}

@@ -1,0 +1,16 @@
+duration 2.70s, 82 frames @30fps, 7 tweens
+TIMING
+  #eyebrow, #title  y,autoAlpha  0.00-0.68s  power3.out  stagger 0.08
+  #rule  scaleX  0.10-0.90s  power3.inOut
+  #byline  autoAlpha  0.20-0.80s  power2.out
+  #cap  scale,autoAlpha  0.30-1.10s  back.out(1.7)
+  #body div.li x6  yPercent,autoAlpha  0.75-1.95s  power3.out  stagger 0.08
+  #foot  y,autoAlpha  1.60-2.20s  power3.out
+  (hold)  2.20-2.70s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 13 visible (#eyebrow, #title, #rule, #byline ...); final hold 0.77s; no overlaps

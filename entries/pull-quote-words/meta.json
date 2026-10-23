@@ -1,0 +1,14 @@
+{
+  "id": "pull-quote-words",
+  "prompt": "pull quote appears word by word, attribution slides in last",
+  "tags": [
+    "text",
+    "words",
+    "quote",
+    "editorial"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

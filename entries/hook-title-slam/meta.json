@@ -1,0 +1,14 @@
+{
+  "id": "hook-title-slam",
+  "prompt": "short-form hook: a two-line title slams in within 0.3s, shakes, and pulses on a seamless loop",
+  "tags": [
+    "vertical",
+    "kinetic",
+    "hook",
+    "loop"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

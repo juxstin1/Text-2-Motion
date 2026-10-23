@@ -1,0 +1,19 @@
+duration 2.59s, 79 frames @30fps, 10 tweens
+TIMING
+  #w1  scale  0.05-0.45s  power2.inOut
+  #w1  scale  0.45-1.20s  expo.in
+  {object} x1  z  0.45-1.20s  expo.in
+  #w1  autoAlpha  set at 1.20s
+  #w2  autoAlpha  set at 1.20s
+  #w2  scale  1.20-2.00s  expo.out
+  #w2 span x6, #w2 span.dot  y,rotation  1.32-2.32s  back.out(2.6)  stagger 0.05
+  #bar  scaleX  1.75-2.30s  power4.out
+  #rec i  scale  1.95-2.39s  power2.out
+  (hold)  2.39-2.59s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 14 visible (#w2, #w2 span x6, #w2 span.dot, #bar ...); final hold 0.19s; no overlaps

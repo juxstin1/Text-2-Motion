@@ -1,0 +1,14 @@
+{
+  "id": "sparkle-success",
+  "prompt": "success badge pops in and throws a ring of sparkles that twinkle out",
+  "tags": [
+    "burst",
+    "sparkles",
+    "success",
+    "particles"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cta-button-pop",
+  "prompt": "pill call-to-action button pops in with a bounce, then its arrow slides in",
+  "tags": [
+    "entrance",
+    "button",
+    "overshoot",
+    "ui"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": true,
+  "created": "2026-10-22"
+}

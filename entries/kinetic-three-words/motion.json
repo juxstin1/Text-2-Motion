@@ -1,0 +1,151 @@
+{
+ "duration": 2.04,
+ "fps": 30,
+ "frames": 63,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0.05,
+   "duration": 0.55,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "skewX"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#w1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.27,
+   "duration": 0.55,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "skewX"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#w2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 0.7,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "x"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#num"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.49,
+   "duration": 0.55,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "skewX"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#w3"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.82,
+   "duration": 0.45,
+   "ease": "power4.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#bar"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.9,
+   "duration": 0.64,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.07,
+   "targets": [
+    "#info div.label",
+    "#info div.big",
+    "#info div.small"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.54,
+   "duration": 0.5,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#w1",
+  "#w2",
+  "#num",
+  "#w3",
+  "#bar",
+  "#info div.label",
+  "#info div.big",
+  "#info div.small"
+ ],
+ "fonts": [
+  "\"Bebas Neue\", sans-serif",
+  "\"Archivo Black\", sans-serif"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.67,
+  "end_visible": [
+   "#w1",
+   "#w2",
+   "#num",
+   "#w3",
+   "#bar",
+   "#info div.label",
+   "#info div.big",
+   "#info div.small"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

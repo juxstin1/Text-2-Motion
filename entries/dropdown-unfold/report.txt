@@ -1,0 +1,16 @@
+duration 1.71s, 53 frames @30fps, 7 tweens
+TIMING
+  #btn  scale  0.00-0.12s  power2.out
+  #chev  rotation  0.10-0.60s  back.out(2)
+  #btn  scale  0.12-0.57s  back.out(3)
+  #menu  scaleY,scaleX,y,autoAlpha  0.14-0.69s  power4.out
+  #menu div.mlabel, #menu div.item x5 ...  y,autoAlpha  0.22-0.91s  power3.out  stagger 0.045
+  #menu svg.tick  scale,rotation  0.71-1.11s  back.out(2.5)
+  (hold)  1.11-1.71s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 15 visible (#btn, #chev, #menu, #menu div.mlabel ...); final hold 0.61s; no overlaps

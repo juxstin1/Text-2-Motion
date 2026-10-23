@@ -1,0 +1,20 @@
+duration 2.23s, 68 frames @30fps, 10 tweens
+TIMING
+  #event  autoAlpha,x  0.00-0.40s  power3.out
+  #time  autoAlpha,y  0.15-0.65s  power4.out
+  #unit, #athlete  autoAlpha,y  0.35-0.83s  power3.out  stagger 0.08
+  #stamp  scale,rotation,autoAlpha  0.62-0.88s  power4.in
+  #shake  x,y  0.88-1.16s  power2.out
+  #stamp  scale  0.88-0.95s  power2.out
+  #ring  scale,autoAlpha  0.88-1.33s  power3.out
+  #stamp  scale  0.95-1.25s  back.out(3)
+  #prev  autoAlpha,y  1.18-1.63s  power3.out
+  (hold)  1.63-2.23s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 1 note
+  note #ring / #stamp div.stamp-word  0.90-1.10s  peak 100%  (onto static text)
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 12 visible (#event, #time, #unit, #athlete ...); final hold 0.80s; no overlaps

@@ -1,0 +1,841 @@
+{
+ "duration": 3.905,
+ "fps": 30,
+ "frames": 119,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[0]",
+    "#typed div[1]",
+    "#typed div[2]",
+    "#typed div[3]",
+    "#typed div[4]",
+    "#typed div[5]",
+    "#typed div[6]",
+    "#typed div[7]",
+    "#typed div[8]",
+    "#typed div[9]",
+    "#typed div[10]",
+    "#typed div[11]",
+    "#typed div[12]",
+    "#typed div[13]",
+    "#typed div[14]",
+    "#typed div[15]",
+    "#typed div[16]",
+    "#typed div[17]",
+    "#typed div[18]",
+    "#typed div[19]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.82,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.06,
+   "targets": [
+    "#term",
+    "div.meta[0]",
+    "div.meta[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.7,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.9,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.1,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.38,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.38,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.425,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.425,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.46,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.46,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.515,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.515,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.655,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.655,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.7,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[5]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.7,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.735,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[6]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.735,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.79,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.79,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.83,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[8]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.83,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.875,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[9]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.875,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.01,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[10]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.01,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.065,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[11]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.065,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.105,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[12]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.105,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.15,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[13]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.15,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.185,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[14]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.185,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.24,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[15]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.24,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.28,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[16]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.28,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.325,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[17]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.325,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.46,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[18]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.46,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.515,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#typed div[19]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.515,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.695,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.695,
+   "duration": 0.45,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#o1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.855,
+   "duration": 0.45,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#o2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.055,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#cursor"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.305,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#typed div[0]",
+  "#typed div[1]",
+  "#typed div[2]",
+  "#typed div[3]",
+  "#typed div[4]",
+  "#typed div[5]",
+  "#typed div[6]",
+  "#typed div[7]",
+  "#typed div[8]",
+  "#typed div[9]",
+  "#typed div[10]",
+  "#typed div[11]",
+  "#typed div[12]",
+  "#typed div[13]",
+  "#typed div[14]",
+  "#typed div[15]",
+  "#typed div[16]",
+  "#typed div[17]",
+  "#typed div[18]",
+  "#typed div[19]",
+  "#cursor",
+  "#term",
+  "div.meta[0]",
+  "div.meta[1]",
+  "#o1",
+  "#o2",
+  "#title",
+  "#path",
+  "#cmd span.p",
+  "#o2 b"
+ ],
+ "fonts": [
+  "\"JetBrains Mono\""
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.67,
+  "end_visible": [
+   "#typed div[0]",
+   "#typed div[1]",
+   "#typed div[2]",
+   "#typed div[3]",
+   "#typed div[4]",
+   "#typed div[5]",
+   "#typed div[6]",
+   "#typed div[7]",
+   "#typed div[8]",
+   "#typed div[9]",
+   "#typed div[10]",
+   "#typed div[11]",
+   "#typed div[12]",
+   "#typed div[13]",
+   "#typed div[14]",
+   "#typed div[15]",
+   "#typed div[16]",
+   "#typed div[17]",
+   "#typed div[18]",
+   "#typed div[19]",
+   "#cursor",
+   "#term",
+   "div.meta[0]",
+   "div.meta[1]",
+   "#o1",
+   "#o2",
+   "#title",
+   "#path",
+   "#cmd span.p",
+   "#o2 b"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

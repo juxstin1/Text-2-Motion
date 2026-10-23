@@ -1,0 +1,14 @@
+{
+  "id": "three-steps-build",
+  "prompt": "\"3 steps\" checklist builds down the screen, each tick landing with a squash",
+  "tags": [
+    "vertical",
+    "list",
+    "steps",
+    "check"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

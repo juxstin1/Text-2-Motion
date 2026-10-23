@@ -1,0 +1,14 @@
+{
+  "id": "logo-orbit-intro",
+  "prompt": "five logos orbit the centre, then line up in a row under the title",
+  "tags": [
+    "template",
+    "intro",
+    "orbit",
+    "logos"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

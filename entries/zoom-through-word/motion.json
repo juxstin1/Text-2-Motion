@@ -1,0 +1,204 @@
+{
+ "duration": 2.59,
+ "fps": 30,
+ "frames": 79,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0.05,
+   "duration": 0.4,
+   "ease": "power2.inOut",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#w1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.45,
+   "duration": 0.75,
+   "ease": "expo.in",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#w1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.45,
+   "duration": 0.75,
+   "ease": "expo.in",
+   "props": [
+    "z"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 1.2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#w1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.2,
+   "duration": 0,
+   "ease": "custom",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#w2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.2,
+   "duration": 0.8,
+   "ease": "expo.out",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#w2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 1,
+   "ease": "back.out(2.6)",
+   "props": [
+    "y",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": 0.05,
+   "targets": [
+    "#w2 span[0]",
+    "#w2 span[1]",
+    "#w2 span[2]",
+    "#w2 span[3]",
+    "#w2 span[4]",
+    "#w2 span[5]",
+    "#w2 span.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.75,
+   "duration": 0.55,
+   "ease": "power4.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#bar"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.95,
+   "duration": 0.44,
+   "ease": "power2.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#rec i"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.39,
+   "duration": 0.2,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#w1",
+  "#w2",
+  "#w2 span[0]",
+  "#w2 span[1]",
+  "#w2 span[2]",
+  "#w2 span[3]",
+  "#w2 span[4]",
+  "#w2 span[5]",
+  "#w2 span.dot",
+  "#bar",
+  "#rec i",
+  "#o1",
+  "#cam",
+  "#rec",
+  "#zoom",
+  "#frame"
+ ],
+ "fonts": [
+  "\"JetBrains Mono\", monospace"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.19,
+  "end_visible": [
+   "#w2",
+   "#w2 span[0]",
+   "#w2 span[1]",
+   "#w2 span[2]",
+   "#w2 span[3]",
+   "#w2 span[4]",
+   "#w2 span[5]",
+   "#w2 span.dot",
+   "#bar",
+   "#rec i",
+   "#cam",
+   "#rec",
+   "#zoom",
+   "#frame"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

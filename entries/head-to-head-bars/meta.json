@@ -1,0 +1,14 @@
+{
+  "id": "head-to-head-bars",
+  "prompt": "two brands' stat bars race; the leader's bar overshoots, glows and its number pops",
+  "tags": [
+    "template",
+    "bars",
+    "comparison",
+    "race"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

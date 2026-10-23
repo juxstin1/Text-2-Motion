@@ -1,0 +1,14 @@
+duration 2.35s, 72 frames @30fps, 5 tweens
+TIMING
+  #eyebrow  autoAlpha,y  0.00-0.50s  power3.out
+  #word div.char x8  y,autoAlpha,scaleY,scaleX  0.10-1.51s  power1.out  stagger 0.065
+  #sq  drawSVG  1.05-1.75s  power2.inOut
+  #caption  autoAlpha,y  1.35-1.85s  power3.out
+  (hold)  1.85-2.35s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 11 visible (#eyebrow, #word div.char x8, #sq, #caption); final hold 0.66s; no overlaps

@@ -1,0 +1,14 @@
+{
+  "id": "scoreboard-rounds",
+  "prompt": "two-brand scoreboard tallies three rounds; each point ticks up with a squash and the leader glows",
+  "tags": [
+    "template",
+    "scoreboard",
+    "comparison",
+    "counter"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

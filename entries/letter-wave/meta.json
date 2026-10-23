@@ -1,0 +1,14 @@
+{
+  "id": "letter-wave",
+  "prompt": "a word bounces in letter by letter like a wave",
+  "tags": [
+    "text",
+    "letters",
+    "wave",
+    "stagger"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

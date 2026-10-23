@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: tech-launch -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0B0D12; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0B0D12; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  #word { position: absolute; left: 584px; top: 292px; margin: 0; font-family: "Space Grotesk"; font-weight: 700; font-size: 104px;
+          line-height: 1; letter-spacing: -0.03em; color: #E8ECF4; transform-origin: 0% 100%; }
+  #tag { position: absolute; left: 592px; top: 414px; font-family: "Inter"; font-weight: 500; font-size: 13px; letter-spacing: 0.12em;
+         text-transform: uppercase; color: rgba(232,236,244,0.55); }
+  #tag b { color: #5B8CFF; font-weight: 500; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="scene" viewBox="0 0 1280 720">
+    <defs>
+      <clipPath id="markClip">
+        <path transform="translate(428 318)" d="M38 38 H-38 A76 76 0 0 1 38 -38 Z"/>
+        <circle cx="512" cy="318" r="38"/>
+        <rect x="390" y="364" width="76" height="76" rx="12"/>
+        <path transform="translate(512 402)" d="M-38 -38 H38 A76 76 0 0 1 -38 38 Z"/>
+      </clipPath>
+    </defs>
+    <circle id="ring" cx="470" cy="360" r="120" fill="none" stroke="#5B8CFF" stroke-width="3"/>
+    <g id="mark">
+      <g transform="translate(428 318)"><g id="pTL" class="piece"><path d="M38 38 H-38 A76 76 0 0 1 38 -38 Z" fill="#5B8CFF"/></g></g>
+      <g transform="translate(512 318)"><g id="pTR" class="piece"><circle r="38" fill="#E8ECF4"/></g></g>
+      <g transform="translate(428 402)"><g id="pBL" class="piece"><rect x="-38" y="-38" width="76" height="76" rx="12" fill="#5B8CFF" fill-opacity="0.45"/></g></g>
+      <g transform="translate(512 402)"><g id="pBR" class="piece"><path d="M-38 -38 H38 A76 76 0 0 1 -38 38 Z" fill="#5B8CFF"/></g></g>
+    </g>
+    <g clip-path="url(#markClip)"><path id="glint" d="M340 440 L366 440 L396 280 L370 280 Z" fill="#E8ECF4" fill-opacity="0.6"/></g>
+  </svg>
+  <h1 id="word">Quadra</h1>
+  <div id="tag">Signal infrastructure <b>&middot;</b> v4</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  // start just inside each stage corner; dx/dy are the loose "almost there" offsets before the snap
+  const P = [
+    { el: "#pTL", sx: -368, sy: -258, rot: -200, dx: -26, dy: -26 },
+    { el: "#pTR", sx: 708,  sy: -258, rot: 160,  dx: 26,  dy: -26 },
+    { el: "#pBL", sx: -368, sy: 258,  rot: 180,  dx: -26, dy: 26 },
+    { el: "#pBR", sx: 708,  sy: 258,  rot: -220, dx: 26,  dy: 26 }
+  ];
+  gsap.set(".piece", { transformOrigin: "50% 50%" });
+  gsap.set("#mark", { transformOrigin: "50% 50%" });
+  gsap.set("#ring", { transformOrigin: "50% 50%", autoAlpha: 0 });
+  gsap.set("#glint", { autoAlpha: 0 });
+
+  P.forEach((p, i) => {
+    const t = i * 0.07;
+    gsap.set(p.el, { x: p.sx, y: p.sy, rotation: p.rot, scale: 0.55, autoAlpha: 0 });
+    // x and y on different eases so each piece curves in on an arc, decelerating into its loose spot
+    tl.to(p.el, { autoAlpha: 1, duration: 0.12, ease: "power1.out" }, t)
+      .to(p.el, { x: p.dx, duration: 0.72, ease: "power3.out" }, t)
+      .to(p.el, { y: p.dy, duration: 0.72, ease: "power2.inOut" }, t)
+      .to(p.el, { rotation: 0, scale: 1, duration: 0.72, ease: "back.out(1.4)" }, t);
+  });
+  // anticipation: the pieces ease apart a touch and swell, as if charging
+  tl.to(P.map(p => p.el), { x: (i) => P[i].dx * 1.5, y: (i) => P[i].dy * 1.5, scale: 1.06, duration: 0.2, ease: "sine.inOut" }, 0.95)
+    // snap: all four slam into place together
+    .to(P.map(p => p.el), { x: 0, y: 0, scale: 1, duration: 0.16, ease: "power3.in" }, 1.11)
+    .addLabel("snap", 1.27)
+    .to("#mark", { scale: 0.88, duration: 0.06, ease: "power2.out" }, "snap")
+    .to("#mark", { scale: 1, duration: 0.45, ease: "back.out(3.5)" }, "snap+=0.06")
+    .fromTo("#ring", { autoAlpha: 0.9, scale: 0.75 }, { autoAlpha: 0, scale: 1.35, duration: 0.55, ease: "power3.out", immediateRender: false }, "snap")
+    // wordmark punches in from the mark's side: fast in, squash against its left edge, settle
+    .from("#word", { autoAlpha: 0, x: -30, scaleX: 1.3, scaleY: 0.85, duration: 0.17, ease: "power4.in" }, "snap+=0.16")
+    .to("#word", { scaleX: 0.9, scaleY: 1.08, duration: 0.06, ease: "power2.out" }, "snap+=0.33")
+    .to("#word", { scaleX: 1, scaleY: 1, duration: 0.4, ease: "back.out(3)" }, "snap+=0.39")
+    .to("#mark", { x: -6, duration: 0.07, ease: "power2.out" }, "snap+=0.33")
+    .to("#mark", { x: 0, duration: 0.35, ease: "back.out(3)" }, "snap+=0.4")
+    .from("#tag", { autoAlpha: 0, y: 12, duration: 0.4, ease: "power3.out" }, "snap+=0.5")
+    // late accent: a glint runs across the finished mark
+    .set("#glint", { autoAlpha: 1 }, "snap+=0.78")
+    .to("#glint", { x: 150, duration: 0.5, ease: "power2.inOut" }, "snap+=0.78")
+    .set("#glint", { autoAlpha: 0 }, "snap+=1.28")
+    .to({}, { duration: 0.25 });
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

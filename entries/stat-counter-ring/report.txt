@@ -1,0 +1,21 @@
+duration 3.48s, 106 frames @30fps, 25 tweens
+TIMING
+  #ringBox  scale,autoAlpha,rotation  0.00-0.50s  back.out(1.8)
+  #numWrap  scale,autoAlpha  0.06-0.46s  back.out(2.4)
+  #arc  drawSVG  0.18-1.68s  power3.inOut
+  {object} x1  v  0.18-1.68s  power3.inOut
+  #cap  rotation  0.18-1.68s  power3.inOut
+  #capDot  scale,autoAlpha  0.18-0.48s  back.out(3)
+  #kicker  y,scale,autoAlpha  0.30-0.75s  back.out(2.4)
+  #numWrap  scaleY,scaleX  1.52-1.68s  power2.inOut
+  #numWrap  scaleY,scaleX  1.68-1.76s  power3.out
+  #ringBox  scale  1.68-1.76s  power2.out
+  (+15 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean (9 data-layer=back excluded)
+off-stage: clean
+jumps: clean
+dead air: clean
+safe zones: clean
+end state: 11 visible (#ringBox, #numWrap, #arc, #cap ...); final hold 0.28s; no overlaps

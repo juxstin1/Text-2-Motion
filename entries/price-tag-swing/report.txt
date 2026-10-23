@@ -1,0 +1,15 @@
+duration 3.07s, 94 frames @30fps, 6 tweens
+TIMING
+  #eyebrow, #headline span.ln x2 ...  y,autoAlpha  0.00-1.02s  power3.out  stagger 0.08
+  #hang  autoAlpha  0.15-0.45s  power2.out
+  #hang  rotation  0.15-2.67s  power1.out
+  #tag div.inner  y,autoAlpha  0.45-1.00s  power3.out
+  #tag div.foot  autoAlpha  0.90-1.40s  power2.out
+  (hold)  2.67-3.07s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 11 visible (#eyebrow, #headline span.ln x2, #body, #cta ...); final hold 0.50s; no overlaps

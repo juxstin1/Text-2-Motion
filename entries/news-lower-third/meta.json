@@ -1,0 +1,14 @@
+{
+  "id": "news-lower-third",
+  "prompt": "news lower-third: accent bar extends, then name and title slide out from behind it",
+  "tags": [
+    "text",
+    "lower-third",
+    "mask",
+    "editorial"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

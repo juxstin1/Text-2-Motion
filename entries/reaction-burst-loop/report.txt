@@ -1,0 +1,21 @@
+duration 2.40s, 73 frames @30fps, 93 tweens
+TIMING
+  #face  scaleX,scaleY  0.00-0.16s  power2.in
+  #dotL, #dotR  scaleY  0.00-0.14s  power2.in
+  #smile  scaleX  0.00-0.14s  power2.in
+  #face  y,scaleX,scaleY  0.16-0.31s  power3.out
+  #dotL, #dotR  scale  0.16-0.22s  power2.in
+  #smile  autoAlpha  0.17-0.21s  power1.out
+  #grin  scaleY  0.17-0.39s  back.out(3)
+  #heyeL, #heyeR  scale  0.18-0.42s  back.out(3.5)
+  #tag  scale,y,rotation  0.20-0.92s  power1.out
+  #hearts g  autoAlpha,scale  0.20-0.38s  back.out(3)
+  (+83 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+safe zones: clean
+end state: 5 visible (#face, #dotL, #dotR, #smile ...); final hold 0.00s; no overlaps

@@ -1,0 +1,20 @@
+duration 3.55s, 108 frames @30fps, 23 tweens
+TIMING
+  #head  y,autoAlpha  0.00-0.45s  power4.out
+  #cardA, #cardB  y,autoAlpha  0.08-0.73s  power4.out  stagger 0.1
+  #slotA, #slotB  scale,rotation  0.30-0.85s  back.out(3)  stagger 0.1
+  {object} x1  v  0.62-1.57s  power3.out
+  {object} x1  v  0.62-1.92s  power3.out
+  #priceB  scaleY,scaleX  1.38-1.44s  power2.out
+  #cardB  y  1.38-1.61s  power2.out
+  #priceB  scaleY,scaleX  1.44-1.84s  back.out(3.5)
+  #priceA  scaleY,scaleX  1.66-1.72s  power2.out
+  #cardA  y  1.66-1.89s  power2.out
+  (+13 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 23 visible (#head, #cardA, #cardB, #slotA ...); final hold 0.38s; no overlaps

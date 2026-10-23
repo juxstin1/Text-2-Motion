@@ -1,0 +1,14 @@
+{
+  "id": "letters-drop-collide",
+  "prompt": "letters drop in, knock into each other and bounce into the word \"HELLO\"",
+  "tags": [
+    "kinetic",
+    "letters",
+    "bounce",
+    "collide"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

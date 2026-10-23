@@ -1,0 +1,20 @@
+duration 2.88s, 88 frames @30fps, 79 tweens
+TIMING
+  #folio  autoAlpha,x  0.00-0.45s  power3.out
+  #drop  scale  0.05-0.33s  back.out(2)
+  #drop  scaleY,scaleX  0.36-0.56s  power2.in
+  #drop  y  0.56-0.92s  power2.in
+  #drop  scaleY,scaleX  0.60-0.90s  power2.in
+  #drop  scaleY,scaleX  0.92-0.97s  power2.out
+  #drops circle.speck  scale  0.93-1.03s  power2.out
+  #drops circle.speck  x  0.93-1.48s  expo.out
+  #drops circle.speck  y  0.93-1.17s  power2.out
+  #drops circle.speck  scale  0.93-1.03s  power2.out
+  (+69 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 23 visible (#folio, #drops circle.speck x5, #mark, #mono ...); final hold 0.21s; no overlaps

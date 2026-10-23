@@ -1,0 +1,1 @@
+a circle expands from a button to wipe in the next scene, whose content then settles in

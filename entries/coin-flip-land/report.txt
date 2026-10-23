@@ -1,0 +1,20 @@
+duration 2.94s, 90 frames @30fps, 55 tweens
+TIMING
+  #label, #title  y,autoAlpha  0.00-0.58s  power3.out  stagger 0.08
+  #stretch  scaleY,scaleX  0.30-0.58s  power2.out
+  #rock  rotation  0.30-0.58s  power2.out
+  #shadow  scaleX  0.30-0.58s  power2.out
+  #stretch  scaleY,scaleX  0.62-0.70s  power3.out
+  #rock  rotation  0.62-0.82s  power2.out
+  #toss  y  0.62-1.16s  power2.out
+  #toss, #shadow  x  0.62-1.64s  sine.inOut
+  #shadow  scale,autoAlpha  0.62-1.16s  power2.out
+  #spin  scaleY  0.66-0.71s  sine.in
+  (+45 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 12 visible (#label, #title, #stretch, #rock ...); final hold 0.27s; no overlaps

@@ -1,0 +1,14 @@
+{
+  "id": "mascot-point-bubble",
+  "prompt": "round mascot bounces up into frame, waves, and points at a speech bubble that pops open",
+  "tags": [
+    "vertical",
+    "character",
+    "mascot",
+    "bubble"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

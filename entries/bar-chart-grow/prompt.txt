@@ -1,0 +1,1 @@
+bar chart bars grow from the baseline with staggered expo easing

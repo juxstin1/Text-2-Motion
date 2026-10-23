@@ -1,0 +1,19 @@
+duration 3.35s, 102 frames @30fps, 10 tweens
+TIMING
+  #plane  motionPath  0.00-2.40s  power1.out
+  #trailReveal  drawSVG  0.00-2.40s  power1.out
+  #planeBody  scaleY  0.50-1.20s  sine.inOut
+  #label  y,autoAlpha  1.55-2.05s  power3.out
+  #headline  y,autoAlpha  1.70-2.50s  back.out(1.6)
+  #planeBody  rotation  2.05-2.35s  sine.out
+  #planeBody  rotation  2.35-2.65s  sine.inOut
+  #planeBody  rotation  2.65-2.90s  sine.inOut
+  #planeBody  rotation  2.90-3.15s  sine.inOut
+  (hold)  3.15-3.35s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 4 visible (#plane, #planeBody, #label, #headline); final hold 0.22s; no overlaps

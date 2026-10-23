@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: tech-launch -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0B0D12; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0B0D12; color: #E8ECF4; }
+  #eyebrow { position: absolute; left: 0; top: 84px; width: 1280px; text-align: center; font-family: "Inter"; font-weight: 500;
+             font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #5B8CFF; }
+  #ring { position: absolute; left: 410px; top: 122px; width: 454px; height: 454px; border: 3px solid rgba(91,140,255,0.45);
+          border-radius: 50%; }
+  .flash, #headline { position: absolute; left: 0; top: 300px; width: 1280px; text-align: center; font-family: "Space Grotesk";
+          font-weight: 700; font-size: 104px; line-height: 1; letter-spacing: -0.03em; white-space: nowrap; }
+  #headline span { display: inline-block; }
+  #ship { color: #5B8CFF; }
+  #bar { position: absolute; left: 0; top: 418px; width: 1280px; height: 6px; }
+  #bar div { margin: 0 auto; width: 120px; height: 6px; border-radius: 3px; background: #5B8CFF; }
+  #sub { position: absolute; left: 0; top: 452px; width: 1280px; margin: 0; text-align: center; font-family: "Inter";
+         font-weight: 400; font-size: 22px; color: rgba(232,236,244,0.62); }
+  #meter { position: absolute; left: 560px; top: 600px; width: 160px; height: 24px; }
+  #bpm { position: absolute; left: 0; top: 636px; width: 1280px; text-align: center; font-family: "Inter"; font-weight: 500;
+         font-size: 13px; letter-spacing: 0.12em; color: rgba(232,236,244,0.4); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="eyebrow">Launch week &middot; Day 01</div>
+  <div id="ring"></div>
+  <div class="flash" id="f0">Plan.</div>
+  <div class="flash" id="f1">Build.</div>
+  <div class="flash" id="f2">Test.</div>
+  <div id="headline"><span id="ship">Ship</span> <span id="faster">faster.</span></div>
+  <div id="bar"><div id="barIn"></div></div>
+  <p id="sub">From commit to production in one push.</p>
+  <svg id="meter" viewBox="0 0 160 24">
+    <g fill="rgba(232,236,244,0.16)"><circle cx="20" cy="12" r="6"/><circle cx="50" cy="12" r="6"/><circle cx="80" cy="12" r="6"/><circle cx="110" cy="12" r="6"/><circle cx="140" cy="12" r="6"/></g>
+    <g fill="#5B8CFF"><circle class="tick" cx="20" cy="12" r="6"/><circle class="tick" cx="50" cy="12" r="6"/><circle class="tick" cx="80" cy="12" r="6"/><circle class="tick" cx="110" cy="12" r="6"/><circle class="tick" cx="140" cy="12" r="6"/></g>
+  </svg>
+  <div id="bpm">168 BPM</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const BEAT = 0.3, T = k => 0.2 + k * BEAT;           // beats at 0.2, 0.5, 0.8, 1.1, 1.4 ...
+  const ticks = gsap.utils.toArray(".tick");
+
+  // "Ship" lives in the headline; offset it to dead centre so it can later lock into its slot
+  const st = document.getElementById("stage").getBoundingClientRect();
+  const sr = document.getElementById("ship").getBoundingClientRect();
+  const DX = 640 - (sr.left - st.left + sr.width / 2);
+  gsap.set("#ship", { x: DX, scale: 1.25, autoAlpha: 0, transformOrigin: "50% 50%" });
+  gsap.set(["#f0", "#f1", "#f2", "#faster"], { autoAlpha: 0 });
+  document.getElementById("barIn").style.width = Math.round(sr.width * 0.8) + "px"; // static layout, set once
+  gsap.set("#barIn", { x: -DX }); // underline sits under Ship's final slot
+  gsap.set(ticks, { scale: 0, transformOrigin: "50% 50%" });
+
+  tl.from("#eyebrow", { autoAlpha: 0, y: -16, duration: 0.4, ease: "power3.out" }, 0)
+    .from(["#meter", "#bpm"], { autoAlpha: 0, y: 12, duration: 0.4, ease: "power3.out" }, 0.05)
+    .from("#ring", { scale: 0.5, autoAlpha: 0, duration: 0.3, ease: "power3.out" }, 0.02);
+
+  // every beat: the ring kicks, a meter tick pops
+  const pulse = k => {
+    tl.fromTo("#ring", { scale: 1.12 }, { scale: 1, duration: 0.26, ease: "power3.out", immediateRender: false }, T(k))
+      .fromTo(ticks[k], { scale: 1.8 }, { scale: 1, duration: 0.24, ease: "back.out(3)", immediateRender: false }, T(k));
+  };
+
+  // flash words: slam in huge and tilted, undershoot on impact, then get yanked out right before the next beat
+  ["#f0", "#f1", "#f2"].forEach((w, k) => {
+    const dir = k % 2 ? 1 : -1;
+    tl.fromTo(w, { autoAlpha: 0, scale: 2.4, rotation: 12 * dir },
+                 { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.2, ease: "back.out(2.5)", immediateRender: false }, T(k))
+      .to(w, { scale: 1.06, duration: 0.14, ease: "sine.out" }, T(k) + 0.2)
+      .to(w, { autoAlpha: 0, scale: 0.7, rotation: -8 * dir, duration: 0.07, ease: "power2.in" }, T(k + 1) - 0.07);
+    pulse(k);
+  });
+
+  // beat 4: SHIP lands bigger, in accent
+  tl.fromTo("#ship", { autoAlpha: 0, scale: 3, rotation: -14 },
+                     { autoAlpha: 1, scale: 1.25, rotation: 0, duration: 0.22, ease: "back.out(2.5)", immediateRender: false }, T(3));
+  pulse(3);
+
+  // beat 5: ring blows out, SHIP leans back (anticipation) and locks into the headline, sheared along its path
+  tl.to("#ring", { scale: 1.5, autoAlpha: 0, duration: 0.22, ease: "power2.out" }, T(4))
+    .fromTo(ticks[4], { scale: 1.8 }, { scale: 1, duration: 0.24, ease: "back.out(3)", immediateRender: false }, T(4))
+    .to("#ship", { x: DX + 18, rotation: 4, duration: 0.08, ease: "power2.in" }, T(4))
+    .to("#ship", { x: 0, scale: 1, rotation: 0, duration: 0.28, ease: "expo.inOut" }, T(4) + 0.08)
+    .to("#ship", { skewX: 14, duration: 0.14, ease: "power2.in" }, T(4) + 0.08)
+    .to("#ship", { skewX: 0, duration: 0.24, ease: "back.out(3)" }, T(4) + 0.22)
+    // "faster." punches in from the right and shoves into Ship, which recoils and settles
+    .fromTo("#faster", { autoAlpha: 0, x: 220, scale: 1.6, rotation: 8 },
+                       { autoAlpha: 1, x: 0, scale: 1, rotation: 0, duration: 0.3, ease: "back.out(1.8)", immediateRender: false }, T(4) + 0.2)
+    .to("#ship", { x: -16, duration: 0.07, ease: "power2.out" }, T(4) + 0.36)
+    .to("#ship", { x: 0, duration: 0.3, ease: "back.out(3)" }, T(4) + 0.43);
+
+  // underline + sub land, and the beat keeps going: two soft pulses roll through the headline words
+  tl.from("#barIn", { scaleX: 0, duration: 0.36, ease: "back.out(2)" }, T(5))
+    .from("#sub", { autoAlpha: 0, y: 18, duration: 0.45, ease: "power3.out" }, T(5) + 0.06);
+  [6, 7].forEach(k => {
+    tl.fromTo(["#ship", "#faster"], { scale: 1.05 }, { scale: 1, duration: 0.26, ease: "power3.out", immediateRender: false, stagger: 0.04 }, T(k))
+      .fromTo(ticks, { scale: 1.35 }, { scale: 1, duration: 0.24, ease: "power3.out", immediateRender: false }, T(k));
+  });
+  tl.to({}, { duration: 0.22 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

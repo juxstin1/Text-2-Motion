@@ -1,0 +1,14 @@
+{
+  "id": "stripe-wipe-scene",
+  "prompt": "diagonal stripes sweep across and swap the scene from HOME to AWAY",
+  "tags": [
+    "transition",
+    "stripes",
+    "wipe",
+    "scene-change"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

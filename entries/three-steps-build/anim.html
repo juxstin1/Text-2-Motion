@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: gallery-serif -->
+<!-- format: vertical -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #1C2B24; }
+  #stage { position: relative; width: 720px; height: 1280px; overflow: hidden; background: #1C2B24;
+           font-family: 'Space Grotesk', sans-serif; color: #EAF0E6; }
+  #bg { position: absolute; inset: 0; background:
+        radial-gradient(560px 640px at 50% 44%, rgba(231,183,106,0.10), rgba(231,183,106,0) 70%), #1C2B24; }
+  #head { position: absolute; left: 0; right: 0; top: 168px; text-align: center; }
+  #kicker { font-weight: 500; font-size: 20px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7B76A; }
+  #title { margin-top: 6px; font-family: 'Instrument Serif', serif; font-size: 172px; line-height: 0.95; letter-spacing: -0.02em; }
+  #title .n { color: #E7B76A; }
+  #rule { display: block; margin: 4px auto 0; width: 300px; height: 14px; overflow: visible; }
+  #sub { margin-top: 10px; font-family: 'Instrument Serif', serif; font-size: 50px; line-height: 1.05; color: rgba(234,240,230,0.85); }
+
+  #rows { position: absolute; left: 80px; top: 540px; width: 560px; display: flex; flex-direction: column; gap: 22px; }
+  .row { position: relative; height: 126px; display: flex; align-items: center; gap: 22px; padding: 0 20px; box-sizing: border-box; }
+  .plate { position: absolute; inset: 0; border-radius: 22px; background: rgba(234,240,230,0.06); border: 1.5px solid rgba(234,240,230,0.14); }
+  .chk { position: relative; width: 84px; height: 84px; flex: none; }
+  .chk svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .txt { position: relative; min-width: 0; }
+  .lab { font-weight: 500; font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7B76A; }
+  .tw { overflow: hidden; padding-bottom: 6px; }
+  .tx { font-family: 'Instrument Serif', serif; font-size: 56px; line-height: 1.05; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="head">
+    <div id="kicker">A calmer morning</div>
+    <div id="title"><span class="n">3</span> steps</div>
+    <svg id="rule" viewBox="0 0 300 14"><path id="rulep" d="M6 8 C80 2 200 2 294 8" fill="none" stroke="#E7B76A" stroke-width="4" stroke-linecap="round"/></svg>
+    <div id="sub">before you check your phone</div>
+  </div>
+  <div id="rows"></div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+const STEPS = ["Open a window", "Drink a full glass", "Walk ten minutes"];
+gsap.registerPlugin(SplitText, DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  const rowsEl = document.getElementById("rows");
+  STEPS.forEach((s, i) => {
+    const r = document.createElement("div");
+    r.className = "row"; r.id = "row" + i;
+    r.innerHTML = `<div class="plate" id="plate${i}" data-layer="back"></div>
+      <div class="chk" id="chk${i}"><svg viewBox="0 0 84 84">
+        <circle id="ripple${i}" data-layer="back" cx="42" cy="42" r="36" fill="none" stroke="#E7B76A" stroke-width="3"/>
+        <circle cx="42" cy="42" r="36" fill="none" stroke="#E7B76A" stroke-width="4"/>
+        <circle id="fill${i}" cx="42" cy="42" r="36" fill="#E7B76A"/>
+        <g id="tick${i}"><path id="tickp${i}" d="M24 44 L37 57 L61 29" fill="none" stroke="#1C2B24" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+      </svg></div>
+      <div class="txt"><div class="lab" id="lab${i}">Step 0${i + 1}</div><div class="tw"><div class="tx" id="tx${i}"></div></div></div>`;
+    r.querySelector(".tx").textContent = s;
+    rowsEl.appendChild(r);
+  });
+  const chars = new SplitText("#title", { type: "chars" }).chars;
+  gsap.set("[id^=fill]", { scale: 0, transformOrigin: "50% 50%" });
+  gsap.set("[id^=ripple]", { autoAlpha: 0, transformOrigin: "50% 50%" });
+  gsap.set(["#tick0", "#tick1", "#tick2", "#rule"], { autoAlpha: 0 });
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. HOOK: the big "3" punches in with a squash, the word follows, kicker and subline slide in
+  tl.fromTo(chars[0], { scale: 0.2, autoAlpha: 0, rotation: -14, transformOrigin: "50% 100%" },
+                      { scale: 1.12, autoAlpha: 1, rotation: 0, duration: 0.18, ease: "power3.out" }, 0)
+    .to(chars[0], { keyframes: [{ scaleX: 1.12, scaleY: 0.86, duration: 0.07, ease: "power2.out" },
+                                { scaleX: 0.95, scaleY: 1.06, duration: 0.12, ease: "power2.out" },
+                                { scaleX: 1, scaleY: 1, duration: 0.24, ease: "sine.out" }] }, 0.18)
+    .from(chars.slice(1), { y: 70, autoAlpha: 0, duration: 0.42, ease: "back.out(2)", stagger: 0.035 }, 0.1)
+    .from("#kicker", { y: -16, autoAlpha: 0, duration: 0.4, ease: "power3.out" }, 0.08)
+    .set("#rule", { autoAlpha: 1 }, 0.3)
+    .fromTo("#rulep", { drawSVG: "50% 50%" }, { drawSVG: "0% 100%", duration: 0.5, ease: "expo.out" }, 0.3)
+    .from("#sub", { y: 24, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, 0.28);
+
+  // 2. each step builds in, then its tick falls in, drawing as it drops, and lands with a squash
+  STEPS.forEach((s, i) => {
+    const t = 0.42 + i * 0.42, tI = t + 0.5;
+    tl.from("#plate" + i, { scaleX: 0.9, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, t)
+      .from("#chk" + i, { scale: 0, rotation: -90, duration: 0.42, ease: "back.out(2.2)" }, t + 0.04)
+      .from("#lab" + i, { x: -16, autoAlpha: 0, duration: 0.36, ease: "power3.out" }, t + 0.08)
+      .from("#tx" + i, { yPercent: 105, duration: 0.5, ease: "power3.out" }, t + 0.1)
+    // tick drop: stretched while falling, accelerating into the box
+      .fromTo("#tick" + i, { autoAlpha: 1, y: -64, scaleX: 0.8, scaleY: 1.3, transformOrigin: "50% 100%" },
+                           { y: 0, scaleX: 1, scaleY: 1, duration: 0.2, ease: "power3.in" }, tI - 0.2)
+      .fromTo("#tickp" + i, { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.18, ease: "power2.out" }, tI - 0.2)
+    // impact: box squashes (volume kept), disc floods, ripple rings out, text takes the hit
+      .to("#chk" + i, { keyframes: [{ scaleX: 1.2, scaleY: 0.78, duration: 0.06, ease: "power2.out" },
+                                    { scaleX: 0.92, scaleY: 1.1, duration: 0.12, ease: "power2.out" },
+                                    { scaleX: 1, scaleY: 1, duration: 0.3, ease: "sine.inOut" }], transformOrigin: "50% 100%" }, tI)
+      .to("#tick" + i, { keyframes: [{ scaleX: 1.25, scaleY: 0.7, duration: 0.06, ease: "power2.out" },
+                                     { scaleX: 1, scaleY: 1, duration: 0.4, ease: "elastic.out(1.1, 0.4)" }] }, tI)
+      .to("#fill" + i, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, tI)
+      .fromTo("#ripple" + i, { autoAlpha: 1, scale: 1 }, { autoAlpha: 0, scale: 1.7, duration: 0.5, ease: "power2.out", immediateRender: false }, tI)
+      .to("#tx" + i, { keyframes: [{ x: 10, duration: 0.07, ease: "power2.out" },
+                                   { x: 0, duration: 0.45, ease: "elastic.out(1, 0.4)" }] }, tI + 0.02)
+      .to("#plate" + i, { keyframes: [{ y: 4, duration: 0.06, ease: "power2.out" },
+                                      { y: 0, duration: 0.4, ease: "elastic.out(1, 0.4)" }] }, tI);
+  });
+
+  // 3. all done: the ticks pulse down the list, the "3" nods, the rule shimmers wider
+  const tF = 2.0;
+  tl.to(["#chk0", "#chk1", "#chk2"], { keyframes: [{ scale: 1.14, duration: 0.12, ease: "power2.out" },
+                                                   { scale: 1, duration: 0.45, ease: "elastic.out(1, 0.4)" }], stagger: 0.09 }, tF)
+    .to(chars[0], { keyframes: [{ y: -14, rotation: -6, duration: 0.16, ease: "power2.out" },
+                                { y: 0, rotation: 0, duration: 0.5, ease: "elastic.out(1, 0.35)" }] }, tF + 0.2)
+    .to("#rulep", { keyframes: [{ drawSVG: "10% 90%", duration: 0.2, ease: "power2.inOut" },
+                                { drawSVG: "0% 100%", duration: 0.4, ease: "back.out(2)" }] }, tF + 0.24)
+    .to({}, { duration: 0.3 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

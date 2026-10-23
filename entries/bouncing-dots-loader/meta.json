@@ -1,0 +1,14 @@
+{
+  "id": "bouncing-dots-loader",
+  "prompt": "three dots bounce in a wave with squash at the bottom, looping seamlessly",
+  "tags": [
+    "loader",
+    "loop",
+    "squash-stretch",
+    "dots"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

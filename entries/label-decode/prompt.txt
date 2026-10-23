@@ -1,0 +1,1 @@
+label decodes from scrambled characters into the final word

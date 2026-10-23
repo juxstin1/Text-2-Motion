@@ -1,0 +1,14 @@
+{
+  "id": "bouncy-ball-squash",
+  "prompt": "ball drops in, squashes on landing, stretches up and settles with two smaller bounces",
+  "tags": [
+    "character",
+    "squash-stretch",
+    "bounce",
+    "physics"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

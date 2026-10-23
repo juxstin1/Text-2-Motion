@@ -1,0 +1,17 @@
+duration 2.24s, 69 frames @30fps, 8 tweens
+TIMING
+  #eyebrow, #big ...  y,autoAlpha  0.00-0.86s  power3.out  stagger 0.08
+  #chart div.grid x4, #chart div.gl x4  autoAlpha  0.00-0.88s  power2.out  stagger 0.04
+  #base  scaleX  0.10-0.80s  power3.inOut
+  #chart div.bar x8  scaleY  0.40-1.99s  expo.out  stagger 0.07
+  #chart div.xl x8  y,autoAlpha  0.45-1.34s  power2.out  stagger 0.07
+  #note  y,autoAlpha  0.70-1.30s  power3.out
+  #tag  y,scale,autoAlpha  1.35-1.85s  power3.out
+  (hold)  1.99-2.24s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 31 visible (#eyebrow, #big, #delta, #chart div.grid x4 ...); final hold 0.47s; no overlaps

@@ -1,0 +1,17 @@
+duration 2.06s, 63 frames @30fps, 8 tweens
+TIMING
+  #sidebar  xPercent  0.00-0.75s  expo.out
+  #brand  x,autoAlpha  0.25-0.75s  power3.out
+  #navLabel  x,autoAlpha  0.31-0.81s  power3.out
+  #sidebar div.item x6  x,autoAlpha  0.35-1.12s  power3.out  stagger 0.045
+  #crumb, #title ...  y,autoAlpha  0.50-1.46s  power2.out  stagger 0.06
+  #marker  scaleY  0.78-1.18s  power3.out
+  #account  y,autoAlpha  0.78-1.27s  power2.out
+  (hold)  1.46-2.06s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 34 visible (#sidebar, #brand, #navLabel, #sidebar div.item x6 ...); final hold 0.73s; no overlaps

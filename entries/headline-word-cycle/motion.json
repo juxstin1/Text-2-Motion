@@ -1,0 +1,167 @@
+{
+ "duration": 3.35,
+ "fps": 30,
+ "frames": 102,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0.05,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#eyebrow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.12,
+   "duration": 0.9,
+   "ease": "power4.out",
+   "props": [
+    "yPercent"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#line"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.45,
+   "duration": 0.7,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#sub"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.6,
+   "duration": 0.68,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "#cta",
+    "#cmd"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.05,
+   "duration": 0.55,
+   "ease": "power4.inOut",
+   "props": [
+    "yPercent"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#words"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.75,
+   "duration": 0.65,
+   "ease": "expo.inOut",
+   "props": [
+    "yPercent"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#words"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.25,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#underline"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.85,
+   "duration": 0.5,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#eyebrow",
+  "#line",
+  "#sub",
+  "#cta",
+  "#cmd",
+  "#words",
+  "#underline",
+  "#words div.alt[0]",
+  "#words div.alt[1]",
+  "#words div.final",
+  "#cmd b"
+ ],
+ "fonts": [
+  "Inter, sans-serif",
+  "\"Space Grotesk\", sans-serif",
+  "\"Space Grotesk\""
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.62,
+  "end_visible": [
+   "#eyebrow",
+   "#line",
+   "#sub",
+   "#cta",
+   "#cmd",
+   "#words",
+   "#underline",
+   "#words div.final",
+   "#cmd b"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "confetti-pop",
+  "prompt": "party popper fires confetti from fixed positions that tumbles, spins and falls away",
+  "tags": [
+    "burst",
+    "confetti",
+    "particles",
+    "celebration"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

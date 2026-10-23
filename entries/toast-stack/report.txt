@@ -1,0 +1,16 @@
+duration 3.26s, 99 frames @30fps, 7 tweens
+TIMING
+  #t1  y,scale,autoAlpha  0.10-0.70s  back.out(1.5)
+  #t1  y  0.95-1.45s  power3.out
+  #t2  y,scale,autoAlpha  1.11-1.71s  back.out(1.5)
+  #t1  y,autoAlpha  1.80-2.30s  power3.out
+  #t2  y  1.80-2.30s  power3.out
+  #t3  y,scale,autoAlpha  1.96-2.56s  back.out(1.5)
+  (hold)  2.56-3.26s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 15 visible (#t1, #t2, #t3, #eyebrow ...); final hold 0.69s; no overlaps

@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: playful -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FFE8D6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FFE8D6; }
+  #eyebrow { position: absolute; left: 96px; top: 92px; font-family: "Sora"; font-weight: 700; font-size: 18px;
+             letter-spacing: 0.06em; text-transform: uppercase; color: #FF4F7B; }
+  #title { position: absolute; left: 90px; top: 124px; margin: 0; font-family: "Syne"; font-weight: 800; font-size: 80px;
+           line-height: 1.0; letter-spacing: -0.03em; color: #2B1B4A; }
+  #body { position: absolute; left: 96px; top: 548px; width: 400px; margin: 0; font-family: "Sora"; font-weight: 500;
+          font-size: 18px; line-height: 1.55; color: rgba(43,27,74,0.7); }
+  #floor { position: absolute; left: 600px; top: 600px; width: 600px; height: 4px; border-radius: 2px; background: #2B1B4A; }
+  .shape { position: absolute; transform-origin: 50% 100%; }
+  #circle { left: 628px; top: 400px; width: 200px; height: 200px; border-radius: 50%; background: #FF4F7B; }
+  #square { left: 856px; top: 440px; width: 160px; height: 160px; border-radius: 18px; background: #2B1B4A; }
+  #tri { left: 1040px; top: 420px; width: 150px; height: 180px; }
+  #tri svg { display: block; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="eyebrow">Studio kit 03</div>
+  <h1 id="title">Little shapes,<br>big bounce.</h1>
+  <p id="body">Three primitives, one floor and a little gravity. Everything else is timing.</p>
+  <div id="floor"></div>
+  <div id="circle" class="shape"></div>
+  <div id="square" class="shape"></div>
+  <div id="tri" class="shape"><svg viewBox="0 0 150 180"><path d="M75 6 Q80 0 85 8 L146 166 Q150 180 136 180 L14 180 Q0 180 4 166 L65 8 Q70 0 75 6 Z" fill="#FF4F7B" fill-opacity="0.55"/></svg></div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  // one gravity drop: fall (accelerate), squash on contact, rebound (decelerate), fall again, settle
+  const drop = (el, fall, hop, at) => {
+    tl.fromTo(el, { y: -fall, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power2.in" }, at)
+      .to(el, { scaleY: 0.78, scaleX: 1.16, duration: 0.07, ease: "power2.out" }, ">")
+      .to(el, { y: -hop, scaleY: 1.06, scaleX: 0.96, duration: 0.26, ease: "power2.out" }, ">")
+      .to(el, { y: 0, scaleY: 1, scaleX: 1, duration: 0.24, ease: "power2.in" }, ">")
+      .to(el, { scaleY: 0.92, scaleX: 1.05, duration: 0.06, ease: "power2.out" }, ">")
+      .to(el, { scaleY: 1, scaleX: 1, duration: 0.3, ease: "back.out(2.5)" }, ">");
+  };
+  // starts sit just inside the top edge, faded out, so nothing is visible off-stage
+  drop("#circle", 380, 72, 0);
+  drop("#square", 420, 56, 0.22);
+  drop("#tri", 400, 64, 0.42);
+
+  tl.from("#floor", { scaleX: 0, duration: 0.7, ease: "expo.out" }, 0.1)
+    .from("#eyebrow", { autoAlpha: 0, y: 16, duration: 0.5, ease: "power3.out" }, 0.75)
+    .from("#title", { autoAlpha: 0, y: 30, duration: 0.7, ease: "power3.out" }, 0.85)
+    .from("#body", { autoAlpha: 0, y: 16, duration: 0.6, ease: "power3.out" }, 1.1)
+    .to({}, { duration: 0.5 });
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

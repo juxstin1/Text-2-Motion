@@ -1,0 +1,22 @@
+duration 3.48s, 106 frames @30fps, 61 tweens
+TIMING
+  #label  y,autoAlpha  0.05-0.50s  power3.out
+  #cH  y,rotation  0.20-0.62s  power2.in
+  #cE  y,rotation  0.32-0.74s  power2.in
+  #cL1  y,rotation  0.44-0.86s  power2.in
+  #cL2  y,rotation  0.56-0.98s  power2.in
+  #cH  scaleX,scaleY  0.62-0.68s  power2.out
+  #cH  y,scaleX,scaleY  0.68-0.85s  power2.out
+  #cE  scaleX,scaleY  0.74-0.80s  power2.out
+  #cE  y,scaleX,scaleY  0.80-0.97s  power2.out
+  #cH  y,scaleX,scaleY  0.85-1.00s  power2.in
+  (+51 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 2 note
+  note #cL1 / #cL2  2.03-2.10s  peak 17%
+  note #cL2 / #oRoll  1.93-1.97s  peak 45%
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 8 visible (#label, #cH, #cE, #cL1 ...); final hold 0.21s; no overlaps

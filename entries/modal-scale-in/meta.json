@@ -1,0 +1,14 @@
+{
+  "id": "modal-scale-in",
+  "prompt": "modal dialog scales in from 92% while the backdrop dims",
+  "tags": [
+    "entrance",
+    "ui",
+    "modal",
+    "scale"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

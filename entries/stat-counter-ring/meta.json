@@ -1,0 +1,14 @@
+{
+  "id": "stat-counter-ring",
+  "prompt": "a big number counts up to a stat while a ring fills around it and the label lands under it",
+  "tags": [
+    "vertical",
+    "counter",
+    "ring",
+    "stat"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

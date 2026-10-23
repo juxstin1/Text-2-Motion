@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: bold-sports -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #111111; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #111111; }
+  /* shake wrapper is inset so a few px of shake never leaves the stage; the svg keeps stage coordinates */
+  #shake { position: absolute; left: 16px; top: 16px; width: 1248px; height: 688px; }
+  #words { position: absolute; left: 0; top: 0; width: 1248px; height: 688px; overflow: visible; }
+  #side { position: absolute; left: 824px; top: 214px; width: 340px; padding-left: 32px; border-left: 2px solid rgba(255,255,255,0.18); }
+  .label { font-family: "Bebas Neue"; font-size: 22px; letter-spacing: 0.2em; color: rgba(255,255,255,0.6); }
+  #ft { font-family: "Archivo Black"; font-size: 22px; letter-spacing: 0.02em; color: #E8FF3A; }
+  #score { font-family: "Bebas Neue"; font-size: 200px; line-height: 0.9; letter-spacing: 0.01em; color: #FFFFFF; margin: 10px 0 8px; transform-origin: 0% 100%; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="shake">
+    <svg id="words" viewBox="16 16 1248 688">
+      <g font-family="Bebas Neue" font-size="200" letter-spacing="2" text-anchor="middle">
+        <text id="w1" x="420" y="265" fill="#FFFFFF">WIN</text>
+        <text id="w2" x="420" y="430" fill="#FFFFFF">BIG</text>
+        <text id="w3" x="420" y="595" fill="#E8FF3A">NOW</text>
+      </g>
+      <rect id="bar" x="250" y="616" width="340" height="12" fill="#E8FF3A"/>
+    </svg>
+    <div id="side">
+      <div id="ft">FULL TIME</div>
+      <div id="score">3&ndash;1</div>
+      <div class="label" id="match">City v Rovers &middot; Matchday 12</div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const STEP = 165; // one line: every word lands in the bottom slot and knocks the stack up a line
+  gsap.set(["#w1", "#w2", "#w3"], { transformOrigin: "50% 100%", autoAlpha: 0, scale: 2.0 });
+  gsap.set("#w1", { y: STEP * 2 });
+  gsap.set("#w2", { y: STEP });
+  gsap.set("#w3", { y: 0 });
+  gsap.set("#bar", { transformOrigin: "0% 50%", scaleX: 0 });
+
+  const shake = (at, amp) => tl.to("#shake", { keyframes: [
+      { x: -amp, y: amp * 0.6, duration: 0.04 }, { x: amp * 0.8, y: -amp * 0.5, duration: 0.05 },
+      { x: -amp * 0.45, y: amp * 0.3, duration: 0.05 }, { x: amp * 0.2, y: -amp * 0.1, duration: 0.06 },
+      { x: 0, y: 0, duration: 0.08 } ], ease: "power2.out" }, at);
+
+  // a slam: appears huge and ghosted, swells back (wind-up), then drops onto its baseline and squashes
+  const slam = (el, at) => {
+    tl.to(el, { scale: 2.18, autoAlpha: 0.3, duration: 0.15, ease: "power2.out" }, at)
+      .to(el, { scale: 1, autoAlpha: 1, duration: 0.17, ease: "power4.in" }, at + 0.15)
+      .to(el, { scaleY: 0.74, scaleX: 1.14, duration: 0.06, ease: "power2.out" }, at + 0.32)
+      .to(el, { scaleY: 1, scaleX: 1, duration: 0.34, ease: "back.out(3)" }, at + 0.38);
+    shake(at + 0.32, 6 + 2 * ["#w1", "#w2", "#w3"].indexOf(el));
+    return at + 0.32;
+  };
+  // the words already in the stack get shoved up, top one lagging a hair (overlapping action)
+  const shove = (els, hit) => {
+    els.slice().reverse().forEach((el, k) => {
+      const t = hit - 0.07 + k * 0.04; // the stack starts moving just before contact, so the slot is clear
+      tl.to(el, { y: "-=" + STEP, duration: 0.34, ease: "power4.out" }, t)
+        .to(el, { scaleY: 1.1, scaleX: 0.93, duration: 0.07, ease: "power2.out" }, t)
+        .to(el, { scaleY: 1, scaleX: 1, duration: 0.32, ease: "back.out(2.5)" }, t + 0.07);
+    });
+  };
+
+  slam("#w1", 0.05);
+  const h2 = slam("#w2", 0.62);
+  shove(["#w1"], h2);
+  const h3 = slam("#w3", 1.16);
+  shove(["#w1", "#w2"], h3);
+
+  // NOW gets underlined by a bar that snaps out from its impact, then the side panel punches in
+  tl.to("#bar", { scaleX: 1, duration: 0.32, ease: "expo.out" }, h3 + 0.04)
+    .from("#side", { autoAlpha: 0, x: 40, duration: 0.4, ease: "power3.out" }, h3 + 0.18)
+    .from("#score", { scale: 1.5, autoAlpha: 0, duration: 0.18, ease: "power4.in" }, h3 + 0.3)
+    .to("#score", { scaleY: 0.84, scaleX: 1.08, duration: 0.06, ease: "power2.out" }, h3 + 0.48)
+    .to("#score", { scaleY: 1, scaleX: 1, duration: 0.34, ease: "back.out(3)" }, h3 + 0.54)
+    .from("#match", { autoAlpha: 0, y: 10, duration: 0.35, ease: "power3.out" }, h3 + 0.56)
+    // last flick of life: the bar kicks once as the score lands
+    .to("#bar", { scaleY: 1.8, duration: 0.06, ease: "power2.out" }, h3 + 0.48)
+    .to("#bar", { scaleY: 1, duration: 0.3, ease: "power3.out" }, h3 + 0.54)
+    .to({}, { duration: 0.28 }, h3 + 0.88);
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

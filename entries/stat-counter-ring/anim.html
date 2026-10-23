@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: soft-saas -->
+<!-- format: vertical -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #EEF1FB; }
+  #stage { position: relative; width: 720px; height: 1280px; overflow: hidden; background: #EEF1FB; }
+  #bg { position: absolute; inset: 0; background: radial-gradient(circle at 50% 42%, #FFFFFF 0%, #EEF1FB 58%); }
+
+  #kickRow { position: absolute; left: 0; top: 176px; width: 720px; display: flex; justify-content: center; }
+  #kicker { font-family: "Manrope"; font-weight: 600; font-size: 24px; letter-spacing: 0.04em; color: #6C5CE7; line-height: 1;
+            padding: 12px 22px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 6px 20px rgba(26,31,54,0.08); }
+
+  /* ring: 480x480 svg, centre at stage (360, 540) */
+  #ringBox { position: absolute; left: 120px; top: 300px; width: 480px; height: 480px; }
+  #ring { position: absolute; inset: 0; width: 480px; height: 480px; overflow: visible; }
+  #track { position: absolute; inset: 0; width: 480px; height: 480px; }
+  .sp { visibility: hidden; opacity: 0; }
+
+  /* the number sits in the middle of the ring */
+  #numRow { position: absolute; left: 0; top: 160px; width: 480px; height: 160px; display: flex; justify-content: center; align-items: center; }
+  #numWrap { display: flex; align-items: flex-start; transform-origin: 50% 80%; }
+  #num { font-family: "Sora"; font-weight: 700; font-size: 150px; letter-spacing: -0.025em; color: #1A1F36; line-height: 1;
+         font-variant-numeric: tabular-nums; }
+  #pct { font-family: "Sora"; font-weight: 700; font-size: 70px; letter-spacing: -0.025em; color: #6C5CE7; line-height: 1; margin: 14px 0 0 4px; }
+
+  /* label under the ring */
+  #label { position: absolute; left: 0; top: 806px; width: 720px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .lmask { overflow: hidden; padding: 0 4px 6px; }
+  #l1 { font-family: "Sora"; font-weight: 700; font-size: 44px; letter-spacing: -0.025em; color: #1A1F36; line-height: 1.15; white-space: nowrap; }
+  #l2 { font-family: "Manrope"; font-weight: 500; font-size: 26px; color: rgba(26,31,54,0.7); line-height: 1.2; white-space: nowrap; }
+  #bar { width: 72px; height: 6px; border-radius: 3px; background: #6C5CE7; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="kickRow"><div id="kicker">Retention &middot; Q3</div></div>
+  <div id="ringBox">
+    <svg id="track" data-layer="back" viewBox="0 0 480 480">
+      <circle id="trackC" cx="240" cy="240" r="200" fill="none" stroke="#6C5CE7" stroke-opacity="0.13" stroke-width="30"/>
+      <circle id="flash" cx="240" cy="240" r="200" fill="none" stroke="#6C5CE7" stroke-width="4" opacity="0"/>
+    </svg>
+    <svg id="ring" data-layer="back" viewBox="0 0 480 480">
+      <g transform="rotate(-90 240 240)">
+        <circle id="arc" cx="240" cy="240" r="200" fill="none" stroke="#6C5CE7" stroke-width="30" stroke-linecap="round"/>
+      </g>
+      <g id="cap"><g id="capDot">
+        <circle cx="240" cy="40" r="22" fill="#FFFFFF" stroke="#6C5CE7" stroke-width="6"/>
+        <g id="sparks" stroke="#6C5CE7" stroke-width="5" stroke-linecap="round">
+          <line class="sp" x1="240" y1="2" x2="240" y2="-18"/>
+          <line class="sp" x1="210" y1="14" x2="194" y2="2"/>
+          <line class="sp" x1="270" y1="14" x2="286" y2="2"/>
+          <line class="sp" x1="204" y1="44" x2="184" y2="46"/>
+          <line class="sp" x1="276" y1="44" x2="296" y2="46"/>
+        </g>
+      </g></g>
+    </svg>
+    <div id="numRow"><div id="numWrap"><span id="num">0</span><span id="pct">%</span></div></div>
+  </div>
+  <div id="label">
+    <div class="lmask"><div id="l1">of users come back</div></div>
+    <div class="lmask"><div id="l2">after their first week</div></div>
+    <div id="bar"></div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin);
+const STAT = 87; // percent
+
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const numEl = document.getElementById("num");
+  const counter = { v: 0 };
+  // lock the number box to the final value's width so the % never jumps when a digit is added
+  numEl.textContent = STAT;
+  numEl.style.width = numEl.offsetWidth + "px";
+  numEl.style.textAlign = "right";
+  numEl.textContent = "0";
+  const deg = STAT * 3.6;
+
+  // 1. ring pops up from small with overshoot; the number scales in with it
+  tl.fromTo("#ringBox", { scale: 0.55, autoAlpha: 0, rotation: -20 }, { scale: 1, autoAlpha: 1, rotation: 0, duration: 0.5, ease: "back.out(1.8)" }, 0)
+    .fromTo("#numWrap", { scale: 0.4, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(2.4)" }, 0.06);
+
+  // 2. count up and fill: same duration and ease, so the arc tip and the digits arrive together
+  const t0 = 0.18, D = 1.5, ease = "power3.inOut";
+  gsap.set("#arc", { drawSVG: "0% 0%" });
+  gsap.set("#cap", { svgOrigin: "240 240", rotation: 0 });
+  gsap.set("#capDot", { svgOrigin: "240 40", scale: 0.6, autoAlpha: 0 });
+  tl.to("#arc", { drawSVG: "0% " + STAT + "%", duration: D, ease }, t0)
+    .to(counter, { v: STAT, duration: D, ease, onUpdate: () => { numEl.textContent = Math.round(counter.v); } }, t0)
+    .to("#cap", { rotation: deg, duration: D, ease }, t0)
+    .to("#capDot", { scale: 1, autoAlpha: 1, duration: 0.3, ease: "back.out(3)" }, t0)
+    // the number leans into the count, then squats just before the last digit lands
+    .to("#numWrap", { scaleY: 0.9, scaleX: 1.05, duration: 0.16, ease: "power2.inOut" }, t0 + D - 0.16);
+
+  // 3. landing: the number punches up, the ring kicks, the cap bursts
+  const land = t0 + D;
+  tl.to("#numWrap", { scaleY: 1.14, scaleX: 0.93, duration: 0.08, ease: "power3.out" }, land)
+    .to("#numWrap", { scaleY: 1, scaleX: 1, duration: 0.45, ease: "elastic.out(1.1, 0.45)" }, land + 0.08)
+    .to("#ringBox", { scale: 1.04, duration: 0.08, ease: "power2.out" }, land)
+    .to("#ringBox", { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.4)" }, land + 0.08)
+    .fromTo("#flash", { scale: 1, opacity: 0.7, svgOrigin: "240 240" }, { scale: 1.16, opacity: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, land)
+    .fromTo(".sp", { autoAlpha: 0, scale: 0.3, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.14, ease: "power3.out", stagger: 0.015, immediateRender: false }, land)
+    .to(".sp", { autoAlpha: 0, duration: 0.26, ease: "power2.in", stagger: 0.015 }, land + 0.16)
+    .to("#pct", { rotation: 10, y: -6, duration: 0.08, ease: "power2.out" }, land + 0.04)
+    .to("#pct", { rotation: 0, y: 0, duration: 0.4, ease: "back.out(3)" }, land + 0.12);
+
+  // 4. the label lands under the ring: lines rise out of their masks, the bar snaps out
+  tl.from("#l1", { yPercent: 140, duration: 0.5, ease: "power4.out" }, land + 0.14)
+    .from("#l2", { yPercent: 140, duration: 0.5, ease: "power4.out" }, land + 0.24)
+    .fromTo("#bar", { scaleX: 0 }, { scaleX: 1, duration: 0.42, ease: "expo.out" }, land + 0.34)
+    .fromTo("#kicker", { y: -14, scale: 0.8, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2.4)" }, 0.3);
+
+  // 5. still alive near the end: the cap pulses and the bar stretches once
+  tl.to("#capDot", { scale: 1.25, duration: 0.12, ease: "power2.out" }, land + 0.95)
+    .to("#capDot", { scale: 1, duration: 0.4, ease: "back.out(3)" }, land + 1.07)
+    .to("#bar", { scaleX: 1.6, duration: 0.14, ease: "power2.out" }, land + 0.98)
+    .to("#bar", { scaleX: 1, duration: 0.4, ease: "back.out(2.5)" }, land + 1.12)
+    .to({}, { duration: 0.3 }, land + 1.5);
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+{
+ "duration": 2.02,
+ "fps": 30,
+ "frames": 62,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.86,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "#kicker",
+    "#headline",
+    "#body"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.15,
+   "duration": 1,
+   "ease": "back.out(1.4)",
+   "props": [
+    "y",
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#card"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.15,
+   "duration": 0.3,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#card"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 0.92,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.06,
+   "targets": [
+    "#row",
+    "#price",
+    "#rule",
+    "#features li[0]",
+    "#features li[1]",
+    "#features li[2]",
+    "#features li[3]",
+    "#cta"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.42,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#kicker",
+  "#headline",
+  "#body",
+  "#card",
+  "#row",
+  "#price",
+  "#rule",
+  "#features li[0]",
+  "#features li[1]",
+  "#features li[2]",
+  "#features li[3]",
+  "#cta",
+  "#plan",
+  "#badge",
+  "#amount",
+  "#per"
+ ],
+ "fonts": [
+  "Manrope",
+  "Sora"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.75,
+  "end_visible": [
+   "#kicker",
+   "#headline",
+   "#body",
+   "#card",
+   "#row",
+   "#price",
+   "#rule",
+   "#features li[0]",
+   "#features li[1]",
+   "#features li[2]",
+   "#features li[3]",
+   "#cta",
+   "#plan",
+   "#badge",
+   "#amount",
+   "#per"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

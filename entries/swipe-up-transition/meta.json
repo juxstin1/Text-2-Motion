@@ -1,0 +1,14 @@
+{
+  "id": "swipe-up-transition",
+  "prompt": "swipe-up transition: the scene stretches and flies up, the next scene drops in with a squash",
+  "tags": [
+    "vertical",
+    "transition",
+    "swipe",
+    "scene-change"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

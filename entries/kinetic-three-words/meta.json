@@ -1,0 +1,14 @@
+{
+  "id": "kinetic-three-words",
+  "prompt": "kinetic title: three stacked words slam in alternating from left and right",
+  "tags": [
+    "text",
+    "kinetic",
+    "words",
+    "bold"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": true,
+  "created": "2026-10-22"
+}

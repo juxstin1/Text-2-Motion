@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: warm-modern -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FBF3E4; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FBF3E4;
+           font-family: 'Inter', sans-serif; color: #3A2416; }
+  #label { position: absolute; left: 0; top: 196px; width: 1280px; text-align: center; font-size: 14px; font-weight: 600;
+           letter-spacing: 0.1em; text-transform: uppercase; color: #E0662E; }
+  /* inner mask: letters fall in from above the frame without counting as off-stage */
+  #mask { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; overflow: hidden; }
+  #word { position: absolute; left: 0; top: 268px; width: 1280px; display: flex; justify-content: center; }
+  .ch { font-family: 'Fraunces', serif; font-size: 116px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; }
+  .ch.o { color: #E0662E; }
+  #oRoll { display: inline-block; }
+  .ch .base { display: inline-block; width: 0; height: 0; vertical-align: baseline; }
+  #ground { position: absolute; left: 120px; width: 1040px; height: 2px; background: rgba(58,36,22,0.22); }
+  #caption { position: absolute; left: 0; width: 1280px; text-align: center; font-size: 17px; color: rgba(58,36,22,0.72); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="label">A note from the studio</div>
+  <div id="mask">
+    <div id="word">
+      <div class="ch" id="cH">H<span class="base"></span></div>
+      <div class="ch" id="cE">E</div>
+      <div class="ch" id="cL1">L</div>
+      <div class="ch" id="cL2">L</div>
+      <div class="ch o" id="cO"><span id="oRoll">O</span></div>
+    </div>
+  </div>
+  <div id="ground"></div>
+  <div id="caption">Come on in, the kettle's on.</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  // static layout from real font metrics: the ground line sits exactly on the baseline
+  const base = document.querySelector("#cH .base").offsetTop;   // baseline offset inside a letter box
+  const groundY = 268 + base;
+  document.getElementById("ground").style.top = (groundY + 1) + "px";
+  document.getElementById("caption").style.top = (groundY + 46) + "px";
+  gsap.set(".ch", { transformOrigin: `50% ${base}px` });        // squash on the baseline
+  gsap.set("#oRoll", { transformOrigin: `50% ${base - 42}px` }); // the O rolls about its own centre
+
+  const tl = gsap.timeline({ paused: true });
+  tl.from("#label", { y: 12, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+
+  // H, E, L, L land loose (each a little further right than its slot) with squash and one small bounce
+  const drop = (sel, t, slack, tilt) => {
+    tl.fromTo(sel, { y: -560, x: slack, rotation: tilt, scaleX: 0.86, scaleY: 1.18 },
+        { y: 0, rotation: 0, duration: 0.42, ease: "power2.in" }, t)
+      .to(sel, { scaleX: 1.26, scaleY: 0.72, duration: 0.06, ease: "power2.out" }, t + 0.42)
+      .to(sel, { y: -34, scaleX: 0.95, scaleY: 1.07, duration: 0.17, ease: "power2.out" }, t + 0.48)
+      .to(sel, { y: 0, scaleX: 1, scaleY: 1, duration: 0.15, ease: "power2.in" }, t + 0.65)
+      .to(sel, { scaleX: 1.08, scaleY: 0.92, duration: 0.05, ease: "power2.out" }, t + 0.8)
+      .to(sel, { scaleX: 1, scaleY: 1, duration: 0.25, ease: "back.out(2.5)" }, t + 0.85);
+  };
+  drop("#cH", 0.2, 0, -8);
+  drop("#cE", 0.32, 16, 6);
+  drop("#cL1", 0.44, 32, -5);
+  drop("#cL2", 0.56, 48, 7);
+
+  // O arrives last on an arc from the right, rolling; one bounce, then it rolls into the row
+  const O = "#cO";
+  // y accelerates while x decelerates: the two eases make the arc
+  tl.fromTo(O, { y: -560, scaleX: 0.88, scaleY: 1.14 },
+      { y: 0, duration: 0.5, ease: "power2.in" }, 1.0)
+    .fromTo("#oRoll", { rotation: 0 }, { rotation: -160, duration: 0.5, ease: "power2.in" }, 1.0)
+    .fromTo(O, { x: 360 }, { x: 150, duration: 0.5, ease: "power1.out" }, 1.0)
+    .to(O, { scaleX: 1.24, scaleY: 0.76, duration: 0.06, ease: "power2.out" }, 1.5)
+    .to(O, { y: -46, scaleX: 0.94, scaleY: 1.08, duration: 0.19, ease: "power2.out" }, 1.56)
+    .to(O, { y: 0, scaleX: 1, scaleY: 1, duration: 0.17, ease: "power2.in" }, 1.75)
+    .to(O, { x: 40, duration: 0.47, ease: "sine.in" }, 1.5)
+    .to("#oRoll", { rotation: -330, duration: 0.47, ease: "sine.in" }, 1.5);
+
+  // contact at HIT: the O squashes against the L, the row compacts like a cradle, each letter lagging the last
+  const HIT = 1.97;
+  tl.to(O, { scaleX: 0.86, scaleY: 1.1, duration: 0.05, ease: "power2.out" }, HIT)
+    .to(O, { x: 50, scaleX: 1, scaleY: 1, duration: 0.14, ease: "power2.out" }, HIT + 0.05)
+    .to("#oRoll", { rotation: -316, duration: 0.14, ease: "power2.out" }, HIT + 0.05)
+    .to(O, { x: 0, duration: 0.55, ease: "power2.inOut" }, HIT + 0.19)
+    .to("#oRoll", { rotation: -360, duration: 0.55, ease: "power2.inOut" }, HIT + 0.19);
+  [["#cL2", 48, 0], ["#cL1", 32, 0.05], ["#cE", 16, 0.1], ["#cH", 0, 0.15]].forEach(([sel, slack, d], i) => {
+    const t = HIT + d;
+    tl.to(sel, { x: slack ? 0 : -5, duration: 0.22, ease: "power3.out" }, t)
+      .to(sel, { scaleX: 0.93, scaleY: 1.05, duration: 0.05, ease: "power2.out" }, t)
+      .to(sel, { scaleX: 1, scaleY: 1, duration: 0.3, ease: "back.out(3)" }, t + 0.05)
+      // follow-through: the top lags behind the slide, then rocks back
+      .to(sel, { keyframes: [
+          { rotation: 3 - i * 0.4, duration: 0.1, ease: "power2.out" },
+          { rotation: -1.4, duration: 0.18, ease: "sine.inOut" },
+          { rotation: 0, duration: 0.2, ease: "sine.out" } ] }, t);
+    if (!slack) tl.to(sel, { x: 0, duration: 0.3, ease: "back.out(2)" }, t + 0.22);
+  });
+
+  tl.from("#caption", { y: 14, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, HIT + 0.3)
+    // the O lands home with a last little hop
+    .to(O, { y: -14, duration: 0.14, ease: "power2.out" }, HIT + 0.74)
+    .to(O, { y: 0, duration: 0.14, ease: "power2.in" }, HIT + 0.88)
+    .to(O, { scaleX: 1.1, scaleY: 0.9, duration: 0.05, ease: "power2.out" }, HIT + 1.02)
+    .to(O, { scaleX: 1, scaleY: 1, duration: 0.22, ease: "back.out(2.5)" }, HIT + 1.07)
+    .to({}, { duration: 0.22 });
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

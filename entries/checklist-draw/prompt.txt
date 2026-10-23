@@ -1,0 +1,1 @@
+to-do list items slide in and their checkmarks draw on one by one

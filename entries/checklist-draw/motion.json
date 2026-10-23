@@ -1,0 +1,507 @@
+{
+ "duration": 3.77,
+ "fps": 30,
+ "frames": 115,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.68,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "#eyebrow",
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.12,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#count"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.15,
+   "duration": 0.8,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#rule"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.35,
+   "duration": 0.87,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.09,
+   "targets": [
+    "#list div.row[0]",
+    "#list div.row[1]",
+    "#list div.row[2]",
+    "#list div.row[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.05,
+   "duration": 0.26,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.fill[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.15,
+   "duration": 0.3,
+   "ease": "power2.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list path[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.17,
+   "duration": 0.2,
+   "ease": "power2.out",
+   "props": [
+    "n"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 1.17,
+   "duration": 0.35,
+   "ease": "back.out(2)",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#count"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.21,
+   "duration": 0.36,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.strike[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.21,
+   "duration": 0.36,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.txt[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.45,
+   "duration": 0.26,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.fill[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.55,
+   "duration": 0.3,
+   "ease": "power2.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list path[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.57,
+   "duration": 0.2,
+   "ease": "power2.out",
+   "props": [
+    "n"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 1.57,
+   "duration": 0.35,
+   "ease": "back.out(2)",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#count"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.61,
+   "duration": 0.36,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.strike[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.61,
+   "duration": 0.36,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.txt[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.85,
+   "duration": 0.26,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.fill[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.95,
+   "duration": 0.3,
+   "ease": "power2.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list path[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.97,
+   "duration": 0.2,
+   "ease": "power2.out",
+   "props": [
+    "n"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 1.97,
+   "duration": 0.35,
+   "ease": "back.out(2)",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#count"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.01,
+   "duration": 0.36,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.strike[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.01,
+   "duration": 0.36,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.txt[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.25,
+   "duration": 0.26,
+   "ease": "power3.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.fill[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.35,
+   "duration": 0.3,
+   "ease": "power2.inOut",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list path[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.37,
+   "duration": 0.2,
+   "ease": "power2.out",
+   "props": [
+    "n"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 2.37,
+   "duration": 0.35,
+   "ease": "back.out(2)",
+   "props": [
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#count"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.41,
+   "duration": 0.36,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.strike[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.41,
+   "duration": 0.36,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#list div.txt[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.67,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#status"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.17,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#eyebrow",
+  "#title",
+  "#count",
+  "#rule",
+  "#list div.row[0]",
+  "#list div.row[1]",
+  "#list div.row[2]",
+  "#list div.row[3]",
+  "#list div.fill[0]",
+  "#list path[0]",
+  "#list div.strike[0]",
+  "#list div.txt[0]",
+  "#list div.fill[1]",
+  "#list path[1]",
+  "#list div.strike[1]",
+  "#list div.txt[1]",
+  "#list div.fill[2]",
+  "#list path[2]",
+  "#list div.strike[2]",
+  "#list div.txt[2]",
+  "#list div.fill[3]",
+  "#list path[3]",
+  "#list div.strike[3]",
+  "#list div.txt[3]",
+  "#status",
+  "#list div.tag[0]",
+  "#list div.tag[1]",
+  "#list div.tag[2]",
+  "#list div.tag[3]"
+ ],
+ "fonts": [
+  "\"JetBrains Mono\", monospace"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.8,
+  "end_visible": [
+   "#eyebrow",
+   "#title",
+   "#count",
+   "#rule",
+   "#list div.row[0]",
+   "#list div.row[1]",
+   "#list div.row[2]",
+   "#list div.row[3]",
+   "#list div.fill[0]",
+   "#list path[0]",
+   "#list div.strike[0]",
+   "#list div.txt[0]",
+   "#list div.fill[1]",
+   "#list path[1]",
+   "#list div.strike[1]",
+   "#list div.txt[1]",
+   "#list div.fill[2]",
+   "#list path[2]",
+   "#list div.strike[2]",
+   "#list div.txt[2]",
+   "#list div.fill[3]",
+   "#list path[3]",
+   "#list div.strike[3]",
+   "#list div.txt[3]",
+   "#status",
+   "#list div.tag[0]",
+   "#list div.tag[1]",
+   "#list div.tag[2]",
+   "#list div.tag[3]"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

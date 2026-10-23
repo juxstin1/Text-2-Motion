@@ -1,0 +1,14 @@
+{
+  "id": "artist-name-drift",
+  "prompt": "artist name and dates fade in with a slow, elegant upward drift",
+  "tags": [
+    "text",
+    "minimal",
+    "serif",
+    "slow"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

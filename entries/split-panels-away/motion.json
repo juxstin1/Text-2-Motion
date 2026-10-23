@@ -1,0 +1,247 @@
+{
+ "duration": 2.4,
+ "fps": 30,
+ "frames": 73,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0.05,
+   "duration": 0.46,
+   "ease": "power2.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": 0.04,
+   "targets": [
+    "#p0",
+    "#p1",
+    "#p2",
+    "#p3",
+    "#p4"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.38,
+   "duration": 0.87,
+   "ease": "power4.in",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": 0.08,
+   "targets": [
+    "#p0",
+    "#p1",
+    "#p2",
+    "#p3",
+    "#p4"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.38,
+   "duration": 0.87,
+   "ease": "power2.in",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": 0.08,
+   "targets": [
+    "#p0 div.pageA",
+    "#p1 div.pageA",
+    "#p2 div.pageA",
+    "#p3 div.pageA",
+    "#p4 div.pageA"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.9,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#labelB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.95,
+   "duration": 1.15,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#numB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.02,
+   "duration": 0.9,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "skewX",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#titleB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.25,
+   "duration": 0.75,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#ruleB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.8,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#bodyB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.6,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#folioB"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.2,
+   "duration": 0.2,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#p0",
+  "#p1",
+  "#p2",
+  "#p3",
+  "#p4",
+  "#p0 div.pageA",
+  "#p1 div.pageA",
+  "#p2 div.pageA",
+  "#p3 div.pageA",
+  "#p4 div.pageA",
+  "#labelB",
+  "#numB",
+  "#titleB",
+  "#ruleB",
+  "#bodyB",
+  "#folioB",
+  "#p0 div.label",
+  "#p0 div.title",
+  "#p0 div.body",
+  "#p0 div.folio",
+  "#p1 div.label",
+  "#p1 div.title",
+  "#p1 div.body",
+  "#p1 div.folio",
+  "#p2 div.label",
+  "#p2 div.title",
+  "#p2 div.body",
+  "#p2 div.folio",
+  "#p3 div.label",
+  "#p3 div.title",
+  "#p3 div.body",
+  "#p3 div.folio",
+  "#p4 div.label",
+  "#p4 div.title",
+  "#p4 div.body",
+  "#p4 div.folio"
+ ],
+ "fonts": [
+  "\"Playfair Display\", serif",
+  "Inter, sans-serif"
+ ],
+ "flagged": false,
+ "notes": 1,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#numB",
+    "b": "#p3 div.title",
+    "ranges": [
+     [
+      0.9666666666666667,
+      1.0
+     ]
+    ],
+    "peak": 0.24,
+    "peak_frame": 29,
+    "ia": 11,
+    "ib": 29,
+    "defect": false,
+    "static": true
+   }
+  ],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.37,
+  "end_visible": [
+   "#labelB",
+   "#numB",
+   "#titleB",
+   "#ruleB",
+   "#bodyB",
+   "#folioB"
+  ],
+  "end_overlaps": [],
+  "n_notes": 1
+ }
+}

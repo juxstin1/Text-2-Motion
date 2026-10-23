@@ -1,0 +1,163 @@
+{
+ "duration": 2.64,
+ "fps": 30,
+ "frames": 81,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.6,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#nav"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#pill"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.25,
+   "duration": 1.24,
+   "ease": "power4.out",
+   "props": [
+    "yPercent"
+   ],
+   "type": "from",
+   "stagger": 0.14,
+   "targets": [
+    "#headline div[0]",
+    "#headline div[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.89,
+   "duration": 0.8,
+   "ease": "power3.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#sub"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.14,
+   "duration": 0.8,
+   "ease": "back.out(1.6)",
+   "props": [
+    "autoAlpha",
+    "y",
+    "scale"
+   ],
+   "type": "from",
+   "stagger": 0.1,
+   "targets": [
+    "#primary",
+    "#secondary"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.54,
+   "duration": 0.6,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#note"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.14,
+   "duration": 0.5,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#nav",
+  "#pill",
+  "#headline div[0]",
+  "#headline div[1]",
+  "#sub",
+  "#primary",
+  "#secondary",
+  "#note",
+  "#logo",
+  "#links span[0]",
+  "#links span[1]",
+  "#links span[2]",
+  "#links span[3]",
+  "#headline em"
+ ],
+ "fonts": [
+  "Sora",
+  "Manrope"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.74,
+  "end_visible": [
+   "#nav",
+   "#pill",
+   "#headline div[0]",
+   "#headline div[1]",
+   "#sub",
+   "#primary",
+   "#secondary",
+   "#note",
+   "#logo",
+   "#links span[0]",
+   "#links span[1]",
+   "#links span[2]",
+   "#links span[3]",
+   "#headline em"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

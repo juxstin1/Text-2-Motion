@@ -1,0 +1,14 @@
+{
+  "id": "dropcap-intro",
+  "prompt": "magazine intro: giant drop cap scales in, paragraph lines fade up after",
+  "tags": [
+    "text",
+    "editorial",
+    "lines",
+    "serif"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: tech-launch -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0B0D12; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0B0D12; color: #E8ECF4; font-family: 'Inter'; }
+  .lbl { font: 500 13px/1 'Inter'; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(232,236,244,0.55); }
+  #top { position: absolute; left: 120px; top: 72px; width: 1040px; display: flex; justify-content: space-between; }
+  #top b { font: 700 22px/1 'Space Grotesk'; letter-spacing: -0.03em; color: #E8ECF4; }
+  #card { position: absolute; left: 120px; top: 140px; width: 1040px; height: 440px; box-sizing: border-box; border-radius: 24px;
+          background: rgba(232,236,244,0.03); border: 1px solid rgba(232,236,244,0.08); }
+  #label { position: absolute; left: 56px; top: 64px; }
+  #counter { position: absolute; left: 50px; top: 96px; width: 480px; font: 700 104px/1 'Space Grotesk'; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  #chip { position: absolute; left: 56px; top: 236px; height: 32px; padding: 0 12px; border-radius: 8px; background: rgba(91,140,255,0.14);
+          font: 500 16px/32px 'Inter'; color: #5B8CFF; }
+  #note { position: absolute; left: 56px; top: 344px; width: 360px; font: 400 16px/1.5 'Inter'; color: rgba(232,236,244,0.5); }
+  #chart { position: absolute; left: 540px; top: 64px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="top"><b>Northwind</b><span class="lbl">Q3 FY26 · Board update</span></div>
+  <div id="card">
+    <div class="lbl" id="label">Annual recurring revenue</div>
+    <div id="counter">$0</div>
+    <div id="chip">▲ 38% year over year</div>
+    <div id="note">Net new ARR from 214 accounts, led by the enterprise tier.</div>
+    <svg id="chart" width="440" height="312" viewBox="0 0 440 312">
+      <g stroke="rgba(232,236,244,0.07)" stroke-width="1"><line x1="0" y1="60" x2="440" y2="60"/><line x1="0" y1="140" x2="440" y2="140"/><line x1="0" y1="220" x2="440" y2="220"/><line x1="0" y1="300" x2="440" y2="300"/></g>
+      <path id="area" d="M0 280 C50 274 80 250 120 246 S190 212 230 200 S300 150 340 126 S400 60 424 48 L424 300 L0 300 Z" fill="rgba(91,140,255,0.12)"/>
+      <path id="line" d="M0 280 C50 274 80 250 120 246 S190 212 230 200 S300 150 340 126 S400 60 424 48" fill="none" stroke="#5B8CFF" stroke-width="3" stroke-linecap="round"/>
+      <circle id="dot" cx="424" cy="48" r="7" fill="#5B8CFF" stroke="#0B0D12" stroke-width="3"/>
+    </svg>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  const counter = document.getElementById("counter");
+  const fmt = v => v < 1000 ? "$" + Math.round(v)
+                 : v < 1e6 ? "$" + Math.round(v / 1000) + "K"
+                 : "$" + (v / 1e6).toFixed(1) + "M";
+  const money = { v: 0 };
+  const tl = gsap.timeline({ paused: true });
+  tl.from("#card", { y: 24, autoAlpha: 0, duration: 0.6, ease: "power3.out" }, 0)
+    .from("#top", { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 0)
+    // label slides in while the number starts ticking
+    .from("#label", { x: -30, autoAlpha: 0, duration: 0.7, ease: "power3.out" }, 0.25)
+    .from("#counter", { y: 16, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 0.3)
+    .to(money, { v: 2.4e6, duration: 1.9, ease: "power2.inOut",
+                 onUpdate: () => { counter.textContent = fmt(money.v); } }, 0.3)
+    .from("#line", { drawSVG: "0%", duration: 1.5, ease: "power2.inOut" }, 0.4)
+    .from("#area", { autoAlpha: 0, duration: 0.7, ease: "power2.out" }, 1.7)
+    .from("#dot", { scale: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(2.5)" }, 1.85)
+    .from(["#chip", "#note"], { y: 10, autoAlpha: 0, duration: 0.5, ease: "power2.out", stagger: 0.1 }, 1.6)
+    .to({}, { duration: 0.6 }); // final hold
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

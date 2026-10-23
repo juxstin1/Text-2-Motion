@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: playful -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FFE8D6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FFE8D6;
+           font-family: 'Sora', sans-serif; color: #2B1B4A; }
+
+  /* static decoration framing the composition */
+  .blob { position: absolute; border-radius: 50%; }
+  #blobA { left: 1040px; top: -120px; width: 360px; height: 360px; background: rgba(255,79,123,0.14); }
+  #blobB { left: -90px; top: 500px; width: 280px; height: 280px; border: 3px solid rgba(43,27,74,0.12); box-sizing: border-box; }
+  #dotA { left: 1096px; top: 520px; width: 18px; height: 18px; background: #FF4F7B; }
+  #dotB { left: 176px; top: 132px; width: 12px; height: 12px; background: #2B1B4A; }
+
+  #label { position: absolute; left: 0; top: 168px; width: 1280px; text-align: center;
+           font-weight: 700; font-size: 14px; letter-spacing: 0.06em; color: #FF4F7B; }
+  #headline { position: absolute; left: 0; top: 200px; width: 1280px; text-align: center;
+              font-family: 'Syne', sans-serif; font-weight: 800; font-size: 80px; letter-spacing: -0.03em; line-height: 1.02; }
+  #btnRow { position: absolute; left: 0; top: 428px; width: 1280px; display: flex; justify-content: center; }
+  #btn { display: inline-flex; align-items: center; gap: 20px; height: 76px; box-sizing: border-box;
+         padding: 0 12px 0 40px; border-radius: 38px; background: #FF4F7B; color: #FFE8D6;
+         font-weight: 700; font-size: 20px; letter-spacing: 0.01em;
+         box-shadow: 0 16px 32px rgba(255,79,123,0.28); }
+  #arrow { width: 52px; height: 52px; border-radius: 50%; background: #2B1B4A; display: grid; place-items: center; }
+  #arrow svg { width: 22px; height: 22px; }
+  #note { position: absolute; left: 0; top: 536px; width: 1280px; text-align: center;
+          font-weight: 500; font-size: 14px; color: rgba(43,27,74,0.55); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="blob" id="blobA"></div>
+  <div class="blob" id="blobB"></div>
+  <div class="blob" id="dotA"></div>
+  <div class="blob" id="dotB"></div>
+
+  <div id="label">READY WHEN YOU ARE</div>
+  <div id="headline">Make something<br>people love.</div>
+  <div id="btnRow">
+    <div id="btn"><span id="btnText">Start for free</span>
+      <div id="arrow"><svg viewBox="0 0 22 22" fill="none" stroke="#FFE8D6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h13M12 5.5L17.5 11 12 16.5"/></svg></div>
+    </div>
+  </div>
+  <div id="note">No credit card &middot; Cancel anytime</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+gsap.registerPlugin(SplitText);
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const head = SplitText.create("#headline", { type: "words" });
+
+  tl.from("#label", { y: 10, autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 0)
+    .from(head.words, { yPercent: 60, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.05 }, 0.08)
+    // the pill pops: fast fade, springy scale
+    .fromTo("#btn", { scale: 0.2 }, { scale: 1, duration: 1.1, ease: "elastic.out(1, 0.45)" }, 0.6)
+    .from("#btn", { autoAlpha: 0, duration: 0.15, ease: "power1.out" }, "<")
+    .from("#btnText", { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, "<0.12")
+    // once the bounce has mostly settled, the arrow slides in from behind the label
+    .from("#arrow", { x: -14, scale: 0.6, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, "<0.45")
+    .from("#arrow svg", { x: -10, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, "<0.12")
+    .from("#note", { y: 8, autoAlpha: 0, duration: 0.5, ease: "power2.out" }, "<0.1")
+    .to({}, { duration: 0.5 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+duration 2.48s, 76 frames @30fps, 56 tweens
+TIMING
+  #title  y,autoAlpha  0.00-0.50s  power3.out
+  #heartRig  scale  0.05-0.55s  back.out(2.2)
+  #shadow  scaleX  0.05-0.55s  back.out(2.2)
+  #likes  y,autoAlpha  0.20-0.65s  power3.out
+  #tap  scale,autoAlpha  0.55-0.81s  power2.out
+  #heartRig  scaleX,scaleY  0.80-0.94s  power2.out
+  #shadow  scaleX  0.80-0.94s  power2.out
+  #tap  scale  0.80-0.94s  power2.out
+  #heart  fill  0.86-1.00s  power2.out
+  #heartRig  scaleX,scaleY  0.96-1.08s  power3.out
+  (+46 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 1 note
+  note #ring / #plus  1.17-1.27s  peak 48%
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 11 visible (#title, #heartRig, #shadow, #likes ...); final hold 0.21s; no overlaps

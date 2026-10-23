@@ -1,0 +1,14 @@
+{
+  "id": "countdown-go",
+  "prompt": "big numbers count down 3, 2, 1, then GO bursts in",
+  "tags": [
+    "text",
+    "countdown",
+    "numbers",
+    "bold"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": true,
+  "created": "2026-10-22"
+}

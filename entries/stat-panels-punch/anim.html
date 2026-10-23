@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: bold-sports -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #111111; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #111111; color: #FFFFFF; }
+  #kicker { position: absolute; left: 80px; top: 64px; font: 400 16px/1 'Archivo Black'; letter-spacing: 0.2em; color: #E8FF3A; }
+  #title { position: absolute; left: 80px; top: 104px; font: 400 120px/1 'Bebas Neue'; letter-spacing: 0.01em; }
+  #season { position: absolute; right: 80px; top: 64px; text-align: right; font: 400 16px/1.6 'Archivo Black'; letter-spacing: 0.2em; color: rgba(255,255,255,0.45); }
+  .panel { position: absolute; top: 268px; width: 360px; height: 372px; box-sizing: border-box; padding: 32px; overflow: hidden;
+           background: rgba(255,255,255,0.07); }
+  .panel.hot { background: #E8FF3A; color: #111111; }
+  .num { font: 400 200px/0.82 'Bebas Neue'; letter-spacing: 0.01em; margin-top: 22px; }
+  .bar { width: 56px; height: 6px; background: #E8FF3A; margin-top: 30px; transform-origin: 0 50%; }
+  .hot .bar { background: #111111; }
+  .lbl { margin-top: 18px; font: 400 22px/1 'Archivo Black'; letter-spacing: 0.02em; }
+  .sub { margin-top: 12px; font: 400 16px/1 'Archivo Black'; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); }
+  .hot .sub { color: rgba(17,17,17,0.6); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="kicker">MATCHDAY 12</div>
+  <div id="title">SEASON IN NUMBERS</div>
+  <div id="season">NORTH CITY FC<br>2025 / 26</div>
+  <div class="panel" style="left:80px">
+    <div class="num">27</div><div class="bar"></div>
+    <div class="lbl">GOALS SCORED</div><div class="sub">+6 VS LAST YEAR</div>
+  </div>
+  <div class="panel hot" style="left:460px">
+    <div class="num">64%</div><div class="bar"></div>
+    <div class="lbl">POSSESSION</div><div class="sub">LEAGUE BEST</div>
+  </div>
+  <div class="panel" style="left:840px">
+    <div class="num">412</div><div class="bar"></div>
+    <div class="lbl">PASSES / GAME</div><div class="sub">89% ACCURACY</div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  tl.from("#title", { y: 40, autoAlpha: 0, duration: 0.5, ease: "power4.out" })
+    .from(["#kicker", "#season"], { y: -12, autoAlpha: 0, duration: 0.4, ease: "power3.out" }, "<0.1")
+    // three hard punches: short distance, fast power4 attack, tight stagger
+    .from(".panel", { y: 70, scaleY: 1.12, transformOrigin: "50% 100%", duration: 0.5, ease: "power4.out", stagger: 0.08 }, 0.25)
+    .from(".panel", { autoAlpha: 0, duration: 0.12, ease: "power1.out", stagger: 0.08 }, "<")
+    // the number inside each panel kicks up a beat after its panel lands
+    .from(".num", { yPercent: 35, autoAlpha: 0, duration: 0.5, ease: "expo.out", stagger: 0.08 }, "<0.15")
+    .from(".bar", { scaleX: 0, duration: 0.4, ease: "power3.inOut", stagger: 0.08 }, "<0.15")
+    .from([".lbl", ".sub"], { x: -16, autoAlpha: 0, duration: 0.4, ease: "power3.out", stagger: 0.04 }, "<0.1")
+    .to({}, { duration: 0.5 }); // final hold
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

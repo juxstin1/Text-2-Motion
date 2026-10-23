@@ -1,0 +1,20 @@
+duration 2.64s, 81 frames @30fps, 37 tweens
+TIMING
+  #ballPos  x  0.00-2.00s  sine.out
+  #spin  rotation  0.00-2.00s  sine.out
+  #shadow  x  0.00-2.00s  sine.out
+  #ballPos  autoAlpha  0.00-0.12s  power1.out
+  #ballPos  y  0.00-0.55s  power2.in
+  #ball  scaleY,scaleX  0.00-0.55s  power2.in
+  #shadow  scaleX,autoAlpha  0.00-0.55s  power2.in
+  #ball  scaleY,scaleX  0.55-0.62s  power2.out
+  #shadow  scaleX  0.55-0.62s  power2.out
+  #dustL  autoAlpha,x,scale  0.55-0.97s  power3.out
+  (+27 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 7 visible (#ballPos, #spin, #shadow, #ball ...); final hold 0.31s; no overlaps

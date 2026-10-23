@@ -1,0 +1,20 @@
+duration 3.57s, 109 frames @30fps, 33 tweens
+TIMING
+  #desk  drawSVG  0.00-0.60s  power3.out
+  #base, #lower line.ln x2 ...  drawSVG  0.08-0.85s  power2.out  stagger 0.04
+  #label  autoAlpha,x  0.10-0.50s  power3.out
+  #w1, #off  autoAlpha,y  0.20-0.73s  power3.out  stagger 0.08
+  #lower  rotation  0.70-0.94s  power2.inOut
+  #upper  rotation  0.70-0.94s  power2.inOut
+  #head  rotation  0.72-0.96s  power2.inOut
+  #upper  rotation  0.94-1.54s  back.out(2)
+  #lower  rotation  1.00-2.00s  elastic.out(1, 0.42)
+  #head  rotation  1.24-1.74s  back.out(2.6)
+  (+23 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 19 visible (#base, #lower line.ln x2, #upper line.ln x2, #head path.ln ...); final hold 0.24s; no overlaps

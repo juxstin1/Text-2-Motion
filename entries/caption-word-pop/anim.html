@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: playful -->
+<!-- format: vertical -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FFE8D6; }
+  #stage { position: relative; width: 720px; height: 1280px; overflow: hidden; background: #FFE8D6; }
+  /* caption block: two lines per page, pages stacked on the same spot */
+  #cap { position: absolute; left: 0; top: 494px; width: 720px; height: 304px; }
+  .page { position: absolute; left: 0; top: 0; width: 720px; }
+  .line { height: 1.4em; display: flex; justify-content: center; align-items: center; gap: 0.24em;
+          font-family: "Syne"; font-weight: 800; font-size: 96px; letter-spacing: -0.03em; }
+  .w { display: inline-block; line-height: 1; color: #2B1B4A; white-space: nowrap; transform-origin: 50% 60%;
+       text-shadow: 0 6px 0 rgba(43,27,74,0.12); }
+  .spark { position: absolute; width: 96px; height: 96px; overflow: visible; }
+  #spark1 { left: 548px; top: 424px; }
+  #spark2 { left: 82px; top: 772px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg class="spark" id="spark1" viewBox="0 0 100 100">
+    <path d="M50 4 L60 38 L96 50 L60 62 L50 96 L40 62 L4 50 L40 38 Z" fill="#FF4F7B"/>
+    <circle cx="82" cy="18" r="8" fill="#2B1B4A"/>
+  </svg>
+  <svg class="spark" id="spark2" viewBox="0 0 100 100">
+    <path d="M50 4 L60 38 L96 50 L60 62 L50 96 L40 62 L4 50 L40 38 Z" fill="#2B1B4A"/>
+    <circle cx="16" cy="82" r="8" fill="#FF4F7B"/>
+  </svg>
+  <div id="cap"></div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+// caption pages: each page is three stacked lines; words pop one at a time, the current word is highlighted
+const PAGES = [
+  [["THIS"], ["ONE"], ["TRICK"]],
+  [["WORKS"], ["EVERY"], ["TIME"]],
+];
+const INK = "#2B1B4A", HOT = "#FF4F7B";
+const MAX_W = 470; // keep lines clear of the right-side button column
+
+// ---- build the DOM
+const cap = document.getElementById("cap");
+const pages = PAGES.map((lines, p) => {
+  const pg = document.createElement("div");
+  pg.className = "page";
+  pg.id = "page" + (p + 1);
+  const words = [];
+  lines.forEach(ws => {
+    const ln = document.createElement("div");
+    ln.className = "line";
+    ws.forEach(t => {
+      const s = document.createElement("span");
+      s.className = "w";
+      s.id = "w" + (p + 1) + "_" + (words.length + 1);
+      s.textContent = t;
+      ln.appendChild(s);
+      words.push(s);
+    });
+    pg.appendChild(ln);
+  });
+  cap.appendChild(pg);
+  return words;
+});
+
+document.fonts.ready.then(() => {
+  // shrink the type until the widest line fits
+  const lines = [...document.querySelectorAll(".line")];
+  const widest = () => Math.max(...lines.map(l => [...l.children].reduce((a, c) => a + c.offsetWidth, 0) + (l.children.length - 1) * parseFloat(getComputedStyle(l).columnGap)));
+  for (let fs = 96; widest() > MAX_W && fs > 48; fs -= 2) lines.forEach(l => l.style.fontSize = fs + "px");
+
+  const tl = gsap.timeline({ paused: true });
+  gsap.set(".w", { autoAlpha: 0, scale: 0 });
+  gsap.set(".spark", { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" });
+
+  let prev = null;
+  // a word pops: stretched up out of nothing, overshoots, squashes on its baseline, settles; it takes the highlight
+  const pop = (el, at, big) => {
+    const k = Math.min(big ? 1.2 : 1.12, 500 / (el.offsetWidth * 1.06)); // never push a wide word into the side UI
+    // start pose is set up front (below), so the first visible frame never jumps
+    gsap.set(el, { scaleX: 0.5, scaleY: 0.2, y: 20, rotation: big ? -10 : -6, autoAlpha: 0 });
+    tl.to(el, { scaleX: k * 0.92, scaleY: k * 1.06, y: -3, rotation: big ? 2 : 1, autoAlpha: 1, duration: 0.13, ease: "power3.out" }, at)
+      .to(el, { scaleX: k * 1.06, scaleY: k * 0.88, y: 0, duration: 0.06, ease: "power2.out" }, at + 0.13)
+      .to(el, { scaleX: 1, scaleY: 1, rotation: 0, duration: 0.26, ease: "back.out(3)" }, at + 0.19)
+      .to(el, { color: HOT, duration: 0.08, ease: "power2.out" }, at);
+    if (prev) tl.to(prev, { color: INK, duration: 0.16, ease: "power2.out" }, at);
+    prev = el;
+  };
+  // the highlighted word keeps bouncing while it is current: anticipation squat, hop, squash on landing
+  const hop = (el, at, h = 10) => {
+    tl.to(el, { scaleY: 0.9, scaleX: 1.06, duration: 0.05, ease: "power2.out" }, at)
+      .to(el, { y: -h, scaleY: 1.08, scaleX: 0.95, duration: 0.09, ease: "power2.out" }, at + 0.05)
+      .to(el, { y: 0, scaleY: 1, scaleX: 1, duration: 0.09, ease: "power2.in" }, at + 0.14)
+      .to(el, { scaleY: 0.88, scaleX: 1.08, duration: 0.05, ease: "power2.out" }, at + 0.23)
+      .to(el, { scaleY: 1, scaleX: 1, duration: 0.2, ease: "back.out(3)" }, at + 0.28);
+  };
+  const sparkPop = (el, at, rot) => tl
+    .fromTo(el, { scale: 0, rotation: rot - 90, autoAlpha: 0 }, { scale: 1, rotation: rot, autoAlpha: 1, duration: 0.42, ease: "back.out(2.6)", immediateRender: false }, at);
+
+  // page 1
+  const S = 0.26;
+  const p1 = pages[0];
+  p1.forEach((w, i) => pop(w, 0.04 + i * S, i === 2));
+  sparkPop("#spark1", 0.04 + 2 * S + 0.08, 12);
+  hop(p1[2], 0.04 + 2 * S + 0.46, 14);
+
+  // page 1 clears: words squat then get flicked up and away, staggered; the sticker spins out
+  const out1 = 1.36;
+  tl.to(p1, { scaleY: 0.8, scaleX: 1.1, duration: 0.07, ease: "power2.out", stagger: 0.03 }, out1)
+    .to(p1, { y: -26, scale: 0, autoAlpha: 0, rotation: 6, duration: 0.2, ease: "back.in(2)", stagger: 0.03 }, out1 + 0.07)
+    .to("#spark1", { scale: 0, rotation: 200, autoAlpha: 0, duration: 0.24, ease: "back.in(2)" }, out1 + 0.04);
+  prev = null;
+
+  // page 2
+  const p2 = pages[1];
+  const t2 = out1 + 0.3;
+  p2.forEach((w, i) => pop(w, t2 + i * S, i === 2));
+  sparkPop("#spark2", t2 + 2 * S + 0.08, -12);
+  hop(p2[2], t2 + 2 * S + 0.46, 14);
+  tl.to("#spark2", { rotation: 20, scale: 1.12, duration: 0.12, ease: "power2.out" }, t2 + 2 * S + 0.56)
+    .to("#spark2", { rotation: -12, scale: 1, duration: 0.26, ease: "back.out(3)" }, t2 + 2 * S + 0.68)
+    .to({}, { duration: 0.28 }, t2 + 2 * S + 0.94);
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

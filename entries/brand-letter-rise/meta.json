@@ -1,0 +1,14 @@
+{
+  "id": "brand-letter-rise",
+  "prompt": "brand name rises letter by letter from behind a mask, tagline fades in last",
+  "tags": [
+    "text",
+    "letters",
+    "mask",
+    "stagger"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

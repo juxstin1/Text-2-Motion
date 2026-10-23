@@ -1,0 +1,391 @@
+{
+ "duration": 3.83,
+ "fps": 30,
+ "frames": 116,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.56,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.06,
+   "targets": [
+    "#tl-label",
+    "#tr-label"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.05,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#kick"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.7,
+   "ease": "power4.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#fl",
+    "#fr"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.62,
+   "ease": "power3.out",
+   "props": [
+    "scaleX",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.06,
+   "targets": [
+    "#bars div.seg[0]",
+    "#bars div.seg[1]",
+    "#bars div.seg[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 0.34,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "div.num[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 0.62,
+   "ease": "power2.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#bars div.fill[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.78,
+   "duration": 0.14,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "div.num[0]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.92,
+   "duration": 0.34,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "div.num[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.92,
+   "duration": 0.62,
+   "ease": "power2.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#bars div.fill[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.4,
+   "duration": 0.14,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "div.num[1]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.54,
+   "duration": 0.34,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "div.num[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.54,
+   "duration": 0.62,
+   "ease": "power2.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#bars div.fill[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.91,
+   "duration": 0.25,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#kick"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.02,
+   "duration": 0.14,
+   "ease": "power2.in",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "div.num[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.06,
+   "duration": 0.5,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#fl",
+    "#fr"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.16,
+   "duration": 0.55,
+   "ease": "back.out(2.4)",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#go"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.2,
+   "duration": 0.45,
+   "ease": "expo.out",
+   "props": [
+    "scaleX",
+    "x"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#go div.ray[0]",
+    "#go div.ray[1]",
+    "#go div.ray[2]",
+    "#go div.ray[3]",
+    "#go div.ray[4]",
+    "#go div.ray[5]",
+    "#go div.ray[6]",
+    "#go div.ray[7]",
+    "#go div.ray[8]",
+    "#go div.ray[9]",
+    "#go div.ray[10]",
+    "#go div.ray[11]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.56,
+   "duration": 0.3,
+   "ease": "power2.in",
+   "props": [
+    "autoAlpha",
+    "x",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#go div.ray[0]",
+    "#go div.ray[1]",
+    "#go div.ray[2]",
+    "#go div.ray[3]",
+    "#go div.ray[4]",
+    "#go div.ray[5]",
+    "#go div.ray[6]",
+    "#go div.ray[7]",
+    "#go div.ray[8]",
+    "#go div.ray[9]",
+    "#go div.ray[10]",
+    "#go div.ray[11]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.88,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#sub"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.38,
+   "duration": 0.45,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#tl-label",
+  "#tr-label",
+  "#kick",
+  "#fl",
+  "#fr",
+  "#bars div.seg[0]",
+  "#bars div.seg[1]",
+  "#bars div.seg[2]",
+  "div.num[0]",
+  "#bars div.fill[0]",
+  "div.num[1]",
+  "#bars div.fill[1]",
+  "div.num[2]",
+  "#bars div.fill[2]",
+  "#go",
+  "#go div.ray[0]",
+  "#go div.ray[1]",
+  "#go div.ray[2]",
+  "#go div.ray[3]",
+  "#go div.ray[4]",
+  "#go div.ray[5]",
+  "#go div.ray[6]",
+  "#go div.ray[7]",
+  "#go div.ray[8]",
+  "#go div.ray[9]",
+  "#go div.ray[10]",
+  "#go div.ray[11]",
+  "#sub"
+ ],
+ "fonts": [
+  "\"Archivo Black\"",
+  "\"Bebas Neue\", sans-serif",
+  "\"Bebas Neue\""
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.66,
+  "end_visible": [
+   "#tl-label",
+   "#tr-label",
+   "#bars div.seg[0]",
+   "#bars div.seg[1]",
+   "#bars div.seg[2]",
+   "#bars div.fill[0]",
+   "#bars div.fill[1]",
+   "#bars div.fill[2]",
+   "#go",
+   "#sub"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

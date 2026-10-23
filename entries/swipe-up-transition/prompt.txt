@@ -1,0 +1,1 @@
+swipe-up transition: the scene stretches and flies up, the next scene drops in with a squash

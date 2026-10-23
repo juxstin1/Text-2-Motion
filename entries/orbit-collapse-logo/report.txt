@@ -1,0 +1,22 @@
+duration 2.95s, 90 frames @30fps, 12 tweens
+TIMING
+  #orbit circle.dot x8  scale  0.00-0.80s  back.out(3)  stagger 0.05
+  #orbit  rotation  0.00-1.75s  power2.in
+  #orbit circle.dot x8  x,y  0.75-1.10s  power2.out
+  #orbit circle.dot x8  x,y,scale  1.10-1.50s  power4.in
+  #shock  scale,autoAlpha  1.50-2.30s  expo.out
+  #orbit circle.dot x8  x,y,scale  1.50-2.64s  elastic.out(1, 0.45)  stagger 0.02
+  #ring  drawSVG  1.52-2.22s  expo.out
+  #glyph  scale,rotation  1.56-2.16s  back.out(2.4)
+  #orbit  rotation  1.75-2.75s  power3.out
+  #wordmark  y,autoAlpha  1.85-2.65s  power3.out
+  (+2 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 2 note
+  note #orbit circle.dot[4] / #glyph  1.57-1.60s  peak 100%
+  note #ring / #glyph  1.77-2.10s  peak 100%
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 13 visible (#orbit circle.dot x8, #orbit, #ring, #glyph ...); final hold 0.35s; no overlaps

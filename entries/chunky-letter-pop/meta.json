@@ -1,0 +1,14 @@
+{
+  "id": "chunky-letter-pop",
+  "prompt": "chunky headline letters pop in with scale and a little rotation in shuffled order",
+  "tags": [
+    "text",
+    "letters",
+    "pop",
+    "playful"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

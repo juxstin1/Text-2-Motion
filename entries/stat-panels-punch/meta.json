@@ -1,0 +1,14 @@
+{
+  "id": "stat-panels-punch",
+  "prompt": "three stat panels punch up from below in quick succession",
+  "tags": [
+    "entrance",
+    "panels",
+    "stagger",
+    "bold"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

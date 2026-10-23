@@ -1,0 +1,23 @@
+duration 3.13s, 95 frames @30fps, 21 tweens
+TIMING
+  #home  x,skewX  0.05-0.41s  power4.out
+  #labA  autoAlpha,y  0.22-0.57s  power3.out
+  #numA  autoAlpha,x  0.32-0.92s  power3.out
+  #vsA, #whenA  autoAlpha,x  0.34-0.81s  power3.out  stagger 0.07
+  #home  skewX  0.41-0.75s  back.out(3)
+  #barA  scaleX  0.47-0.87s  back.out(2)
+  #home  x,skewX  0.86-1.04s  power2.out
+  #wipe polygon.stripe x9  x  1.00-1.46s  power3.out  stagger 0.02
+  #home  x,skewX  1.00-1.25s  power3.in
+  #sceneA  autoAlpha  set at 1.46s
+  (+11 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 29 note
+  note #home / #wipe polygon.stripe[2]  1.30-1.43s  peak 38%
+  note #home / #wipe polygon.stripe[3]  1.20-1.43s  peak 96%
+  (+27 more)
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 6 visible (#away, #labB, #numB, #vsB ...); final hold 0.26s; no overlaps

@@ -1,0 +1,1 @@
+sidebar navigation slides in from the left, menu items following in a tight stagger

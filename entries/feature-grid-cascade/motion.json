@@ -1,0 +1,196 @@
+{
+ "duration": 2.39,
+ "fps": 30,
+ "frames": 73,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.5,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#label"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.08,
+   "duration": 1.04,
+   "ease": "expo.out",
+   "props": [
+    "yPercent"
+   ],
+   "type": "from",
+   "stagger": 0.06,
+   "targets": [
+    "#headline div[0]",
+    "#headline div[1]",
+    "#headline div[2]",
+    "#headline div[3]",
+    "#headline div[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 0.7,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#intro"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.4,
+   "duration": 1.39,
+   "ease": "expo.out",
+   "props": [
+    "x",
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.13,
+   "targets": [
+    "#grid div.tile[0]",
+    "#grid div.tile[1]",
+    "#grid div.tile[2]",
+    "#grid div.tile[3]",
+    "#grid div.tile[4]",
+    "#grid div.tile[5]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.55,
+   "duration": 0.99,
+   "ease": "back.out(2)",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.13,
+   "targets": [
+    "#grid div.icon[0]",
+    "#grid div.icon[1]",
+    "#grid div.icon[2]",
+    "#grid div.icon[3]",
+    "#grid div.icon[4]",
+    "#grid div.icon[5]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.79,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#label",
+  "#headline div[0]",
+  "#headline div[1]",
+  "#headline div[2]",
+  "#headline div[3]",
+  "#headline div[4]",
+  "#intro",
+  "#grid div.tile[0]",
+  "#grid div.tile[1]",
+  "#grid div.tile[2]",
+  "#grid div.tile[3]",
+  "#grid div.tile[4]",
+  "#grid div.tile[5]",
+  "#grid div.icon[0]",
+  "#grid div.icon[1]",
+  "#grid div.icon[2]",
+  "#grid div.icon[3]",
+  "#grid div.icon[4]",
+  "#grid div.icon[5]",
+  "#grid h3[0]",
+  "#grid p[0]",
+  "#grid h3[1]",
+  "#grid p[1]",
+  "#grid h3[2]",
+  "#grid p[2]",
+  "#grid h3[3]",
+  "#grid p[3]",
+  "#grid h3[4]",
+  "#grid p[4]",
+  "#grid h3[5]",
+  "#grid p[5]"
+ ],
+ "fonts": [
+  "Inter, sans-serif",
+  "\"Space Grotesk\", sans-serif"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.76,
+  "end_visible": [
+   "#label",
+   "#headline div[0]",
+   "#headline div[1]",
+   "#headline div[2]",
+   "#headline div[3]",
+   "#headline div[4]",
+   "#intro",
+   "#grid div.tile[0]",
+   "#grid div.tile[1]",
+   "#grid div.tile[2]",
+   "#grid div.tile[3]",
+   "#grid div.tile[4]",
+   "#grid div.tile[5]",
+   "#grid div.icon[0]",
+   "#grid div.icon[1]",
+   "#grid div.icon[2]",
+   "#grid div.icon[3]",
+   "#grid div.icon[4]",
+   "#grid div.icon[5]",
+   "#grid h3[0]",
+   "#grid p[0]",
+   "#grid h3[1]",
+   "#grid p[1]",
+   "#grid h3[2]",
+   "#grid p[2]",
+   "#grid h3[3]",
+   "#grid p[3]",
+   "#grid h3[4]",
+   "#grid p[4]",
+   "#grid h3[5]",
+   "#grid p[5]"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

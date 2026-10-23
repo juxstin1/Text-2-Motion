@@ -1,0 +1,225 @@
+{
+ "duration": 2.06,
+ "fps": 30,
+ "frames": 63,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.75,
+   "ease": "expo.out",
+   "props": [
+    "xPercent"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#sidebar"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.25,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#brand"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.31,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#navLabel"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.35,
+   "duration": 0.775,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.045,
+   "targets": [
+    "#sidebar div.item[0]",
+    "#sidebar div.item[1]",
+    "#sidebar div.item[2]",
+    "#sidebar div.item[3]",
+    "#sidebar div.item[4]",
+    "#sidebar div.item[5]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 0.96,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.06,
+   "targets": [
+    "#crumb",
+    "#title",
+    "#sub",
+    "#main div.stat[0]",
+    "#main div.stat[1]",
+    "#main div.stat[2]",
+    "#chart"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.775,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "scaleY"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#marker"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.775,
+   "duration": 0.5,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#account"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.46,
+   "duration": 0.6,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#sidebar",
+  "#brand",
+  "#navLabel",
+  "#sidebar div.item[0]",
+  "#sidebar div.item[1]",
+  "#sidebar div.item[2]",
+  "#sidebar div.item[3]",
+  "#sidebar div.item[4]",
+  "#sidebar div.item[5]",
+  "#crumb",
+  "#title",
+  "#sub",
+  "#main div.stat[0]",
+  "#main div.stat[1]",
+  "#main div.stat[2]",
+  "#chart",
+  "#marker",
+  "#account",
+  "#brand span",
+  "#sidebar b[0]",
+  "#sidebar b[1]",
+  "#sidebar b[2]",
+  "#sidebar b[3]",
+  "#account span",
+  "#sub em",
+  "#main div.k[0]",
+  "#main div.v[0]",
+  "#main div.k[1]",
+  "#main div.v[1]",
+  "#main small[0]",
+  "#main div.k[2]",
+  "#main div.v[2]",
+  "#main small[1]",
+  "#chart div.k"
+ ],
+ "fonts": [
+  "\"JetBrains Mono\", monospace"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.73,
+  "end_visible": [
+   "#sidebar",
+   "#brand",
+   "#navLabel",
+   "#sidebar div.item[0]",
+   "#sidebar div.item[1]",
+   "#sidebar div.item[2]",
+   "#sidebar div.item[3]",
+   "#sidebar div.item[4]",
+   "#sidebar div.item[5]",
+   "#crumb",
+   "#title",
+   "#sub",
+   "#main div.stat[0]",
+   "#main div.stat[1]",
+   "#main div.stat[2]",
+   "#chart",
+   "#marker",
+   "#account",
+   "#brand span",
+   "#sidebar b[0]",
+   "#sidebar b[1]",
+   "#sidebar b[2]",
+   "#sidebar b[3]",
+   "#account span",
+   "#sub em",
+   "#main div.k[0]",
+   "#main div.v[0]",
+   "#main div.k[1]",
+   "#main div.v[1]",
+   "#main small[0]",
+   "#main div.k[2]",
+   "#main div.v[2]",
+   "#main small[1]",
+   "#chart div.k"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

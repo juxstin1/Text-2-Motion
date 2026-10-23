@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: tech-launch -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0B0D12; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0B0D12; font-family: 'Inter'; color: #E8ECF4; }
+  /* static dashboard behind the dialog */
+  #side { position: absolute; left: 0; top: 0; width: 232px; height: 720px; border-right: 1px solid rgba(232,236,244,0.08); }
+  #logo { position: absolute; left: 32px; top: 32px; font: 700 22px/1 'Space Grotesk'; letter-spacing: -0.03em; }
+  #logo b { color: #5B8CFF; }
+  .nav { position: absolute; left: 20px; width: 192px; height: 40px; border-radius: 10px; box-sizing: border-box; padding-left: 14px;
+         font: 400 16px/40px 'Inter'; color: rgba(232,236,244,0.5); }
+  .nav.on { background: rgba(91,140,255,0.12); color: #E8ECF4; }
+  #head { position: absolute; left: 280px; top: 36px; font: 700 36px/1 'Space Grotesk'; letter-spacing: -0.03em; }
+  .lbl { font: 500 13px/1 'Inter'; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(232,236,244,0.5); }
+  .tile { position: absolute; top: 120px; width: 288px; height: 132px; box-sizing: border-box; padding: 24px; border-radius: 16px;
+          background: rgba(232,236,244,0.04); border: 1px solid rgba(232,236,244,0.08); }
+  .tile .v { margin-top: 18px; font: 700 36px/1 'Space Grotesk'; letter-spacing: -0.03em; }
+  #chart { position: absolute; left: 280px; top: 280px; width: 952px; height: 392px; box-sizing: border-box; border-radius: 16px;
+           background: rgba(232,236,244,0.04); border: 1px solid rgba(232,236,244,0.08); padding: 24px; }
+  /* dialog layer */
+  #backdrop { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; background: rgba(11,13,18,0); }
+  #modal { position: absolute; left: 400px; top: 176px; width: 480px; box-sizing: border-box; padding: 36px; border-radius: 20px;
+           background: linear-gradient(rgba(232,236,244,0.06), rgba(232,236,244,0.06)), #0B0D12;
+           border: 1px solid rgba(232,236,244,0.14); box-shadow: 0 40px 120px rgba(0,0,0,0.6); }
+  #icon { width: 48px; height: 48px; border-radius: 14px; background: rgba(91,140,255,0.16); display: flex; align-items: center; justify-content: center; }
+  #title { margin: 24px 0 0; font: 700 36px/1.08 'Space Grotesk'; letter-spacing: -0.03em; }
+  #text { margin: 14px 0 0; font: 400 16px/1.55 'Inter'; color: rgba(232,236,244,0.62); }
+  #meta { margin-top: 22px; display: flex; gap: 10px; }
+  .chip { font: 500 13px/1 'Inter'; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 10px; border-radius: 8px;
+          background: rgba(232,236,244,0.06); color: rgba(232,236,244,0.7); }
+  #btns { margin-top: 30px; display: flex; justify-content: flex-end; gap: 12px; }
+  .btn { height: 44px; padding: 0 20px; border-radius: 12px; font: 500 16px/44px 'Inter'; }
+  #cancel { border: 1px solid rgba(232,236,244,0.16); line-height: 42px; color: rgba(232,236,244,0.8); }
+  #deploy { background: #5B8CFF; color: #0B0D12; font-weight: 600; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="side">
+    <div id="logo">orbit<b>.</b></div>
+    <div class="nav" style="top:96px">Overview</div>
+    <div class="nav on" style="top:140px">Deployments</div>
+    <div class="nav" style="top:184px">Regions</div>
+    <div class="nav" style="top:228px">Logs</div>
+    <div class="nav" style="top:272px">Settings</div>
+  </div>
+  <div id="head">Deployments</div>
+  <div class="tile" style="left:280px"><div class="lbl">Build</div><div class="v">4.12.0</div></div>
+  <div class="tile" style="left:612px"><div class="lbl">Regions</div><div class="v">38 / 38</div></div>
+  <div class="tile" style="left:944px"><div class="lbl">p95 latency</div><div class="v">42 ms</div></div>
+  <div id="chart">
+    <div class="lbl">Requests, last 24h</div>
+    <svg width="904" height="300" viewBox="0 0 904 300" style="margin-top:20px">
+      <g stroke="rgba(232,236,244,0.06)" stroke-width="1"><line x1="0" y1="60" x2="904" y2="60"/><line x1="0" y1="140" x2="904" y2="140"/><line x1="0" y1="220" x2="904" y2="220"/></g>
+      <path d="M0 230 C80 220 120 180 200 186 S320 120 400 132 S520 90 600 104 S740 40 820 56 L904 44" fill="none" stroke="#5B8CFF" stroke-width="2.5"/>
+    </svg>
+  </div>
+
+  <div id="backdrop">
+    <div id="modal">
+      <div id="icon"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 3v12M5.5 8.5L11 3l5.5 5.5M4 19h14" fill="none" stroke="#5B8CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h2 id="title">Deploy to production?</h2>
+      <p id="text">Build 4.12.0 ships to all 38 regions. You can roll back with one click for the next 24 hours.</p>
+      <div id="meta"><span class="chip">main @ 7f3c2a</span><span class="chip">~ 2 min</span></div>
+      <div id="btns"><div class="btn" id="cancel">Cancel</div><div class="btn" id="deploy">Deploy now</div></div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  // backdrop dims (colour tween on the layer the modal lives in)
+  tl.to("#backdrop", { backgroundColor: "rgba(11,13,18,0.78)", duration: 0.5, ease: "power2.out" }, 0)
+    // dialog scales up from 92% with a fast-in, long-settle expo curve
+    .fromTo("#modal", { scale: 0.92, y: 16 }, { scale: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.1)
+    .fromTo("#modal", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "power1.out" }, 0.1)
+    // contents trail the container by a beat so the eye lands on the title
+    .from(["#icon", "#title", "#text", "#meta", "#btns"], { y: 10, autoAlpha: 0, duration: 0.45, ease: "power2.out", stagger: 0.05 }, "<0.15")
+    .to({}, { duration: 0.6 }); // final hold
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+duration 2.20s, 67 frames @30fps, 6 tweens
+TIMING
+  #frame  autoAlpha  0.00-0.50s  power2.out
+  #bar  scaleY  0.20-0.75s  power4.out
+  #name  xPercent  0.55-1.45s  expo.out
+  #role  xPercent  0.72-1.62s  expo.out
+  #rule  scaleX  0.90-1.70s  power3.inOut
+  (hold)  1.70-2.20s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 9 visible (#frame, #bar, #name, #role ...); final hold 0.57s; no overlaps

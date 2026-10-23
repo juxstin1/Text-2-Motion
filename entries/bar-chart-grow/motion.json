@@ -1,0 +1,233 @@
+{
+ "duration": 2.24,
+ "fps": 30,
+ "frames": 69,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.86,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "#eyebrow",
+    "#big",
+    "#delta"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.88,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.04,
+   "targets": [
+    "#chart div.grid[0]",
+    "#chart div.grid[1]",
+    "#chart div.grid[2]",
+    "#chart div.grid[3]",
+    "#chart div.gl[0]",
+    "#chart div.gl[1]",
+    "#chart div.gl[2]",
+    "#chart div.gl[3]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.7,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#base"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.4,
+   "duration": 1.59,
+   "ease": "expo.out",
+   "props": [
+    "scaleY"
+   ],
+   "type": "from",
+   "stagger": 0.07,
+   "targets": [
+    "#chart div.bar[0]",
+    "#chart div.bar[1]",
+    "#chart div.bar[2]",
+    "#chart div.bar[3]",
+    "#chart div.bar[4]",
+    "#chart div.bar[5]",
+    "#chart div.bar[6]",
+    "#chart div.bar[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.45,
+   "duration": 0.89,
+   "ease": "power2.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.07,
+   "targets": [
+    "#chart div.xl[0]",
+    "#chart div.xl[1]",
+    "#chart div.xl[2]",
+    "#chart div.xl[3]",
+    "#chart div.xl[4]",
+    "#chart div.xl[5]",
+    "#chart div.xl[6]",
+    "#chart div.xl[7]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.7,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#note"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.35,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#tag"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.99,
+   "duration": 0.25,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#eyebrow",
+  "#big",
+  "#delta",
+  "#chart div.grid[0]",
+  "#chart div.grid[1]",
+  "#chart div.grid[2]",
+  "#chart div.grid[3]",
+  "#chart div.gl[0]",
+  "#chart div.gl[1]",
+  "#chart div.gl[2]",
+  "#chart div.gl[3]",
+  "#base",
+  "#chart div.bar[0]",
+  "#chart div.bar[1]",
+  "#chart div.bar[2]",
+  "#chart div.bar[3]",
+  "#chart div.bar[4]",
+  "#chart div.bar[5]",
+  "#chart div.bar[6]",
+  "#chart div.bar[7]",
+  "#chart div.xl[0]",
+  "#chart div.xl[1]",
+  "#chart div.xl[2]",
+  "#chart div.xl[3]",
+  "#chart div.xl[4]",
+  "#chart div.xl[5]",
+  "#chart div.xl[6]",
+  "#chart div.xl[7]",
+  "#note",
+  "#tag",
+  "#delta span"
+ ],
+ "fonts": [
+  "Inter, sans-serif",
+  "\"Space Grotesk\", sans-serif",
+  "\"Space Grotesk\""
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.47,
+  "end_visible": [
+   "#eyebrow",
+   "#big",
+   "#delta",
+   "#chart div.grid[0]",
+   "#chart div.grid[1]",
+   "#chart div.grid[2]",
+   "#chart div.grid[3]",
+   "#chart div.gl[0]",
+   "#chart div.gl[1]",
+   "#chart div.gl[2]",
+   "#chart div.gl[3]",
+   "#base",
+   "#chart div.bar[0]",
+   "#chart div.bar[1]",
+   "#chart div.bar[2]",
+   "#chart div.bar[3]",
+   "#chart div.bar[4]",
+   "#chart div.bar[5]",
+   "#chart div.bar[6]",
+   "#chart div.bar[7]",
+   "#chart div.xl[0]",
+   "#chart div.xl[1]",
+   "#chart div.xl[2]",
+   "#chart div.xl[3]",
+   "#chart div.xl[4]",
+   "#chart div.xl[5]",
+   "#chart div.xl[6]",
+   "#chart div.xl[7]",
+   "#note",
+   "#tag",
+   "#delta span"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

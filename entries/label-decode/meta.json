@@ -1,0 +1,14 @@
+{
+  "id": "label-decode",
+  "prompt": "label decodes from scrambled characters into the final word",
+  "tags": [
+    "text",
+    "decode",
+    "letters",
+    "mono"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

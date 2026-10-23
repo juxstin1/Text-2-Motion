@@ -1,0 +1,20 @@
+duration 2.80s, 85 frames @30fps, 31 tweens
+TIMING
+  #pTL  autoAlpha  0.00-0.12s  power1.out
+  #pTL  x  0.00-0.72s  power3.out
+  #pTL  y  0.00-0.72s  power2.inOut
+  #pTL  rotation,scale  0.00-0.72s  back.out(1.4)
+  #pTR  autoAlpha  0.07-0.19s  power1.out
+  #pTR  x  0.07-0.79s  power3.out
+  #pTR  y  0.07-0.79s  power2.inOut
+  #pTR  rotation,scale  0.07-0.79s  back.out(1.4)
+  #pBL  autoAlpha  0.14-0.26s  power1.out
+  #pBL  x  0.14-0.86s  power3.out
+  (+21 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 8 visible (#pTL, #pTR, #pBL, #pBR ...); final hold 0.23s; no overlaps

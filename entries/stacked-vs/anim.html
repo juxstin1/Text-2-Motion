@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: tech-launch -->
+<!-- format: vertical -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0B0D12; }
+  #stage { position: relative; width: 720px; height: 1280px; overflow: hidden; background: #0B0D12; }
+  /* pack background: hidden by render.py --alpha so the graphic sits on footage */
+  #bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 44%, #161B26 0%, #0B0D12 70%); }
+  /* shake wrapper is inset so a few px of shake never leaves the stage; children use shake coords (stage - 16) */
+  #shake { position: absolute; left: 16px; top: 16px; width: 688px; height: 1248px; }
+
+  /* title plate: kicker over title, centred, auto width */
+  #titleRow { position: absolute; left: 0; top: 96px; width: 688px; display: flex; justify-content: center; }
+  #title { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 28px 14px; border-radius: 18px;
+           background: rgba(11,13,18,0.92); border: 1px solid rgba(232,236,244,0.18); }
+  #kicker { font-family: "Inter"; font-weight: 500; font-size: 16px; letter-spacing: 0.12em; color: #5B8CFF; line-height: 1.2; }
+  #titleText { font-family: "Space Grotesk"; font-weight: 700; font-size: 36px; letter-spacing: -0.03em; color: #E8ECF4; line-height: 1.1;
+               white-space: nowrap; max-width: 560px; overflow: hidden; }
+
+  /* two cards stacked: A on top, B below, VS in the seam */
+  .card { position: absolute; left: 84px; width: 520px; height: 280px; box-sizing: border-box; border-radius: 30px;
+          background: rgba(11,13,18,0.92); border: 2px solid color-mix(in srgb, var(--c) 70%, transparent);
+          display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+  #cardA { --c: var(--a); top: 204px; }
+  #cardB { --c: var(--b); top: 596px; }
+  .glow { position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(circle at 50% 34%, color-mix(in srgb, var(--c) 40%, transparent) 0%, transparent 64%); }
+  .stripe { position: absolute; left: 0; width: 100%; height: 8px; background: var(--c); }
+  #cardA .stripe { bottom: 0; border-radius: 0 0 28px 28px; }
+  #cardB .stripe { top: 0; border-radius: 28px 28px 0 0; }
+  .slot { position: relative; width: 116px; height: 116px; color: var(--c); }
+  .slot svg { display: block; width: 100%; height: 100%; }
+  .mask { position: relative; overflow: hidden; padding: 0 6px; }
+  .name { font-family: "Space Grotesk"; font-weight: 700; font-size: 60px; line-height: 1.1; letter-spacing: -0.03em;
+          color: #E8ECF4; white-space: nowrap; max-width: 420px; overflow: hidden; text-align: center; }
+  .tag { position: relative; font-family: "Inter"; font-weight: 500; font-size: 16px; letter-spacing: 0.12em; color: #E8ECF4;
+         padding: 7px 16px; border-radius: 999px; background: color-mix(in srgb, var(--c) 30%, rgba(11,13,18,0.9));
+         border: 1px solid color-mix(in srgb, var(--c) 80%, transparent); white-space: nowrap;
+         max-width: 380px; overflow: hidden; text-overflow: ellipsis; }
+
+  #mid { position: absolute; left: 292px; top: 488px; width: 104px; height: 104px; }
+  #ringSvg { position: absolute; left: -108px; top: -108px; width: 320px; height: 320px; overflow: visible; }
+  #sparks { position: absolute; left: -208px; top: -8px; width: 520px; height: 120px; overflow: visible; }
+  .spark, #ring { visibility: hidden; opacity: 0; }
+  #vs { position: absolute; inset: 0; border-radius: 50%; background: #5B8CFF;
+        box-shadow: 0 0 0 6px rgba(11,13,18,0.92), 0 0 44px rgba(91,140,255,0.6);
+        display: flex; align-items: center; justify-content: center; }
+  #vsText { font-family: "Space Grotesk"; font-weight: 700; font-size: 46px; letter-spacing: -0.03em; color: #E8ECF4; line-height: 1; }
+
+  /* call to action under the duel, above the caption safe zone */
+  #ctaRow { position: absolute; left: 0; top: 916px; width: 688px; display: flex; justify-content: center; }
+  #cta { font-family: "Inter"; font-weight: 600; font-size: 22px; letter-spacing: 0.06em; color: #E8ECF4; line-height: 1;
+         padding: 16px 28px; border-radius: 999px; background: #5B8CFF; box-shadow: 0 0 0 5px rgba(11,13,18,0.85);
+         white-space: nowrap; max-width: 460px; overflow: hidden; text-overflow: ellipsis; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="shake">
+    <div id="titleRow"><div id="title"><span id="kicker"></span><span id="titleText"></span></div></div>
+
+    <div class="card" id="cardA">
+      <div class="glow"></div>
+      <div class="slot" id="slotA">
+        <!-- placeholder logo: Nova (ring + core); paste any SVG logo here -->
+        <svg id="logoA" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="12"/><circle cx="50" cy="50" r="15" fill="currentColor"/></svg>
+      </div>
+      <div class="mask"><div class="name" id="nameA"></div></div>
+      <div class="tag" id="tagA"></div>
+      <div class="stripe"></div>
+    </div>
+
+    <div class="card" id="cardB">
+      <div class="glow"></div>
+      <div class="stripe"></div>
+      <div class="slot" id="slotB">
+        <!-- placeholder logo: Apex (stacked peaks) -->
+        <svg id="logoB" viewBox="0 0 100 100"><polygon points="50,8 94,88 6,88" fill="currentColor"/><polygon points="50,46 70,82 30,82" fill="#0B0D12" fill-opacity="0.55"/></svg>
+      </div>
+      <div class="mask"><div class="name" id="nameB"></div></div>
+      <div class="tag" id="tagB"></div>
+    </div>
+
+    <div id="mid">
+      <svg id="ringSvg" data-layer="back" viewBox="0 0 320 320"><circle id="ring" cx="160" cy="160" r="56" fill="none" stroke="#5B8CFF" stroke-width="4"/></svg>
+      <svg id="sparks" viewBox="0 0 520 120">
+        <g stroke="#5B8CFF" stroke-width="6" stroke-linecap="round">
+          <line class="spark" x1="176" y1="46" x2="120" y2="40"/>
+          <line class="spark" x1="176" y1="74" x2="128" y2="82"/>
+          <line class="spark" x1="344" y1="46" x2="400" y2="40"/>
+          <line class="spark" x1="344" y1="74" x2="392" y2="82"/>
+        </g>
+      </svg>
+      <div id="vs"><span id="vsText"></span></div>
+    </div>
+
+    <div id="ctaRow"><div id="cta"></div></div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+const DATA = {
+  kicker: "HEAD TO HEAD",
+  title: "Coding benchmark",
+  vs: "VS",
+  cta: "WHO WINS? COMMENT",
+  a: { name: "Nova", tag: "NOVA-4 PRO", color: "#4D6BFE" },
+  b: { name: "Apex", tag: "APEX ULTRA 2", color: "#10A37F" },
+};
+
+// ---- fill the DOM from DATA
+const $ = s => document.querySelector(s);
+$("#stage").style.setProperty("--a", DATA.a.color);
+$("#stage").style.setProperty("--b", DATA.b.color);
+$("#kicker").textContent = DATA.kicker;
+$("#titleText").textContent = DATA.title;
+$("#vsText").textContent = DATA.vs;
+$("#cta").textContent = DATA.cta;
+$("#nameA").textContent = DATA.a.name;
+$("#nameB").textContent = DATA.b.name;
+$("#tagA").textContent = DATA.a.tag;
+$("#tagB").textContent = DATA.b.tag;
+
+// shrink a nowrap text until it fits its max-width (long names stay on the card)
+function fit(el, minScale = 0.45) {
+  const base = parseFloat(getComputedStyle(el).fontSize);
+  for (let s = base; el.scrollWidth > el.clientWidth && s > base * minScale; s -= 1) el.style.fontSize = s + "px";
+}
+
+document.fonts.ready.then(() => {
+  fit($("#nameA"));
+  fit($("#nameB"));
+  fit($("#titleText"));
+  const tl = gsap.timeline({ paused: true });
+
+  const shake = (at, amp) => tl.to("#shake", { keyframes: [
+      { x: amp * 0.6, y: -amp, duration: 0.04 }, { x: -amp * 0.5, y: amp * 0.8, duration: 0.05 },
+      { x: amp * 0.3, y: -amp * 0.45, duration: 0.05 }, { x: -amp * 0.1, y: amp * 0.2, duration: 0.06 },
+      { x: 0, y: 0, duration: 0.08 } ], ease: "power2.out" }, at);
+
+  // 1. both cards open up fast so the hook reads in the first beat
+  tl.from("#cardA", { y: -40, scale: 0.94, autoAlpha: 0, duration: 0.4, ease: "expo.out" }, 0)
+    .from("#cardB", { y: 40, scale: 0.94, autoAlpha: 0, duration: 0.4, ease: "expo.out" }, 0.05);
+
+  // 2. logo A drops in from above: stretched on the fall, squashes on landing, card dips under the weight
+  const hA = 0.34;
+  tl.fromTo("#slotA", { y: -150, autoAlpha: 0, scaleY: 1.3, scaleX: 0.8, transformOrigin: "50% 100%" },
+                      { y: 0, autoAlpha: 1, scaleY: 1.25, scaleX: 0.82, duration: 0.26, ease: "power3.in" }, hA - 0.26)
+    .to("#slotA", { scaleY: 0.72, scaleX: 1.26, duration: 0.06, ease: "power2.out" }, hA)
+    .to("#slotA", { scaleY: 1, scaleX: 1, duration: 0.42, ease: "back.out(3)" }, hA + 0.06)
+    .to("#cardA", { y: 8, duration: 0.06, ease: "power2.out" }, hA)
+    .to("#cardA", { y: 0, duration: 0.42, ease: "back.out(3)" }, hA + 0.06)
+    .fromTo("#cardA .stripe", { scaleY: 1 }, { scaleY: 2.4, duration: 0.06, ease: "power2.out", transformOrigin: "50% 100%" }, hA)
+    .to("#cardA .stripe", { scaleY: 1, duration: 0.4, ease: "power3.out" }, hA + 0.06)
+    .from("#nameA", { yPercent: 105, duration: 0.42, ease: "power4.out" }, hA + 0.06);
+  shake(hA, 5);
+
+  // 3. logo B rises from below: stretched on the way up, squashes against its mark, card bumps up
+  const hB = 0.66;
+  tl.fromTo("#slotB", { y: 150, autoAlpha: 0, scaleY: 1.3, scaleX: 0.8, transformOrigin: "50% 0%" },
+                      { y: 0, autoAlpha: 1, scaleY: 1.25, scaleX: 0.82, duration: 0.26, ease: "power3.in" }, hB - 0.26)
+    .to("#slotB", { scaleY: 0.72, scaleX: 1.26, duration: 0.06, ease: "power2.out" }, hB)
+    .to("#slotB", { scaleY: 1, scaleX: 1, duration: 0.42, ease: "back.out(3)" }, hB + 0.06)
+    .to("#cardB", { y: -8, duration: 0.06, ease: "power2.out" }, hB)
+    .to("#cardB", { y: 0, duration: 0.42, ease: "back.out(3)" }, hB + 0.06)
+    .fromTo("#cardB .stripe", { scaleY: 1 }, { scaleY: 2.4, duration: 0.06, ease: "power2.out", transformOrigin: "50% 0%" }, hB)
+    .to("#cardB .stripe", { scaleY: 1, duration: 0.4, ease: "power3.out" }, hB + 0.06)
+    .from("#nameB", { yPercent: 105, duration: 0.42, ease: "power4.out" }, hB + 0.06);
+  shake(hB, 5);
+
+  // 4. VS punches into the seam: wind-up, slam, cards knocked apart, ring + sparks
+  const hit = 1.12;
+  // it winds back a little before whipping across the seam, stretched along its path, then squashes on the stop
+  tl.fromTo("#mid", { x: -200, autoAlpha: 0 }, { x: -236, autoAlpha: 1, duration: 0.14, ease: "power2.out" }, hit - 0.32)
+    .to("#mid", { x: 0, duration: 0.18, ease: "power4.in" }, hit - 0.18)
+    .fromTo("#vs", { scaleX: 1, scaleY: 1 }, { scaleX: 1.35, scaleY: 0.78, duration: 0.32, ease: "power3.in" }, hit - 0.32)
+    .fromTo("#vsText", { rotation: -200 }, { rotation: 0, duration: 0.32, ease: "power3.in" }, hit - 0.32)
+    .to("#vsText", { rotation: 10, duration: 0.06, ease: "power2.out" }, hit)
+    .to("#vsText", { rotation: 0, duration: 0.5, ease: "back.out(3)" }, hit + 0.06)
+    .to("#vs", { scaleX: 0.74, scaleY: 1.24, duration: 0.06, ease: "power2.out" }, hit)
+    .to("#vs", { scaleX: 1, scaleY: 1, duration: 0.55, ease: "elastic.out(1.1, 0.4)" }, hit + 0.06)
+    .to("#cardA", { y: -14, rotation: -0.8, duration: 0.12, ease: "power1.out" }, hit)
+    .to("#cardB", { y: 14, rotation: 0.8, duration: 0.12, ease: "power1.out" }, hit)
+    .to(["#cardA", "#cardB"], { y: 0, rotation: 0, duration: 0.6, ease: "elastic.out(1, 0.45)" }, hit + 0.12)
+    .fromTo("#ring", { scale: 0.9, autoAlpha: 1, transformOrigin: "50% 50%" }, { scale: 1.6, autoAlpha: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, hit)
+    .fromTo(".spark", { scaleX: 0.2, autoAlpha: 0, transformOrigin: "50% 50%" },
+            { scaleX: 1, autoAlpha: 1, duration: 0.14, ease: "power3.out", stagger: 0.02 }, hit)
+    .to(".spark", { autoAlpha: 0, duration: 0.28, ease: "power2.in", stagger: 0.02 }, hit + 0.18);
+  shake(hit, 9);
+
+  // 5. title plate and tags pop, the call to action springs up from the bottom
+  tl.from("#title", { y: -18, autoAlpha: 0, scale: 0.88, duration: 0.5, ease: "back.out(2.2)" }, hit + 0.2)
+    .from(["#tagA", "#tagB"], { scale: 0.4, autoAlpha: 0, duration: 0.42, ease: "back.out(3)", stagger: 0.08 }, hit + 0.28)
+    .fromTo("#cta", { y: 40, scaleY: 1.25, scaleX: 0.85, autoAlpha: 0 }, { y: 0, scaleY: 1, scaleX: 1, autoAlpha: 1, duration: 0.24, ease: "power3.out" }, hit + 0.42)
+    .to("#cta", { scaleY: 0.86, scaleX: 1.1, duration: 0.06, ease: "power2.out" }, hit + 0.66)
+    .to("#cta", { scaleY: 1, scaleX: 1, duration: 0.4, ease: "back.out(3)" }, hit + 0.72)
+    // 6. still alive near the end: CTA wiggles, VS throbs, a second ring rolls out
+    .to("#cta", { keyframes: [{ rotation: -4, duration: 0.07 }, { rotation: 3.5, duration: 0.08 }, { rotation: -2, duration: 0.08 }, { rotation: 0, duration: 0.12 }], ease: "power2.inOut" }, hit + 1.2)
+    .to("#vs", { scale: 1.14, duration: 0.16, ease: "power2.out" }, hit + 1.28)
+    .to("#vs", { scale: 1, duration: 0.42, ease: "back.out(3)" }, hit + 1.44)
+    .fromTo("#ring", { scale: 0.95, autoAlpha: 0.8, transformOrigin: "50% 50%" }, { scale: 1.5, autoAlpha: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, hit + 1.32)
+    .to({}, { duration: 0.3 }, hit + 1.84);
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

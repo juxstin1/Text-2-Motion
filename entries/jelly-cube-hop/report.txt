@@ -1,0 +1,20 @@
+duration 3.67s, 112 frames @30fps, 52 tweens
+TIMING
+  #eyebrow, #title ...  autoAlpha,y  0.00-0.66s  power3.out  stagger 0.08
+  #s1  autoAlpha,y  0.10-0.50s  power3.out
+  #cube  scaleY,scaleX,skewX  0.40-0.66s  power2.inOut
+  #face  y  0.40-0.70s  power2.out
+  #shadow  scaleX  0.40-0.66s  power2.inOut
+  #cubePos  x  0.66-1.16s  power1.inOut
+  #shadow  x  0.66-1.16s  power1.inOut
+  #cubePos  y  0.66-0.91s  power2.out
+  #shadow  scaleX,autoAlpha  0.66-0.91s  power2.out
+  #cube  scaleY,scaleX,skewX  0.66-0.76s  power2.out
+  (+42 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 16 visible (#eyebrow, #title, #body, #s1 ...); final hold 0.30s; no overlaps

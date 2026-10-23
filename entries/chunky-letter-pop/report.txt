@@ -1,0 +1,15 @@
+duration 2.10s, 64 frames @30fps, 4 tweens
+TIMING
+  #tag  y,autoAlpha  0.00-0.50s  power3.out
+  #l2 div x6, #l1 div x5  scale,autoAlpha,rotation  0.15-1.25s  back.out(1.7)  stagger 0.055
+  #sub  y,autoAlpha  1.00-1.60s  power3.out
+  (hold)  1.60-2.10s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 2 note
+  note #l2 div[0] / #l2 div[5]  0.93-1.00s  peak 11%
+  note #l2 div[1] / #l2 div[3]  0.60-0.70s  peak 12%
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 14 visible (#tag, #l2 div x6, #l1 div x5, #sub ...); final hold 0.73s; no overlaps

@@ -1,0 +1,676 @@
+{
+ "duration": 3.59,
+ "fps": 30,
+ "frames": 109,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#core"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 1.45,
+   "ease": "power2.in",
+   "props": [
+    "a"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 0.05,
+   "duration": 0.8,
+   "ease": "expo.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#orbitPath"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.05,
+   "duration": 0.7,
+   "ease": "back.out(1.8)",
+   "props": [
+    "k"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 0.08,
+   "duration": 0.83,
+   "ease": "back.out(2.2)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": 0.07,
+   "targets": [
+    "#item0 div.chip",
+    "#item1 div.chip",
+    "#item2 div.chip",
+    "#item3 div.chip",
+    "#item4 div.chip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.05,
+   "duration": 0.4,
+   "ease": "power2.out",
+   "props": [
+    "k"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  },
+  {
+   "start": 1.05,
+   "duration": 0.4,
+   "ease": "power2.in",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#core"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.45,
+   "duration": 0.7,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#shock"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.45,
+   "duration": 0.25,
+   "ease": "power3.in",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#core"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.45,
+   "duration": 0.5,
+   "ease": "power3.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#orbitPath"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.45,
+   "duration": 0.75,
+   "ease": "back.out(1.5)",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#item0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.45,
+   "duration": 0.8,
+   "ease": "power3.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.5,
+   "duration": 0.75,
+   "ease": "back.out(1.5)",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#item1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.5,
+   "duration": 0.8,
+   "ease": "power3.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.55,
+   "duration": 0.75,
+   "ease": "back.out(1.5)",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#item2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.55,
+   "duration": 0.8,
+   "ease": "power3.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.75,
+   "ease": "back.out(1.5)",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#item3"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.8,
+   "ease": "power3.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot3"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.55,
+   "ease": "back.out(2)",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#head"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.65,
+   "duration": 0.75,
+   "ease": "back.out(1.5)",
+   "props": [
+    "x",
+    "y",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#item4"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.65,
+   "duration": 0.8,
+   "ease": "power3.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot4"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.7,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#kicker"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.7,
+   "duration": 0.726,
+   "ease": "back.out(2.2)",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.012,
+   "targets": [
+    "#title div[0]",
+    "#title div[1]",
+    "#title div[2]",
+    "#title div[3]",
+    "#title div[4]",
+    "#title div[5]",
+    "#title div[6]",
+    "#title div[7]",
+    "#title div[8]",
+    "#title div[9]",
+    "#title div[10]",
+    "#title div[11]",
+    "#title div[12]",
+    "#title div[13]",
+    "#title div[14]",
+    "#title div[15]",
+    "#title div[16]",
+    "#title div[17]",
+    "#title div[18]",
+    "#title div[19]",
+    "#title div[20]",
+    "#title div[21]",
+    "#title div[22]",
+    "#title div[23]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.95,
+   "duration": 0.69,
+   "ease": "back.out(2.4)",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": 0.06,
+   "targets": [
+    "#item0 div.name",
+    "#item1 div.name",
+    "#item2 div.name",
+    "#item3 div.name",
+    "#item4 div.name"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.1,
+   "duration": 0.69,
+   "ease": "power3.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": 0.06,
+   "targets": [
+    "#item0 i",
+    "#item1 i",
+    "#item2 i",
+    "#item3 i",
+    "#item4 i"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.45,
+   "duration": 0.84,
+   "ease": "power1.out",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": 0.07,
+   "targets": [
+    "#item0 div.chip",
+    "#item1 div.chip",
+    "#item2 div.chip",
+    "#item3 div.chip",
+    "#item4 div.chip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.29,
+   "duration": 0.3,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#core",
+  "#orbitPath",
+  "#item0 div.chip",
+  "#item1 div.chip",
+  "#item2 div.chip",
+  "#item3 div.chip",
+  "#item4 div.chip",
+  "#shock",
+  "#item0",
+  "#slot0",
+  "#item1",
+  "#slot1",
+  "#item2",
+  "#slot2",
+  "#item3",
+  "#slot3",
+  "#head",
+  "#item4",
+  "#slot4",
+  "#kicker",
+  "#title div[0]",
+  "#title div[1]",
+  "#title div[2]",
+  "#title div[3]",
+  "#title div[4]",
+  "#title div[5]",
+  "#title div[6]",
+  "#title div[7]",
+  "#title div[8]",
+  "#title div[9]",
+  "#title div[10]",
+  "#title div[11]",
+  "#title div[12]",
+  "#title div[13]",
+  "#title div[14]",
+  "#title div[15]",
+  "#title div[16]",
+  "#title div[17]",
+  "#title div[18]",
+  "#title div[19]",
+  "#title div[20]",
+  "#title div[21]",
+  "#title div[22]",
+  "#title div[23]",
+  "#item0 div.name",
+  "#item1 div.name",
+  "#item2 div.name",
+  "#item3 div.name",
+  "#item4 div.name",
+  "#item0 i",
+  "#item1 i",
+  "#item2 i",
+  "#item3 i",
+  "#item4 i",
+  "#item0 span",
+  "#item1 span",
+  "#item2 span",
+  "#item3 span",
+  "#item4 span"
+ ],
+ "fonts": [
+  "Inter, sans-serif",
+  "\"Space Grotesk\", sans-serif",
+  "\"Space Grotesk\""
+ ],
+ "flagged": false,
+ "notes": 6,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#item0 div.chip",
+    "b": "#item1 div.chip",
+    "ranges": [
+     [
+      0.4,
+      0.5
+     ]
+    ],
+    "peak": 0.15,
+    "peak_frame": 14,
+    "ia": 2,
+    "ib": 3,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#item1 div.chip",
+    "b": "#item0",
+    "ranges": [
+     [
+      0.36666666666666664,
+      0.6666666666666666
+     ]
+    ],
+    "peak": 0.34,
+    "peak_frame": 14,
+    "ia": 3,
+    "ib": 8,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#item3 div.chip",
+    "b": "#item4",
+    "ranges": [
+     [
+      0.8333333333333334,
+      0.9
+     ]
+    ],
+    "peak": 0.18,
+    "peak_frame": 26,
+    "ia": 5,
+    "ib": 17,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#item0",
+    "b": "#item1",
+    "ranges": [
+     [
+      0.0,
+      0.16666666666666666
+     ],
+     [
+      0.5,
+      0.6666666666666666
+     ]
+    ],
+    "peak": 0.35,
+    "peak_frame": 0,
+    "ia": 8,
+    "ib": 10,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#item2",
+    "b": "#item3",
+    "ranges": [
+     [
+      0.0,
+      0.03333333333333333
+     ]
+    ],
+    "peak": 0.1,
+    "peak_frame": 0,
+    "ia": 12,
+    "ib": 14,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#item3",
+    "b": "#item4",
+    "ranges": [
+     [
+      0.8333333333333334,
+      0.9
+     ]
+    ],
+    "peak": 0.18,
+    "peak_frame": 26,
+    "ia": 14,
+    "ib": 17,
+    "defect": false,
+    "static": false
+   }
+  ],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 3,
+  "format": "landscape",
+  "final_hold": 0.39,
+  "end_visible": [
+   "#item0 div.chip",
+   "#item1 div.chip",
+   "#item2 div.chip",
+   "#item3 div.chip",
+   "#item4 div.chip",
+   "#item0",
+   "#slot0",
+   "#item1",
+   "#slot1",
+   "#item2",
+   "#slot2",
+   "#item3",
+   "#slot3",
+   "#head",
+   "#item4",
+   "#slot4",
+   "#kicker",
+   "#title div[0]",
+   "#title div[1]",
+   "#title div[2]",
+   "#title div[3]",
+   "#title div[4]",
+   "#title div[5]",
+   "#title div[6]",
+   "#title div[7]",
+   "#title div[8]",
+   "#title div[9]",
+   "#title div[10]",
+   "#title div[11]",
+   "#title div[12]",
+   "#title div[13]",
+   "#title div[14]",
+   "#title div[15]",
+   "#title div[16]",
+   "#title div[17]",
+   "#title div[18]",
+   "#title div[19]",
+   "#title div[20]",
+   "#title div[21]",
+   "#title div[22]",
+   "#title div[23]",
+   "#item0 div.name",
+   "#item1 div.name",
+   "#item2 div.name",
+   "#item3 div.name",
+   "#item4 div.name",
+   "#item0 i",
+   "#item1 i",
+   "#item2 i",
+   "#item3 i",
+   "#item4 i",
+   "#item0 span",
+   "#item1 span",
+   "#item2 span",
+   "#item3 span",
+   "#item4 span"
+  ],
+  "end_overlaps": [],
+  "n_notes": 6
+ }
+}

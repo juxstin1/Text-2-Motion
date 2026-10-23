@@ -1,0 +1,1 @@
+modal dialog scales in from 92% while the backdrop dims

@@ -1,0 +1,28 @@
+duration 3.15s, 96 frames @30fps, 19 tweens
+TIMING
+  #cursor  x  0.00-0.60s  power2.inOut
+  #cursor  y  0.00-0.60s  power3.out
+  #button  scale  0.42-0.62s  power2.out
+  #button  scaleX,scaleY  0.66-0.76s  power2.out
+  #cursor  scale  0.66-0.76s  power2.out
+  #iris  autoAlpha  set at 0.80s
+  #iris  scale  0.80-1.40s  power2.in
+  #cursor  autoAlpha,scale  0.80-0.95s  power2.in
+  #ring  autoAlpha  set at 0.90s
+  #ring  scale  0.90-1.52s  power2.in
+  (+9 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 5 DEFECT, 4 note
+  DEFECT #bTitle span[0] / #aLabel  1.53-1.73s, 1.80-3.15s  peak 70%  (onto static text)
+  DEFECT #bTitle span[0] / #aTitle  1.53-3.15s  peak 74%  (onto static text)
+  DEFECT #bTitle span[1] / #aLabel  1.67-1.83s, 1.93-3.15s  peak 36%  (onto static text)
+  DEFECT #bTitle span[1] / #aTitle  1.70-3.15s  peak 68%  (onto static text)
+  (+1 more)
+  note #iris / #aTitle  1.10-1.17s  peak 97%  (onto static text)
+  note #iris / #aHint  1.03-1.13s  peak 96%  (onto static text)
+  (+2 more)
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 14 visible (#iris, #bTitle span x2, #bLabel, #pills div.pill x3 ...); final hold 0.28s; overlapping at end: #bTitle span[0]/#aLabel, #bTitle span[0]/#aTitle

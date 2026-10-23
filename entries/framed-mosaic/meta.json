@@ -1,0 +1,14 @@
+{
+  "id": "framed-mosaic",
+  "prompt": "mosaic of framed tiles fades and scales in in a scattered order",
+  "tags": [
+    "entrance",
+    "grid",
+    "scale",
+    "stagger"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

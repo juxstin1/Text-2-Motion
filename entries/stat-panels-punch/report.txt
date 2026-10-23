@@ -1,0 +1,17 @@
+duration 1.75s, 54 frames @30fps, 8 tweens
+TIMING
+  #title  y,autoAlpha  0.00-0.50s  power4.out
+  #kicker, #season  y,autoAlpha  0.10-0.50s  power3.out
+  div.panel x3  y,scaleY  0.25-0.91s  power4.out  stagger 0.08
+  div.panel x3  autoAlpha  0.25-0.53s  power1.out  stagger 0.08
+  div.num x3  yPercent,autoAlpha  0.40-1.06s  expo.out  stagger 0.08
+  div.bar x3  scaleX  0.55-1.11s  power3.inOut  stagger 0.08
+  div.lbl x3, div.sub x3  x,autoAlpha  0.65-1.25s  power3.out  stagger 0.04
+  (hold)  1.25-1.75s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 18 visible (#title, #kicker, #season, div.panel x3 ...); final hold 0.52s; no overlaps

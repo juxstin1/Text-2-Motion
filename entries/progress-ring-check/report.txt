@@ -1,0 +1,22 @@
+duration 3.14s, 96 frames @30fps, 16 tweens
+TIMING
+  #ring  scale,autoAlpha  0.00-0.45s  back.out(2.2)
+  #count  y,autoAlpha  0.12-0.47s  power2.out
+  #capA  y,autoAlpha  0.15-0.55s  power3.out
+  #arc  drawSVG  0.30-2.10s  upload
+  {object} x1  v  0.30-2.10s  upload
+  #ring  scale  2.10-2.26s  power2.in
+  #count  scale,autoAlpha  2.10-2.26s  power2.in
+  #ring  scale  2.26-2.86s  back.out(3)
+  #disc  scale  2.26-2.56s  power3.out
+  #capA  y,autoAlpha  2.26-2.51s  power2.in
+  (+6 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 2 note
+  note #capB div.t / #capA div.t  2.43-2.50s  peak 31%  (onto static text)
+  note #capB div.t / #capA div.s  2.43-2.50s  peak 87%  (onto static text)
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 8 visible (#ring, #arc, #disc, #check ...); final hold 0.27s; no overlaps

@@ -1,0 +1,14 @@
+{
+  "id": "vs-split",
+  "prompt": "VS split screen: logo A slams in left, logo B slams in right, \"VS\" punches in the middle",
+  "tags": [
+    "template",
+    "vs",
+    "comparison",
+    "slam"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

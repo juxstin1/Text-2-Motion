@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: soft-saas -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #EEF1FB; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #EEF1FB;
+           font-family: 'Manrope', sans-serif; font-weight: 500; color: #1A1F36; }
+  #status { position: absolute; left: 120px; top: 136px; display: flex; align-items: center; gap: 10px;
+            font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(26,31,54,0.6); }
+  #status i { width: 10px; height: 10px; border-radius: 50%; background: #6C5CE7; box-shadow: 0 0 0 4px rgba(108,92,231,0.18); }
+  #num { position: absolute; left: 112px; top: 172px; text-align: right; font-family: 'Sora', sans-serif; font-size: 92px;
+         font-weight: 700; letter-spacing: -0.025em; line-height: 1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  #unit { position: absolute; top: 202px; font-family: 'Sora', sans-serif; font-size: 56px; font-weight: 700;
+          letter-spacing: -0.025em; line-height: 1; color: rgba(26,31,54,0.35); }
+  #underline { position: absolute; left: 120px; top: 290px; height: 8px; border-radius: 4px; background: #6C5CE7;
+               transform-origin: 0 50%; }
+  #support { position: absolute; left: 120px; top: 326px; font-size: 20px; color: rgba(26,31,54,0.62); }
+  #support b { color: #1A1F36; font-weight: 700; }
+  #bars { position: absolute; left: 120px; top: 452px; width: 1040px; height: 72px; }
+  .b { position: absolute; bottom: 0; width: 7px; height: 72px; border-radius: 3px; background: #6C5CE7; transform-origin: 50% 100%; }
+  .b.inc { background: rgba(108,92,231,0.3); height: 44px; }
+  .axis { position: absolute; top: 540px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+          color: rgba(26,31,54,0.45); }
+  #ax-l { left: 120px; }
+  #ax-r { right: 120px; }
+  #ax-m { left: 0; right: 0; margin: 0 auto; width: fit-content; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="status"><i></i>All systems operational</div>
+  <div id="num">99.98%</div>
+  <div id="unit">uptime</div>
+  <div id="underline"></div>
+  <div id="support">Across <b>14 regions</b> over the last 90 days.</div>
+  <div id="bars"></div>
+  <div id="ax-l" class="axis">90 days ago</div>
+  <div id="ax-m" class="axis">2 incidents &middot; 17 min total</div>
+  <div id="ax-r" class="axis">Today</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  // layout: lock the number box to its final width so digits grow leftward and the unit never shifts
+  const num = document.getElementById("num"), unit = document.getElementById("unit");
+  const w = num.offsetWidth;
+  num.style.width = w + "px";
+  unit.style.left = (112 + w + 18) + "px";
+  document.getElementById("underline").style.width = (w + 18 + unit.offsetWidth - 8) + "px";
+
+  const bars = document.getElementById("bars");
+  const N = 90, STEP = 1040 / N;
+  for (let i = 0; i < N; i++) {
+    bars.insertAdjacentHTML("beforeend",
+      `<div class="b${i === 23 || i === 61 ? " inc" : ""}" style="left:${(i * STEP).toFixed(1)}px"></div>`);
+  }
+
+  const counter = { v: 0 };
+  const write = () => { num.textContent = counter.v.toFixed(2) + "%"; };
+  write();
+
+  const tl = gsap.timeline({ paused: true });
+  tl.from("#status", { y: 12, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 0)
+    .from("#num", { y: 14, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 0.08)
+    .to(counter, { v: 99.98, duration: 1.8, ease: "power3.out", onUpdate: write }, 0.1)
+    .from("#unit", { x: -12, autoAlpha: 0, duration: 0.6, ease: "power3.out" }, 0.25)
+    .from("#underline", { scaleX: 0, duration: 1.2, ease: "expo.inOut" }, 0.3)
+    .from("#support", { y: 12, autoAlpha: 0, duration: 0.6, ease: "power3.out" }, 0.6)
+    .from(".b", { scaleY: 0, duration: 0.5, ease: "power2.out", stagger: 0.008 }, 0.7)
+    .from(".axis", { autoAlpha: 0, y: 6, duration: 0.5, ease: "power2.out", stagger: 0.08 }, 1.3)
+    .to({}, { duration: 0.6 });
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "id": "article-card-wipe",
+  "prompt": "article card reveals with a wipe, then headline and byline fade up",
+  "tags": [
+    "entrance",
+    "card",
+    "wipe",
+    "editorial"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

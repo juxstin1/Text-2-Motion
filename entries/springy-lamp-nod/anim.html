@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: minimal-mono -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F2F2F0; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F2F2F0; color: #111111;
+           font-family: "JetBrains Mono"; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  #label { position: absolute; left: 96px; top: 96px; font-weight: 500; font-size: 14px; letter-spacing: 0.1em;
+           text-transform: uppercase; color: rgba(17,17,17,0.55); }
+  .big { position: absolute; left: 92px; font-weight: 700; font-size: 88px; line-height: 1; letter-spacing: -0.04em; white-space: nowrap; }
+  #w1 { top: 280px; }
+  #off { top: 384px; color: rgba(17,17,17,0.22); }
+  #on { top: 384px; color: #FF3B00; }
+  #caption { position: absolute; left: 96px; top: 500px; font-weight: 400; font-size: 14px; color: rgba(17,17,17,0.6); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="label">desk_lamp.svg / 01</div>
+  <div class="big" id="w1">lights</div>
+  <div class="big" id="off">off.</div>
+  <div class="big" id="on">on.</div>
+  <div id="caption">state 0 &rarr; 1</div>
+
+  <!-- one SVG rig: lower arm > upper arm > head, each group pivots on its joint -->
+  <svg id="scene" viewBox="0 0 1280 720" fill="none" stroke="#111111" stroke-linecap="round" stroke-linejoin="round">
+    <line id="desk" x1="560" y1="600" x2="1210" y2="600" stroke-width="3"/>
+    <ellipse id="pool" cx="1062" cy="600" rx="140" ry="13" fill="#FF3B00" fill-opacity="0.22" stroke="none"/>
+    <path id="base" class="ln" d="M684 600 Q750 568 816 600" stroke-width="6"/>
+    <g id="lower">
+      <line class="ln" x1="750" y1="584" x2="800" y2="410" stroke-width="6"/>
+      <line class="ln" x1="764" y1="580" x2="812" y2="414" stroke-width="2"/>
+      <g id="upper">
+        <line class="ln" x1="800" y1="410" x2="960" y2="340" stroke-width="6"/>
+        <line class="ln" x1="806" y1="422" x2="958" y2="355" stroke-width="2"/>
+        <g id="head">
+          <path id="beam" d="M936 466 L1054 427 L1200 600 L925 600 Z" fill="#FF3B00" fill-opacity="0.14" stroke="none"/>
+          <circle id="bulb" cx="995" cy="446" r="17" fill="#FF3B00" stroke="none"/>
+          <path class="ln" d="M945 345 L975 335 L1054 427 Q1000 464 936 466 Z" stroke-width="6" fill="#F2F2F0"/>
+          <circle class="ln" cx="960" cy="340" r="10" stroke-width="5" fill="#F2F2F0"/>
+        </g>
+        <circle class="ln" cx="800" cy="410" r="10" stroke-width="5" fill="#F2F2F0"/>
+      </g>
+      <circle class="ln" cx="750" cy="584" r="10" stroke-width="5" fill="#F2F2F0"/>
+    </g>
+  </svg>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const BASE = "750 584", ELBOW = "800 410", NECK = "960 340";
+
+  // asleep: slumped back, upper arm folded down, shade hanging forward; light off
+  gsap.set("#lower", { rotation: -40, svgOrigin: BASE });
+  gsap.set("#upper", { rotation: 100, svgOrigin: ELBOW });
+  gsap.set("#head", { rotation: -130, svgOrigin: NECK });
+  gsap.set(["#beam", "#bulb", "#pool", "#on"], { autoAlpha: 0 });
+
+  // line art draws on while it sleeps
+  tl.fromTo("#desk", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.6, ease: "power3.out" }, 0)
+    .from(".ln", { drawSVG: "0%", duration: 0.45, ease: "power2.out", stagger: 0.04 }, 0.08)
+    .from("#label", { autoAlpha: 0, x: -20, duration: 0.4, ease: "power3.out" }, 0.1)
+    .from(["#w1", "#off"], { autoAlpha: 0, y: 30, duration: 0.45, ease: "power3.out", stagger: 0.08 }, 0.2);
+
+  // anticipation: a slow crouch further down, coiling the spring
+  tl.to("#lower", { rotation: -48, duration: 0.24, ease: "power2.inOut" }, 0.7)
+    .to("#upper", { rotation: 112, duration: 0.24, ease: "power2.inOut" }, 0.7)
+    .to("#head", { rotation: -138, duration: 0.24, ease: "power2.inOut" }, 0.72);
+
+  // SPRING upright: the elbow unfolds first (so the head never dips into the desk), the base joint
+  // snaps up on a spring, and the head swings through last and overshoots
+  tl.to("#lower", { rotation: 0, duration: 1.0, ease: "elastic.out(1, 0.42)" }, 1.0)
+    .to("#upper", { rotation: 0, duration: 0.6, ease: "back.out(2)" }, 0.94)
+    .to("#head", { rotation: 0, duration: 0.5, ease: "back.out(2.6)" }, 1.24);
+
+  // two nods: the head dips, the upper arm gives a little in sympathy a beat later
+  const nod = (at) => {
+    tl.to("#head", { rotation: 20, duration: 0.15, ease: "power2.inOut" }, at)
+      .to("#upper", { rotation: 4, duration: 0.15, ease: "power2.inOut" }, at + 0.05)
+      .to("#head", { rotation: -4, duration: 0.17, ease: "power2.inOut" }, at + 0.15)
+      .to("#upper", { rotation: -1, duration: 0.17, ease: "power2.inOut" }, at + 0.2);
+  };
+  nod(1.72);
+  nod(2.06);
+  tl.to("#head", { rotation: 0, duration: 0.2, ease: "power2.out" }, 2.38)
+    .to("#upper", { rotation: 0, duration: 0.24, ease: "power2.out" }, 2.42);
+
+  // LIGHT SNAPS ON: bulb pops, beam flickers to full, head recoils from the click
+  tl.fromTo("#bulb", { autoAlpha: 0, scale: 0.3, transformOrigin: "50% 50%" },
+                     { autoAlpha: 1, scale: 1, duration: 0.24, ease: "back.out(3)" }, 2.66)
+    .to("#beam", { autoAlpha: 1, duration: 0.04, ease: "power4.out" }, 2.68)
+    .to("#beam", { autoAlpha: 0.3, duration: 0.05, ease: "power2.in" }, 2.72)
+    .to("#beam", { autoAlpha: 1, duration: 0.08, ease: "power4.out" }, 2.77)
+    .fromTo("#pool", { autoAlpha: 0, scaleX: 0.2, transformOrigin: "50% 50%" },
+                     { autoAlpha: 1, scaleX: 1, duration: 0.4, ease: "expo.out" }, 2.68)
+    .to("#head", { rotation: -7, duration: 0.07, ease: "power2.out" }, 2.66)
+    .to("#head", { rotation: 0, duration: 0.42, ease: "back.out(2.5)" }, 2.73)
+    .to("#lower", { rotation: -2, duration: 0.1, ease: "power2.out" }, 2.68)
+    .to("#lower", { rotation: 0, duration: 0.4, ease: "back.out(2)" }, 2.78);
+
+  // "off." gets knocked down, "on." punches in hot
+  tl.to("#off", { y: 70, rotation: 14, autoAlpha: 0, transformOrigin: "0% 100%", duration: 0.12, ease: "power3.in" }, 2.64)
+    .fromTo("#on", { autoAlpha: 0, scale: 0.3, rotation: -14, transformOrigin: "0% 100%" },
+                   { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.36, ease: "back.out(2.5)" }, 2.77)
+    .from("#caption", { autoAlpha: 0, x: -20, duration: 0.4, ease: "power3.out" }, 2.92)
+    .to({}, { duration: 0.25 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

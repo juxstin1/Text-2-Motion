@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: editorial -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F4EFE6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F4EFE6; color: #1B1A17; }
+  .label { font: 600 14px/1 'Inter'; letter-spacing: 0.18em; text-transform: uppercase; }
+  #kicker { position: absolute; left: 200px; top: 128px; color: #B4442C; }
+  #folio { position: absolute; right: 96px; top: 128px; color: rgba(27,26,23,0.45); }
+  #mark { position: absolute; left: 92px; top: 168px; font: 800 120px/1 'Playfair Display'; color: #B4442C; }
+  #quote { position: absolute; left: 200px; top: 184px; width: 960px; margin: 0; font: 800 72px/1.1 'Playfair Display'; letter-spacing: -0.02em; }
+  #quote em { font-style: normal; color: #B4442C; }
+  #attr { position: absolute; left: 200px; top: 508px; display: flex; align-items: center; gap: 20px; }
+  #dash { width: 48px; height: 2px; background: #B4442C; transform-origin: 0 50%; }
+  #who { color: #1B1A17; }
+  #role { margin-top: 8px; font: 400 18px/1 'Inter'; color: rgba(27,26,23,0.6); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="label" id="kicker">The interview</div>
+  <div class="label" id="folio">Issue 14 — p. 32</div>
+  <div id="mark">“</div>
+  <h1 id="quote">Good type is <em>honest.</em> It never pretends to be anything more than it is.</h1>
+  <div id="attr">
+    <div id="dash"></div>
+    <div id="names"><div class="label" id="who">Mara Ellison</div><div id="role">Creative director, Folio Press</div></div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+gsap.registerPlugin(SplitText);
+document.fonts.ready.then(() => {
+  const split = SplitText.create("#quote", { type: "words" });
+  const tl = gsap.timeline({ paused: true });
+  tl.from(["#kicker", "#folio"], { autoAlpha: 0, y: 8, duration: 0.6, ease: "power2.out" }, 0)
+    .from("#mark", { scale: 0.6, autoAlpha: 0, transformOrigin: "50% 70%", duration: 0.7, ease: "power3.out" }, 0.1)
+    // words land in reading rhythm: short rise, gentle power2 settle
+    .from(split.words, { y: 24, autoAlpha: 0, duration: 0.7, ease: "power2.out", stagger: 0.075 }, 0.3)
+    // attribution comes last: rule draws out, then the name slides in beside it
+    .from("#dash", { scaleX: 0, duration: 0.5, ease: "power3.inOut" }, "-=0.2")
+    .from(["#who", "#role"], { x: -24, autoAlpha: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 }, "<0.25")
+    .to({}, { duration: 0.6 }); // final hold
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

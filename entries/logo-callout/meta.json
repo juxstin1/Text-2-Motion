@@ -1,0 +1,14 @@
+{
+  "id": "logo-callout",
+  "prompt": "a logo pops in with a pointer line drawing to a label, for annotating footage",
+  "tags": [
+    "template",
+    "callout",
+    "annotation",
+    "logo"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}

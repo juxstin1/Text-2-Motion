@@ -1,0 +1,16 @@
+duration 3.08s, 94 frames @30fps, 7 tweens
+TIMING
+  #t4, #t1 ...  autoAlpha,scale  0.00-1.56s  power3.out  stagger 0.11
+  #t4 svg, #t1 svg ...  scale  0.00-1.96s  power3.out  stagger 0.11
+  #eyebrow  autoAlpha,y  0.35-0.95s  power2.out
+  #title div x2  yPercent  0.45-1.57s  power4.out  stagger 0.12
+  #rule  scaleX  1.41-2.11s  power3.inOut
+  #body, #dates  autoAlpha,y  1.66-2.48s  power2.out  stagger 0.12
+  (hold)  2.48-3.08s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 20 visible (#t4, #t1, #t6, #t2 ...); final hold 0.81s; no overlaps

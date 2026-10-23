@@ -1,0 +1,197 @@
+{
+ "duration": 1.75,
+ "fps": 30,
+ "frames": 54,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.5,
+   "ease": "power4.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.4,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#kicker",
+    "#season"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.25,
+   "duration": 0.66,
+   "ease": "power4.out",
+   "props": [
+    "y",
+    "scaleY"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "div.panel[0]",
+    "div.panel[1]",
+    "div.panel[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.25,
+   "duration": 0.28,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "div.panel[0]",
+    "div.panel[1]",
+    "div.panel[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.4,
+   "duration": 0.66,
+   "ease": "expo.out",
+   "props": [
+    "yPercent",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "div.num[0]",
+    "div.num[1]",
+    "div.num[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.55,
+   "duration": 0.56,
+   "ease": "power3.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": 0.08,
+   "targets": [
+    "div.bar[0]",
+    "div.bar[1]",
+    "div.bar[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.65,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.04,
+   "targets": [
+    "div.lbl[0]",
+    "div.lbl[1]",
+    "div.lbl[2]",
+    "div.sub[0]",
+    "div.sub[1]",
+    "div.sub[2]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.25,
+   "duration": 0.5,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#title",
+  "#kicker",
+  "#season",
+  "div.panel[0]",
+  "div.panel[1]",
+  "div.panel[2]",
+  "div.num[0]",
+  "div.num[1]",
+  "div.num[2]",
+  "div.bar[0]",
+  "div.bar[1]",
+  "div.bar[2]",
+  "div.lbl[0]",
+  "div.lbl[1]",
+  "div.lbl[2]",
+  "div.sub[0]",
+  "div.sub[1]",
+  "div.sub[2]"
+ ],
+ "fonts": [
+  "\"Archivo Black\"",
+  "\"Bebas Neue\""
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 0.52,
+  "end_visible": [
+   "#title",
+   "#kicker",
+   "#season",
+   "div.panel[0]",
+   "div.panel[1]",
+   "div.panel[2]",
+   "div.num[0]",
+   "div.num[1]",
+   "div.num[2]",
+   "div.bar[0]",
+   "div.bar[1]",
+   "div.bar[2]",
+   "div.lbl[0]",
+   "div.lbl[1]",
+   "div.lbl[2]",
+   "div.sub[0]",
+   "div.sub[1]",
+   "div.sub[2]"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

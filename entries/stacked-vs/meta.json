@@ -1,0 +1,14 @@
+{
+  "id": "stacked-vs",
+  "prompt": "TEMPLATE vertical VS: logo A drops in on top, logo B rises from below, VS punches in the middle",
+  "tags": [
+    "vertical",
+    "template",
+    "vs",
+    "comparison"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

@@ -1,0 +1,999 @@
+{
+ "duration": 3.94,
+ "fps": 30,
+ "frames": 120,
+ "format": "vertical",
+ "size": [
+  720,
+  1280
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.36,
+   "ease": "power2.out",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#armL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.05,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "drawSVG"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#ground"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.06,
+   "duration": 0.3,
+   "ease": "power2.out",
+   "props": [
+    "scaleX",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.06,
+   "duration": 0.3,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#tuft"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.14,
+   "duration": 0.24,
+   "ease": "sine.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.36,
+   "duration": 0.24,
+   "ease": "power2.in",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.36,
+   "duration": 0.24,
+   "ease": "power2.in",
+   "props": [
+    "scaleX",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.44,
+   "duration": 0.16,
+   "ease": "power2.in",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 0.12,
+   "ease": "power2.in",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armL"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 0.12,
+   "ease": "power2.in",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.6,
+   "duration": 0.07,
+   "ease": "power2.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.6,
+   "duration": 0.09,
+   "ease": "power2.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tuft"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.62,
+   "duration": 0.35,
+   "ease": "back.out(3)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armL",
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.67,
+   "duration": 0.14,
+   "ease": "power2.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.67,
+   "duration": 0.35,
+   "ease": "sine.out",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.69,
+   "duration": 0.2,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tuft"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.81,
+   "duration": 0.3,
+   "ease": "sine.inOut",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.89,
+   "duration": 0.2,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tuft"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.9,
+   "duration": 0.06,
+   "ease": "power2.in",
+   "props": [
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#eyes"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.96,
+   "duration": 0.1,
+   "ease": "power2.out",
+   "props": [
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#eyes"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1,
+   "duration": 0.12,
+   "ease": "power2.in",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1,
+   "duration": 0.12,
+   "ease": "power2.in",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.09,
+   "duration": 0.22,
+   "ease": "sine.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tuft"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.1,
+   "duration": 0.3,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.12,
+   "duration": 0.32,
+   "ease": "power2.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.14,
+   "duration": 0.2,
+   "ease": "power2.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#foreR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.14,
+   "duration": 0.2,
+   "ease": "back.out(3)",
+   "props": [
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#smile"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.34,
+   "duration": 0.13,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#foreR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.38,
+   "duration": 0.13,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.47,
+   "duration": 0.13,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#foreR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.51,
+   "duration": 0.13,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.6,
+   "duration": 0.13,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#foreR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.64,
+   "duration": 0.13,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.73,
+   "duration": 0.13,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#foreR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.77,
+   "duration": 0.13,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.82,
+   "duration": 0.18,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#glints"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.9,
+   "duration": 0.16,
+   "ease": "power2.in",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.9,
+   "duration": 0.16,
+   "ease": "power2.in",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#foreR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.9,
+   "duration": 0.16,
+   "ease": "power2.in",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.06,
+   "duration": 0.26,
+   "ease": "back.out(2.4)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.06,
+   "duration": 0.26,
+   "ease": "back.out(2)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.08,
+   "duration": 0.22,
+   "ease": "back.out(2)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#foreR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.1,
+   "duration": 0.2,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#finger"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.14,
+   "duration": 0.6,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha",
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#bubble"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.3,
+   "duration": 0.3,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#eyebrow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.32,
+   "duration": 0.05,
+   "ease": "power1.out",
+   "props": [
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#smile"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.34,
+   "duration": 0.64,
+   "ease": "back.out(1.7)",
+   "props": [
+    "y",
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.07,
+   "targets": [
+    "#line div[0]",
+    "#line div[1]",
+    "#line div[2]",
+    "#line div[3]",
+    "#line div[4]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.34,
+   "duration": 0.56,
+   "ease": "power1.out",
+   "props": [
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#mouthO"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.88,
+   "duration": 0.12,
+   "ease": "power2.out",
+   "props": [
+    "autoAlpha",
+    "scaleX"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#smile"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.9,
+   "duration": 0.74,
+   "ease": "power1.out",
+   "props": [
+    "scaleX",
+    "scaleY",
+    "rotation",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#pip"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.9,
+   "duration": 0.5,
+   "ease": "sine.inOut",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#bubble"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.94,
+   "duration": 0.12,
+   "ease": "power2.in",
+   "props": [
+    "scale"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#finger"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.98,
+   "duration": 0.44,
+   "ease": "power1.out",
+   "props": [
+    "scaleX",
+    "autoAlpha"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shadow"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.98,
+   "duration": 0.4,
+   "ease": "power3.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#armR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3,
+   "duration": 0.24,
+   "ease": "power2.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#foreR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3,
+   "duration": 0.14,
+   "ease": "power2.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tuft"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.1,
+   "duration": 0.3,
+   "ease": "power2.inOut",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#glints"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.16,
+   "duration": 0.18,
+   "ease": "sine.inOut",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tuft"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.24,
+   "duration": 0.34,
+   "ease": "back.out(3)",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#foreR"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.34,
+   "duration": 0.22,
+   "ease": "sine.out",
+   "props": [
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#tuft"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.4,
+   "duration": 0.06,
+   "ease": "power2.in",
+   "props": [
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#eyes"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.46,
+   "duration": 0.1,
+   "ease": "power2.out",
+   "props": [
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#eyes"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.64,
+   "duration": 0.3,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#pip",
+  "#armL",
+  "#armR",
+  "#ground",
+  "#shadow",
+  "#tuft",
+  "#eyes",
+  "#foreR",
+  "#smile",
+  "#glints",
+  "#finger",
+  "#bubble",
+  "#eyebrow",
+  "#line div[0]",
+  "#line div[1]",
+  "#line div[2]",
+  "#line div[3]",
+  "#line div[4]",
+  "#mouthO"
+ ],
+ "fonts": [
+  "Inter",
+  "Fraunces"
+ ],
+ "flagged": false,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "vertical",
+  "final_hold": 0.31,
+  "end_visible": [
+   "#pip",
+   "#armL",
+   "#armR",
+   "#shadow",
+   "#tuft",
+   "#eyes",
+   "#foreR",
+   "#smile",
+   "#glints",
+   "#bubble",
+   "#eyebrow",
+   "#line div[0]",
+   "#line div[1]",
+   "#line div[2]",
+   "#line div[3]",
+   "#line div[4]"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

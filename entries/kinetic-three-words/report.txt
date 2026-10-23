@@ -1,0 +1,16 @@
+duration 2.04s, 63 frames @30fps, 7 tweens
+TIMING
+  #w1  x,skewX  0.05-0.60s  expo.out
+  #w2  x,skewX  0.27-0.82s  expo.out
+  #num  autoAlpha,x  0.30-1.00s  power3.out
+  #w3  x,skewX  0.49-1.04s  expo.out
+  #bar  scaleX  0.82-1.27s  power4.out
+  #info div.label, #info div.big ...  y,autoAlpha  0.90-1.54s  power3.out  stagger 0.07
+  (hold)  1.54-2.04s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: clean
+end state: 8 visible (#w1, #w2, #num, #w3 ...); final hold 0.67s; no overlaps

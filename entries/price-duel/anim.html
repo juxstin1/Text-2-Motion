@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: minimal-mono -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F2F2F0; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #F2F2F0; }
+  /* pack background: hidden by render.py --alpha so the graphic sits on footage */
+  #bg { position: absolute; inset: 0; background-color: #F2F2F0;
+        background-image: linear-gradient(rgba(17,17,17,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(17,17,17,0.05) 1px, transparent 1px);
+        background-size: 40px 40px; }
+  #shake { position: absolute; left: 16px; top: 16px; width: 1248px; height: 688px; }
+  * { font-family: "JetBrains Mono"; }
+
+  /* header: one solid plate, auto width */
+  #headRow { position: absolute; left: 0; top: 70px; width: 1248px; display: flex; justify-content: center; }
+  #head { display: flex; align-items: baseline; gap: 18px; padding: 12px 22px; background: #111111; color: #F2F2F0; }
+  #label { font-weight: 500; font-size: 14px; letter-spacing: 0.1em; color: #FF3B00; white-space: nowrap; }
+  #title { font-weight: 700; font-size: 28px; letter-spacing: -0.04em; white-space: nowrap; max-width: 760px; overflow: hidden; }
+
+  /* card | badge column | card */
+  #row { position: absolute; left: 0; top: 200px; width: 1248px; height: 340px; display: flex; justify-content: center; align-items: center; }
+  .card { position: relative; width: 420px; height: 320px; box-sizing: border-box; padding: 28px 30px 26px 40px;
+          background: #F2F2F0; border: 3px solid #111111; box-shadow: 10px 10px 0 #111111;
+          display: flex; flex-direction: column; justify-content: space-between; }
+  .edge { position: absolute; left: 0; top: 0; width: 10px; height: 100%; background: var(--c); }
+  .brand { display: flex; align-items: center; gap: 16px; min-width: 0; }
+  .slot { position: relative; flex: none; width: 60px; height: 60px; color: var(--c); }
+  .slot svg { display: block; width: 100%; height: 100%; }
+  .who { min-width: 0; }
+  .name { font-weight: 700; font-size: 28px; letter-spacing: -0.04em; color: #111111; white-space: nowrap; overflow: hidden; }
+  .plan { font-weight: 500; font-size: 14px; letter-spacing: 0.1em; color: #111111; opacity: 0.7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .price { display: flex; align-items: baseline; color: #111111; transform-origin: 0% 100%; }
+  .cur { font-weight: 700; font-size: 48px; letter-spacing: -0.04em; }
+  .val { font-weight: 700; font-size: 88px; line-height: 1; letter-spacing: -0.04em; }
+  .per { font-weight: 500; font-size: 18px; letter-spacing: 0.1em; margin-left: 8px; }
+
+  #mid { position: relative; width: 320px; height: 320px; display: flex; align-items: center; justify-content: center; }
+  #badge { position: relative; width: 240px; box-sizing: border-box; padding: 18px 10px 16px; background: #FF3B00; color: #F2F2F0;
+           border: 3px solid #111111; text-align: center; transform: rotate(-3deg); }
+  #save { font-weight: 700; font-size: 48px; letter-spacing: -0.04em; line-height: 1.1; white-space: nowrap; overflow: hidden; }
+  #pct { font-weight: 500; font-size: 14px; letter-spacing: 0.1em; margin-top: 4px; white-space: nowrap; }
+  /* arrow points at the cheaper card (class set from DATA) */
+  .arrow { position: absolute; top: 50%; margin-top: -16px; width: 0; height: 0; border-top: 16px solid transparent; border-bottom: 16px solid transparent; }
+  #badge.left .arrow { left: -22px; border-right: 20px solid #111111; }
+  #badge.right .arrow { right: -22px; border-left: 20px solid #111111; }
+  #flash { position: absolute; inset: -3px; border: 4px solid #FF3B00; visibility: hidden; opacity: 0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="shake">
+    <div id="headRow"><div id="head"><span id="label"></span><span id="title"></span></div></div>
+    <div id="row">
+      <div class="card" id="cardA">
+        <div class="edge"></div>
+        <div class="brand">
+          <div class="slot" id="slotA">
+            <!-- placeholder logo: Quill (feather); paste any SVG logo here -->
+            <svg id="logoA" viewBox="0 0 100 100"><path d="M86 8 C46 14 18 44 18 88 C54 84 84 54 86 8 Z" fill="currentColor"/><path d="M14 94 L62 34" stroke="#F2F2F0" stroke-width="6" stroke-linecap="round"/></svg>
+          </div>
+          <div class="who"><div class="name" id="nameA"></div><div class="plan" id="planA"></div></div>
+        </div>
+        <div class="price" id="priceA"><span class="cur"></span><span class="val" id="valA"></span><span class="per"></span></div>
+      </div>
+      <div id="mid">
+        <div id="badge"><div class="arrow"></div><div id="flash"></div><div id="save"></div><div id="pct"></div></div>
+      </div>
+      <div class="card" id="cardB">
+        <div class="edge"></div>
+        <div class="brand">
+          <div class="slot" id="slotB">
+            <!-- placeholder logo: Orbit (planet + ring) -->
+            <svg id="logoB" viewBox="0 0 100 100"><circle cx="50" cy="50" r="24" fill="currentColor"/><ellipse cx="50" cy="50" rx="46" ry="16" fill="none" stroke="currentColor" stroke-width="7" transform="rotate(-24 50 50)"/><circle cx="84" cy="30" r="7" fill="currentColor"/></svg>
+          </div>
+          <div class="who"><div class="name" id="nameB"></div><div class="plan" id="planB"></div></div>
+        </div>
+        <div class="price" id="priceB"><span class="cur"></span><span class="val" id="valB"></span><span class="per"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+const DATA = {
+  label: "PRICE / MONTH",
+  title: "Pro plan, billed monthly",
+  currency: "$",
+  per: "/mo",
+  decimals: 2,
+  saveText: "-",            // badge line 1: "-$12.00"
+  cheaperText: "CHEAPER",   // badge line 2: "60% CHEAPER"
+  a: { name: "Quill", plan: "QUILL PRO", price: 20, color: "#2F6BFF" },
+  b: { name: "Orbit", plan: "ORBIT PLUS", price: 8, color: "#00A99D" },
+};
+
+// ---- fill the DOM from DATA
+const $ = s => document.querySelector(s);
+const A = { d: DATA.a, card: "#cardA", slot: "#slotA", price: "#priceA", val: "#valA", side: "left" };
+const B = { d: DATA.b, card: "#cardB", slot: "#slotB", price: "#priceB", val: "#valB", side: "right" };
+const cheap = DATA.a.price <= DATA.b.price ? A : B;
+const dear = cheap === A ? B : A;
+const money = v => DATA.currency + v.toFixed(DATA.decimals);
+$("#label").textContent = DATA.label;
+$("#title").textContent = DATA.title;
+[A, B].forEach(r => {
+  $(r.card).style.setProperty("--c", r.d.color);
+  $(r.card + " .name").textContent = r.d.name;
+  $(r.card + " .plan").textContent = r.d.plan;
+  $(r.card + " .cur").textContent = DATA.currency;
+  $(r.card + " .per").textContent = DATA.per;
+  $(r.val).textContent = (0).toFixed(DATA.decimals);
+  // mono font: reserve the final number of characters so counting never reflows
+  $(r.val).style.minWidth = r.d.price.toFixed(DATA.decimals).length + "ch";
+});
+const diff = dear.d.price - cheap.d.price;
+$("#save").textContent = DATA.saveText + money(0);
+$("#pct").textContent = Math.round(diff / dear.d.price * 100) + "% " + DATA.cheaperText;
+$("#badge").classList.add(cheap.side);
+
+// shrink a nowrap text until it fits its box
+function fit(el, minScale = 0.4) {
+  const base = parseFloat(getComputedStyle(el).fontSize);
+  for (let s = base; el.scrollWidth > el.clientWidth && s > base * minScale; s -= 1) el.style.fontSize = s + "px";
+}
+
+// a very long price shrinks its whole line (currency, number, unit) to the card width
+function fitPrice(p) {
+  const k = p.clientWidth / p.scrollWidth;
+  if (k < 1) p.querySelectorAll("span").forEach(sp => sp.style.fontSize = parseFloat(getComputedStyle(sp).fontSize) * k + "px");
+}
+
+document.fonts.ready.then(() => {
+  fit($("#cardA .name")); fit($("#cardB .name")); fit($("#title"));
+  $("#save").textContent = DATA.saveText + money(diff); fit($("#save")); $("#save").textContent = DATA.saveText + money(0);
+  fitPrice($("#priceA")); fitPrice($("#priceB"));
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. header drops, cards rise, logos pop
+  tl.from("#head", { y: -24, autoAlpha: 0, duration: 0.45, ease: "power4.out" }, 0)
+    .from([A.card, B.card], { y: 50, autoAlpha: 0, duration: 0.55, ease: "power4.out", stagger: 0.1 }, 0.08)
+    .from([A.slot, B.slot], { scale: 0, rotation: -40, duration: 0.45, ease: "back.out(3)", stagger: 0.1 }, 0.3);
+
+  // 2. the race: both counters start together, the cheaper one lands first; each landing thumps its card
+  const go = 0.62;
+  const race = (r, dur) => {
+    const o = { v: 0 };
+    tl.to(o, { v: r.d.price, duration: dur, ease: "power3.out",
+               onUpdate: () => { $(r.val).textContent = o.v.toFixed(DATA.decimals); } }, go);
+    const land = go + dur * 0.8;
+    tl.to(r.price, { scaleY: 0.82, scaleX: 1.06, duration: 0.06, ease: "power2.out" }, land)
+      .to(r.price, { scaleY: 1, scaleX: 1, duration: 0.4, ease: "back.out(3.5)" }, land + 0.06)
+      .to(r.card, { keyframes: [ { y: 6, duration: 0.05 }, { y: -3, duration: 0.06 }, { y: 0, duration: 0.12 } ], ease: "power2.out" }, land);
+    return land;
+  };
+  race(cheap, 0.95);
+  const last = race(dear, 1.3);
+
+  // 3. the badge winds up and pops between the cards, its saving counts up
+  const pop = last + 0.32;
+  tl.fromTo("#badge", { scale: 0, rotation: 12, autoAlpha: 0 }, { scale: 0.7, rotation: 8, autoAlpha: 1, duration: 0.14, ease: "power2.out" }, pop - 0.24)
+    .to("#badge", { scale: 0.62, rotation: 10, duration: 0.1, ease: "power2.inOut" }, pop - 0.1)
+    .to("#badge", { scale: 1.15, rotation: -6, duration: 0.12, ease: "power3.out" }, pop)
+    .to("#badge", { scale: 1, rotation: -3, duration: 0.5, ease: "elastic.out(1.1, 0.45)" }, pop + 0.12)
+    .fromTo("#flash", { scale: 1, autoAlpha: 1 }, { scale: 1.5, autoAlpha: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, pop + 0.04)
+    .to("#shake", { keyframes: [ { x: -6, y: 3, duration: 0.04 }, { x: 5, y: -2, duration: 0.05 }, { x: -2, y: 1, duration: 0.05 }, { x: 0, y: 0, duration: 0.08 } ], ease: "power2.out" }, pop)
+    .from("#pct", { autoAlpha: 0, y: 8, duration: 0.3, ease: "power3.out" }, pop + 0.2);
+  const s = { v: 0 };
+  tl.to(s, { v: diff, duration: 0.5, ease: "power3.out", onUpdate: () => { $("#save").textContent = DATA.saveText + money(s.v); } }, pop);
+
+  // 4. the cheaper card lifts toward the viewer and its border lights up, the arrow nudges it twice
+  const nudge = cheap === A ? -8 : 8;
+  tl.to(cheap.card, { scale: 1.03, duration: 0.45, ease: "back.out(2.5)" }, pop + 0.3)
+    .to(cheap.card, { borderColor: "#FF3B00", duration: 0.2, ease: "power2.out" }, pop + 0.3)
+    .to("#badge .arrow", { keyframes: [ { x: nudge, duration: 0.14 }, { x: 0, duration: 0.2 }, { x: nudge, duration: 0.14 }, { x: 0, duration: 0.24 } ], ease: "power2.inOut" }, pop + 0.55)
+    .to({}, { duration: 0.3 }, pop + 1.27);
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+duration 3.62s, 110 frames @30fps, 46 tweens
+TIMING
+  #pTR  autoAlpha  0.02-0.18s  power2.out
+  #pTR  x  0.02-0.72s  power3.in
+  #pTR  y  0.02-0.72s  power2.inOut
+  #pTR  rotation,scale  0.02-0.72s  power3.in
+  #pBR  autoAlpha  0.07-0.23s  power2.out
+  #pBR  x  0.07-0.72s  power3.in
+  #pBR  y  0.07-0.72s  power2.inOut
+  #pBR  rotation,scale  0.07-0.72s  power3.in
+  #pBL  autoAlpha  0.12-0.28s  power2.out
+  #pBL  x  0.12-0.72s  power3.in
+  (+36 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean (1 data-layer=back excluded)
+off-stage: clean
+jumps: clean
+dead air: clean
+safe zones: clean
+end state: 2 visible (#ring, #crest); final hold 0.02s; no overlaps

@@ -1,0 +1,14 @@
+{
+  "id": "headline-word-cycle",
+  "prompt": "headline \"Build faster\" cycles its last word through two alternatives before landing",
+  "tags": [
+    "text",
+    "words",
+    "swap",
+    "kinetic"
+  ],
+  "source": "claude",
+  "status": "reject",
+  "holdout": false,
+  "created": "2026-10-22"
+}

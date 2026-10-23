@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: bold-sports -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #111111; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #111111;
+           font-family: 'Archivo Black', sans-serif; color: #FFFFFF; }
+  .label { font-family: 'Archivo Black'; font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; }
+  #tl-label { position: absolute; left: 72px; top: 56px; }
+  #tr-label { position: absolute; right: 72px; top: 56px; color: rgba(255,255,255,0.5); }
+  #tr-label i { display: inline-block; width: 10px; height: 10px; margin-right: 10px; background: #E8FF3A; font-style: normal; }
+  #kick { position: absolute; left: 0; top: 156px; width: 1280px; text-align: center; font-size: 22px;
+          letter-spacing: 0.2em; color: rgba(255,255,255,0.55); }
+  .num { position: absolute; left: 540px; top: 236px; width: 200px; height: 200px; text-align: center;
+         font-family: 'Bebas Neue', sans-serif; font-size: 200px; line-height: 200px; letter-spacing: 0.01em; }
+  .flank { position: absolute; top: 335px; width: 300px; height: 2px; background: rgba(255,255,255,0.22); }
+  #fl { left: 120px; transform-origin: 100% 50%; }
+  #fr { left: 860px; transform-origin: 0 50%; }
+  #go { position: absolute; left: 490px; top: 236px; width: 300px; height: 200px; text-align: center;
+        font-family: 'Bebas Neue'; font-size: 200px; line-height: 200px; letter-spacing: 0.01em; color: #E8FF3A; }
+  .spoke { position: absolute; left: 150px; top: 100px; width: 0; height: 0; }
+  .ray { position: absolute; left: 138px; top: -4px; width: 48px; height: 8px; background: #E8FF3A; transform-origin: 0 50%; }
+  #sub { position: absolute; left: 0; top: 500px; width: 1280px; text-align: center; font-size: 22px; letter-spacing: 0.2em; visibility: hidden; }
+  #bars { position: absolute; left: 442px; top: 584px; width: 396px; height: 8px; }
+  .seg { position: absolute; top: 0; width: 124px; height: 8px; background: rgba(255,255,255,0.12); }
+  .fill { position: absolute; inset: 0; background: #E8FF3A; transform-origin: 0 50%; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="tl-label" class="label">Matchday 12</div>
+  <div id="tr-label" class="label"><i></i>Live</div>
+  <div id="kick" class="label">Kickoff in</div>
+  <div id="fl" class="flank"></div><div id="fr" class="flank"></div>
+  <div class="num">3</div><div class="num">2</div><div class="num">1</div>
+  <div id="go">GO!</div>
+  <div id="sub" class="label">Match underway</div>
+  <div id="bars">
+    <div class="seg" style="left:0"><div class="fill"></div></div>
+    <div class="seg" style="left:136px"><div class="fill"></div></div>
+    <div class="seg" style="left:272px"><div class="fill"></div></div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  // burst rays, built once (fixed angles)
+  const go = document.getElementById("go");
+  for (let i = 0; i < 12; i++) {
+    go.insertAdjacentHTML("beforeend",
+      `<div class="spoke" style="transform:rotate(${i * 30 + 15}deg)"><div class="ray"></div></div>`);
+  }
+  gsap.set(".num, #go", { autoAlpha: 0 });
+  gsap.set(".fill", { scaleX: 0 });
+  gsap.set(".ray", { scaleX: 0 });
+
+  const tl = gsap.timeline({ paused: true });
+  const BEAT = 0.62, T0 = 0.3;
+
+  tl.from(["#tl-label", "#tr-label"], { y: -14, autoAlpha: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0)
+    .from("#kick", { y: 12, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 0.05)
+    .from(["#fl", "#fr"], { scaleX: 0, duration: 0.7, ease: "power4.out" }, 0.1)
+    .from(".seg", { scaleX: 0, autoAlpha: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0.1);
+
+  gsap.utils.toArray(".num").forEach((n, i) => {
+    const t = T0 + i * BEAT;
+    tl.fromTo(n, { scale: 1.45, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.34, ease: "expo.out" }, t)
+      .to(n, { scale: 0.86, autoAlpha: 0, duration: 0.14, ease: "power2.in" }, t + BEAT - 0.14)
+      .to(document.querySelectorAll(".fill")[i], { scaleX: 1, duration: BEAT, ease: "power2.inOut" }, t);
+  });
+
+  const tGo = T0 + 3 * BEAT;
+  tl.to("#kick", { autoAlpha: 0, y: -10, duration: 0.25, ease: "power2.in" }, tGo - 0.25)
+    .to(["#fl", "#fr"], { scaleX: 0, duration: 0.5, ease: "power3.inOut" }, tGo - 0.1)
+    .fromTo("#go", { scale: 0.3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.55, ease: "back.out(2.4)" }, tGo)
+    .to(".ray", { scaleX: 1, x: 18, duration: 0.45, ease: "expo.out" }, tGo + 0.04)
+    .to(".ray", { autoAlpha: 0, x: 40, scaleX: 0.3, duration: 0.3, ease: "power2.in" }, tGo + 0.4)
+    .fromTo("#sub", { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, tGo + 0.72)
+    .to({}, { duration: 0.45 });
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: luxury -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0E0C0A; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0E0C0A;
+           font-family: 'Manrope', sans-serif; color: #EDE3D1; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  #copy { position: absolute; left: 840px; top: 236px; width: 360px; }
+  #label { font-size: 12px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: #C9A45C; }
+  #title { margin-top: 18px; font-family: 'DM Serif Display', serif; font-size: 64px; font-weight: 400; line-height: 1.02; }
+  #result { margin-top: 26px; font-family: 'DM Serif Display', serif; font-size: 36px; color: #C9A45C; width: fit-content; }
+  #fine { margin-top: 10px; font-size: 15px; font-weight: 300; letter-spacing: 0.02em; color: rgba(237,227,209,0.6); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="scene" viewBox="0 0 1280 720" aria-hidden="true">
+    <defs><clipPath id="faceClip"><circle cx="0" cy="0" r="75"/></clipPath></defs>
+    <line x1="260" y1="560" x2="780" y2="560" stroke="#EDE3D1" stroke-opacity="0.14" stroke-width="1"/>
+    <!-- warm pool of light under the coin; it follows the coin's x and shrinks while it is airborne -->
+    <ellipse id="shadow" cx="560" cy="568" rx="80" ry="6" fill="#C9A45C" fill-opacity="0.22"/>
+    <g id="ticks" stroke="#C9A45C" stroke-width="2" stroke-linecap="round">
+      <line class="tick" x1="528" y1="556" x2="518" y2="550"/>
+      <line class="tick" x1="540" y1="552" x2="534" y2="542"/>
+      <line class="tick" x1="580" y1="552" x2="586" y2="542"/>
+      <line class="tick" x1="592" y1="556" x2="602" y2="550"/>
+    </g>
+    <g transform="translate(560 481)">
+      <g id="toss">                 <!-- x / y of the throw -->
+        <g id="rock">               <!-- rotation, pivots on the contact point -->
+          <g id="stretch">          <!-- squash and stretch, pivots on the contact point -->
+            <g id="spin">           <!-- the flip: scaleY through ~0 shows the edge -->
+              <circle cx="0" cy="4" r="75" fill="#C9A45C"/>
+              <circle cx="0" cy="4" r="75" fill="#0E0C0A" fill-opacity="0.45"/>
+              <g id="faceA">
+                <circle r="75" fill="#C9A45C"/>
+                <circle r="64" fill="none" stroke="#0E0C0A" stroke-opacity="0.35" stroke-width="1.5"/>
+                <circle r="57" fill="none" stroke="#0E0C0A" stroke-opacity="0.3" stroke-width="3" stroke-dasharray="1 6" stroke-linecap="round"/>
+                <text x="0" y="23" text-anchor="middle" font-family="DM Serif Display" font-size="64" fill="#0E0C0A" fill-opacity="0.72">M</text>
+              </g>
+              <g id="faceB">
+                <circle r="75" fill="#C9A45C"/>
+                <circle r="75" fill="#0E0C0A" fill-opacity="0.16"/>
+                <circle r="64" fill="none" stroke="#0E0C0A" stroke-opacity="0.35" stroke-width="1.5"/>
+                <text x="0" y="12" text-anchor="middle" font-family="DM Serif Display" font-size="36" fill="#0E0C0A" fill-opacity="0.7">XXVI</text>
+                <text x="0" y="36" text-anchor="middle" font-family="Manrope" font-weight="500" font-size="12" letter-spacing="3.8" fill="#0E0C0A" fill-opacity="0.6">AURUM</text>
+              </g>
+              <g clip-path="url(#faceClip)">
+                <rect id="glint" x="-14" y="-110" width="22" height="220" fill="#EDE3D1" fill-opacity="0.55" transform="rotate(24)"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <div id="copy">
+    <div id="label">The house coin &middot; No. 26</div>
+    <div id="title">Call it<br>in the air.</div>
+    <div id="result">Heads.</div>
+    <div id="fine">Struck in gold, tossed once.</div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  // origins are set once while everything is at rest, so nested scales never shift them
+  gsap.set(["#rock", "#stretch"], { transformOrigin: "50% 100%" });
+  gsap.set(["#spin", "#shadow"], { transformOrigin: "50% 50%" });
+  gsap.set(["#toss", "#shadow"], { x: -180 });
+  gsap.set(["#faceB", ".tick"], { autoAlpha: 0 });
+  gsap.set("#glint", { x: -150 });
+
+  const tl = gsap.timeline({ paused: true });
+  tl.from(["#label", "#title"], { y: 20, autoAlpha: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 0);
+
+  // anticipation: the coin crouches into the floor and leans back before the throw
+  tl.to("#stretch", { scaleY: 0.78, scaleX: 1.18, duration: 0.28, ease: "power2.out" }, 0.3)
+    .to("#rock", { rotation: -7, duration: 0.28, ease: "power2.out" }, 0.3)
+    .to("#shadow", { scaleX: 1.14, duration: 0.28, ease: "power2.out" }, 0.3);
+
+  const T0 = 0.62, UP = 0.54, DOWN = 0.48, LAND = T0 + UP + DOWN;
+  // launch: stretched tall on the fast frames, relaxing to round near the apex
+  tl.to("#stretch", { scaleY: 1.24, scaleX: 0.84, duration: 0.08, ease: "power3.out" }, T0)
+    .to("#stretch", { scaleY: 1, scaleX: 1, duration: 0.4, ease: "sine.out" }, T0 + 0.08)
+    .to("#rock", { rotation: 0, duration: 0.2, ease: "power2.out" }, T0)
+    // arc: y decelerates up and accelerates down while x eases across
+    .to("#toss", { y: -300, duration: UP, ease: "power2.out" }, T0)
+    .to("#toss", { y: 0, duration: DOWN, ease: "power2.in" }, T0 + UP)
+    .to(["#toss", "#shadow"], { x: 0, duration: UP + DOWN, ease: "sine.inOut" }, T0)
+    .to("#shadow", { scale: 0.45, autoAlpha: 0.35, duration: UP, ease: "power2.out" }, T0)
+    .to("#shadow", { scale: 1, autoAlpha: 1, duration: DOWN, ease: "power2.in" }, T0 + UP)
+    // falling fast again: stretch along the fall
+    .to("#stretch", { scaleY: 1.16, scaleX: 0.88, duration: DOWN - 0.1, ease: "power2.in" }, T0 + UP + 0.1);
+
+  // flips: quick near launch and landing, slower at the apex; faces swap at the thin edge
+  let t = T0 + 0.04, heads = true;
+  [0.1, 0.11, 0.13, 0.15, 0.15, 0.13, 0.11, 0.1].forEach(d => {
+    tl.to("#spin", { scaleY: 0.06, duration: d / 2, ease: "sine.in" }, t);
+    heads = !heads;
+    tl.set("#faceA", { autoAlpha: heads ? 1 : 0 }, t + d / 2)
+      .set("#faceB", { autoAlpha: heads ? 0 : 1 }, t + d / 2)
+      .to("#spin", { scaleY: 1, duration: d / 2, ease: "sine.out" }, t + d / 2);
+    t += d;
+  });
+
+  // landing: hard squash, springy recovery, then a damped rock on the contact point
+  tl.to("#stretch", { scaleY: 0.68, scaleX: 1.3, duration: 0.06, ease: "power2.out" }, LAND)
+    .to("#stretch", { scaleY: 1, scaleX: 1, duration: 0.5, ease: "back.out(3)" }, LAND + 0.06)
+    .to("#shadow", { scaleX: 1.3, duration: 0.06, ease: "power2.out" }, LAND)
+    .to("#shadow", { scaleX: 1, duration: 0.4, ease: "power2.out" }, LAND + 0.06)
+    .fromTo(".tick", { x: 0, y: 0, autoAlpha: 1 },
+      { x: i => [-16, -8, 8, 16][i], y: -6, autoAlpha: 0, duration: 0.36, ease: "power2.out", immediateRender: false }, LAND)
+    .to("#rock", { keyframes: [
+        { rotation: 9, duration: 0.12, ease: "power2.out" },
+        { rotation: -6, duration: 0.17, ease: "sine.inOut" },
+        { rotation: 3.5, duration: 0.17, ease: "sine.inOut" },
+        { rotation: -1.5, duration: 0.17, ease: "sine.inOut" },
+        { rotation: 0, duration: 0.2, ease: "sine.out" } ] }, LAND + 0.03)
+    .from("#result", { y: 18, autoAlpha: 0, duration: 0.45, ease: "back.out(2)" }, LAND + 0.22)
+    .from("#fine", { y: 12, autoAlpha: 0, duration: 0.45, ease: "power3.out" }, LAND + 0.36)
+    // late accent: a glint slides across the face as it comes to rest
+    .to("#glint", { x: 150, duration: 0.55, ease: "power2.inOut" }, LAND + 0.5)
+    .to({}, { duration: 0.25 });
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

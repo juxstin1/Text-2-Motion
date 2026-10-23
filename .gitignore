@@ -1,0 +1,18 @@
+# render outputs: regenerate with `python tools/render.py --all` (renders aren't byte-identical between runs)
+entries/*/preview.gif
+entries/*/filmstrip.png
+entries/*/onion.png
+entries/*/alpha.webm
+entries/*/alpha.mov
+entries/*/alpha_check.png
+entries/*/_frames/
+entries/*/_alpha_frames/
+
+# generated / exported
+gallery.html
+sprites/
+sprites_new/
+onions/
+
+__pycache__/
+*.log

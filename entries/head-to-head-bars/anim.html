@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: bold-sports -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #111111; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #111111; }
+  /* pack background: hidden by render.py --alpha so the graphic sits on footage */
+  #bg { position: absolute; inset: 0; background: linear-gradient(180deg, #1A1A1A 0%, #111111 60%); }
+  #shake { position: absolute; left: 16px; top: 16px; width: 1248px; height: 688px; }
+
+  /* title plate, auto width */
+  #title { position: absolute; left: 64px; top: 60px; display: flex; align-items: baseline; gap: 20px;
+           padding: 10px 26px 6px; background: rgba(17,17,17,0.92); border-left: 8px solid #E8FF3A; }
+  #titleText { font-family: "Bebas Neue"; font-size: 56px; line-height: 1; letter-spacing: 0.01em; color: #FFFFFF; white-space: nowrap; }
+  #unit { font-family: "Archivo Black"; font-size: 16px; letter-spacing: 0.2em; color: #E8FF3A; white-space: nowrap; }
+
+  /* one row per brand: logo tile | name + bar | number */
+  #rows { position: absolute; left: 64px; top: 200px; width: 1120px; display: flex; flex-direction: column; gap: 30px; }
+  .row { position: relative; height: 160px; display: flex; align-items: center; padding: 0 28px 0 20px; box-sizing: border-box; }
+  .plate { position: absolute; inset: 0; background: rgba(17,17,17,0.9); border: 2px solid rgba(255,255,255,0.12); }
+  .tile { position: relative; flex: none; width: 120px; height: 120px; background: #1C1C1C; display: flex; align-items: center; justify-content: center;
+          border-bottom: 6px solid var(--c); box-sizing: border-box; }
+  .slot { position: relative; width: 78px; height: 78px; color: var(--c); }
+  .slot svg { display: block; width: 100%; height: 100%; }
+  .main { position: relative; flex: 1; min-width: 0; margin: 0 36px 0 30px; display: flex; flex-direction: column; gap: 12px; }
+  .head { display: flex; align-items: center; gap: 16px; min-width: 0; }
+  .mask { overflow: hidden; min-width: 0; }
+  .name { font-family: "Bebas Neue"; font-size: 56px; line-height: 1.02; letter-spacing: 0.01em; color: #FFFFFF; white-space: nowrap;
+          overflow: hidden; text-overflow: ellipsis; }
+  .lead { flex: none; font-family: "Archivo Black"; font-size: 16px; letter-spacing: 0.1em; color: #111111; background: #E8FF3A;
+          padding: 6px 12px; white-space: nowrap; visibility: hidden; opacity: 0; }
+  .track { position: relative; height: 40px; background: rgba(255,255,255,0.1); }
+  .bar { position: absolute; left: 0; top: 0; height: 100%; background: var(--c); transform-origin: 0% 50%; }
+  .glow { position: absolute; inset: -6px; background: var(--c); filter: blur(16px); opacity: 0; visibility: hidden; }
+  .num { flex: none; min-width: 3ch; text-align: right; font-family: "Bebas Neue"; font-size: 120px; line-height: 1;
+         letter-spacing: 0.01em; color: #FFFFFF; transform-origin: 100% 60%; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="shake">
+    <div id="title"><span id="titleText"></span><span id="unit"></span></div>
+    <div id="rows">
+      <div class="row" id="rowA">
+        <div class="plate"></div>
+        <div class="tile">
+          <div class="slot" id="slotA">
+            <!-- placeholder logo: Nova (ring + core); paste any SVG logo here -->
+            <svg id="logoA" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="12"/><circle cx="50" cy="50" r="15" fill="currentColor"/></svg>
+          </div>
+        </div>
+        <div class="main">
+          <div class="head"><div class="mask"><div class="name" id="nameA"></div></div><div class="lead" id="leadA"></div></div>
+          <div class="track"><div class="bar" id="barA"><div class="glow" id="glowA"></div></div></div>
+        </div>
+        <div class="num" id="numA">0</div>
+      </div>
+      <div class="row" id="rowB">
+        <div class="plate"></div>
+        <div class="tile">
+          <div class="slot" id="slotB">
+            <!-- placeholder logo: Apex (stacked peaks) -->
+            <svg id="logoB" viewBox="0 0 100 100"><polygon points="50,8 94,88 6,88" fill="currentColor"/><polygon points="50,46 70,82 30,82" fill="#1C1C1C" fill-opacity="0.6"/></svg>
+          </div>
+        </div>
+        <div class="main">
+          <div class="head"><div class="mask"><div class="name" id="nameB"></div></div><div class="lead" id="leadB"></div></div>
+          <div class="track"><div class="bar" id="barB"><div class="glow" id="glowB"></div></div></div>
+        </div>
+        <div class="num" id="numB">0</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+const DATA = {
+  title: "Top speed",
+  unit: "KM/H",
+  max: 340,               // value that fills the track
+  leadText: "LEADS +",    // followed by the gap, e.g. "LEADS +25"
+  a: { name: "Nova", value: 312, color: "#4D6BFE" },
+  b: { name: "Apex", value: 287, color: "#FF5A36" },
+};
+
+// ---- fill the DOM from DATA
+const $ = s => document.querySelector(s);
+const rows = [
+  { d: DATA.a, row: "#rowA", slot: "#slotA", name: "#nameA", bar: "#barA", glow: "#glowA", num: "#numA", lead: "#leadA" },
+  { d: DATA.b, row: "#rowB", slot: "#slotB", name: "#nameB", bar: "#barB", glow: "#glowB", num: "#numB", lead: "#leadB" },
+];
+const win = DATA.a.value >= DATA.b.value ? rows[0] : rows[1];
+const lose = win === rows[0] ? rows[1] : rows[0];
+$("#titleText").textContent = DATA.title;
+$("#unit").textContent = DATA.unit;
+rows.forEach(r => {
+  $(r.row).style.setProperty("--c", r.d.color);
+  $(r.name).textContent = r.d.name;
+  // bar length from the value; 92% headroom so the leader's overshoot stays inside the track
+  $(r.bar).style.width = Math.min(1, r.d.value / DATA.max) * 92 + "%";
+  // both number columns reserve the widest final value, so tracks match and counting never reflows
+  $(r.num).style.minWidth = Math.max(...rows.map(q => String(Math.round(q.d.value)).length)) * 0.55 + "em";
+});
+$(win.lead).textContent = DATA.leadText + Math.round(Math.abs(DATA.a.value - DATA.b.value));
+
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const shake = (at, amp) => tl.to("#shake", { keyframes: [
+      { x: -amp, y: amp * 0.6, duration: 0.04 }, { x: amp * 0.8, y: -amp * 0.5, duration: 0.05 },
+      { x: -amp * 0.45, y: amp * 0.3, duration: 0.05 }, { x: amp * 0.2, y: -amp * 0.1, duration: 0.06 },
+      { x: 0, y: 0, duration: 0.08 } ], ease: "power2.out" }, at);
+
+  // 1. title punches in, row plates wipe across, logos pop into their tiles, names rise
+  tl.from("#title", { x: -40, autoAlpha: 0, duration: 0.45, ease: "power4.out" }, 0)
+    .from(".plate", { scaleX: 0, transformOrigin: "0% 50%", duration: 0.5, ease: "expo.out", stagger: 0.1 }, 0.08)
+    .from(".tile", { scale: 0.6, autoAlpha: 0, duration: 0.4, ease: "back.out(2.5)", stagger: 0.1 }, 0.2)
+    .from(rows.map(r => r.slot), { scale: 0, rotation: -25, duration: 0.5, ease: "back.out(3)", stagger: 0.1 }, 0.28)
+    .from(rows.map(r => r.name), { yPercent: 105, duration: 0.45, ease: "power4.out", stagger: 0.1 }, 0.34)
+    .from(".track", { scaleX: 0, transformOrigin: "0% 50%", duration: 0.4, ease: "power3.out", stagger: 0.1 }, 0.4)
+    .from(rows.map(r => r.num), { autoAlpha: 0, y: 24, duration: 0.35, ease: "power3.out", stagger: 0.1 }, 0.42);
+
+  // 2. the race: both bars launch together; the loser settles first, the leader keeps going and overshoots
+  const go = 0.82, loseDur = 1.0, winDur = 1.25;
+  const count = (r, dur, at) => {
+    const o = { v: 0 };
+    tl.to(o, { v: r.d.value, duration: dur, ease: "power3.out", onUpdate: () => { $(r.num).textContent = Math.round(o.v); } }, at);
+  };
+  // anticipation: both bars twitch back before the gun
+  tl.fromTo([win.bar, lose.bar], { scaleX: 0 }, { scaleX: 0.03, duration: 0.12, ease: "power2.out" }, go - 0.12)
+    .to(lose.bar, { scaleX: 1, duration: loseDur, ease: "power3.out" }, go)
+    .to(win.bar, { scaleX: 1, duration: winDur, ease: "back.out(1.7)" }, go);
+  count(lose, loseDur, go);
+  count(win, winDur, go);
+
+  // 3. leader lands: number slams, bar glows, leader tag pops, loser dims
+  const land = go + winDur * 0.62;
+  tl.to(win.num, { scale: 1.3, duration: 0.12, ease: "power2.out" }, land - 0.12)
+    .to(win.num, { scaleX: 1.12, scaleY: 0.86, duration: 0.06, ease: "power2.out" }, land)
+    .to(win.num, { scaleX: 1, scaleY: 1, duration: 0.42, ease: "back.out(3)" }, land + 0.06)
+    .to(win.num, { color: "#E8FF3A", duration: 0.12, ease: "power2.out" }, land)
+    .fromTo(win.glow, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.1, ease: "power2.out" }, land)
+    .to(win.glow, { autoAlpha: 0.55, duration: 0.5, ease: "power2.out" }, land + 0.1)
+    .fromTo(win.lead, { autoAlpha: 0, scale: 0.3, rotation: -8 }, { autoAlpha: 1, scale: 1, rotation: -3, duration: 0.42, ease: "back.out(3.5)" }, land + 0.08)
+    .to(win.row + " .plate", { borderColor: "#E8FF3A", duration: 0.15, ease: "power2.out" }, land)
+    .to([lose.bar, lose.num], { autoAlpha: 0.5, duration: 0.4, ease: "power2.out" }, land + 0.1);
+  shake(land, 6);
+
+  // 4. still alive: the glow breathes once more and the tag nods
+  tl.to(win.glow, { autoAlpha: 0.95, duration: 0.2, ease: "power2.out" }, land + 0.75)
+    .to(win.glow, { autoAlpha: 0.55, duration: 0.35, ease: "power2.inOut" }, land + 0.95)
+    .to(win.lead, { rotation: 0, scale: 1.08, duration: 0.18, ease: "power2.out" }, land + 0.75)
+    .to(win.lead, { scale: 1, duration: 0.35, ease: "back.out(3)" }, land + 0.93)
+    .to({}, { duration: 0.3 }, land + 1.3);
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

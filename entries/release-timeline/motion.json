@@ -1,0 +1,924 @@
+{
+ "duration": 3.71,
+ "fps": 30,
+ "frames": 113,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.6,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#panel"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.1,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "x",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#kicker"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.12,
+   "duration": 0.78,
+   "ease": "back.out(2)",
+   "props": [
+    "yPercent",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": 0.02,
+   "targets": [
+    "#title div[0]",
+    "#title div[1]",
+    "#title div[2]",
+    "#title div[3]",
+    "#title div[4]",
+    "#title div[5]",
+    "#title div[6]",
+    "#title div[7]",
+    "#title div[8]",
+    "#title div[9]",
+    "#title div[10]",
+    "#title div[11]",
+    "#title div[12]",
+    "#title div[13]",
+    "#title div[14]"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 1,
+   "ease": "power2.inOut",
+   "props": [
+    "scaleX"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#axisFill"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.4,
+   "duration": 0.4,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop0 div.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.44,
+   "duration": 0.6,
+   "ease": "bounce.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop0 div.date"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.6,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop0 div.name"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.6,
+   "duration": 0.4,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop1 div.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.64,
+   "duration": 0.6,
+   "ease": "bounce.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop1 div.date"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop1 div.name"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.8,
+   "duration": 0.4,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop2 div.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.84,
+   "duration": 0.6,
+   "ease": "bounce.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop2 div.date"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop2 div.name"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1,
+   "duration": 0.4,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop3 div.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.04,
+   "duration": 0.6,
+   "ease": "bounce.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop3 div.date"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.05,
+   "duration": 0.42,
+   "ease": "power1.out",
+   "props": [
+    "x",
+    "autoAlpha",
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#slot0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.05,
+   "duration": 0.42,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#slot0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.2,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop3 div.name"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.2,
+   "duration": 0.4,
+   "ease": "back.out(3)",
+   "props": [
+    "scale"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop4 div.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.24,
+   "duration": 0.6,
+   "ease": "bounce.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop4 div.date"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.42,
+   "ease": "power1.out",
+   "props": [
+    "x",
+    "autoAlpha",
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#slot1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.32,
+   "duration": 0.42,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#slot1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.4,
+   "duration": 0.45,
+   "ease": "power3.out",
+   "props": [
+    "y",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#stop4 div.name"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.47,
+   "duration": 0.57,
+   "ease": "power1.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot0"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.47,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#stop0 div.ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.47,
+   "duration": 0.41,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#stop0 div.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.59,
+   "duration": 0.42,
+   "ease": "power1.out",
+   "props": [
+    "x",
+    "autoAlpha",
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#slot2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.59,
+   "duration": 0.42,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#slot2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.74,
+   "duration": 0.57,
+   "ease": "power1.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot1"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.74,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#stop1 div.ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.74,
+   "duration": 0.41,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#stop1 div.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.86,
+   "duration": 0.42,
+   "ease": "power1.out",
+   "props": [
+    "x",
+    "autoAlpha",
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#slot3"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.86,
+   "duration": 0.42,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#slot3"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.01,
+   "duration": 0.57,
+   "ease": "power1.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot2"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.01,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#stop2 div.ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.01,
+   "duration": 0.41,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#stop2 div.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.13,
+   "duration": 0.42,
+   "ease": "power1.out",
+   "props": [
+    "x",
+    "autoAlpha",
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#slot4"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.13,
+   "duration": 0.42,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#slot4"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.28,
+   "duration": 0.57,
+   "ease": "power1.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot3"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.28,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#stop3 div.ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.28,
+   "duration": 0.41,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#stop3 div.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.55,
+   "duration": 0.57,
+   "ease": "power1.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot4"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.55,
+   "duration": 0.5,
+   "ease": "expo.out",
+   "props": [
+    "scale",
+    "autoAlpha"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#stop4 div.ring"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.55,
+   "duration": 0.41,
+   "ease": "power1.out",
+   "props": [
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#stop4 div.dot"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.75,
+   "duration": 0.5,
+   "ease": "back.out(3)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#badge"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.8,
+   "duration": 0.76,
+   "ease": "power1.out",
+   "props": [
+    "y",
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#slot4"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.56,
+   "duration": 0.15,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#panel",
+  "#kicker",
+  "#title div[0]",
+  "#title div[1]",
+  "#title div[2]",
+  "#title div[3]",
+  "#title div[4]",
+  "#title div[5]",
+  "#title div[6]",
+  "#title div[7]",
+  "#title div[8]",
+  "#title div[9]",
+  "#title div[10]",
+  "#title div[11]",
+  "#title div[12]",
+  "#title div[13]",
+  "#title div[14]",
+  "#axisFill",
+  "#stop0 div.dot",
+  "#stop0 div.date",
+  "#stop0 div.name",
+  "#stop1 div.dot",
+  "#stop1 div.date",
+  "#stop1 div.name",
+  "#stop2 div.dot",
+  "#stop2 div.date",
+  "#stop2 div.name",
+  "#stop3 div.dot",
+  "#stop3 div.date",
+  "#slot0",
+  "#stop3 div.name",
+  "#stop4 div.dot",
+  "#stop4 div.date",
+  "#slot1",
+  "#stop4 div.name",
+  "#stop0 div.ring",
+  "#slot2",
+  "#stop1 div.ring",
+  "#slot3",
+  "#stop2 div.ring",
+  "#slot4",
+  "#stop3 div.ring",
+  "#stop4 div.ring",
+  "#badge"
+ ],
+ "fonts": [
+  "Inter, sans-serif",
+  "\"Playfair Display\", serif",
+  "\"Playfair Display\""
+ ],
+ "flagged": false,
+ "notes": 6,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#stop0 div.dot",
+    "b": "#stop0 div.date",
+    "ranges": [
+     [
+      0.5333333333333333,
+      0.6
+     ]
+    ],
+    "peak": 0.85,
+    "peak_frame": 16,
+    "ia": 18,
+    "ib": 19,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#stop1 div.dot",
+    "b": "#stop1 div.date",
+    "ranges": [
+     [
+      0.7333333333333333,
+      0.8
+     ]
+    ],
+    "peak": 0.85,
+    "peak_frame": 22,
+    "ia": 21,
+    "ib": 22,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#stop2 div.dot",
+    "b": "#stop2 div.date",
+    "ranges": [
+     [
+      0.9333333333333333,
+      1.0
+     ]
+    ],
+    "peak": 0.85,
+    "peak_frame": 28,
+    "ia": 24,
+    "ib": 25,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#stop3 div.dot",
+    "b": "#stop3 div.date",
+    "ranges": [
+     [
+      1.1333333333333333,
+      1.2
+     ]
+    ],
+    "peak": 0.85,
+    "peak_frame": 34,
+    "ia": 27,
+    "ib": 28,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#stop4 div.dot",
+    "b": "#stop4 div.date",
+    "ranges": [
+     [
+      1.3333333333333333,
+      1.4
+     ]
+    ],
+    "peak": 0.85,
+    "peak_frame": 40,
+    "ia": 31,
+    "ib": 32,
+    "defect": false,
+    "static": false
+   },
+   {
+    "a": "#slot4",
+    "b": "#badge",
+    "ranges": [
+     [
+      2.8666666666666667,
+      3.066666666666667
+     ]
+    ],
+    "peak": 0.21,
+    "peak_frame": 90,
+    "ia": 40,
+    "ib": 43,
+    "defect": false,
+    "static": false
+   }
+  ],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 6,
+  "format": "landscape",
+  "final_hold": 0.34,
+  "end_visible": [
+   "#panel",
+   "#kicker",
+   "#title div[0]",
+   "#title div[1]",
+   "#title div[2]",
+   "#title div[3]",
+   "#title div[4]",
+   "#title div[5]",
+   "#title div[6]",
+   "#title div[7]",
+   "#title div[8]",
+   "#title div[9]",
+   "#title div[10]",
+   "#title div[11]",
+   "#title div[12]",
+   "#title div[13]",
+   "#title div[14]",
+   "#axisFill",
+   "#stop0 div.dot",
+   "#stop0 div.date",
+   "#stop0 div.name",
+   "#stop1 div.dot",
+   "#stop1 div.date",
+   "#stop1 div.name",
+   "#stop2 div.dot",
+   "#stop2 div.date",
+   "#stop2 div.name",
+   "#stop3 div.dot",
+   "#stop3 div.date",
+   "#slot0",
+   "#stop3 div.name",
+   "#stop4 div.dot",
+   "#stop4 div.date",
+   "#slot1",
+   "#stop4 div.name",
+   "#slot2",
+   "#slot3",
+   "#slot4",
+   "#badge"
+  ],
+  "end_overlaps": [],
+  "n_notes": 6
+ }
+}

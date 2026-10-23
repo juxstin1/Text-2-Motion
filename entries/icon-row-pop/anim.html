@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: playful -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FFE8D6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FFE8D6; color: #2B1B4A; }
+  #kicker { position: absolute; left: 0; width: 1280px; top: 150px; text-align: center; font: 700 14px/1 'Sora'; letter-spacing: 0.06em; text-transform: uppercase; color: #FF4F7B; }
+  #headline { position: absolute; left: 0; width: 1280px; top: 178px; margin: 0; text-align: center; font: 800 80px/1.05 'Syne'; letter-spacing: -0.03em; }
+  #sub { position: absolute; left: 0; width: 1280px; top: 286px; margin: 0; text-align: center; font: 500 18px/1.5 'Sora'; color: rgba(43,27,74,0.66); }
+  #row { position: absolute; left: 220px; top: 390px; width: 840px; height: 220px; }
+  .item { position: absolute; top: 0; width: 136px; }
+  .tile { width: 136px; height: 136px; border-radius: 40px; display: flex; align-items: center; justify-content: center; }
+  .name { margin-top: 20px; text-align: center; font: 500 18px/1 'Sora'; }
+  .t-accent { background: #FF4F7B; }
+  .t-ink { background: #2B1B4A; }
+  .t-tint { background: rgba(255,79,123,0.2); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="kicker">The toolkit</div>
+  <h1 id="headline">Small tools, big joy.</h1>
+  <p id="sub">Sketch, chat, plan and ship from one cheerful little app.</p>
+  <div id="row">
+    <div class="item" style="left:0">
+      <div class="tile t-accent"><svg width="56" height="56" viewBox="0 0 56 56"><path d="M28 8l6 13 14 2-10 10 2 14-12-7-12 7 2-14L8 23l14-2z" fill="#FFE8D6" stroke="#FFE8D6" stroke-width="3" stroke-linejoin="round"/></svg></div>
+      <div class="name">Ideas</div>
+    </div>
+    <div class="item" style="left:176px">
+      <div class="tile t-ink"><svg width="56" height="56" viewBox="0 0 56 56"><path d="M10 14h36a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H24l-10 8v-8h-4a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4z" fill="#FF4F7B"/></svg></div>
+      <div class="name">Chat</div>
+    </div>
+    <div class="item" style="left:352px">
+      <div class="tile t-tint"><svg width="56" height="56" viewBox="0 0 56 56"><path d="M32 6L14 32h12l-4 18 20-28H30z" fill="#2B1B4A" stroke="#2B1B4A" stroke-width="2" stroke-linejoin="round"/></svg></div>
+      <div class="name">Ship</div>
+    </div>
+    <div class="item" style="left:528px">
+      <div class="tile t-ink"><svg width="56" height="56" viewBox="0 0 56 56"><rect x="8" y="12" width="40" height="36" rx="8" fill="none" stroke="#FFE8D6" stroke-width="4"/><path d="M8 24h40M19 7v10M37 7v10" stroke="#FFE8D6" stroke-width="4" stroke-linecap="round"/><circle cx="21" cy="35" r="4" fill="#FF4F7B"/></svg></div>
+      <div class="name">Plan</div>
+    </div>
+    <div class="item" style="left:704px">
+      <div class="tile t-accent"><svg width="56" height="56" viewBox="0 0 56 56"><path d="M28 47S9 36 9 22a10 10 0 0 1 19-4 10 10 0 0 1 19 4c0 14-19 25-19 25z" fill="#FFE8D6"/></svg></div>
+      <div class="name">Share</div>
+    </div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  tl.from(["#kicker", "#headline", "#sub"], { y: 28, autoAlpha: 0, duration: 0.6, ease: "power3.out", stagger: 0.07 })
+    // icons pop one after another; elastic only on scale/rotation so the settle feels springy
+    .from(".tile", { scale: 0, rotation: -14, y: 30, duration: 1.1, ease: "elastic.out(1, 0.55)", stagger: 0.09 }, 0.35)
+    .from(".tile", { autoAlpha: 0, duration: 0.15, ease: "power1.out", stagger: 0.09 }, "<")
+    // labels follow each icon once its bounce has started to settle
+    .from(".name", { y: 10, autoAlpha: 0, duration: 0.4, ease: "power2.out", stagger: 0.09 }, "<0.3")
+    .to({}, { duration: 0.5 }); // final hold
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

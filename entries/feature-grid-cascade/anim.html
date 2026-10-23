@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: tech-launch -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0B0D12; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0B0D12;
+           font-family: 'Inter', sans-serif; color: #E8ECF4; }
+  #label { position: absolute; left: 96px; top: 72px; font-weight: 500; font-size: 13px; letter-spacing: 0.12em; color: #5B8CFF; }
+  #headline { position: absolute; left: 96px; top: 98px; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+              font-size: 64px; letter-spacing: -0.03em; line-height: 1.1; white-space: nowrap; }
+  #intro { position: absolute; left: 840px; top: 112px; width: 344px; font-size: 16px; line-height: 1.55; color: rgba(232,236,244,0.6); }
+
+  #grid { position: absolute; left: 96px; top: 248px; width: 1088px; height: 376px;
+          display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, 180px); gap: 16px; }
+  .tile { box-sizing: border-box; padding: 28px; border-radius: 16px;
+          background: rgba(232,236,244,0.035); border: 1px solid rgba(232,236,244,0.09); }
+  .icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(91,140,255,0.14); display: grid; place-items: center; }
+  .icon svg { width: 20px; height: 20px; }
+  .tile h3 { margin: 22px 0 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em; }
+  .tile p { margin: 8px 0 0; font-size: 16px; white-space: nowrap; line-height: 1.45; color: rgba(232,236,244,0.6); }
+  .tile.lead { background: rgba(91,140,255,0.1); border-color: rgba(91,140,255,0.35); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="label">PLATFORM</div>
+  <div id="headline">Ship it. We&rsquo;ll scale it.</div>
+  <div id="intro">Six primitives that take a commit from your laptop to every region on earth.</div>
+
+  <div id="grid">
+    <div class="tile lead">
+      <div class="icon"><svg viewBox="0 0 20 20" fill="none" stroke="#5B8CFF" stroke-width="1.8" stroke-linejoin="round"><path d="M11 2L4 11h5l-1 7 7-9h-5z"/></svg></div>
+      <h3>Edge runtime</h3><p>300+ regions, live in under a second.</p></div>
+    <div class="tile">
+      <div class="icon"><svg viewBox="0 0 20 20" fill="none" stroke="#5B8CFF" stroke-width="1.8" stroke-linecap="round"><path d="M4 10a6 6 0 1 0 2-4.5M4 3v3h3"/></svg></div>
+      <h3>Instant rollbacks</h3><p>Immutable builds, one-click revert.</p></div>
+    <div class="tile">
+      <div class="icon"><svg viewBox="0 0 20 20" fill="none" stroke="#5B8CFF" stroke-width="1.8" stroke-linecap="round"><circle cx="5" cy="5" r="2"/><circle cx="5" cy="15" r="2"/><circle cx="15" cy="10" r="2"/><path d="M5 7v6M7 5h3a5 5 0 0 1 5 5"/></svg></div>
+      <h3>Preview URLs</h3><p>A live link for every pull request.</p></div>
+    <div class="tile">
+      <div class="icon"><svg viewBox="0 0 20 20" fill="none" stroke="#5B8CFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11h4l2-6 4 10 2-4h4"/></svg></div>
+      <h3>Observability</h3><p>Traces, logs and metrics in one view.</p></div>
+    <div class="tile">
+      <div class="icon"><svg viewBox="0 0 20 20" fill="none" stroke="#5B8CFF" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="9" width="12" height="8" rx="2"/><path d="M7 9V6a3 3 0 0 1 6 0v3"/></svg></div>
+      <h3>Secrets vault</h3><p>Encrypted env vars, per branch.</p></div>
+    <div class="tile">
+      <div class="icon"><svg viewBox="0 0 20 20" fill="none" stroke="#5B8CFF" stroke-width="1.8" stroke-linecap="round"><path d="M4 16V9M10 16V4M16 16v-5"/></svg></div>
+      <h3>Usage billing</h3><p>Pay for compute, not idle servers.</p></div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/SplitText.min.js"></script>
+<script>
+gsap.registerPlugin(SplitText);
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const head = SplitText.create("#headline", { type: "words", mask: "words" });
+
+  tl.from("#label", { y: 12, autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 0)
+    .from(head.words, { yPercent: 110, duration: 0.8, ease: "expo.out", stagger: 0.06 }, 0.08)
+    .from("#intro", { y: 14, autoAlpha: 0, duration: 0.7, ease: "power2.out" }, 0.3)
+    // tiles travel down-right, ordered by distance from the top-left tile
+    .from(".tile", {
+      x: -24, y: -24, scale: 0.94, autoAlpha: 0,
+      duration: 1.0, ease: "expo.out",
+      stagger: { each: 0.13, grid: [2, 3], from: "start" }
+    }, 0.4)
+    .from(".tile .icon", {
+      scale: 0.6, autoAlpha: 0, duration: 0.6, ease: "back.out(2)",
+      stagger: { each: 0.13, grid: [2, 3], from: "start" }
+    }, 0.55)
+    .to({}, { duration: 0.6 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

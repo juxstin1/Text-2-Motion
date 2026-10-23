@@ -1,0 +1,14 @@
+{
+  "id": "punch-pow-badge",
+  "prompt": "a fist pulls back in anticipation and punches a POW badge that crumples and springs back",
+  "tags": [
+    "character",
+    "anticipation",
+    "impact",
+    "comic"
+  ],
+  "source": "claude",
+  "status": "keep",
+  "holdout": false,
+  "created": "2026-10-22"
+}
