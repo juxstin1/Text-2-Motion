@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: playful -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FFE8D6; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FFE8D6; }
+  #scene { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+  #title { position: absolute; left: 88px; top: 180px; margin: 0; font-family: "Syne"; font-weight: 800; font-size: 84px;
+           line-height: 1; letter-spacing: -0.03em; color: #2B1B4A; }
+  #caption { position: absolute; left: 88px; top: 600px; width: 400px; margin: 0; font-family: "Sora"; font-weight: 500;
+             font-size: 18px; line-height: 1.5; color: rgba(43,27,74,0.65); }
+  .shape-group { position: absolute; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <h1 id="title">Geometric Harmony</h1>
+  <p id="caption">A study in weight, balance, and the physics of play.</p>
+
+  <svg id="scene" viewBox="0 0 1280 720">
+    <!-- Ground line -->
+    <line x1="300" y1="600" x2="1000" y2="600" stroke="#2B1B4A" stroke-width="4" stroke-linecap="round" opacity="0.1"/>
+    
+    <!-- Circle -->
+    <g id="shapeC">
+      <circle cx="0" cy="0" r="60" fill="#FF4F7B" />
+      <ellipse cx="0" cy="60" rx="60" ry="12" fill="#FF4F7B" opacity="0.3" />
+    </g>
+
+    <!-- Square -->
+    <g id="shapeS">
+      <rect x="-40" y="-40" width="80" height="80" rx="12" fill="#2B1B4A" />
+      <ellipse cx="0" cy="40" rx="40" ry="8" fill="#2B1B4A" opacity="0.3" />
+    </g>
+
+    <!-- Triangle -->
+    <g id="shapeT">
+      <path d="M0 -40 L40 40 L-40 40 Z" fill="#FF4F7B" opacity="0.8" />
+      <ellipse cx="0" cy="40" rx="40" ry="8" fill="#FF4F7B" opacity="0.3" />
+    </g>
+  </svg>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  // Initial positions (hidden above stage)
+  gsap.set("#shapeC", { x: 200, y: -400, autoAlpha: 0 });
+  gsap.set("#shapeS", { x: 1000, y: -400, autoAlpha: 0 });
+  gsap.set("#shapeT", { x: 640, y: -400, autoAlpha: 0 });
+
+  // Final Composition Coordinates
+  const C_FINAL = { x: 540, y: 540 };
+  const S_FINAL = { x: 640, y: 540 };
+  const T_FINAL = { x: 740, y: 540 };
+
+  // Helper for bouncing logic
+  const bounceTo = (target, startX, startY, duration, delay) => {
+    tl.fromTo(target, 
+      { x: startX, y: startY, autoAlpha: 0 }, 
+      { x: target.x, y: target.y, autoAlpha: 1, duration: duration, ease: "power2.in" }, 
+      delay
+    )
+    .to(target, { 
+      scaleY: 0.6, scaleX: 1.3, duration: 0.1, ease: "power2.out" 
+    }, delay + duration)
+    .to(target, { 
+      y: target.y - 40, scaleY: 1.2, scaleX: 0.8, duration: 0.2, ease: "power2.out" 
+    }, delay + duration + 0.1)
+    .to(target, { 
+      y: target.y, scaleY: 1, scaleX: 1, duration: 0.2, ease: "back.out(3)" 
+    }, delay + duration + 0.3);
+  };
+
+  // Animation Sequence
+  // 1. Circle drops from left
+  bounceTo("#shapeC", 200, -400, 0.8, 0.1);
+  
+  // 2. Square drops from right (slightly delayed)
+  bounceTo("#shapeS", 1000, -400, 0.9, 0.4);
+  
+  // 3. Triangle drops from top (hits the others)
+  bounceTo("#shapeT", 640, -400, 0.7, 0.8);
+
+  // 4. The "Composition" - they slide together into a tight cluster
+  // This happens after all initial bounces settle
+  tl.to("#shapeC", { x: C_FINAL.x, duration: 0.6, ease: "power3.out" }, 2.0)
+    .to("#shapeS", { x: S_FINAL.x, duration: 0.6, ease: "power3.out" }, 2.0)
+    .to("#shapeT", { x: T_FINAL.x, duration: 0.6, ease: "power3.out" }, 2.0)
+    // Subtle "nesting" jiggle
+    .to("#shapeC", { x: "+=5", duration: 0.1, ease: "sine.in" }, 2.6)
+    .to("#shapeS", { x: "-=5", duration: 0.1, ease: "sine.in" }, 2.6)
+    .to("#shapeC", { x: "-=5", duration: 0.2, ease: "back.out(2)" }, 2.7)
+    .to("#shapeS", { x: "+=5", duration: 0.2, ease: "back.out(2)" }, 2.7)
+    .to({}, { duration: 0.5 }); // Final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

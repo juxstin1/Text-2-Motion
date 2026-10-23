@@ -1,0 +1,7 @@
+{
+  "why": "Gemma 4 12B 3-shot, 2026-10-23: bounceTo(..., -400) lands the shapes on a 'floor' near the ceiling; they end half cut off by their own <svg> crop, which the clipped-box measurement hides",
+  "must": [
+    "cut off"
+  ],
+  "known_gap": true
+}
