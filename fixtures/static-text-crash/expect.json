@@ -1,0 +1,10 @@
+{
+  "why": "moving block lands on static text; a box entering through the edge is only a note",
+  "must": [
+    "DEFECT #mover / #still",
+    "note #fly"
+  ],
+  "must_not": [
+    "DEFECT #fly"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "why": "Gemma 4 12B, 2026-10-23: gsap.set(autoAlpha:0) then tl.from(autoAlpha:1) fades the shapes OUT; they never appear",
+  "must": [
+    "never visible"
+  ],
+  "known_gap": true
+}

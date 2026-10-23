@@ -143,6 +143,7 @@ Render outputs (GIFs, filmstrips, onions, alpha videos) are git-ignored. They're
 | `uv run tools/run_local.py "<request>" --fix 2 --vision` | Then up to 2 repair rounds fed by the report's defects (plus filmstrip and onion images for vision models); each attempt is its own entry |
 | `uv run tools/export_sheets.py --status keep` | Copy keeper filmstrips to `sprites/` for sharing |
 | `uv run tools/make_readme_media.py` | Rebuild the images in `docs/media/` (this README) |
+| `uv run tools/test_checker.py` | Checker regression tests: renders `fixtures/` and checks each report against `expect.json` (must catch / must stay clean / known gaps) |
 
 `run_local.py` options: `--model NAME` (default: first loaded model), `--vertical`, `--url`, `--temperature 0.4`, `--max-tokens 12000`.
 
@@ -172,7 +173,9 @@ Text boxes are trimmed horizontally to their glyphs, SVG text vertically to cap 
 - [x] 85 animations human-rated (61 keep), 5 held out
 - [x] Explainer templates with transparent overlay export, vertical 9:16 with safe zones
 - [ ] **Experiment 1:** local Qwen, 5 holdout prompts, 0-shot vs 3-shot
-- [ ] Occlusion-aware overlap check (scene transitions and modals are false positives today)
+- [x] Checker regression suite: every new blind spot a model exposes is frozen in `fixtures/`
+- [ ] "Never visible" check: Gemma's first run animated shapes that never appeared, and the checker missed it (fixture: `gemma-from-hides-subject`)
+- [ ] Occlusion-aware overlap check (scene transitions and modals are false positives today) (fixture: `gap-occlusion-iris`)
 - [ ] Pilot: can a VLM predict human keep/reject better from filmstrip + report than from raw frames?
 - [ ] 500+ keepers → LoRA fine-tune
 

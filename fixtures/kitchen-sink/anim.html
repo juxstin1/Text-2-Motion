@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<!-- fixture: one of every mechanical defect the checker must catch -->
+<style>body{margin:0;background:#111}#stage{position:relative;width:1280px;height:720px;overflow:hidden;background:#111}
+.b{position:absolute;top:300px;width:160px;height:160px;background:#E8FF3A}#a{left:200px}#b{left:700px}
+#t{position:absolute;top:80px;left:0;width:1280px;text-align:center;color:#fff;font:48px 'Inter'}
+#sub{position:absolute;top:110px;left:0;width:1280px;text-align:center;color:#aaa;font:32px 'Inter'}
+#plate{position:absolute;left:300px;top:520px;width:300px;height:120px;background:#333}
+#lbl{position:absolute;left:40px;top:40px;color:#fff;font:28px 'Inter'}
+#lbl2{position:absolute;left:100px;top:40px;color:#E8FF3A;font:28px 'Inter'}
+#cap{position:absolute;left:40px;top:660px;color:#fff;font:24px Arial}</style></head>
+<body><div id="stage">
+ <div class="b" id="a"></div><div class="b" id="b"></div>
+ <div id="t">Centered headline</div><div id="sub">Subtitle collides</div>
+ <div id="plate" data-layer="back"><div id="lbl">Label</div><div id="lbl2">Clash</div></div>
+ <div id="cap">generic font</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+const tl = gsap.timeline({paused:true});
+tl.to("#a",{x:450,duration:0.6,ease:"power2.out"})                    // #a parks on #b
+  .from("#t,#sub",{y:20,autoAlpha:0,duration:0.4,ease:"power2.out"},0)  // text on text, to the end
+  .from("#lbl,#lbl2",{autoAlpha:0,duration:0.4,ease:"power2.out"},0)    // children of a back plate still collide
+  .from("#cap",{autoAlpha:0,duration:0.3,ease:"power2.out"},0)
+  .to("#b",{x:700,duration:0.5,ease:"power2.in"},"+=0.8")               // ends off-stage, after dead air
+  .set("#a",{x:-100})                                                    // one-frame jump
+  .to("#a",{width:300,duration:0.4,ease:"none"})                        // layout prop + linear ease
+  .to({}, {duration:0.4});
+window.TL = tl;
+</script></body></html>

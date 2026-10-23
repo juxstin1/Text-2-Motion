@@ -18,3 +18,8 @@ __pycache__/
 *.log
 
 .venv/
+
+# fixture render outputs (fixtures/*/anim.html + expect.json are the tests)
+fixtures/*/*
+!fixtures/*/anim.html
+!fixtures/*/expect.json

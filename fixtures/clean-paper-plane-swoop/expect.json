@@ -1,0 +1,6 @@
+{
+  "why": "frozen keeper 'paper-plane-swoop' that once false-flagged; must stay free of defects",
+  "must_not": [
+    "DEFECT"
+  ]
+}

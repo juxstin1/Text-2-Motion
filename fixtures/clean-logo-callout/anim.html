@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: warm-modern -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FBF3E4; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #FBF3E4; }
+  /* pack background: hidden by render.py --alpha so the callout sits on footage */
+  #bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 60%, #FFF8EC 0%, #FBF3E4 55%, #F3E6D0 100%); }
+
+  /* pointer: one stage-sized svg, path built from DATA.point -> DATA.label */
+  #wire { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; overflow: visible; }
+
+  /* marker: cream disc holding the logo, centred on DATA.point */
+  #marker { position: absolute; width: 0; height: 0; }
+  #disc { position: absolute; left: -70px; top: -70px; width: 140px; height: 140px; box-sizing: border-box; border-radius: 50%;
+          background: #FBF3E4; border: 4px solid #3A2416; box-shadow: 0 10px 28px rgba(58,36,22,0.4);
+          display: flex; align-items: center; justify-content: center; }
+  /* ping rings: one svg around the disc, circles start hidden */
+  #pings { position: absolute; left: -28px; top: -28px; width: 188px; height: 188px; overflow: visible; }
+  .ring { visibility: hidden; opacity: 0; }
+  .slot { position: relative; width: 72px; height: 72px; color: var(--c); }
+  .slot svg { display: block; width: 100%; height: 100%; }
+
+  /* label card: left edge at DATA.label, vertically centred on it, auto width */
+  #card { position: absolute; box-sizing: border-box; padding: 20px 28px 22px 30px; border-radius: 14px; background: #FBF3E4;
+          border-left: 8px solid var(--c); box-shadow: 0 14px 34px rgba(58,36,22,0.38); }
+  #kicker { font-family: "Inter"; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; color: #E0662E; white-space: nowrap; }
+  #name { font-family: "Fraunces"; font-weight: 600; font-size: 72px; line-height: 1.05; letter-spacing: -0.03em; color: #3A2416;
+          white-space: nowrap; overflow: hidden; margin-top: 4px; }
+  #rule { height: 4px; width: 72px; background: #E0662E; margin: 10px 0 12px; transform-origin: 0% 50%; }
+  #note { font-family: "Inter"; font-weight: 400; font-size: 24px; line-height: 1.3; color: #3A2416; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <svg id="wire" viewBox="0 0 1280 720">
+    <path id="casing" fill="none" stroke="#FBF3E4" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="line" fill="none" stroke="#E0662E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle id="dot" r="10" fill="#E0662E" stroke="#FBF3E4" stroke-width="4"/>
+  </svg>
+  <div id="marker">
+    <div id="disc">
+      <svg id="pings" data-layer="back" viewBox="0 0 188 188">
+        <circle class="ring" id="ring1" cx="94" cy="94" r="90" fill="none" stroke="#E0662E" stroke-width="4"/>
+        <circle class="ring" id="ring2" cx="94" cy="94" r="90" fill="none" stroke="#E0662E" stroke-width="4"/>
+      </svg>
+      <div class="slot" id="slotA">
+        <!-- placeholder logo: Nova (ring + core); paste any SVG logo here -->
+        <svg id="logoA" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="12"/><circle cx="50" cy="50" r="15" fill="currentColor"/></svg>
+      </div>
+    </div>
+  </div>
+  <div id="card">
+    <div id="kicker"></div>
+    <div id="name"></div>
+    <div id="rule"></div>
+    <div id="note"></div>
+  </div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+const DATA = {
+  point: { x: 380, y: 470 },   // stage px: where the logo marker sits (over the thing in the footage)
+  label: { x: 700, y: 250 },   // stage px: where the pointer ends and the label card starts
+  kicker: "NEW MODEL",
+  name: "Nova",
+  note: "Launched March 2026",
+  color: "#4D6BFE",
+};
+
+gsap.registerPlugin(DrawSVGPlugin);
+
+// ---- fill the DOM from DATA
+const $ = s => document.querySelector(s);
+$("#stage").style.setProperty("--c", DATA.color);
+$("#kicker").textContent = DATA.kicker;
+$("#name").textContent = DATA.name;
+$("#note").textContent = DATA.note;
+$("#marker").style.left = DATA.point.x + "px";
+$("#marker").style.top = DATA.point.y + "px";
+$("#card").style.left = DATA.label.x + 18 + "px";
+$("#card").style.top = DATA.label.y + "px";
+$("#card").style.maxWidth = 1250 - DATA.label.x - 18 + "px";   // never past the right edge
+$("#name").style.maxWidth = $("#note").style.maxWidth = 1250 - DATA.label.x - 18 - 66 + "px";
+
+// pointer: leaves the disc edge, angles to an elbow, then runs flat into the label
+const P = DATA.point, L = DATA.label;
+const elbow = { x: L.x - 70 * Math.sign(L.x - P.x || 1), y: L.y };
+const dx = elbow.x - P.x, dy = elbow.y - P.y, len = Math.hypot(dx, dy) || 1;
+const start = { x: P.x + dx / len * 86, y: P.y + dy / len * 86 };
+const d = `M${start.x},${start.y} L${elbow.x},${elbow.y} L${L.x},${L.y}`;
+$("#casing").setAttribute("d", d);
+$("#line").setAttribute("d", d);
+$("#dot").setAttribute("cx", L.x);
+$("#dot").setAttribute("cy", L.y);
+
+function fit(el, minScale = 0.45) {
+  const base = parseFloat(getComputedStyle(el).fontSize);
+  for (let s = base; el.scrollWidth > el.clientWidth && s > base * minScale; s -= 1) el.style.fontSize = s + "px";
+}
+
+document.fonts.ready.then(() => {
+  fit($("#name"));
+  gsap.set("#card", { yPercent: -50 });   // centre the card on the pointer end
+  const tl = gsap.timeline({ paused: true });
+
+  const pulse = (ring, at) => tl.fromTo(ring, { scale: 1, autoAlpha: 0.9, transformOrigin: "50% 50%" },
+      { scale: 1.35, autoAlpha: 0, duration: 0.7, ease: "power2.out", immediateRender: false }, at);
+
+  // 1. the marker pops: overshoot, squash, settle; the logo spins up inside it
+  tl.fromTo("#disc", { scale: 0 }, { scale: 1.2, duration: 0.24, ease: "power3.out" }, 0.05)
+    .to("#disc", { scaleX: 1.08, scaleY: 0.88, duration: 0.08, ease: "power2.inOut" }, 0.29)
+    .to("#disc", { scaleX: 1, scaleY: 1, duration: 0.45, ease: "elastic.out(1.1, 0.4)" }, 0.37)
+    .from("#slotA", { scale: 0.3, rotation: -120, duration: 0.6, ease: "back.out(2.2)" }, 0.12);
+  pulse("#ring1", 0.5);
+  pulse("#ring2", 0.62);
+
+  // 2. the pointer draws out from the disc to the label point, the dot snaps on
+  tl.from("#casing", { drawSVG: "0%", duration: 0.55, ease: "power3.inOut" }, 0.45)
+    .from("#line", { drawSVG: "0%", duration: 0.55, ease: "power3.inOut" }, 0.48)
+    .from("#dot", { scale: 0, transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(4)" }, 0.98);
+
+  // 3. the label card unfolds from the pointer, its lines stagger in, the rule draws
+  tl.from("#card", { scaleX: 0, transformOrigin: "0% 50%", duration: 0.5, ease: "back.out(1.4)" }, 1.0)
+    .from(["#kicker", "#name", "#note"], { y: 16, autoAlpha: 0, duration: 0.45, ease: "power3.out", stagger: 0.08 }, 1.18)
+    .from("#rule", { scaleX: 0, duration: 0.45, ease: "expo.out" }, 1.4);
+
+  // 4. alive to the end: the marker keeps pinging and the logo gives a little nod
+  pulse("#ring1", 1.6);
+  pulse("#ring2", 2.15);
+  tl.to("#slotA", { keyframes: [ { rotation: 10, duration: 0.14 }, { rotation: -6, duration: 0.14 }, { rotation: 0, duration: 0.22 } ], ease: "power2.inOut" }, 2.0)
+    .to("#dot", { scale: 1.5, duration: 0.14, ease: "power2.out" }, 2.3)
+    .to("#dot", { scale: 1, duration: 0.35, ease: "back.out(3)" }, 2.44)
+    .to({}, { duration: 0.25 }, 2.85);
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

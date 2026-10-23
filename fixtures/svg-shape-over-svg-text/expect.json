@@ -1,0 +1,6 @@
+{
+  "why": "text inside an svg is not exempt from the same-svg rule",
+  "must": [
+    "#dot / #svgHead"
+  ]
+}

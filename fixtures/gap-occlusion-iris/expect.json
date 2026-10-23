@@ -1,0 +1,7 @@
+{
+  "why": "scene B covers scene A's static text during a transition; occlusion is not understood yet",
+  "must_not": [
+    "DEFECT"
+  ],
+  "known_gap": true
+}

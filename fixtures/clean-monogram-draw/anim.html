@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: luxury -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #0E0C0A; }
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; background: #0E0C0A; color: #EDE3D1; }
+  #mark { position: absolute; left: 500px; top: 72px; width: 280px; height: 280px; overflow: visible; }
+  #wordmark { position: absolute; left: 0; top: 404px; width: 1280px; text-align: center;
+              font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 64px; letter-spacing: 0; line-height: 1; }
+  #tagline { position: absolute; left: 0; top: 508px; width: 1280px; text-align: center;
+             font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.32em; color: #C9A45C; }
+  .rule { position: absolute; top: 515px; width: 120px; height: 1px; background: rgba(201,164,92,0.55); }
+  #ruleL { left: 380px; }
+  #ruleR { left: 780px; }
+  #footer { position: absolute; left: 0; top: 596px; width: 1280px; text-align: center;
+            font-family: 'Manrope', sans-serif; font-weight: 300; font-size: 15px; letter-spacing: 0.02em; color: rgba(237,227,209,0.5); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="mark" viewBox="-140 -140 280 280">
+    <g fill="none" stroke="#C9A45C" stroke-linecap="square">
+      <circle id="ringOuter" r="136" stroke-width="1.5" transform="rotate(-90)"/>
+      <circle id="ringInner" r="124" stroke-width="0.75" stroke-opacity="0.6" transform="rotate(90)"/>
+    </g>
+    <!-- fill sits under the outline -->
+    <polygon id="letterFill" fill="#C9A45C"
+      points="-56,75 -56,-75 -30,-75 40,44 40,-75 56,-75 56,75 30,75 -40,-44 -40,75"/>
+    <polygon id="letterLine" fill="none" stroke="#C9A45C" stroke-width="1.5" stroke-linejoin="miter"
+      points="-56,75 -56,-75 -30,-75 40,44 40,-75 56,-75 56,75 30,75 -40,-44 -40,75"/>
+    <g stroke="#C9A45C" stroke-width="1.5" fill="none">
+      <line class="serif" x1="-74" y1="-75" x2="-30" y2="-75"/>
+      <line class="serif" x1="24" y1="-75" x2="72" y2="-75"/>
+      <line class="serif" x1="-72" y1="75" x2="-24" y2="75"/>
+    </g>
+    <g fill="#C9A45C">
+      <rect class="pip" x="-4" y="-140" width="8" height="8" transform="rotate(45 0 -136)"/>
+      <rect class="pip" x="-4" y="132" width="8" height="8" transform="rotate(45 0 136)"/>
+    </g>
+  </svg>
+
+  <div id="wordmark">Maison Nocturne</div>
+  <div class="rule" id="ruleL"></div>
+  <div id="tagline">PARFUMERIE &middot; PARIS</div>
+  <div class="rule" id="ruleR"></div>
+  <div id="footer">Fine fragrance since 1924</div>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+gsap.registerPlugin(DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  // 1. the two rings draw in opposite directions
+  tl.from("#ringOuter", { drawSVG: 0, duration: 1.4, ease: "power2.inOut" }, 0)
+    .from("#ringInner", { drawSVG: 0, duration: 1.3, ease: "power2.inOut" }, 0.15)
+  // 2. the letter outline traces itself, then the hairline serifs flick out from the stems
+    .from("#letterLine", { drawSVG: 0, duration: 1.5, ease: "power3.inOut" }, 0.35)
+    .from(".serif", { drawSVG: "50% 50%", duration: 0.6, ease: "power2.out", stagger: 0.08 }, "-=0.45")
+    .from(".pip", { scale: 0, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(2)", stagger: 0.1 }, "<0.1")
+  // 3. gold fill fades in under the outline
+    .from("#letterFill", { autoAlpha: 0, duration: 0.9, ease: "power2.inOut" }, "-=0.25")
+  // 4. wordmark and tagline
+    .from("#wordmark", { y: 20, autoAlpha: 0, duration: 1.0, ease: "power3.out" }, "<0.1")
+    .from(".rule", { scaleX: 0, duration: 0.8, ease: "power3.inOut", transformOrigin: (i) => i ? "0% 50%" : "100% 50%" }, "<0.3")
+    .from("#tagline", { y: 8, autoAlpha: 0, duration: 0.7, ease: "power2.out" }, "<0.1")
+    .from("#footer", { autoAlpha: 0, duration: 0.6, ease: "power2.out" }, "<0.2")
+    .to({}, { duration: 0.6 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>

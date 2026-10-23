@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<!-- pack: warm-modern -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #FBF3E4; }
+  /* faint ruled-notepaper ground */
+  #stage { position: relative; width: 1280px; height: 720px; overflow: hidden; color: #3A2416;
+           background: #FBF3E4 repeating-linear-gradient(to bottom, transparent 0 47px, rgba(58,36,22,0.07) 47px 48px); }
+  #sky { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <!-- one SVG holds the flight path, the trail, the plane and the copy, so they are layered on purpose -->
+  <svg id="sky" viewBox="0 0 1280 720">
+    <defs>
+      <!-- the trail is a dashed line revealed by a solid mask stroke that DrawSVG grows along the same path -->
+      <mask id="trailMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1280" height="720">
+        <path id="trailReveal" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"
+              d="M -60 560 C 140 520, 330 360, 560 330 C 720 310, 790 150, 680 140 C 580 130, 520 230, 580 300 C 640 370, 820 380, 1040 392"/>
+      </mask>
+    </defs>
+    <path id="flight" fill="none" stroke="none"
+          d="M -60 560 C 140 520, 330 360, 560 330 C 720 310, 790 150, 680 140 C 580 130, 520 230, 580 300 C 640 370, 820 380, 1040 392"/>
+    <path id="trail" mask="url(#trailMask)" fill="none" stroke="#E0662E" stroke-width="3" stroke-dasharray="10 12" stroke-linecap="round"
+          d="M -60 560 C 140 520, 330 360, 560 330 C 720 310, 790 150, 680 140 C 580 130, 520 230, 580 300 C 640 370, 820 380, 1040 392"/>
+
+    <!-- plane: drawn pointing right, centred on 0,0. outer g rides the path, inner g wobbles as it settles -->
+    <g id="plane">
+      <g id="planeBody"><g transform="scale(1.45)">
+        <polygon points="34,0 -26,-20 -12,0" fill="#E0662E"/>
+        <polygon points="34,0 -12,0 -26,18" fill="#3A2416"/>
+        <polygon points="34,0 -12,0 -4,9" fill="#E0662E" fill-opacity="0.55"/>
+      </g></g>
+    </g>
+
+    <text id="label" x="96" y="566" fill="#E0662E" font-family="Inter" font-weight="600" font-size="14" letter-spacing="1.4">MESSAGE SENT &#183; 09:41</text>
+    <text id="headline" x="92" y="650" fill="#3A2416" font-family="Fraunces" font-weight="600" font-size="72" letter-spacing="-2.16">Off it goes.</text>
+  </svg>
+</div>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/MotionPathPlugin.min.js"></script>
+<script src="../../vendor/DrawSVGPlugin.min.js"></script>
+<script>
+gsap.registerPlugin(MotionPathPlugin, DrawSVGPlugin);
+document.fonts.ready.then(() => {
+  const tl = gsap.timeline({ paused: true });
+  const FLY = 2.4, EASE = "power1.out";   // launches at speed, decelerates into a glide and a stop
+
+  // 1. the plane swoops in, banks through the loop and glides; autoRotate keeps its nose on the curve
+  tl.to("#plane", { duration: FLY, ease: EASE, immediateRender: true,
+      motionPath: { path: "#flight", align: "#flight", alignOrigin: [0.5, 0.5], autoRotate: true } }, 0)
+  // 2. the dashed trail draws along the same path with the same ease, so it stays glued to the tail
+    .fromTo("#trailReveal", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: FLY, ease: EASE }, 0)
+  // 3. banking: the paper flexes in the tight part of the loop
+    .to("#planeBody", { scaleY: 0.7, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.5)
+  // 4. follow-through: as the plane stops, its nose dips, overshoots up and settles level
+    .to("#planeBody", { rotation: 9, duration: 0.3, ease: "sine.out" }, 2.05)
+    .to("#planeBody", { rotation: -5, duration: 0.3, ease: "sine.inOut" }, 2.35)
+    .to("#planeBody", { rotation: 2, duration: 0.25, ease: "sine.inOut" }, 2.65)
+    .to("#planeBody", { rotation: 0, duration: 0.25, ease: "sine.inOut" }, 2.9)
+  // 5. copy lands while the plane is still gliding
+    .from("#label", { y: 20, autoAlpha: 0, duration: 0.5, ease: "power3.out" }, 1.55)
+    .from("#headline", { y: 50, autoAlpha: 0, duration: 0.8, ease: "back.out(1.6)" }, 1.7)
+    .to({}, { duration: 0.2 }); // final hold
+
+  window.TL = tl;
+  if (location.search.includes("play")) tl.play();
+});
+</script>
+</body>
+</html>
