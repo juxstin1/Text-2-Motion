@@ -172,7 +172,8 @@ Text boxes are trimmed horizontally to their glyphs, SVG text vertically to cap 
 - [x] Bank, contract, renderer + motion report, gallery, retrieval, local runner with repair loop
 - [x] 85 animations human-rated (61 keep), 5 held out
 - [x] Explainer templates with transparent overlay export, vertical 9:16 with safe zones
-- [ ] **Experiment 1:** local Qwen, 5 holdout prompts, 0-shot vs 3-shot
+- [x] **Experiment 1 (baseline):** Gemma 4 12B, 0-shot vs 3-shot, inconclusive, but it found 3 checker blind spots and a retrieval flaw ([write-up](docs/experiments/2026-10-23-gemma-baseline.md))
+- [ ] **Experiment 2:** same prompts after the checker, runner and retrieval fixes; retrieval judged on fresh holdouts
 - [x] Checker regression suite: every new blind spot a model exposes is frozen in `fixtures/`
 - [ ] "Never visible" check: Gemma's first run animated shapes that never appeared, and the checker missed it (fixture: `gemma-from-hides-subject`)
 - [ ] Occlusion-aware overlap check (scene transitions and modals are false positives today) (fixture: `gap-occlusion-iris`)

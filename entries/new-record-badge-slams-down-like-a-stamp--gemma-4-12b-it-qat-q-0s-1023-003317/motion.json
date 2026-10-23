@@ -1,0 +1,151 @@
+{
+ "duration": 2.48,
+ "fps": 30,
+ "frames": 76,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.4,
+   "ease": "power4.out",
+   "props": [
+    "y",
+    "rotation",
+    "autoAlpha"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#badge"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.36,
+   "duration": 0.06,
+   "ease": "power2.out",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#badge"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.36,
+   "duration": 0.12,
+   "ease": "back.out(2)",
+   "props": [
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#badge"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.36,
+   "duration": 0.04,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shake-container"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.4,
+   "duration": 0.04,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shake-container"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.4,
+   "duration": 0.04,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shake-container"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.48,
+   "duration": 2,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#badge",
+  "#shake-container"
+ ],
+ "fonts": [
+  "\"Playfair Display\", serif"
+ ],
+ "flagged": false,
+ "notes": 1,
+ "checks": {
+  "overlaps": [],
+  "offstage": [
+   {
+    "el": "#badge",
+    "ranges": [
+     [
+      0.03333333333333333,
+      0.06666666666666667
+     ]
+    ],
+    "i": 0,
+    "frame": 2,
+    "defect": false
+   }
+  ],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 1,
+  "format": "landscape",
+  "final_hold": 1.98,
+  "end_visible": [
+   "#badge",
+   "#shake-container"
+  ],
+  "end_overlaps": [],
+  "n_notes": 1
+ }
+}

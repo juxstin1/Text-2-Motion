@@ -1,0 +1,20 @@
+{
+  "id": "new-record-badge-slams-down-like-a-stamp--gemma-4-12b-it-qat-q-3s-1023-003739-fix1",
+  "prompt": "\"NEW RECORD\" badge slams down like a stamp with a tiny screen shake",
+  "tags": [
+    "local",
+    "3-shot"
+  ],
+  "source": "gemma-4-12B-it-QAT-Q4_0.gguf",
+  "status": "pending",
+  "holdout": false,
+  "created": "2026-10-23",
+  "shots": 3,
+  "examples": [
+    "vs-split",
+    "blob-grow-reveal",
+    "dropdown-unfold"
+  ],
+  "attempt": 1,
+  "parent": "new-record-badge-slams-down-like-a-stamp--gemma-4-12b-it-qat-q-3s-1023-003410"
+}

@@ -1,0 +1,17 @@
+duration 2.48s, 76 frames @30fps, 7 tweens
+TIMING
+  #badge  y,rotation,autoAlpha  0.00-0.40s  power4.out
+  #badge  scale,rotation  0.36-0.42s  power2.out
+  #badge  scale,rotation  0.36-0.48s  back.out(2)
+  #shake-container  x,y  0.36-0.40s  power2.out
+  #shake-container  x,y  0.40-0.44s  power2.out
+  #shake-container  x,y  0.40-0.44s  power2.out
+  (hold)  0.48-2.48s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean (1 data-layer=back excluded)
+off-stage: 1 note
+  note #badge  0.03-0.07s (passes the edge)
+jumps: clean
+dead air: clean
+end state: 2 visible (#badge, #shake-container); final hold 1.98s; no overlaps

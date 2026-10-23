@@ -1,0 +1,22 @@
+duration 3.40s, 103 frames @30fps, 20 tweens
+TIMING
+  #shapeC  x,y,autoAlpha  0.00-0.80s  power2.in
+  #shapeS  x,y,autoAlpha  0.30-1.20s  power2.in
+  #shapeT  x,y,autoAlpha  0.60-1.30s  power2.in
+  #shapeC  scaleY,scaleX  0.80-0.90s  power2.out
+  #shapeC  y,scaleY,scaleX  0.90-1.10s  power2.out
+  #shapeC  y,scaleY,scaleX  1.10-1.30s  back.out(3)
+  #shapeS  scaleY,scaleX  1.20-1.30s  power2.out
+  #shapeS  y,scaleY,scaleX  1.30-1.50s  power2.out
+  #shapeT  scaleY,scaleX  1.30-1.40s  power2.out
+  #shapeT  y,scaleY,scaleX  1.40-1.60s  power2.out
+  (+10 more)
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 2 note
+  note #shapeC / #title  0.67-0.73s  peak 92%  (onto static text)
+  note #shapeS / #title  1.07-1.13s  peak 95%  (onto static text)
+off-stage: clean
+jumps: clean
+dead air: DEFECT 1.80-2.60s
+end state: 5 visible (#shapeC, #shapeS, #shapeT, #title ...); final hold 0.50s; no overlaps

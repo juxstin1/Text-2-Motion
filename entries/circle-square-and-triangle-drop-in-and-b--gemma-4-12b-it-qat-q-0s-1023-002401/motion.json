@@ -1,0 +1,173 @@
+{
+ "duration": 5.1,
+ "fps": 30,
+ "frames": 154,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 1.2,
+   "ease": "power4.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.3,
+   "duration": 1.4,
+   "ease": "back.out(1.7)",
+   "props": [
+    "y",
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#shape-circle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.5,
+   "duration": 1.4,
+   "ease": "back.out(1.7)",
+   "props": [
+    "y",
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#shape-square"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.7,
+   "duration": 1.4,
+   "ease": "back.out(1.7)",
+   "props": [
+    "y",
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#shape-triangle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.7,
+   "duration": 1,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y",
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shape-circle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 2.9,
+   "duration": 1,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y",
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shape-square"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 3.1,
+   "duration": 1,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y",
+    "scale",
+    "rotation"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#shape-triangle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 4.1,
+   "duration": 1,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#title",
+  "#shape-circle",
+  "#shape-square",
+  "#shape-triangle",
+  "#content div.label"
+ ],
+ "fonts": [
+  "\"Playfair Display\", serif",
+  "Inter, sans-serif"
+ ],
+ "flagged": true,
+ "notes": 0,
+ "checks": {
+  "overlaps": [],
+  "offstage": [],
+  "jumps": [],
+  "dead_air": [
+   [
+    1.3,
+    2.7
+   ]
+  ],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 1.1,
+  "end_visible": [
+   "#title",
+   "#content div.label"
+  ],
+  "end_overlaps": [],
+  "n_notes": 0
+ }
+}

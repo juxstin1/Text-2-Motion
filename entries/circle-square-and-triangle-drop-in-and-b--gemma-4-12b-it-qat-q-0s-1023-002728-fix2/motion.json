@@ -1,0 +1,157 @@
+{
+ "duration": 2.65,
+ "fps": 30,
+ "frames": 81,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.8,
+   "ease": "power4.out",
+   "props": [
+    "autoAlpha",
+    "y"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#title"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.35,
+   "duration": 0.9,
+   "ease": "back.out(1.7)",
+   "props": [
+    "y",
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#shape-circle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.45,
+   "duration": 0.9,
+   "ease": "back.out(1.7)",
+   "props": [
+    "y",
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#shape-square"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.55,
+   "duration": 0.9,
+   "ease": "back.out(1.7)",
+   "props": [
+    "y",
+    "autoAlpha",
+    "scale",
+    "rotation"
+   ],
+   "type": "from",
+   "stagger": null,
+   "targets": [
+    "#shape-triangle"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 1.45,
+   "duration": 1.2,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#title",
+  "#shape-circle",
+  "#shape-square",
+  "#shape-triangle",
+  "#content div.label"
+ ],
+ "fonts": [
+  "\"Playfair Display\", serif",
+  "Inter, sans-serif"
+ ],
+ "flagged": true,
+ "notes": 2,
+ "checks": {
+  "overlaps": [],
+  "offstage": [
+   {
+    "el": "#shape-circle",
+    "ranges": [
+     [
+      0.36666666666666664,
+      0.43333333333333335
+     ]
+    ],
+    "i": 1,
+    "frame": 12,
+    "defect": false
+   },
+   {
+    "el": "#shape-square",
+    "ranges": [
+     [
+      0.4666666666666667,
+      0.5
+     ]
+    ],
+    "i": 2,
+    "frame": 15,
+    "defect": false
+   },
+   {
+    "el": "#shape-triangle",
+    "ranges": [
+     [
+      0.5666666666666667,
+      2.65
+     ]
+    ],
+    "i": 3,
+    "frame": 49,
+    "defect": true
+   }
+  ],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 1.22,
+  "end_visible": [
+   "#title",
+   "#shape-circle",
+   "#shape-square",
+   "#shape-triangle",
+   "#content div.label"
+  ],
+  "end_overlaps": [],
+  "n_notes": 2
+ }
+}

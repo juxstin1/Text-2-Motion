@@ -1,0 +1,17 @@
+duration 5.10s, 154 frames @30fps, 8 tweens
+TIMING
+  #title  autoAlpha,y  0.00-1.20s  power4.out
+  #shape-circle  y,autoAlpha,scale,rotation  0.30-1.70s  back.out(1.7)
+  #shape-square  y,autoAlpha,scale,rotation  0.50-1.90s  back.out(1.7)
+  #shape-triangle  y,autoAlpha,scale,rotation  0.70-2.10s  back.out(1.7)
+  #shape-circle  x,y,scale,rotation  2.70-3.70s  power2.out
+  #shape-square  x,y,scale,rotation  2.90-3.90s  power2.out
+  #shape-triangle  x,y,scale,rotation  3.10-4.10s  power2.out
+  (hold)  4.10-5.10s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: DEFECT duration 5.10s > 4s
+overlap: clean
+off-stage: clean
+jumps: clean
+dead air: DEFECT 1.30-2.70s
+end state: 2 visible (#title, #content div.label); final hold 1.10s; no overlaps

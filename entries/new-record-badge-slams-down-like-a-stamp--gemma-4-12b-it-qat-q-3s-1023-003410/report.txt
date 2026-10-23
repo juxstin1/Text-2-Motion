@@ -1,0 +1,20 @@
+duration 2.47s, 76 frames @30fps, 8 tweens
+TIMING
+  #badge  y,rotation,autoAlpha,scale  0.00-0.35s  power4.in
+  #content-wrapper  x,y  0.35-0.39s  power2.out
+  #content-wrapper  x,y  0.39-0.43s  power2.out
+  #content-wrapper  x,y  0.43-0.47s  power2.out
+  #content-wrapper  x,y  0.47-0.51s  power2.out
+  #badge  scaleX,scaleY  0.47-0.57s  power2.out
+  #badge  scaleX,scaleY  0.57-0.97s  back.out(2)
+  (hold)  0.97-2.47s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: 1 DEFECT
+  DEFECT #badge / #card-title  0.37-2.47s  peak 42%  (onto static text)
+off-stage: 2 note
+  note #badge  0.20-0.23s (passes the edge)
+  note #content-wrapper  0.37-0.37s, 0.43-0.47s (passes the edge)
+jumps: clean
+dead air: clean
+end state: 3 visible (#badge, #content-wrapper, #card-title); final hold 1.50s; overlapping at end: #badge/#card-title

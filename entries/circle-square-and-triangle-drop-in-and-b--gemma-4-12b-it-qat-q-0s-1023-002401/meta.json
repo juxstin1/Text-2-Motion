@@ -1,0 +1,15 @@
+{
+  "id": "circle-square-and-triangle-drop-in-and-b--gemma-4-12b-it-qat-q-0s-1023-002401",
+  "prompt": "circle, square and triangle drop in and bounce into a little composition",
+  "tags": [
+    "local",
+    "0-shot"
+  ],
+  "source": "gemma-4-12B-it-QAT-Q4_0.gguf",
+  "status": "pending",
+  "holdout": false,
+  "created": "2026-10-23",
+  "shots": 0,
+  "examples": [],
+  "attempt": 0
+}

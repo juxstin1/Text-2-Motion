@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- pack: editorial -->
+<meta charset="utf-8">
+<title>Geometric Harmony</title>
+<link rel="stylesheet" href="../../vendor/fonts/fonts.css">
+<style>
+  body { margin: 0; background: #F4EFE6; }
+  #stage { 
+    position: relative; 
+    width: 1280px; 
+    height: 720px; 
+    overflow: hidden; 
+    background: #F4EFE6; 
+  }
+  #bg { 
+    position: absolute; 
+    inset: 0; 
+    background: #F4EFE6; 
+  }
+  #content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+  .shape-container {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .shape-container svg {
+    width: 100%;
+    height: 100%;
+  }
+  #title {
+    position: absolute;
+    top: 15%;
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: #1B1A17;
+    margin: 0;
+    text-align: center;
+    z-index: 10;
+  }
+  .label {
+    position: absolute;
+    bottom: 10%;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    color: #B4442C;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg" data-layer="back"></div>
+  <div id="content">
+    <h1 id="title">Geometric Harmony</h1>
+    <div id="shape-circle" class="shape-container"></div>
+    <div id="shape-square" class="shape-container"></div>
+    <div id="shape-triangle" class="shape-container"></div>
+    <div class="label">Compositional Study</div>
+  </div>
+</div>
+
+<script src="../../vendor/gsap.min.js"></script>
+<script>
+  const DATA = {
+    title: "Geometric Harmony",
+    shapes: [
+      { id: "circle", color: "#B4442C", x: -220, y: -50, scale: 1.2, rot: -12 },
+      { id: "square", color: "#1B1A17", x: 220, y: -50, scale: 1.0, rot: 15 },
+      { id: "triangle", color: "#B4442C", x: 0, y: 180, scale: 0.9, rot: 5 }
+    ]
+  };
+
+  document.fonts.ready.then(() => {
+    // DOM Injection
+    DATA.shapes.forEach((shape, index) => {
+      const container = document.getElementById(`shape-${shape.id}`);
+      let svgContent = '';
+      
+      if (shape.id === 'circle') {
+        svgContent = `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="${shape.color}" /></svg>`;
+      } else if (shape.id === 'square') {
+        svgContent = `<svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="15" fill="${shape.color}" /></svg>`;
+      } else if (shape.id === 'triangle') {
+        svgContent = `<svg viewBox="0 0 100 100"><path d="M50 15 L85 85 L15 85 Z" fill="${shape.color}" /></svg>`;
+      }
+      
+      container.innerHTML = svgContent;
+      
+      // Set initial positions via GSAP for the "drop"
+      gsap.set(container, { 
+        x: 0, 
+        y: -600, 
+        scale: 0.5, 
+        autoAlpha: 0,
+        rotation: 0 
+      });
+    });
+
+    // Build Timeline
+    const tl = gsap.timeline({ paused: true });
+
+    // Animation Sequence
+    tl.to("#title", { 
+      autoAlpha: 1, 
+      y: 0, 
+      duration: 1.2, 
+      ease: "power4.out",
+      onStart: () => { /* Title starts slightly lower */ }
+    }, 0);
+
+    // Drop and Bounce shapes
+    DATA.shapes.forEach((shape, i) => {
+      tl.from(`#shape-${shape.id}`, {
+        y: -600,
+        autoAlpha: 0,
+        scale: 0.5,
+        rotation: -20,
+        duration: 1.4,
+        ease: "back.out(1.7)",
+        delay: i * 0.2
+      }, 0.3);
+
+      // Settle animation
+      tl.to(`#shape-${shape.id}`, {
+        x: shape.x,
+        y: shape.y,
+        scale: shape.scale,
+        rotation: shape.rot,
+        duration: 1,
+        ease: "power2.out",
+        delay: 1.2 + (i * 0.2)
+      }, 1.5);
+    });
+
+    // Final Hold
+    tl.to({}, { duration: 1 });
+
+    window.TL = tl;
+    
+    if (location.search.includes("play")) {
+      tl.play();
+    }
+  });
+</script>
+</body>
+</html>

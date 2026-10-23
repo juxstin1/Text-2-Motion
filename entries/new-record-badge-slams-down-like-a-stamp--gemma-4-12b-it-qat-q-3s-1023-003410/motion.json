@@ -1,0 +1,207 @@
+{
+ "duration": 2.47,
+ "fps": 30,
+ "frames": 76,
+ "format": "landscape",
+ "size": [
+  1280,
+  720
+ ],
+ "tweens": [
+  {
+   "start": 0,
+   "duration": 0.35,
+   "ease": "power4.in",
+   "props": [
+    "y",
+    "rotation",
+    "autoAlpha",
+    "scale"
+   ],
+   "type": "fromTo",
+   "stagger": null,
+   "targets": [
+    "#badge"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.35,
+   "duration": 0.04,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#content-wrapper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.39,
+   "duration": 0.04,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#content-wrapper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.43,
+   "duration": 0.04,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#content-wrapper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.47,
+   "duration": 0.04,
+   "ease": "power2.out",
+   "props": [
+    "x",
+    "y"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#content-wrapper"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.47,
+   "duration": 0.1,
+   "ease": "power2.out",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#badge"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.57,
+   "duration": 0.4,
+   "ease": "back.out(2)",
+   "props": [
+    "scaleX",
+    "scaleY"
+   ],
+   "type": "to",
+   "stagger": null,
+   "targets": [
+    "#badge"
+   ],
+   "objects": 0
+  },
+  {
+   "start": 0.97,
+   "duration": 1.5,
+   "ease": "custom",
+   "props": [],
+   "type": "to",
+   "stagger": null,
+   "targets": [],
+   "objects": 1
+  }
+ ],
+ "elements": [
+  "#badge",
+  "#content-wrapper",
+  "#card-title"
+ ],
+ "fonts": [
+  "\"Space Grotesk\""
+ ],
+ "flagged": true,
+ "notes": 2,
+ "checks": {
+  "overlaps": [
+   {
+    "a": "#badge",
+    "b": "#card-title",
+    "ranges": [
+     [
+      0.36666666666666664,
+      2.47
+     ]
+    ],
+    "peak": 0.42,
+    "peak_frame": 27,
+    "ia": 0,
+    "ib": 2,
+    "defect": true,
+    "static": true
+   }
+  ],
+  "offstage": [
+   {
+    "el": "#badge",
+    "ranges": [
+     [
+      0.2,
+      0.23333333333333334
+     ]
+    ],
+    "i": 0,
+    "frame": 7,
+    "defect": false
+   },
+   {
+    "el": "#content-wrapper",
+    "ranges": [
+     [
+      0.36666666666666664,
+      0.36666666666666664
+     ],
+     [
+      0.43333333333333335,
+      0.4666666666666667
+     ]
+    ],
+    "i": 1,
+    "frame": 13,
+    "defect": false
+   }
+  ],
+  "jumps": [],
+  "dead_air": [],
+  "unsafe": [],
+  "backdrop": 0,
+  "format": "landscape",
+  "final_hold": 1.5,
+  "end_visible": [
+   "#badge",
+   "#content-wrapper",
+   "#card-title"
+  ],
+  "end_overlaps": [
+   [
+    "#badge",
+    "#card-title"
+   ]
+  ],
+  "n_notes": 2
+ }
+}

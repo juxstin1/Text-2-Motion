@@ -1,0 +1,17 @@
+duration 2.65s, 81 frames @30fps, 5 tweens
+TIMING
+  #title  autoAlpha,y  0.00-0.80s  power4.out
+  #shape-circle  y,autoAlpha,scale,rotation  0.35-1.25s  back.out(1.7)
+  #shape-square  y,autoAlpha,scale,rotation  0.45-1.35s  back.out(1.7)
+  #shape-triangle  y,autoAlpha,scale,rotation  0.55-1.45s  back.out(1.7)
+  (hold)  1.45-2.65s
+CHECKS  (fix every DEFECT; 'note' = mid-animation fact, change it only if unintended)
+contract: clean
+overlap: clean
+off-stage: 1 DEFECT, 2 note
+  DEFECT #shape-triangle still off-stage at the end
+  note #shape-circle  0.37-0.43s (passes the edge)
+  note #shape-square  0.47-0.50s (passes the edge)
+jumps: clean
+dead air: clean
+end state: 5 visible (#title, #shape-circle, #shape-square, #shape-triangle ...); final hold 1.22s; no overlaps

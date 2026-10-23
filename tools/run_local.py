@@ -54,8 +54,15 @@ def chat(base: str, model: str, messages: list[dict], temperature: float, max_to
     resp = http_json(f"{base}/chat/completions", {
         "model": model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens, "stream": False,
     })
-    text = resp["choices"][0]["message"].get("content") or ""
+    msg = resp["choices"][0]["message"]
+    text = msg.get("content") or ""
     usage = resp.get("usage", {})
+    reasoning = msg.get("reasoning_content") or ""
+    if reasoning:
+        # thinking models (e.g. Gemma 4 via llama-server --jinja) return their reasoning separately;
+        # keep it in raw_reply.txt so a reply that thinks until max_tokens and never answers is diagnosable
+        text = f"<think>\n{reasoning}\n</think>\n{text}"
+        print(f"  (reasoning {len(reasoning)} chars{', NO ANSWER: hit max_tokens while thinking' if not msg.get('content') else ''})")
     print(f"  model replied in {time.time() - t0:.0f}s  (prompt {usage.get('prompt_tokens', '?')} tok, "
           f"completion {usage.get('completion_tokens', '?')} tok)")
     return text
