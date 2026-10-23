@@ -217,7 +217,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             meta[k] = v
         if meta.get("status") != "reject":
             meta.pop("reason", None)  # reasons only describe rejects
-        (d / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
+        (d / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8", newline="\n")
         return self._json(200, meta)
 
 

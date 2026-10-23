@@ -88,7 +88,7 @@ def save_entry(request: str, html: str | None, raw: str, model: str, extra: dict
     tags = ["local", f"{extra['shots']}-shot"] + (["vertical"] if "vertical 9:16" in request else [])
     meta = {"id": eid, "prompt": request, "tags": tags, "source": model,
             "status": "pending", "holdout": False, "created": date.today().isoformat(), **extra}
-    (d / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
+    (d / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8", newline="\n")
     return d
 
 
