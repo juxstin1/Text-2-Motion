@@ -14,4 +14,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 31 visible (#eyebrow, #big, #delta, #chart div.grid x4 ...); final hold 0.47s; no overlaps

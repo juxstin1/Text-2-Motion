@@ -24,4 +24,7 @@ overlap: 4 DEFECT, 8 note
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 14 visible (#frame, #cover, #s2label, #s2title span.ln x2 ...); final hold 0.27s; overlapping at end: #frame/#s1hint, #s2label/#s1title

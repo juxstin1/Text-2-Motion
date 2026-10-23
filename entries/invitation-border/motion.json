@@ -139,6 +139,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.86,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 1.87,
+   "duration": 2.73
+  },
   "end_visible": [
    "#card",
    "#frameOuter",

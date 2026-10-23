@@ -751,6 +751,13 @@
   "backdrop": 0,
   "format": "vertical",
   "final_hold": 0.27,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.13,
+   "duration": 3.4
+  },
   "end_visible": [
    "#w2_1",
    "#w2_2",

@@ -877,6 +877,13 @@
   "backdrop": 6,
   "format": "landscape",
   "final_hold": 0.34,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.37,
+   "duration": 3.71
+  },
   "end_visible": [
    "#panel",
    "#kicker",

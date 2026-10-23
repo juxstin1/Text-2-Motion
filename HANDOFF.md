@@ -11,7 +11,12 @@
 
 ## Not finished
 
-1. **Keeper check of the new rules (half done):** a re-render of all entries was at 46/96 at handoff. Of 40 bank entries re-checked, 3 hit the new `cut off` rule: circle-iris-transition (keep), headline-word-cycle (reject), heart-like-burst (reject). Look at the keep before trusting the rule: either a real defect or a false positive to freeze as a `must_not` fixture. Finish with `uv run tools/render.py --all`, then rerun the hit list (snippet below).
+1. **Keeper check of the new rules (done, 4 false alarms to fix):** full re-render, the new checks flag 4/61 keepers, 3/24 rejects, 6/8 Gemma attempts.
+   - Rejects (plausible): modal-scale-in (frozen; rated dull), headline-word-cycle (cut off), heart-like-burst (cut off).
+   - Keepers (false alarms, fix the rule, then freeze each as a must-stay-clean fixture):
+     - circle-iris-transition: `#iris` "cut off". It's an 800px-radius fill meant to overflow → exempt elements larger than the stage.
+     - scoreboard-rounds: `#sideB div.glow` "never visible". Leader-only glow, side B never leads, already `data-layer="back"` → exempt back layers from never-visible.
+     - vs-split (never visible) and winner-reveal (cut off): not inspected yet; likely the same two causes.
 2. **Experiment 2 not started:** run it with the command below.
 3. **Gemma's 8 outputs are unrated** (gallery → pending).
 

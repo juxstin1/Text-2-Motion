@@ -975,6 +975,13 @@
   "backdrop": 0,
   "format": "vertical",
   "final_hold": 0.31,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.63,
+   "duration": 3.94
+  },
   "end_visible": [
    "#pip",
    "#armL",

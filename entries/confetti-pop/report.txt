@@ -21,4 +21,7 @@ off-stage: clean
 jumps: 1 DEFECT
   DEFECT #popper  at 0.73s  39.1px in one frame
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 5 visible (#popper, #tail, #title, #eyebrow ...); final hold 0.21s; no overlaps

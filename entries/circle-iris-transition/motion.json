@@ -477,6 +477,20 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.28,
+  "never_visible": [],
+  "cut_off": [
+   {
+    "el": "#iris",
+    "share": 0.64,
+    "i": 2,
+    "frame": 95
+   }
+  ],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.87,
+   "duration": 3.15
+  },
   "end_visible": [
    "#iris",
    "#bTitle span[0]",

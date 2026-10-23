@@ -14,4 +14,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 34 visible (#sidebar, #brand, #navLabel, #sidebar div.item x6 ...); final hold 0.73s; no overlaps

@@ -12,4 +12,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 11 visible (#eyebrow, #headline span.ln x2, #body, #cta ...); final hold 0.50s; no overlaps

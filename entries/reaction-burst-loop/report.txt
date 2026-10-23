@@ -18,4 +18,7 @@ off-stage: clean
 jumps: clean
 dead air: clean
 safe zones: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 5 visible (#face, #dotL, #dotR, #smile ...); final hold 0.00s; no overlaps

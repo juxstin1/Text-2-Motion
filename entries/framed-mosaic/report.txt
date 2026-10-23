@@ -13,4 +13,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 20 visible (#t4, #t1, #t6, #t2 ...); final hold 0.81s; no overlaps

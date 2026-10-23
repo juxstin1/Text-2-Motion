@@ -11,4 +11,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 13 visible (#kicker, #headline, #sub, #row div.tile x5 ...); final hold 0.58s; no overlaps

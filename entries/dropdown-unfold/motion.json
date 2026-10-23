@@ -146,6 +146,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.61,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 1.1,
+   "duration": 1.71
+  },
   "end_visible": [
    "#btn",
    "#chev",

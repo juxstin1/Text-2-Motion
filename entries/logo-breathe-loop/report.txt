@@ -18,4 +18,7 @@ off-stage: clean
 jumps: clean
 dead air: clean
 safe zones: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 2 visible (#ring, #crest); final hold 0.02s; no overlaps

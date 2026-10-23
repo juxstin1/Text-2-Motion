@@ -546,6 +546,13 @@
   "backdrop": 1,
   "format": "vertical",
   "final_hold": 0.31,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.57,
+   "duration": 2.88
+  },
   "end_visible": [
    "#panelB",
    "#cardB",

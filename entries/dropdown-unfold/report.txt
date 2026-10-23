@@ -13,4 +13,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 15 visible (#btn, #chev, #menu, #menu div.mlabel ...); final hold 0.61s; no overlaps

@@ -14,4 +14,7 @@ off-stage: 1 note
   note #badge  0.03-0.07s (passes the edge)
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: DEFECT final hold is 1.98s (79% of runtime): the motion finishes too early. Slow the main action (longer durations, more follow-through or settle) so it fills more of the runtime, then hold for under 1.0s
 end state: 2 visible (#badge, #shake-container); final hold 1.98s; no overlaps

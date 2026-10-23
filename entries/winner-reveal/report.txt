@@ -17,4 +17,8 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: 1 DEFECT
+  DEFECT #rays ends 85% cut off by its container or <svg>; move it fully inside
+ending: clean
 end state: 9 visible (#title, #cardB, #slotB, #contB ...); final hold 0.33s; no overlaps

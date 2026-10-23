@@ -19,4 +19,7 @@ overlap: 2 note
 off-stage: clean
 jumps: clean
 dead air: DEFECT 1.80-2.60s
+visibility: clean
+cut off: clean
+ending: clean
 end state: 5 visible (#shapeC, #shapeS, #shapeT, #title ...); final hold 0.50s; no overlaps

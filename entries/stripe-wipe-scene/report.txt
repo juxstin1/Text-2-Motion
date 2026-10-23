@@ -20,4 +20,7 @@ overlap: 29 note
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 6 visible (#away, #labB, #numB, #vsB ...); final hold 0.26s; no overlaps

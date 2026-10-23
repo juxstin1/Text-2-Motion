@@ -296,6 +296,13 @@
   "backdrop": 2,
   "format": "landscape",
   "final_hold": 0.37,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.73,
+   "duration": 3.1
+  },
   "end_visible": [
    "#disc",
    "#slotA",

@@ -20,4 +20,7 @@ overlap: 6 note (5 data-layer=back excluded)
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 41 visible (#panel, #title, #slotA, #slotB ...); final hold 0.34s; no overlaps

@@ -12,4 +12,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 15 visible (#kicker, #headline, #lede, #card ...); final hold 0.75s; no overlaps

@@ -17,4 +17,7 @@ off-stage: 2 note
   note #content-wrapper  0.37-0.37s, 0.43-0.47s (passes the edge)
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: DEFECT final hold is 1.50s (60% of runtime): the motion finishes too early. Slow the main action (longer durations, more follow-through or settle) so it fills more of the runtime, then hold for under 1.0s
 end state: 3 visible (#badge, #content-wrapper, #card-title); final hold 1.50s; overlapping at end: #badge/#card-title

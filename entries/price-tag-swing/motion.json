@@ -123,6 +123,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.5,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.57,
+   "duration": 3.07
+  },
   "end_visible": [
    "#eyebrow",
    "#headline span.ln[0]",

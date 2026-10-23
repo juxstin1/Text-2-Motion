@@ -19,4 +19,7 @@ overlap: 2 note
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 13 visible (#orbit circle.dot x8, #orbit, #ring, #glyph ...); final hold 0.35s; no overlaps

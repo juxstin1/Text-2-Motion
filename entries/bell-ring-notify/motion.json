@@ -441,6 +441,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.18,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.33,
+   "duration": 2.51
+  },
   "end_visible": [
    "#halo",
    "#bellIn",

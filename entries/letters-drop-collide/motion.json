@@ -969,6 +969,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.21,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.27,
+   "duration": 3.48
+  },
   "end_visible": [
    "#label",
    "#cH",

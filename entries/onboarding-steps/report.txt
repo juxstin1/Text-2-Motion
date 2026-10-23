@@ -12,4 +12,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 21 visible (#eyebrow, #headline div x4, div.card x3, #intro ...); final hold 0.58s; no overlaps

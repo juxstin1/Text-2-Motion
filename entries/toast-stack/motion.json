@@ -142,6 +142,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.69,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.57,
+   "duration": 3.26
+  },
   "end_visible": [
    "#t1",
    "#t2",

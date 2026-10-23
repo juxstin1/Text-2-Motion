@@ -139,7 +139,7 @@
   "\"Space Grotesk\", sans-serif",
   "\"Space Grotesk\""
  ],
- "flagged": false,
+ "flagged": true,
  "notes": 0,
  "checks": {
   "overlaps": [],
@@ -150,6 +150,20 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.62,
+  "never_visible": [],
+  "cut_off": [
+   {
+    "el": "#words",
+    "share": 0.67,
+    "i": 5,
+    "frame": 101
+   }
+  ],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.73,
+   "duration": 3.35
+  },
   "end_visible": [
    "#eyebrow",
    "#line",

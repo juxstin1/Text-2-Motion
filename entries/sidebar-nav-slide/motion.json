@@ -183,6 +183,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.73,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 1.33,
+   "duration": 2.06
+  },
   "end_visible": [
    "#sidebar",
    "#brand",

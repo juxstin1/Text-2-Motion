@@ -14,4 +14,7 @@ off-stage: 1 DEFECT, 2 note
   note #shape-square  0.47-0.50s (passes the edge)
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: DEFECT final hold is 1.22s (46% of runtime): the motion finishes too early. Slow the main action (longer durations, more follow-through or settle) so it fills more of the runtime, then hold for under 1.0s
 end state: 5 visible (#title, #shape-circle, #shape-square, #shape-triangle ...); final hold 1.22s; no overlaps

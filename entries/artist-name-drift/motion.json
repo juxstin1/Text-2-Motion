@@ -121,6 +121,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.73,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.67,
+   "duration": 3.4
+  },
   "end_visible": [
    "#kicker",
    "#first",

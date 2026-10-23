@@ -14,4 +14,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 10 visible (#venue, #num, #art, #title div x3 ...); final hold 0.67s; no overlaps

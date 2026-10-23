@@ -18,4 +18,7 @@ off-stage: clean
 jumps: clean
 dead air: clean
 safe zones: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 11 visible (#ringBox, #numWrap, #arc, #cap ...); final hold 0.28s; no overlaps

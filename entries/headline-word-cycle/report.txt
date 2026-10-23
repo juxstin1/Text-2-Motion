@@ -14,4 +14,8 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: 1 DEFECT
+  DEFECT #words ends 67% cut off by its container or <svg>; move it fully inside
+ending: clean
 end state: 9 visible (#eyebrow, #line, #sub, #cta ...); final hold 0.62s; no overlaps

@@ -249,6 +249,17 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 1.03,
+  "never_visible": [
+   "#shape-circle",
+   "#shape-square",
+   "#shape-triangle"
+  ],
+  "cut_off": [],
+  "frozen": {
+   "defect": true,
+   "motion_end": 2.07,
+   "duration": 3.1
+  },
   "end_visible": [
    "#title",
    "#content div.label"

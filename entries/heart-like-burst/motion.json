@@ -886,7 +886,7 @@
   "Syne",
   "Sora, sans-serif"
  ],
- "flagged": false,
+ "flagged": true,
  "notes": 1,
  "checks": {
   "overlaps": [
@@ -914,6 +914,20 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.21,
+  "never_visible": [],
+  "cut_off": [
+   {
+    "el": "#roll",
+    "share": 0.5,
+    "i": 25,
+    "frame": 75
+   }
+  ],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.27,
+   "duration": 2.48
+  },
   "end_visible": [
    "#title",
    "#heartRig",

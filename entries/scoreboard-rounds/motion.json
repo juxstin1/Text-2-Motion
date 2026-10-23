@@ -680,7 +680,7 @@
   "\"Bebas Neue\", sans-serif",
   "\"Bebas Neue\""
  ],
- "flagged": false,
+ "flagged": true,
  "notes": 5,
  "checks": {
   "overlaps": [
@@ -772,6 +772,15 @@
   "backdrop": 6,
   "format": "landscape",
   "final_hold": 0.36,
+  "never_visible": [
+   "#sideB div.glow"
+  ],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.33,
+   "duration": 3.69
+  },
   "end_visible": [
    "#board",
    "#mid",

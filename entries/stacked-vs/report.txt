@@ -18,4 +18,7 @@ off-stage: clean
 jumps: clean
 dead air: clean
 safe zones: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 18 visible (#cardA, #cardB, #slotA, #cardA div.stripe ...); final hold 0.29s; no overlaps

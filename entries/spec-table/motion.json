@@ -757,6 +757,13 @@
   "backdrop": 5,
   "format": "landscape",
   "final_hold": 0.34,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.13,
+   "duration": 3.47
+  },
   "end_visible": [
    "#panel",
    "#title",

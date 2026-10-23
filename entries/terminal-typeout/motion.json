@@ -803,6 +803,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.67,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.23,
+   "duration": 3.9
+  },
   "end_visible": [
    "#typed div[0]",
    "#typed div[1]",

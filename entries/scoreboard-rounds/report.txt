@@ -20,4 +20,8 @@ overlap: 5 note (6 data-layer=back excluded)
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: 1 DEFECT
+  DEFECT #sideB div.glow is animated but never visible on stage; check from() vs to() and its starting autoAlpha/position
+cut off: clean
+ending: clean
 end state: 20 visible (#board, #mid, #slotA, #slotB ...); final hold 0.36s; no overlaps

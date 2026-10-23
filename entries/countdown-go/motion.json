@@ -373,6 +373,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.66,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.17,
+   "duration": 3.83
+  },
   "end_visible": [
    "#tl-label",
    "#tr-label",

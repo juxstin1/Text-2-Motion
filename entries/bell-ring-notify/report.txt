@@ -17,4 +17,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 8 visible (#halo, #bellIn, #bell, #clapper ...); final hold 0.18s; no overlaps

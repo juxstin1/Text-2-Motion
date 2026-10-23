@@ -15,4 +15,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 9 visible (#frame, #id, #node, #field ...); final hold 0.64s; no overlaps

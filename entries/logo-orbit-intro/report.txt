@@ -20,4 +20,7 @@ overlap: 6 note (3 data-layer=back excluded)
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 56 visible (#item0 div.chip, #item1 div.chip, #item2 div.chip, #item3 div.chip ...); final hold 0.39s; no overlaps

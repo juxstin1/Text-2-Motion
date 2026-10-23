@@ -1180,6 +1180,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.21,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.67,
+   "duration": 2.88
+  },
   "end_visible": [
    "#folio",
    "#drops circle.speck[0]",

@@ -191,6 +191,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 1.5,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": true,
+   "motion_end": 0.97,
+   "duration": 2.47
+  },
   "end_visible": [
    "#badge",
    "#content-wrapper",

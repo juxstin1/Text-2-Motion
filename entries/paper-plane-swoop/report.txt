@@ -16,4 +16,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 4 visible (#plane, #planeBody, #label, #headline); final hold 0.22s; no overlaps

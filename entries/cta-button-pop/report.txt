@@ -15,4 +15,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 10 visible (#label, #headline div x4, #btn, #btnText ...); final hold 0.69s; no overlaps

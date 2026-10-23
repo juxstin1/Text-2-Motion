@@ -408,6 +408,13 @@
   "backdrop": 9,
   "format": "vertical",
   "final_hold": 0.28,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.2,
+   "duration": 3.48
+  },
   "end_visible": [
    "#ringBox",
    "#numWrap",

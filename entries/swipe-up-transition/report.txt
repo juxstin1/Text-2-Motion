@@ -21,4 +21,7 @@ off-stage: clean
 jumps: clean
 dead air: clean
 safe zones: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 10 visible (#panelB, #cardB, #headB div x5, #labB ...); final hold 0.31s; no overlaps

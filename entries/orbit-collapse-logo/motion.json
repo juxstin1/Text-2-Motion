@@ -275,6 +275,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.35,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.6,
+   "duration": 2.95
+  },
   "end_visible": [
    "#orbit circle.dot[0]",
    "#orbit circle.dot[1]",

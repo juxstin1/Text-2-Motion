@@ -17,4 +17,10 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: DEFECT 0.00-0.90s
+visibility: clean
+cut off: 3 DEFECT
+  DEFECT #shapeC ends 45% cut off by its container or <svg>; move it fully inside
+  DEFECT #shapeS ends 45% cut off by its container or <svg>; move it fully inside
+  DEFECT #shapeT ends 45% cut off by its container or <svg>; move it fully inside
+ending: clean
 end state: 5 visible (#shapeC, #shapeS, #shapeT, #title ...); final hold 0.50s; no overlaps

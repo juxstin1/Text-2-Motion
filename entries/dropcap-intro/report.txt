@@ -13,4 +13,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 13 visible (#eyebrow, #title, #rule, #byline ...); final hold 0.77s; no overlaps

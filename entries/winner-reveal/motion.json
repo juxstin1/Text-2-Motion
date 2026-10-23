@@ -396,7 +396,7 @@
   "Syne",
   "Sora"
  ],
- "flagged": false,
+ "flagged": true,
  "notes": 0,
  "checks": {
   "overlaps": [],
@@ -407,6 +407,20 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.33,
+  "never_visible": [],
+  "cut_off": [
+   {
+    "el": "#rays",
+    "share": 0.85,
+    "i": 7,
+    "frame": 116
+   }
+  ],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.53,
+   "duration": 3.86
+  },
   "end_visible": [
    "#title",
    "#cardB",

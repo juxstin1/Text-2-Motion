@@ -17,4 +17,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 9 visible (#scene circle.dot x3, #scene ellipse.shadow x3, #eyebrow, #label ...); final hold 0.17s; no overlaps

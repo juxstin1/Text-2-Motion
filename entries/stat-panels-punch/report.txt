@@ -14,4 +14,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 18 visible (#title, #kicker, #season, div.panel x3 ...); final hold 0.52s; no overlaps

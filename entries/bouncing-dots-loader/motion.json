@@ -1101,6 +1101,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.17,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.23,
+   "duration": 2.4
+  },
   "end_visible": [
    "#scene circle.dot[0]",
    "#scene ellipse.shadow[0]",

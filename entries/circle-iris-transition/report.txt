@@ -25,4 +25,6 @@ overlap: 5 DEFECT, 4 note
 off-stage: clean
 jumps: clean
 dead air: clean
-end state: 14 visible (#iris, #bTitle span x2, #bLabel, #pills div.pill x3 ...); final hold 0.28s; overlapping at end: #bTitle span[0]/#aLabel, #bTitle span[0]/#aTitle
+visibility: clean
+cut off: 1 DEFECT
+  DEFECT #iris ends 64% cut off by its container or <svg>; move it fully inside

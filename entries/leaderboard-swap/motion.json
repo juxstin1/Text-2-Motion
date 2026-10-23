@@ -950,6 +950,13 @@
   "backdrop": 1,
   "format": "landscape",
   "final_hold": 0.32,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.53,
+   "duration": 3.85
+  },
   "end_visible": [
    "#panel",
    "#label",

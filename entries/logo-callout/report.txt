@@ -17,4 +17,7 @@ overlap: clean (2 data-layer=back excluded)
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 10 visible (#disc, #slotA, #casing, #line ...); final hold 0.37s; no overlaps

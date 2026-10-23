@@ -15,4 +15,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 11 visible (#ghost, #bug, #numFill, #nameFill ...); final hold 0.63s; no overlaps

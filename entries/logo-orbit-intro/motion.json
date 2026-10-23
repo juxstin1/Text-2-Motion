@@ -612,6 +612,13 @@
   "backdrop": 3,
   "format": "landscape",
   "final_hold": 0.39,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 3.2,
+   "duration": 3.59
+  },
   "end_visible": [
    "#item0 div.chip",
    "#item1 div.chip",

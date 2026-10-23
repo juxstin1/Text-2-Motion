@@ -12,4 +12,7 @@ overlap: 2 note
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 14 visible (#tag, #l2 div x6, #l1 div x5, #sub ...); final hold 0.73s; no overlaps

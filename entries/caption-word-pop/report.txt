@@ -18,4 +18,7 @@ off-stage: clean
 jumps: clean
 dead air: clean
 safe zones: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 4 visible (#w2_1, #w2_2, #w2_3, #spark2); final hold 0.27s; no overlaps

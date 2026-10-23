@@ -20,4 +20,10 @@ off-stage: 3 note
   (+1 more)
 jumps: clean
 dead air: DEFECT 0.00-1.30s
+visibility: 3 DEFECT
+  DEFECT #shape-circle is animated but never visible on stage; check from() vs to() and its starting autoAlpha/position
+  DEFECT #shape-square is animated but never visible on stage; check from() vs to() and its starting autoAlpha/position
+  DEFECT #shape-triangle is animated but never visible on stage; check from() vs to() and its starting autoAlpha/position
+cut off: clean
+ending: DEFECT final hold is 1.03s (33% of runtime): the motion finishes too early. Slow the main action (longer durations, more follow-through or settle) so it fills more of the runtime, then hold for under 1.0s
 end state: 2 visible (#title, #content div.label); final hold 1.03s; no overlaps

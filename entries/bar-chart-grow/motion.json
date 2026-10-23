@@ -194,6 +194,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.47,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 1.77,
+   "duration": 2.24
+  },
   "end_visible": [
    "#eyebrow",
    "#big",

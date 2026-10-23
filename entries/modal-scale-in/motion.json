@@ -173,6 +173,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.7,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": true,
+   "motion_end": 0.8,
+   "duration": 1.5
+  },
   "end_visible": [
    "#backdrop",
    "#modal",

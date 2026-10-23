@@ -17,4 +17,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 30 visible (#typed div x20, #cursor, #term, div.meta x2 ...); final hold 0.67s; no overlaps

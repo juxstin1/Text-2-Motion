@@ -622,7 +622,7 @@
   "Inter",
   "\"Space Grotesk\""
  ],
- "flagged": false,
+ "flagged": true,
  "notes": 0,
  "checks": {
   "overlaps": [],
@@ -633,6 +633,16 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.32,
+  "never_visible": [
+   "#sparks line.spark[0]",
+   "#sparks line.spark[1]"
+  ],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.73,
+   "duration": 3.05
+  },
   "end_visible": [
    "#cardA",
    "#cardB",

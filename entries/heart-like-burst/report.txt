@@ -18,4 +18,8 @@ overlap: 1 note
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: 1 DEFECT
+  DEFECT #roll ends 50% cut off by its container or <svg>; move it fully inside
+ending: clean
 end state: 11 visible (#title, #heartRig, #shadow, #likes ...); final hold 0.21s; no overlaps

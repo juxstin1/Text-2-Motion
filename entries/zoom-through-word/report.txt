@@ -16,4 +16,7 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 14 visible (#w2, #w2 span x6, #w2 span.dot, #bar ...); final hold 0.19s; no overlaps

@@ -14,4 +14,7 @@ overlap: 2 DEFECT, 1 note
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: DEFECT final hold is 0.70s (46% of runtime): the motion finishes too early. Slow the main action (longer durations, more follow-through or settle) so it fills more of the runtime, then hold for under 1.0s
 end state: 26 visible (#backdrop, #modal, #icon, #title ...); final hold 0.70s; overlapping at end: #modal/#chart div.lbl, #title/#chart div.lbl

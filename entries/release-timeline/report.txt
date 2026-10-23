@@ -20,4 +20,7 @@ overlap: 6 note (6 data-layer=back excluded)
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 39 visible (#panel, #kicker, #title div x15, #axisFill ...); final hold 0.34s; no overlaps

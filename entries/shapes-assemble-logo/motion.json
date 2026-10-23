@@ -487,6 +487,13 @@
   "backdrop": 0,
   "format": "landscape",
   "final_hold": 0.23,
+  "never_visible": [],
+  "cut_off": [],
+  "frozen": {
+   "defect": false,
+   "motion_end": 2.57,
+   "duration": 2.8
+  },
   "end_visible": [
    "#pTL",
    "#pTR",

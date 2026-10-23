@@ -17,4 +17,8 @@ overlap: clean
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: 2 DEFECT
+  DEFECT #sparks line.spark x2 is animated but never visible on stage; check from() vs to() and its starting autoAlpha/position
+cut off: clean
+ending: clean
 end state: 16 visible (#cardA, #cardB, #slotA, #cardA div.stripe ...); final hold 0.32s; no overlaps

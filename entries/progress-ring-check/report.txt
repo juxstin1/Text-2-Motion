@@ -19,4 +19,7 @@ overlap: 2 note
 off-stage: clean
 jumps: clean
 dead air: clean
+visibility: clean
+cut off: clean
+ending: clean
 end state: 8 visible (#ring, #arc, #disc, #check ...); final hold 0.27s; no overlaps
