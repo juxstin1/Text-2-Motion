@@ -19,7 +19,9 @@ from pathlib import Path
 
 BANK = Path(__file__).resolve().parent.parent
 ENTRIES = BANK / "entries"
-EDITABLE = {"status", "tags", "holdout"}
+EDITABLE = {"status", "tags", "holdout", "reason"}
+# why a reject was rejected: one key in the gallery after R
+REASONS = {"broken", "dull", "type", "timing", "look"}
 
 PAGE = r"""<!doctype html>
 <html><head><meta charset="utf-8"><title>anim_bank gallery</title>
@@ -41,6 +43,9 @@ PAGE = r"""<!doctype html>
   .pending { background: #444; } .keep { background: #2e8b57; } .reject { background: #b33a3a; } .hold { background: #b8860b; }
   #tags { width: 100%; max-width: 600px; background: #101114; color: #eee; border: 1px solid #3a3e47; border-radius: 6px; padding: 6px 8px; font: inherit; }
   .help { color: #777; font-size: 12px; margin-top: 10px; }
+  .why { background: #b33a3a22; border: 1px solid #b33a3a; border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 15px; }
+  .why b { display: inline-block; min-width: 18px; padding: 1px 6px; margin: 0 2px 0 10px; border-radius: 4px; background: #b33a3a; color: #fff; text-align: center; }
+  .reason { background: #6b2a2a; }
   .links a { color: #8fb0ff; margin-right: 12px; font-size: 12px; }
   pre { background: #0e0f12; padding: 10px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: #bbb; }
   .cmp img.gif { max-width: 100%; max-height: 60vh; }
@@ -77,17 +82,20 @@ function apply(keepId) {
 function render() {
   mode = 'one';
   const c = all.reduce((a, e) => (a[e.status] = (a[e.status] || 0) + 1, a), {});
-  $('#count').textContent = `${list.length ? idx + 1 : 0}/${list.length} shown · ${all.length} total · keep ${c.keep||0} · reject ${c.reject||0} · pending ${c.pending||0} · holdout ${all.filter(e=>e.holdout).length}`;
+  const why = all.filter(e => e.reason).reduce((a, e) => (a[e.reason] = (a[e.reason] || 0) + 1, a), {});
+  const whyTxt = Object.keys(why).length ? ' (' + Object.entries(why).map(([r, n]) => `${r} ${n}`).join(', ') + ')' : '';
+  $('#count').textContent = `${list.length ? idx + 1 : 0}/${list.length} shown · ${all.length} total · keep ${c.keep||0} · reject ${c.reject||0}${whyTxt} · pending ${c.pending||0} · holdout ${all.filter(e=>e.holdout).length}`;
   const e = list[idx];
   if (!e) { $('#main').innerHTML = '<div class="empty">nothing in this filter</div>'; return; }
   $('#main').innerHTML = `
     ${e.rendered ? `<img class="gif" src="${gif(e)}">` : `<div class="gif empty">not rendered${e.error ? ': ' + esc(e.error) : ''}</div>`}
-    <div class="row"><span class="badge ${e.status}">${e.status}</span>${e.holdout ? '<span class="badge hold">holdout</span>' : ''}
+    ${asking ? `<div class="why">Why reject? ${Object.entries(REASONS).map(([k, v]) => `<b>${k.toUpperCase()}</b>${v}`).join(' ')} <span style="color:#999;margin-left:12px">Esc skip</span></div>` : ''}
+    <div class="row"><span class="badge ${e.status}">${e.status}</span>${e.reason ? `<span class="badge reason">${esc(e.reason)}</span>` : ''}${e.holdout ? '<span class="badge hold">holdout</span>' : ''}
       <span class="prompt">${esc(e.prompt)}</span></div>
     <div class="row"><span class="id">${esc(e.id)} · ${esc(e.source)} · ${esc(e.created)}</span>
       <span class="links"><a href="entries/${e.id}/anim.html?play" target="_blank">open live</a><a href="entries/${e.id}/filmstrip.png" target="_blank">filmstrip</a><a href="entries/${e.id}/onion.png" target="_blank">onion</a><a href="entries/${e.id}/report.txt" target="_blank">report</a>${e.alpha ? `<a href="entries/${e.id}/alpha_check.png" target="_blank">alpha</a>` : ''}</span></div>
     <input id="tags" value="${esc((e.tags || []).join(', '))}" placeholder="tags, comma separated (Enter saves)">
-    <div class="help">K keep · R reject · H holdout · T edit tags (Enter saves, Esc leaves) · ←/→ prev/next</div>`;
+    <div class="help">K keep · R reject (then a reason key) · H holdout · T edit tags (Enter saves, Esc leaves) · ←/→ prev/next</div>`;
   $('#tags').addEventListener('keydown', ev => {
     if (ev.key === 'Enter') { save(e, { tags: ev.target.value.split(',').map(s => s.trim()).filter(Boolean) }); ev.target.blur(); }
     if (ev.key === 'Escape') ev.target.blur();
@@ -98,6 +106,19 @@ async function save(e, patch) {
   const r = await fetch('/api/meta/' + encodeURIComponent(e.id), { method: 'POST', body: JSON.stringify(patch) });
   if (!r.ok) { alert('save failed: ' + await r.text()); return; }
   Object.assign(e, await r.json());
+}
+const REASONS = { b: 'broken', d: 'dull', t: 'type', s: 'timing', l: 'look' };
+let asking = false;
+async function reject() {
+  const e = list[idx]; if (!e) return;
+  await save(e, { status: 'reject' });
+  asking = true; render();
+}
+async function answer(key) {
+  const e = list[idx]; asking = false;
+  if (e && REASONS[key]) await save(e, { reason: REASONS[key] });
+  const next = list[idx + 1];
+  apply(next ? next.id : null);
 }
 async function setStatus(s) {
   const e = list[idx]; if (!e) return;
@@ -119,8 +140,9 @@ document.addEventListener('keydown', ev => {
   if (ev.target.tagName === 'INPUT') return;
   if (mode === 'cmp') { if (ev.key === 'Escape') render(); return; }
   const k = ev.key.toLowerCase(), e = list[idx];
+  if (asking) { ev.preventDefault(); answer(k); return; }
   if (k === 'k') setStatus('keep');
-  else if (k === 'r') setStatus('reject');
+  else if (k === 'r') reject();
   else if (k === 'h' && e) save(e, { holdout: !e.holdout }).then(render);
   else if (k === 't') { ev.preventDefault(); const t = $('#tags'); if (t) { t.focus(); t.setSelectionRange(t.value.length, t.value.length); } }
   else if (ev.key === 'ArrowRight') { idx = Math.min(idx + 1, list.length - 1); render(); }
@@ -190,7 +212,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 continue
             if k == "status" and v not in ("pending", "keep", "reject"):
                 return self._json(400, {"error": f"bad status {v}"})
+            if k == "reason" and v is not None and v not in REASONS:
+                return self._json(400, {"error": f"bad reason {v}"})
             meta[k] = v
+        if meta.get("status") != "reject":
+            meta.pop("reason", None)  # reasons only describe rejects
         (d / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
         return self._json(200, meta)
 

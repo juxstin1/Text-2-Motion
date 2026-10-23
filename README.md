@@ -137,7 +137,7 @@ Render outputs (GIFs, filmstrips, onions, alpha videos) are git-ignored. They're
 | `uv run tools/render.py entries/<id>` | Render one entry: preview.gif, filmstrip.png, onion.png, motion.json, report.txt |
 | `uv run tools/render.py entries/<id> --alpha` | Also export a transparent overlay at 1.5x (1920×1080, or 1080×1920 vertical): alpha.mov, alpha.webm, alpha_check.png |
 | `uv run tools/render.py --all` | Render everything; failures write `render_error.txt` and the run continues |
-| `uv run tools/gallery.py` | Review gallery. **K** keep, **R** reject, **H** holdout, **T** tags, **←/→** navigate; compare with `?a=<id>&b=<id>` |
+| `uv run tools/gallery.py` | Review gallery. **K** keep, **R** reject then one reason key (**B** broken · **D** dull · **T** type · **S** timing · **L** look), **H** holdout, **T** tags, **←/→** navigate; compare with `?a=<id>&b=<id>` |
 | `uv run tools/retrieve.py "<request>" -k 3 [--vertical]` | Show the best keeper examples for a request, and why they matched |
 | `uv run tools/run_local.py "<request>" --shots 3` | Ask a local OpenAI-compatible server (LM Studio on :1234) for an animation with 3 examples, save and render it |
 | `uv run tools/run_local.py "<request>" --fix 2 --vision` | Then up to 2 repair rounds fed by the report's defects (plus filmstrip and onion images for vision models); each attempt is its own entry |
@@ -148,7 +148,7 @@ Render outputs (GIFs, filmstrips, onions, alpha videos) are git-ignored. They're
 
 ## Entry layout
 
-`entries/<id>/` holds `anim.html`, `prompt.txt` (the one-line request it answers) and `meta.json` (`tags`, `source`, `status` pending|keep|reject, `holdout`, `created`), plus render outputs. Local-model entries also keep `raw_reply.txt` and record `shots`, `examples`, `attempt` and `parent`.
+`entries/<id>/` holds `anim.html`, `prompt.txt` (the one-line request it answers) and `meta.json` (`tags`, `source`, `status` pending|keep|reject, `reason` for rejects, `holdout`, `created`), plus render outputs. Local-model entries also keep `raw_reply.txt` and record `shots`, `examples`, `attempt` and `parent`.
 
 <details>
 <summary><b>Reading report.txt</b>: every check, in detail</summary>
